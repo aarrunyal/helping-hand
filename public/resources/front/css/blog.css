@@ -1,0 +1,87 @@
+.blog-entry .text h3 a {
+    color: #000;
+}
+.blog-entry {
+    width: 100%;
+    margin-bottom: 3em;
+    background: white;
+}
+.blog-entry .text .meta-wrap .meta span {
+    font-size: 14px;
+    margin: 0 10px 0 0;
+    color: #bfbfbf;
+}
+.blog-entry .text .meta-wrap .meta span a {
+    color: #000;
+}
+.categories, .sidelink {
+    padding: 0;
+}
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.categories li a, .sidelink li a {
+    display: block;
+    color: #000;
+}
+
+.sidebar-box h3.sidebar-heading {
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+.block-21 .text .heading a {
+    color: #000;
+}
+.block-21 .text .meta>div a {
+    color: gray;
+}
+
+.blog-entry .img {
+    display: block;
+    height: 150px;
+    width: 200px;
+    /*border-radius: 50%;*/
+}
+.blog-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.author-img, .hero-wrap, .img, .blog-img, .insta-img, .user-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.block-21 .blog-img {
+    display: block;
+    height: 100px;
+    width: 150px;
+}
+
+.tagcloud a {
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 7px;
+    margin-right: 4px;
+    color: rgb(0, 0, 0);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    border-image: initial;
+}
+.blog-row{
+    background: white;
+    position:relative;
+    margin-top: -80px;
+}
+
+.cover-image{
+    position:absolute;
+}

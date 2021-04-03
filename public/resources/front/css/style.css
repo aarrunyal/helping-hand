@@ -1,0 +1,185 @@
+body, html {
+    height: 100%;
+    font-family: Work Sans,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    background: #eaeaea !important;
+}
+.dropdown-item:hover{
+    font-size: 0.8rem !important;
+    color: white !important;
+    background-color:#ff7d1a !important;
+    padding:2px
+}
+
+.dropdown-item{
+    font-size: 0.7em !important;
+}
+
+#topbar {
+    height: 44px;
+    color: black;
+
+}
+#topbar #phone{
+    font-size: 0.8rem !important;
+    font-weight: bold;
+}
+
+#topbar #phone #email{
+    font-size: 0.7rem !important;
+    font-weight: lighter;
+}
+
+#header{
+    /*background-color: #4768a4 !important;*/
+    background-color: #ed6e1d !important;
+    height: 100px;
+}
+.nav-link{
+    color: white !important;
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/cover-1.jpg");
+    color: white;
+    min-height: 70vh;
+
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+
+.hero-image h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    margin-top: 50px;
+}
+
+.hero-image h3 {
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: inherit;
+    margin-bottom: 30px;
+}
+
+.hero-image p {
+    font-size: 16px !important;
+    letter-spacing: 0;
+    line-height: 32px;
+    font-family: "roboto", sans-serif;
+    font-weight: 300;
+    margin: 0px !important;
+    padding: 0px !important;
+    text-align: center;
+}
+
+.btn-default {
+    background: #4265a2;
+    /*background: #ed6e1d !important;;*/
+    padding: 12px 30px;
+    border-radius: 5px;
+    color: #fff;
+    width: 300px;
+    margin: 0px auto;
+    margin-top: 15px;
+    text-align: center;
+    font-weight:bold ;
+}
+.btn-default:hover{
+    background: #ed6e1d;
+    color: #4265a2;
+    font-weight:bold ;
+    text-decoration: none;
+}
+
+.small-text {
+    color: #ffffff !important;
+    font-size: 18px;
+}
+
+.wrapper-1{
+    background-color: #f8f8f8;
+} .wrapper-2{
+      background-color: #fff;
+      color: #000 !important;
+  }.wrapper-3{
+       /*background-color: #4265a2;*/
+         background-color: #ed6e1d !important;
+   }   .wrapper h2{
+           font-weight: bolder !important;
+           font-size:25px;
+       } .wrapper h4{
+             font-weight: bolder !important;
+             font-size:17px;
+         }
+.wrapper h6{
+    font-weight: bolder !important;
+    font-size: 17px;
+} .wrapper p{
+      font-weight: lighter !important;
+      font-size: 0.8rem;
+  }
+.white-background{
+    background-color: white !important;
+}
+
+.card{
+    border: none !important;
+    border-radius: 0px 10px 0px 10px !important;
+}
+
+.counters {
+    text-align: center;
+}
+.widget {
+    margin-bottom: 30px;
+    position: relative;
+    padding: 0;
+    background: 0 0;
+}
+.counters.style1 .counter {
+    color: #fff !important;
+    font-size: 36px;
+    line-height: inherit;
+}
+
+.counters h5 {
+    font-size: 14px;
+    color: #fff !important;
+    font-weight: 400;
+    margin: 0;
+}
+
+ul{
+    list-style-type: none;
+}
+.destination ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+}.footer {
+     color: white;
+     font-weight: medium
+ }.footer ul li a {
+      text-decoration: none;
+      font-size: 16px;
+      color: white;
+  }
+
+blockquote {
+    background-image: url(../img/quote.png);
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 15px 0 0;
+}
+
+blockquote p{
+    font-size: 14px!important;
+    color: #000!important;
+    font-weight: lighter!important;
+    font-style: italic;
+}
