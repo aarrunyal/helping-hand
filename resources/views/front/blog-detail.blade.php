@@ -60,11 +60,11 @@
                               Harum
                               voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
                           <div class="tag-widget post-tag-container mb-5 mt-5">
-                              <div class="">
-                                  <a href="#" class="btn btn-outline-secondary"><i class="fab fa-facebook-f"></i></a>
-                                  <a href="#" class="btn btn-outline-secondary"><i class="fab fa-twitter"></i></a>
-                                  <a href="#" class="btn btn-outline-secondary"><i class="fab fa-instagram-square"></i></a>
-                                  <a href="#" class="btn btn-outline-secondary"><i class="fab fa-pinterest-p"></i></a>
+                              <div class="social-icon">
+                                  <a href="#" class="rounded-circle p-2"><i class="fab fa-facebook-f"></i></a>
+                                  <a href="#" class="rounded-circle p-2"><i class="fab fa-twitter"></i></a>
+                                  <a href="#" class="rounded-circle p-2"><i class="fab fa-instagram-square"></i></a>
+                                  <a href="#" class="rounded-circle p-2"><i class="fab fa-pinterest-p"></i></a>
                               </div>
                           </div>
 

@@ -1,8 +1,18 @@
 <div class="row" id="topbar">
-    <div class="d-flex justify-content-end m-1">
-                              <span id="phone" class="flext-row">9860089001 <br>
-                                    <small id="email" class="flext-row">info@thh.com</small>
+    <div class="col text-right">
+                          <span id="phone" class="">
+                             <i class="fas fa-phone"></i>
+                              9860089001 <br>
+                                    <small id="email" class="flext-row">
+                                        <i class="fas fa-at"></i>
+                                        info@thh.com</small>
                               </span>
+    </div>
+    <div class="col text-right mt-2 social-icon">
+        <a href="#" class="social rounded-circle p-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social rounded-circle p-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social rounded-circle p-2"><i class="fab fa-instagram-square"></i></a>
+        <a href="#" class="social rounded-circle p-2"><i class="fab fa-pinterest-p"></i></a>
     </div>
 </div>
 <div class="row" id="header">
@@ -83,7 +93,6 @@
                             volunteers</a>
                     </div>
                 </li>
-
 
 
             </ul>

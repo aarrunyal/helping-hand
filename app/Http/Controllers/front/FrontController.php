@@ -32,4 +32,12 @@ class FrontController
     {
         return view('front.packages');
     }
+
+    public function packageDetail()
+    {
+        return view('front.package');
+    }  public function programDetail()
+{
+        return view('front.program-detail');
+    }
 }

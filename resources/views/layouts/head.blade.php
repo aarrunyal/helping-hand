@@ -13,9 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap"
           rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
     <link rel="stylesheet" href="{{asset("resources/front/css/font-awesome/all.min.css")}}">
     <script src="{{asset("resources/front/js/font-awesome/all.min.js")}}" crossorigin="anonymous"></script>
 </head>

@@ -18,3 +18,5 @@ Route::get('/blog', [\App\Http\Controllers\front\FrontController::class,  'blog'
 Route::get('/blog/detail', [\App\Http\Controllers\front\FrontController::class,  'blogDetail']);
 Route::get('/programs', [\App\Http\Controllers\front\FrontController::class,  'programs']);
 Route::get('/packages', [\App\Http\Controllers\front\FrontController::class,  'packages']);
+Route::get('/package/details', [\App\Http\Controllers\front\FrontController::class,  'packageDetail']);
+Route::get('/program/details', [\App\Http\Controllers\front\FrontController::class,  'programDetail']);
