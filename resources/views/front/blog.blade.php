@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 @section('content')
-    <div class="container">
+    <div class="container wrapper">
         <div class="row d-flex">
-            <div class="col-xl-8 py-5 px-md-5">
+            <div class="col-xl-8 py-3 px-md-5">
                 <div class="row pt-md-4">
                     <div class="col-md-12">
                             <div class="">
@@ -34,11 +34,11 @@
             </div>
             <div class="col-xl-4 sidebar ftco-animate bg-light pt-5 fadeInUp ftco-animated">
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-                    <h3 class="sidebar-heading">Popular Articles</h3>
+                    <h3 class="sidebar-heading" style="color: #4265a2;">Popular Articles</h3>
                     <div class="block-21 mb-4 d-flex">
                         <a class="blog-img mr-4" style="background-image: url('https://thehhfn.org/wp-content/uploads/2017/04/audio.png');"></a>
                         <div class="text">
-                            <h5 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h5>
+                            <h6 class=""><a href="#">Even the all-powerful Pointing has no control</a></h6>
                             <div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
                             </div>
@@ -47,7 +47,7 @@
                     <div class="block-21 mb-4 d-flex">
                         <a class="blog-img mr-4" style="background-image: url('https://thehhfn.org/wp-content/uploads/2017/04/audio.png');"></a>
                         <div class="text">
-                            <h5 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h5>
+                            <h6 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h6>
                             <div class="meta">
                                 <div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
                             </div>

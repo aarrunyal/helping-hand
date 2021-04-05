@@ -1,7 +1,7 @@
 <div class="row  wrapper wrapper-3 footer">
     <div class="container">
-        <div class="d-flex justify-content-between my-4">
-            <div class="col-3">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4 class="text-center">GROUP VOLUNTEERING</h4>
                 <ul>
                     <li class="mt-1"> <a href="https://www.ifrevolunteers.org/hands-on-medical-volunteer/">Hands
@@ -22,7 +22,7 @@
                             Volunteer Programs </a></li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4 class="text-center">SUMMER:</h4>
                 <ul>
                     <li class="mt-1">Youth Volunteer - Nepal</li>
@@ -33,8 +33,7 @@
                     <li class="mt-1">Youth Volunteer - Peru</li>
                     <li class="mt-1">Youth Volunteer - Costa Rica</li>
                 </ul>
-            </div>
-            <div class="col-3">
+            </div> <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4 class="text-center">ASIA:</h4>
                 <ul>
                     <li class="mt-1">Volunteer in Combodia</li>
@@ -45,7 +44,7 @@
                     <li class="mt-1">Volunteer in Thailand</li>
                 </ul>
             </div>
-            <div class="col-3">
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <ul>
                     <li class="mt-1">Tell a Friend</li>
                     <li class="mt-1">Program Fee</li>

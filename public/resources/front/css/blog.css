@@ -1,5 +1,5 @@
 .blog-entry .text h3 a {
-    color: #000;
+    color: #ed6e1d !important;
 }
 .blog-entry {
     width: 100%;
@@ -33,7 +33,10 @@ ol, ul, dl {
     font-style: italic;
     margin-bottom: 30px;
 }
-.block-21 .text .heading a {
+.block-21 h6  a{
+    color: #ed6e1d !important;
+}
+.block-21 .text  {
     color: #000;
 }
 .block-21 .text .meta>div a {

@@ -22,4 +22,14 @@ class FrontController
     {
         return view('front.blog-detail');
     }
+
+    public function programs()
+    {
+        return view('front.programs');
+    }
+
+    public function packages()
+    {
+        return view('front.packages');
+    }
 }
