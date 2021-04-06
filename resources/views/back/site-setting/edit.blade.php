@@ -24,12 +24,12 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                               Category
+                                Site Setting
                             </h3>
                         </div>
                     </div>
                     <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('site-setting-update', $siteSetting->id)}}" enctype="multipart/form-data">
-                        @include('back.client.form')
+                        @include('back.site-setting.form')
                     </form>
                 </div>
             </div>

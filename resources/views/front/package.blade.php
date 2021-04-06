@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.front.layout')
 @section('content')
     <div class="row hero-image"
          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover.jpg')}}');">

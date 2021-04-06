@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.front.layout')
 @section('content')
     <div class="container wrapper">
         <div class="row d-flex">

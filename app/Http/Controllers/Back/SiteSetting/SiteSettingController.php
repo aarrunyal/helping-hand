@@ -42,7 +42,7 @@ class SiteSettingController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SiteSettingRequest $request)
@@ -56,7 +56,7 @@ class SiteSettingController
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,34 +67,37 @@ class SiteSettingController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $siteSetting = $this->siteSetting->findByColumn('id', $id);
-        return view('back.site-setting.edit', compact( 'siteSetting'));
+        return view('back.site-setting.edit', compact('siteSetting'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(SiteSettingRequest $request, $id)
     {
         $data = $request->all();
-        if ($this->siteSetting->update($id, $data))
+        if ($this->siteSetting->update($id, $data)) {
+            toastr()->success('Site setting updated successfully!');
             return redirect()->route('site-setting.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('site-setting.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

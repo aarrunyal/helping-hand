@@ -13,7 +13,7 @@
                         <div class="col-lg-12 col-md-12">
                             <label class="form-control-label">* Title</label>
                             <input type="text" name="title" class="form-control" placeholder="Title"
-                                   value="{{old('title', isset($siteSetting->title)?$siteSetting->title:null)}}">
+                                   value="{{old('slug', isset($siteSetting->title)?$siteSetting->title:'')}}" readonly>
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
                         <div class="col-lg-12 col-md-12 mt-5">

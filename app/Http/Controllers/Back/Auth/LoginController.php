@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Back\Login\LoginRequest;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\JsonResponse;
