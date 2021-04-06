@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+@include('system-user.php');
 Route::get('/', [\App\Http\Controllers\front\FrontController::class,  'index']);
 Route::get('/blog', [\App\Http\Controllers\front\FrontController::class,  'blog']);
 Route::get('/blog/detail', [\App\Http\Controllers\front\FrontController::class,  'blogDetail']);
