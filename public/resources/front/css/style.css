@@ -33,7 +33,7 @@ body, html {
 
 #header {
     /*background-color: #4768a4 !important;*/
-    background-color: #ed6e1d !important;
+    background-color: #4e6f61 !important;
     height: 100px;
 }
 
@@ -80,7 +80,7 @@ body, html {
 
 .btn-default {
     background: #4265a2;
-    /*background: #ed6e1d !important;;*/
+    /*background: #4e6f61 !important;;*/
     padding: 12px 30px;
     border-radius: 5px;
     color: #fff;
@@ -92,7 +92,7 @@ body, html {
 }
 
 .btn-default:hover {
-    background: #ed6e1d;
+    background: #4e6f61;
     color: #4265a2;
     font-weight: bold;
     text-decoration: none;
@@ -117,31 +117,31 @@ body, html {
 }
 
 .wrapper-3 {
-    background-color: #ed6e1d !important;
+    background-color: #4e6f61 !important;
 }
 
 .wrapper h2 {
     font-weight: bolder !important;
     font-size: 25px;
-    color: #ed6e1d;
+    color: #4e6f61;
 }
 
 .wrapper h4 {
     font-weight: bolder !important;
     font-size: 17px;
-    color: #ed6e1d;
+    color: #4e6f61;
 }
 
 .wrapper h3 {
     font-weight: bolder !important;
     font-size: 20px;
-    color: #ed6e1d;
+    color: #4e6f61;
 }
 
 .wrapper h6 {
     font-weight: bolder !important;
     font-size: 17px;
-    color: #ed6e1d;
+    color: #4e6f61;
 }
 
 .wrapper p {
@@ -218,7 +218,7 @@ blockquote p {
 }
 
 .social-icon a {
-    background: #ed6e1d;
+    background: #4e6f61;
     text-decoration: none;
     color: white;
 }
@@ -228,7 +228,7 @@ blockquote p {
 }
 
 .side-heading {
-    background: #ed6e1d;
+    background: #4e6f61;
 }
 
 .side-heading h3 {
@@ -252,12 +252,12 @@ blockquote p {
 }
 .package-detail .tab-item:hover{
     color: white !important;
-    background: #ed6e1d !important;
+    background: #4e6f61 !important;
 }
 
 .package-detail nav .active {
     color: white !important;
-    background: #ed6e1d !important;
+    background: #4e6f61 !important;
 }
 
 .package-detail .main_list {
@@ -266,7 +266,7 @@ blockquote p {
 }
 .package-detail table thead {
     list-style: circle;
-    background: #ed6e1d !important;
+    background: #4e6f61 !important;
     color: white;
 
 }
