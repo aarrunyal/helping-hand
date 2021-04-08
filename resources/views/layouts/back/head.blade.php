@@ -43,7 +43,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{asset('resources/back/assets/css/skins/header/menu/light.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('resources/back/assets/css/skins/brand/dark.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('resources/back/assets/css/skins/aside/dark.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    @toastr_css
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('resources/back/assets/media/logos/favicon.ico')}}" />
 </head>

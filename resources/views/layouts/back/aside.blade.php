@@ -8,8 +8,8 @@
     <!-- begin:: Aside -->
     <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
         <div class="kt-aside__brand-logo">
-            <a href="index.html">
-                <img alt="Logo" src="assets/media/logos/logo-light.png"/>
+            <a href="{{route('admin.dashboard')}}">
+                <img alt="Logo" class="mt-2" src="{{asset('resources/front/image/logo.png')}}" height="80px"/>
             </a>
         </div>
         <div class="kt-aside__brand-tools">

@@ -1105,7 +1105,8 @@
 <script src="{{asset('resources/back/assets/js/pages/dashboard.js')}}" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @toastr_js
+    @toastr_render
 @yield('page-script')
 <!--end::Page Scripts -->
 </body>

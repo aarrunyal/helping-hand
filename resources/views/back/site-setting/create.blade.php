@@ -23,7 +23,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Blog
+                                Site Setting
                             </h3>
                         </div>
                     </div>

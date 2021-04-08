@@ -40,8 +40,10 @@ class SiteSetting extends Command
         $settings = config('site-setting');
         foreach ($settings as $setting) {
             $s = \App\Models\Models\SiteSetting\SiteSetting::whereTitle($setting)->first();
-            if (empty($s))
-                \App\Models\Models\SiteSetting\SiteSetting::create(['title' => $setting, "is_active"=>1]);
+            if (empty($s)){
+                $setting['is_active'] = 1;
+                \App\Models\Models\SiteSetting\SiteSetting::create($setting);
+            }
         }
     }
 }

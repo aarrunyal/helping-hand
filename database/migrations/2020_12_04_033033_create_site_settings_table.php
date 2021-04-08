@@ -16,6 +16,7 @@ class CreateSiteSettingsTable extends Migration
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->string('type')->nullable();
             $table->string('value')->nullable();
             $table->string('is_active')->nullable();
             $table->timestamps();

@@ -42,10 +42,10 @@
                         <div class="kt-portlet__head-wrapper">
                             <div class="kt-portlet__head-actions">
                                 &nbsp;
-                                <a href="{{route('site-setting.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">
-                                    <i class="la la-plus"></i>
-                                    New Record
-                                </a>
+{{--                                <a href="{{route('site-setting.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">--}}
+{{--                                    <i class="la la-plus"></i>--}}
+{{--                                    New Record--}}
+{{--                                </a>--}}
                             </div>
                         </div>
                     </div>

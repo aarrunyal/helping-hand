@@ -9,5 +9,5 @@ class SiteSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'value', 'is_active'];
+    protected $fillable = ['title', 'type', 'value', 'is_active'];
 }
