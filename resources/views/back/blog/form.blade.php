@@ -132,10 +132,6 @@
     <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
             type="text/javascript"></script>
 
-    <link rel="stylesheet" src="{{asset('resources/back/assets/css/tags/tags.css')}}">
-    <script src="{{asset('resources/back/assets/js/tags/tags.js')}}"
-            type="text/javascript"></script>
-
     <script>
         $('input[name="tags"]').amsifySuggestags();
         /*validation*/

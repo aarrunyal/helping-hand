@@ -18,7 +18,7 @@
                         </div>
                         <div class="col-lg-6" id="parent_category_id">
                             <label class="form-control-label">Parent Category Id</label>
-                            <select class="form-control" name="parent_id">
+                            <select class="form-control" name="parent_id" id="parent_id">
                                 <option value="">Select Parent Category Id</option>
                                 @if($parentCategories->count()>0)
                                     @foreach($parentCategories as $parentCategory)
@@ -40,7 +40,7 @@
                     <div class="col-4">
 														<span class="kt-switch kt-switch--success">
 															<label>
-																<input type="checkbox" name="is_parent"
+																<input type="checkbox" name="is_parent" id="is_parent"
                                                                        {{(isset($category->is_parent) && $category->is_parent =='1')?"checked":''}}
                                                                        onchange="">
 																<span></span>
@@ -80,40 +80,43 @@
 </div>
 
 @section('page-script')
-
+    <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
+            type="text/javascript"></script>
+    <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
+            type="text/javascript"></script>
     <!--begin::Page Scripts(used by this page) -->
     <script>
         $('input[name="is_parent"]').change(function () {
-            KTFormControls.init();
             if ($('input[name="is_parent"]').prop('checked')) {
                 $('#parent_category_id').hide()
             } else {
                 $('#parent_category_id').show()
             }
+            buildRule();
         })
     </script>
     <script>
         // Class definition
         function buildRule() {
-            let field = ['title', 'parent_id']
             if ($('input[name="is_parent"]').prop('checked')) {
-                field.pop('parent_id')
+                $("#parent_id").rules('remove');
             } else {
-                if (field.includes('parent_id'))
-                    field.push('parent_id')
+                $("#parent_id").rules('add', {
+                    required: true,
+                });
             }
-            let rules = [];
-            let obj = {};
-            for (let f of field) {
-                obj[f] = {required: true}
-            }
-            return obj;
         }
 
         var KTFormControls = function () {
             var demo2 = function () {
                 $("#kt_form_2").validate({
-                    rules: buildRule(),
+                    rules: {
+                        title: {
+                            required: true
+                        }, parent_id: {
+                            required: true
+                        }
+                    },
                     invalidHandler: function (event, validator) {
                         swal.fire({
                             "title": "",
@@ -154,6 +157,5 @@
         });
 
     </script>
-    <script src="{{asset('resources/back/assets/js/validate.min.js')}}"></script>
 
 @endsection

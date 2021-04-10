@@ -62,6 +62,11 @@
                         <span><i class="fas fa-tachometer-alt"></i></span>
                         <span class="ml-5 kt-menu__link-text">Dashboard</span></a></li>
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('category.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Category</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('blog.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
