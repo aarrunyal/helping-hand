@@ -26,12 +26,8 @@
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="custom-file">
-                                <div class="custom-file mt-4">
-                                    <input type="file" class="custom-file-input" id="" name="social_share_image">
-                                    <label class="custom-file-label" for="social_share_image">Social Share Image</label>
-                                </div>
-                            </div>
+                            <label class="" for="social_share_image">Feature Image</label>
+                            <input type="file" class="form-control" id="" name="social_share_image">
                         </div>
 
                         <div class="col-lg-12 col-md-12 mt-2">

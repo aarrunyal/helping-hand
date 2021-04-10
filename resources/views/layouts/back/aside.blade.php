@@ -71,12 +71,12 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">Blog/News</span></a></li>
-
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('site-setting.index')}}"
+                        href="{{route('program.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li>
+                        <span class="ml-5 kt-menu__link-text">Program</span></a></li>
+
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('client.index')}}"
                         class="kt-menu__link ">
@@ -92,6 +92,11 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">User</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('site-setting.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li>
 
             </ul>
         </div>
