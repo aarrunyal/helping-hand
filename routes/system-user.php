@@ -7,6 +7,7 @@ use App\Http\Controllers\Back\Clinet\ClientController;
 use App\Http\Controllers\Back\Blog\BlogController;
 use App\Http\Controllers\Back\Page\PageController;
 use \App\Http\Controllers\Back\Category\CategoryController;
+use \App\Http\Controllers\Back\Program\ProgramController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -53,6 +54,11 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->resource('page', PageController::class);
     $route->get('page/{slug}/destroy', [PageController::class, "destroy"])->name('page.destroy');
     $route->post('page/{slug}/update', [PageController::class, "update"])->name('page.update');
+
+    //    Program
+    $route->resource('program', ProgramController::class);
+    $route->get('program/{slug}/destroy', [ProgramController::class, "destroy"])->name('program.destroy');
+    $route->post('program/{slug}/update', [ProgramController::class, "update"])->name('program.update');
 });
 
 

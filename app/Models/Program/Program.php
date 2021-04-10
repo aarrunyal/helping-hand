@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Category;
+namespace App\Models\Program;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Program extends Model
 {
     use HasFactory, Sluggable, SoftDeletes;
 
@@ -23,16 +23,15 @@ class Category extends Model
     protected $fillable = [
         'title',
         'slug',
-        'is_parent',
-        'parent_id',
+        'short_description',
+        'description',
+        'cost',
+        'dates',
+        'group_discount_available',
+        'group_discount_description',
+        'has_sample_itinerary',
+        'sample_itinerary_description',
         'is_active',
-        'is_requested',
+
     ];
-
-    protected $appends = [];
-
-    public function parent()
-    {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }
 }

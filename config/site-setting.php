@@ -13,4 +13,7 @@ return [
     ["title" => "SETTING_ROBOTS", "type" => "text"],
     ["title" => "SETTING_RECAPTCHA_SITE_KEY", "type" => "text"],
     ["title" => "SETTING_RECAPTCHA_SECRET_KEY", "type" => "text"],
+    ["title" => "SETTING_DESTINATION_DESCRIPTION", "type" => "text-area"],
+    ["title" => "SETTING_SAFETY_AND_SUPERVISION", "type" => "text-area"],
+    ["title" => "SETTING_CONTACT_US_DESCRIPTION", "type" => "text-area"],
 ];
