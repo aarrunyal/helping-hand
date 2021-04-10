@@ -46,6 +46,12 @@ License: You must have a valid license purchased only from themeforest(the above
     @toastr_css
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{asset('resources/back/assets/media/logos/favicon.ico')}}" />
+    <style>
+        .error{
+            border-color: #b94a48;
+            color:#b94a48;
+        }
+    </style>
 </head>
 
 <!-- end::Head -->

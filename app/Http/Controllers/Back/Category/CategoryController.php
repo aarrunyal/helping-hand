@@ -1,21 +1,22 @@
 <?php
 
 
-namespace App\Http\Controllers\Back\SiteSetting;
+namespace App\Http\Controllers\Back\Category;
 
 
-use App\Http\Requests\Back\SiteSetting\SiteSettingRequest;
-use App\Services\SiteSetting\SiteSettingService;
+use App\Http\Requests\Category\CategoryRequest;
+use App\Services\Category\CategoryService;
 
-class SiteSettingController
+
+class CategoryController
 {
 
-    public $siteSetting;
+    public $category;
 
 
-    public function __construct(SiteSettingService $siteSetting)
+    public function __construct(CategoryService $category)
     {
-        $this->siteSetting = $siteSetting;
+        $this->category = $category;
     }
 
     /**
@@ -25,8 +26,8 @@ class SiteSettingController
      */
     public function index()
     {
-        $siteSettings = $this->siteSetting->paginate(25);
-        return view('back.site-setting.index', compact('siteSettings'));
+        $categories = $this->category->paginate(25);
+        return view('back.category.index', compact('categories'));
     }
 
     /**
@@ -36,7 +37,8 @@ class SiteSettingController
      */
     public function create()
     {
-        return view('back.site-setting.create');
+        $parentCategories = $this->category->getParents();
+        return view('back.category.create', compact('parentCategories'));
     }
 
     /**
@@ -45,15 +47,15 @@ class SiteSettingController
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SiteSettingRequest $request)
+    public function store(CategoryRequest $request)
     {
         $data = $request->all();
-        if ($this->siteSetting->store($data)) {
-            toastr()->success('Request processed successfully');
-            return redirect()->route('site-setting.index');
+        if ($this->category->store($data)) {
+            toastr()->success('Request Processed successfully');
+            return redirect()->route('category.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('site-setting.create');
+        return redirect()->route('category.create');
     }
 
     /**
@@ -73,10 +75,11 @@ class SiteSettingController
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $siteSetting = $this->siteSetting->findByColumn('id', $id);
-        return view('back.site-setting.edit', compact('siteSetting'));
+        $category = $this->category->findByColumn('slug', $slug);
+        $parentCategories = $this->category->getParents();
+        return view('back.category.edit', compact('category', 'parentCategories'));
     }
 
     /**
@@ -86,15 +89,15 @@ class SiteSettingController
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SiteSettingRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $data = $request->all();
-        if ($this->siteSetting->update($id, $data)) {
+        if ($this->category->update($id, $data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('site-setting.index');
+            return redirect()->route('category.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('site-setting.create');
+        return redirect()->route('category.create');
     }
 
     /**
@@ -103,13 +106,13 @@ class SiteSettingController
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        if ($this->siteSetting->delete($id)) {
+        if ($this->category->delete($slug)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('site-setting.index');
+            return redirect()->route('category.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('site-setting.index');
+        return redirect()->route('category.index');
     }
 }

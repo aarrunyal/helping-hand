@@ -6,6 +6,7 @@ use App\Http\Controllers\Back\SiteSetting\SiteSettingController;
 use App\Http\Controllers\Back\Clinet\ClientController;
 use App\Http\Controllers\Back\Blog\BlogController;
 use App\Http\Controllers\Back\Page\PageController;
+use \App\Http\Controllers\Back\Category\CategoryController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -22,8 +23,12 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
         return view('back.dashboard.index');
     })->name('admin.dashboard');
 
+//    category
+    $route->resource('category', CategoryController::class);
+    $route->get('category/{slug}/destroy', [CategoryController::class, "destroy"])->name('category.destroy');
+    $route->post('category/{slug}/update', [CategoryController::class, "update"])->name('category.update');
+
 //    $route->resource('blog-category', BlogCategoryController::class);
-////    $route->get('category', [CategoryController::class, "destroy"])->name('category.destroy');;
 //    $route->post('blog-category/{slug}', [BlogCategoryController::class, "update"])->name('blog-category-update');;
 
     $route->resource('blog', BlogController::class);

@@ -37,8 +37,8 @@
                             </h3>
                         </div>
                     </div>
-                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('blog-category-update', $category->slug)}}">
-                        @include('back.blog.category.form')
+                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('category.update', $category->slug)}}">
+                        @include('back.category.form')
                     </form>
                 </div>
             </div>

@@ -11,7 +11,7 @@
                 <div class="kt-section__content">
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            <label class="form-control-label">* Category Name:</label>
+                            <label class="form-control-label">* Category Name</label>
                             <input type="text" name="title" class="form-control" placeholder="Category Name"
                                    value="{{old('title', isset($category->title)?$category->title:null)}}">
                             <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -23,7 +23,7 @@
                                 @if($parentCategories->count()>0)
                                     @foreach($parentCategories as $parentCategory)
                                         <option value="{{$parentCategory->id}}"
-                                                {{(old('parent_id', isset($category->parent_id)?$category->parent_id:''))==$parentCategory->id?'selected':''}}>
+                                            {{(old('parent_id', isset($category->parent_id)?$category->parent_id:''))==$parentCategory->id?'selected':''}}>
                                             {{ucwords($parentCategory->title)}}</option>
                                     @endforeach
                                 @endif
@@ -34,20 +34,7 @@
             </div>
 
             <div class="col-lg-4 col-md-4">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Requested</label>
-                    <div class="col-4">
-														<span class="kt-switch kt-switch--success">
-															<label>
-																<input type="checkbox"
-                                                                       name="is_requested"
-                                                                       {{(isset($category->is_requested) && $category->is_requested =='1')?"checked":''}}
-                                                                       disabled>
-																<span></span>
-															</label>
-														</span>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Parent</label>
                     <div class="col-4">
@@ -86,7 +73,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <button type="submit" class="btn btn-brand">Save</button>
-                <a href="{{route('blog-category.index')}}" class="btn btn-secondary">Cancel</a>
+                <a href="{{route('category.index')}}" class="btn btn-secondary">Cancel</a>
             </div>
         </div>
     </div>
@@ -96,20 +83,37 @@
 
     <!--begin::Page Scripts(used by this page) -->
     <script>
+        $('input[name="is_parent"]').change(function () {
+            KTFormControls.init();
+            if ($('input[name="is_parent"]').prop('checked')) {
+                $('#parent_category_id').hide()
+            } else {
+                $('#parent_category_id').show()
+            }
+        })
+    </script>
+    <script>
+        // Class definition
+        function buildRule() {
+            let field = ['title', 'parent_id']
+            if ($('input[name="is_parent"]').prop('checked')) {
+                field.pop('parent_id')
+            } else {
+                if (field.includes('parent_id'))
+                    field.push('parent_id')
+            }
+            let rules = [];
+            let obj = {};
+            for (let f of field) {
+                obj[f] = {required: true}
+            }
+            return obj;
+        }
+
         var KTFormControls = function () {
-            // Private functions
             var demo2 = function () {
                 $("#kt_form_2").validate({
-                    // define validation rules
-                    rules: {
-                        //= Client Information(step 3)
-                        // Billing Information
-                        title: {
-                            required: true
-                        },
-                    },
-
-                    //display error alert on form submit
+                    rules: buildRule(),
                     invalidHandler: function (event, validator) {
                         swal.fire({
                             "title": "",
@@ -117,13 +121,11 @@
                             "type": "error",
                             "confirmButtonClass": "btn btn-secondary",
                             "onClose": function (e) {
-                                console.log('on close event fired!');
+                                console.log()
                             }
                         });
-
                         event.preventDefault();
                     },
-
                     submitHandler: function (form) {
                         form[0].submit(); // submit the form
                         swal.fire({
@@ -132,12 +134,10 @@
                             "type": "success",
                             "confirmButtonClass": "btn btn-secondary"
                         });
-
                         return false;
                     }
                 });
             }
-
             return {
                 // public functions
                 init: function () {
@@ -148,20 +148,12 @@
 
         jQuery(document).ready(function () {
             KTFormControls.init();
-            // $('#parent_category_id').hide()
+            @if(!empty($category) && $category->is_parent)
+            $('#parent_category_id').hide()
+            @endif
         });
-    </script>
-    <script>
-        $('input[name="is_parent"]').change(function () {
-            if ($('input[name="is_parent"]').prop('checked')) {
-                $('#parent_category_id').hide()
-            } else {
-                $('#parent_category_id').show()
-            }
-        })
-    </script>
-    {{--<script src="{{asset('resources/back/assets/js/pages/crud/forms/validation/form-controls.js')}}"--}}
-    {{--type="text/javascript"></script>--}}
 
-    <!--end::Page Scripts -->
+    </script>
+    <script src="{{asset('resources/back/assets/js/validate.min.js')}}"></script>
+
 @endsection

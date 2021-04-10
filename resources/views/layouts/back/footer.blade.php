@@ -438,7 +438,7 @@
     <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--brand" data-toggle="kt-tooltip" title="Layout Builder"
         data-placement="left">
         <a href="https://keenthemes.com/metronic/preview/demo1/builder.html" target="_blank"><i
-                    class="flaticon2-gear"></i></a>
+                class="flaticon2-gear"></i></a>
     </li>
     <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--warning" data-toggle="kt-tooltip" title="Documentation"
         data-placement="left">
@@ -451,390 +451,6 @@
 </ul>
 
 <!-- end::Sticky Toolbar -->
-
-<!-- begin::Demo Panel -->
-<div id="kt_demo_panel" class="kt-demo-panel">
-    <div class="kt-demo-panel__head">
-        <h3 class="kt-demo-panel__title">
-            Select A Demo
-
-            <!--<small>5</small>-->
-        </h3>
-        <a href="#" class="kt-demo-panel__close" id="kt_demo_panel_close"><i class="flaticon2-delete"></i></a>
-    </div>
-    <div class="kt-demo-panel__body">
-        <div class="kt-demo-panel__item kt-demo-panel__item--active">
-            <div class="kt-demo-panel__item-title">
-                Demo 1
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo1.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo1/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo1/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 2
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo2.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo2/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo2/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 3
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo3.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo3/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo3/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 4
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo4.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo4/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo4/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 5
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo5.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo5/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo5/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 6
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo6.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo6/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo6/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 7
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo7.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo7/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo7/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 8
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo8.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo8/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo8/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 9
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo9.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo9/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo9/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 10
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo10.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo10/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo10/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 11
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo11.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo11/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo11/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 12
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo12.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="https://keenthemes.com/metronic/preview/demo12/index.html"
-                       class="btn btn-brand btn-elevate " target="_blank">Default</a>
-                    <a href="https://keenthemes.com/metronic/preview/demo12/rtl/index.html"
-                       class="btn btn-light btn-elevate" target="_blank">RTL Version</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 13
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo13.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 14
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo14.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 15
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo15.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 16
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo16.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 17
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo17.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 18
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo18.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 19
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo19.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 20
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo20.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 21
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo21.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 22
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo22.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 23
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo23.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 24
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo24.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 25
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo25.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 26
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo26.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 27
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo27.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 28
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo28.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 29
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo29.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <div class="kt-demo-panel__item ">
-            <div class="kt-demo-panel__item-title">
-                Demo 30
-            </div>
-            <div class="kt-demo-panel__item-preview">
-                <img src="assets/media//demos/preview/demo30.jpg" alt=""/>
-                <div class="kt-demo-panel__item-preview-overlay">
-                    <a href="#" class="btn btn-brand btn-elevate disabled">Coming soon</a>
-                </div>
-            </div>
-        </div>
-        <a href="https://1.envato.market/EA4JP" target="_blank"
-           class="kt-demo-panel__purchase btn btn-brand btn-elevate btn-bold btn-upper">
-            Buy Metronic Now!
-        </a>
-    </div>
-</div>
 
 <!-- end::Demo Panel -->
 
@@ -881,7 +497,8 @@
                                                     <i class="kt-nav__link-icon flaticon2-open-text-book"></i>
                                                     <span class="kt-nav__link-text">Contacts</span>
                                                     <span class="kt-nav__link-badge">
-																<span class="kt-badge kt-badge--brand  kt-badge--rounded-">5</span>
+																<span
+                                                                    class="kt-badge kt-badge--brand  kt-badge--rounded-">5</span>
 															</span>
                                                 </a>
                                             </li>
@@ -921,111 +538,111 @@
                             </div>
                         </div>
                     </div>
-                    <div class="kt-portlet__body">
-                        <div class="kt-scroll kt-scroll--pull" data-height="410" data-mobile-height="225">
-                            <div class="kt-chat__messages kt-chat__messages--solid">
-                                <div class="kt-chat__message kt-chat__message--success">
-                                    <div class="kt-chat__user">
-												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/100_12.jpg" alt="image">
-												</span>
-                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>
-                                        <span class="kt-chat__datetime">2 Hours</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        How likely are you to recommend our company<br> to your friends and family?
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-                                    <div class="kt-chat__user">
-                                        <span class="kt-chat__datetime">30 Seconds</span>
-                                        <a href="#" class="kt-chat__username">You</span></a>
-                                        <span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/300_21.jpg" alt="image">
-												</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        Hey there, we’re just writing to let you know that you’ve<br> been subscribed to
-                                        a repository on GitHub.
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--success">
-                                    <div class="kt-chat__user">
-												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/100_12.jpg" alt="image">
-												</span>
-                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>
-                                        <span class="kt-chat__datetime">30 Seconds</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        Ok, Understood!
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-                                    <div class="kt-chat__user">
-                                        <span class="kt-chat__datetime">Just Now</span>
-                                        <a href="#" class="kt-chat__username">You</span></a>
-                                        <span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/300_21.jpg" alt="image">
-												</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        You’ll receive notifications for all issues, pull requests!
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--success">
-                                    <div class="kt-chat__user">
-												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/100_12.jpg" alt="image">
-												</span>
-                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>
-                                        <span class="kt-chat__datetime">2 Hours</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        You were automatically <b class="kt-font-brand">subscribed</b> <br>because
-                                        you’ve been given access to the repository
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-                                    <div class="kt-chat__user">
-                                        <span class="kt-chat__datetime">30 Seconds</span>
-                                        <a href="#" class="kt-chat__username">You</span></a>
-                                        <span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/300_21.jpg" alt="image">
-												</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        You can unwatch this repository immediately <br>by clicking here: <a href="#"
-                                                                                                             class="kt-font-bold kt-link"></a>
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--success">
-                                    <div class="kt-chat__user">
-												<span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/100_12.jpg" alt="image">
-												</span>
-                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>
-                                        <span class="kt-chat__datetime">30 Seconds</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        Ok!
-                                    </div>
-                                </div>
-                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">
-                                    <div class="kt-chat__user">
-                                        <span class="kt-chat__datetime">Just Now</span>
-                                        <a href="#" class="kt-chat__username">You</span></a>
-                                        <span class="kt-media kt-media--circle kt-media--sm">
-													<img src="assets/media/users/300_21.jpg" alt="image">
-												</span>
-                                    </div>
-                                    <div class="kt-chat__text">
-                                        Ok!
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="kt-portlet__body">--}}
+{{--                        <div class="kt-scroll kt-scroll--pull" data-height="410" data-mobile-height="225">--}}
+{{--                            <div class="kt-chat__messages kt-chat__messages--solid">--}}
+{{--                                <div class="kt-chat__message kt-chat__message--success">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--												<span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/100_12.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>--}}
+{{--                                        <span class="kt-chat__datetime">2 Hours</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        How likely are you to recommend our company<br> to your friends and family?--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--                                        <span class="kt-chat__datetime">30 Seconds</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">You</span></a>--}}
+{{--                                        <span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/300_21.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        Hey there, we’re just writing to let you know that you’ve<br> been subscribed to--}}
+{{--                                        a repository on GitHub.--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--success">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--												<span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/100_12.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>--}}
+{{--                                        <span class="kt-chat__datetime">30 Seconds</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        Ok, Understood!--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--                                        <span class="kt-chat__datetime">Just Now</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">You</span></a>--}}
+{{--                                        <span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/300_21.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        You’ll receive notifications for all issues, pull requests!--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--success">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--												<span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/100_12.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>--}}
+{{--                                        <span class="kt-chat__datetime">2 Hours</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        You were automatically <b class="kt-font-brand">subscribed</b> <br>because--}}
+{{--                                        you’ve been given access to the repository--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--                                        <span class="kt-chat__datetime">30 Seconds</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">You</span></a>--}}
+{{--                                        <span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/300_21.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        You can unwatch this repository immediately <br>by clicking here: <a href="#"--}}
+{{--                                                                                                             class="kt-font-bold kt-link"></a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--success">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--												<span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/100_12.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">Jason Muller</span></a>--}}
+{{--                                        <span class="kt-chat__datetime">30 Seconds</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        Ok!--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="kt-chat__message kt-chat__message--right kt-chat__message--brand">--}}
+{{--                                    <div class="kt-chat__user">--}}
+{{--                                        <span class="kt-chat__datetime">Just Now</span>--}}
+{{--                                        <a href="#" class="kt-chat__username">You</span></a>--}}
+{{--                                        <span class="kt-media kt-media--circle kt-media--sm">--}}
+{{--													<img src="assets/media/users/300_21.jpg" alt="image">--}}
+{{--												</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="kt-chat__text">--}}
+{{--                                        Ok!--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <div class="kt-portlet__foot">
                         <div class="kt-chat__input">
                             <div class="kt-chat__editor">
@@ -1090,26 +707,17 @@
 <!--begin::Global Theme Bundle(used by all pages) -->
 <script src="{{asset('resources/back/assets/plugins/global/plugins.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('resources/back/assets/js/scripts.bundle.js')}}" type="text/javascript"></script>
-
 <!--end::Global Theme Bundle -->
-
 <!--begin::Page Vendors(used by this page) -->
 <script src="{{asset('resources/back/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"
         type="text/javascript"></script>
-<script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-<script src="{{asset('resources/back/assets/plugins/custom/gmaps/gmaps.js')}}" type="text/javascript"></script>
 
 <!--end::Page Vendors -->
 
-<!--begin::Page Scripts(used by this page) -->
-<script src="{{asset('resources/back/assets/js/pages/dashboard.js')}}" type="text/javascript"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    @yield('page-script')
     @toastr_js
     @toastr_render
-@yield('page-script')
-<!--end::Page Scripts -->
-</body>
+    </body>
 
-<!-- end::Body -->
-</html>
+    <!-- end::Body -->
+    </html>

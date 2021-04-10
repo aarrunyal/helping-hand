@@ -41,21 +41,24 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(PageRequest $request)
     {
         $data = $request->all();
-        if ($this->page->store($data))
+        if ($this->page->store($data)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('page.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('page.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,35 +69,37 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($slug)
     {
         $page = $this->page->findByColumn('slug', $slug);
         $parentPages = $this->page->getParents();
-        return view('back.page.edit', compact( 'page', 'parentPages'));
+        return view('back.page.edit', compact('page', 'parentPages'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(PageRequest $request, $slug)
     {
         $data = $request->all();
-        if ($this->page->update($slug, $data))
-            return redirect()->route('page.index');
+        if ($this->page->update($slug, $data)){
+            toastr()->success('Request processed successfully');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('page.edit', $slug);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($slug)

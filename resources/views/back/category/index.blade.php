@@ -42,7 +42,7 @@
                         <div class="kt-portlet__head-wrapper">
                             <div class="kt-portlet__head-actions">
                                 &nbsp;
-                                <a href="{{route('blog-category.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">
+                                <a href="{{route('category.create')}}" class="btn btn-brand btn-elevate btn-icon-sm">
                                     <i class="la la-plus"></i>
                                     New Record
                                 </a>

@@ -39,21 +39,25 @@ class SystemUserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SystemUserRequest $request)
     {
         $data = $request->all();
-        if ($this->user->store($data))
+        if ($this->user->store($data)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('system-user.index');
+
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('system-user.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,7 +68,7 @@ class SystemUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -76,28 +80,35 @@ class SystemUserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(SystemUserRequest $request, $id)
     {
         $data = $request->all();
-        if ($this->user->update($id, $data))
+        if ($this->user->update($id, $data)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('system-user.index');
+        }
+
+        toastr()->error('Something went wrong');
         return redirect()->route('system-user.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if ($this->user->delete($id))
+        if ($this->user->delete($id)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('system-user.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('system-user.index');
     }
 }

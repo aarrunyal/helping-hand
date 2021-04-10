@@ -42,21 +42,24 @@ class ClientController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(ClientRequest $request)
     {
         $data = $request->all();
-        if ($this->client->store($data))
+        if ($this->client->store($data)) {
+            toastr()->success('Request Processed successfully');
             return redirect()->route('client.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('client.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,40 +70,46 @@ class ClientController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $client = $this->client->findByColumn('id', $id);
-        return view('back.client.edit', compact( 'client'));
+        return view('back.client.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(ClientRequest $request, $id)
     {
         $data = $request->all();
-        if ($this->client->update($id, $data))
+        if ($this->client->update($id, $data)) {
+            toastr()->success('Request Processed successfully');
             return redirect()->route('client.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('client.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        if ($this->client->delete($id))
+        if ($this->client->delete($id)) {
+            toastr()->success('Request Processed successfully');
             return redirect()->route('client.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('client.index');
     }
 }

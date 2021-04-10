@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Back\Blog;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\Blog\BlogRequest;
 use App\Services\Blog\BlogService;
-use App\Services\Blog\PageService;
-use App\Services\Blog\ContactService;
 
 class BlogController extends Controller
 {
@@ -47,8 +45,11 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $data = $request->all();
-        if ($this->blog->store($data))
+        if ($this->blog->store($data)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('blog.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('blog.create');
     }
 
@@ -85,8 +86,11 @@ class BlogController extends Controller
     public function update(BlogRequest $request, $slug)
     {
         $data = $request->all();
-        if ($this->blog->update($slug, $data))
+        if ($this->blog->update($slug, $data)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('blog.index');
+        }
+        toastr()->error('Something went wrong');
         return view('back.blog.edit', compact('blog'));
     }
 
@@ -98,8 +102,11 @@ class BlogController extends Controller
      */
     public function destroy($slug)
     {
-        if ($this->blog->delete($slug))
+        if ($this->blog->delete($slug)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('blog.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('blog.index');
     }
 }
