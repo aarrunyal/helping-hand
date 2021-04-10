@@ -89,23 +89,16 @@
         $('input[name="is_parent"]').change(function () {
             if ($('input[name="is_parent"]').prop('checked')) {
                 $('#parent_category_id').hide()
-            } else {
-                $('#parent_category_id').show()
-            }
-            buildRule();
-        })
-    </script>
-    <script>
-        // Class definition
-        function buildRule() {
-            if ($('input[name="is_parent"]').prop('checked')) {
                 $("#parent_id").rules('remove');
             } else {
+                $('#parent_category_id').show()
                 $("#parent_id").rules('add', {
                     required: true,
                 });
             }
-        }
+        })
+    </script>
+    <script>
 
         var KTFormControls = function () {
             var demo2 = function () {
