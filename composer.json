@@ -14,7 +14,8 @@
         "buzz/laravel-google-captcha": "^2.3",
         "cviebrock/eloquent-sluggable": "^8.0",
         "laravel/ui": "^2.0",
-        "yoeunes/toastr": "^1.2"
+        "yoeunes/toastr": "^1.2",
+        "intervention/image": "^2.4"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

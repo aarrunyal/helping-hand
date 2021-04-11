@@ -71,7 +71,7 @@
                                 <tr>
                                     <td class="text-center">{{$c+1}}</td>
                                     <td class="text-center">
-                                        @if(!empty($program->image_path['real']))
+                                        @if(!empty($program->image))
                                             <img src="{{asset($program->image_path['thumb'])}}"
                                                  alt="{{$program->title}}"
                                                  style="height: 50px">

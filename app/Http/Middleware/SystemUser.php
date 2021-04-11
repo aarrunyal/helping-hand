@@ -18,7 +18,7 @@ class SystemUser
     {
         Auth::shouldUse('super-admin');
         if (!\auth()->guard('super-admin')->check()) {
-            return redirect('login')->withErrors('You are not authorized to login.');
+            return redirect('admin/login')->withErrors('You are not authorized to login.');
         }
         return $next($request);
 

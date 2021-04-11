@@ -69,11 +69,25 @@ class CategoryService extends Service
 
     public function delete($slug)
     {
-//        try {
+        try {
             $category = $this->findByColumn('slug', $slug);
             return $category->delete();
-//        } catch (\Exception $ex) {
-//            return false;
-//        }
+        } catch (\Exception $ex) {
+            return false;
+        }
+    }
+
+    public function findByColumns($data, $all = false)
+    {
+        $response = $this->category->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all)
+            return $response->get();
+        return $response->first();
     }
 }

@@ -28,6 +28,7 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->resource('category', CategoryController::class);
     $route->get('category/{slug}/destroy', [CategoryController::class, "destroy"])->name('category.destroy');
     $route->post('category/{slug}/update', [CategoryController::class, "update"])->name('category.update');
+    $route->get('category/{id}/sub-category', [CategoryController::class, "getSubCategoryByCategory"])->name('subcategory-by-category');
 
 //    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->post('blog-category/{slug}', [BlogCategoryController::class, "update"])->name('blog-category-update');;

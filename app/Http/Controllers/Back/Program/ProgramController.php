@@ -6,16 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\Blog\BlogRequest;
 use App\Http\Requests\Program\ProgramRequest;
 use App\Services\Blog\BlogService;
+use App\Services\Category\CategoryService;
 use App\Services\Program\ProgramService;
 use Illuminate\Http\Request;
 
 class ProgramController extends Controller
 {
     protected $program;
+    protected $category;
 
-    public function __construct(ProgramService $program)
+    public function __construct(
+        ProgramService $program, CategoryService $category)
     {
         $this->program = $program;
+        $this->category = $category;
     }
 
     /**
@@ -36,7 +40,8 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        return view('back.program.create');
+        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent"=>1], true);
+        return view('back.program.create', compact('categories'));
     }
 
     /**

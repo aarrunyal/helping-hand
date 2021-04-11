@@ -11,6 +11,8 @@ class Program extends Model
 {
     use HasFactory, Sluggable, SoftDeletes;
 
+    protected $uploadPath = "/uploads/program";
+
     public function sluggable()
     {
         return [
@@ -21,10 +23,13 @@ class Program extends Model
     }
 
     protected $fillable = [
+        'category_id',
+        'sub_category_id',
         'title',
         'slug',
         'short_description',
         'description',
+        'image',
         'cost',
         'dates',
         'group_discount_available',
@@ -32,6 +37,17 @@ class Program extends Model
         'has_sample_itinerary',
         'sample_itinerary_description',
         'is_active',
-
     ];
+
+    protected $appends = ["image_path"];
+
+    public function getImagePathAttribute()
+    {
+        if ($this->image) {
+            return [
+                "thumb" => asset(  $this->uploadPath . "/thumb/" . $this->image),
+                "real" => asset(  $this->uploadPath . "/" . $this->image),
+            ];
+        }
+    }
 }

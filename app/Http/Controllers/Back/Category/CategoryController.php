@@ -115,4 +115,10 @@ class CategoryController
         toastr()->error('Something went wrong');
         return redirect()->route('category.index');
     }
+
+    public function getSubCategoryByCategory($id)
+    {
+        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 0, "parent_id" => $id], true);
+        return view('back.category.custom.sub-category', compact('categories'));
+    }
 }

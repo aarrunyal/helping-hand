@@ -15,6 +15,8 @@ class CreateProgramsTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('category_id')->unsigned()->nullable()->index();
+            $table->bigInteger('sub_category_id')->unsigned()->nullable()->index();
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->string('image')->nullable();
@@ -27,8 +29,10 @@ class CreateProgramsTable extends Migration
             $table->boolean('group_discount_available')->default(0);
             $table->text('group_discount_description')->nullable();
             $table->boolean('has_sample_itinerary')->default(1);
-            $table->text('sample_itinerary')->nullable();
+            $table->text('sample_itinerary_description')->nullable();
             $table->boolean('is_active')->default(1);
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('sub_category_id')->references('id')->on('categories');
             $table->timestamps();
             $table->softDeletes();
         });

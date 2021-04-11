@@ -21,20 +21,38 @@
 
                         <div class="col-lg-6 col-md-6">
                             <label class="form-control-label">* Program Title</label>
-                            <input type="text" name="title" class="form-control" placeholder="Page Title"
+                            <input type="text" name="title" class="form-control" placeholder="Program Title"
                                    value="{{old('title', isset($program->title)?$program->title:null)}}">
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <label class="" for="social_share_image">Feature Image</label>
-                            <input type="file" class="form-control" id="" name="social_share_image">
+                            <label class="" for="image">Feature Image</label>
+                            <input type="file" class="form-control" id="" name="image">
                         </div>
 
                         <div class="col-lg-12 col-md-12 mt-2">
                             <label class="form-control-label">Program Short Description</label>
                             <textarea class="form-control"
+                                      id="short_description"
                                       name="short_description">{{old('short_description', isset($program->short_description)?$program->short_description:null)}}</textarea>
                             <span class="text-danger">{{ $errors->first('short_description') }}</span>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 mt-2">
+                            <label class="form-control-label">Category</label>
+                            <select name="category_id" id="category_id" class="form-control"
+                                    onchange="getSubCategories()">
+                                <option value="">Select Category</option>
+                                @if($categories->count()>0)
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                            <span class="text-danger">{{ $errors->first('short_description') }}</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 mt-2" id="sub_category_div">
+
                         </div>
 
                         <div class="col-lg-12 col-md-12 mt-2">
@@ -64,7 +82,18 @@
             </div>
 
             <div class="col-lg-4 col-md-4">
-
+                <div class="form-group row mt-4 ">
+                    <div class="col">
+                        <textarea class="form-control" name="cost" id="cost"
+                                  placeholder="Cost">{{old('cost', isset($program->cost)?$program->cost:null)}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group row mt-4 ">
+                    <div class="col">
+                        <textarea class="form-control" name="dates" id="dates"
+                                  placeholder="Dates">{{old('dates', isset($program->dates)?$program->dates:null)}}</textarea>
+                    </div>
+                </div>
                 <div class="form-group row mt-3">
                     <div class="col-6">
                         <label class="col-form-label">Status</label>
@@ -89,8 +118,8 @@
                          <span class="kt-switch kt-switch--success">
 															<label>
 																<input type="checkbox"
-                                                                       {{(isset($program->is_active) && $program->is_active =='1')?"checked":''}}
-                                                                       name="is_active">
+                                                                       {{(isset($program->group_discount_available) && $program->group_discount_available =='1')?"checked":''}}
+                                                                       name="group_discount_available">
 																<span></span>
 															</label>
 														</span>
@@ -99,7 +128,7 @@
                 </div>
 
 
-                <div class="form-group row mt-4 ">
+                <div class="form-group row mt-4 " id="group_discount_description_div">
                     <div class="col">
                         <textarea class="form-control" name="group_discount_description" id="group_discount_description"
                                   placeholder="Group Discount description">{{old('group_discount_description', isset($program->group_discount_description)?$program->group_discount_description:null)}}</textarea>
@@ -124,13 +153,14 @@
                 </div>
 
 
-                <div class="form-group row mt-4">
+                <div class="form-group row mt-4" id="sample_itinerary_description_div">
                     <div class="col">
                             <textarea class="form-control" name="sample_itinerary_description"
                                       id="sample_itinerary_description"
                                       placeholder="Sample Itinerary description">{{old('sample_itinerary_description', isset($program->sample_itinerary_description)?$program->sample_itinerary_description:null)}}</textarea>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -156,7 +186,7 @@
     <link rel="stylesheet" src="{{asset('resources/back/assets/css/tags/tags.css')}}">
     <script src="{{asset('resources/back/assets/js/tags/tags.js')}}"
             type="text/javascript"></script>
-
+    <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
     <script>
         $('input[name="tags"]').amsifySuggestags();
         /*validation*/
@@ -169,6 +199,8 @@
                         //= Client Information(step 3)
                         // Billing Information
                         title: {
+                            required: true
+                        }, short_description: {
                             required: true
                         },
                     },
@@ -226,7 +258,7 @@
                     selector: '#kt-tinymce-3',
                     toolbar: false,
                     statusbar: false,
-                    height: 150,
+                    height: 200,
                 });
                 tinymce.init({
                     selector: '#group_discount_description',
@@ -236,6 +268,12 @@
                 });
                 tinymce.init({
                     selector: '#sample_itinerary_description',
+                    toolbar: false,
+                    statusbar: false,
+                    height: 150,
+                });
+                tinymce.init({
+                    selector: '#short_description',
                     toolbar: false,
                     statusbar: false,
                     height: 150,
@@ -263,14 +301,42 @@
 
         // Initialization
         jQuery(document).ready(function () {
+
             KTTinymce.init();
         });
         /*text editor end here*/
     </script>
     <script>
         $(document).ready(function () {
-
+            $('#group_discount_description_div').hide()
+            $('#sample_itinerary_description_div').hide()
         })
+
+        $("input[name='group_discount_available']").change(function () {
+            if ($("input[name='group_discount_available']").prop('checked'))
+                $('#group_discount_description_div').show()
+            else
+                $('#group_discount_description_div').hide()
+        })
+
+        $("input[name='has_sample_itinerary']").change(function () {
+            if ($("input[name='has_sample_itinerary']").prop('checked'))
+                $('#sample_itinerary_description_div').show()
+            else
+                $('#sample_itinerary_description_div').hide()
+        })
+
+        function getSubCategories() {
+            let categoryId = $("#category_id").val();
+            let url = "{{route('subcategory-by-category', [':id'])}}";
+            url = url.replace(":id", categoryId);
+            ajaxCall('GET', url, 'HTML', '', '#sub_category_div', function (response, selector) {
+                    $(selector).html();
+                    $(selector).html(response);
+                }, function (error) {
+                }
+            );
+        }
 
     </script>
 
