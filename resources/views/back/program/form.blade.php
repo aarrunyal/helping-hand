@@ -46,7 +46,7 @@
                                 @if($categories->count()>0)
                                     @foreach($categories as $category)
                                         <option
-                                            value="{{$category->id}}" {{$category->id == $program->category_id?"selected":null}}>{{$category->title}}</option>
+                                            value="{{$category->id}}" {{!empty($program) && $category->id == $program->category_id?"selected":null}}>{{$category->title}}</option>
                                     @endforeach
                                 @endif
                             </select>

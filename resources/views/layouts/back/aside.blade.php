@@ -72,6 +72,11 @@
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">Blog/News</span></a></li>
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('destination.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Destination</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('program.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
