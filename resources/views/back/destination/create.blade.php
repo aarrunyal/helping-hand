@@ -4,7 +4,7 @@
     <div class="kt-subheader  kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
-                <h3 class="kt-subheader__title">Program</h3>
+                <h3 class="kt-subheader__title">Destination</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
             </div>
@@ -23,12 +23,13 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Program
+                                Destination
                             </h3>
                         </div>
                     </div>
-                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('program.update', $program->slug)}}" enctype="multipart/form-data">
-                        @include('back.program.form')
+                    <form class="kt-form kt-form--label-right" id="destination-create" method="POST" enctype="multipart/form-data"
+                          action="{{route('destination.store')}}">
+                        @include('back.destination.form')
                     </form>
                 </div>
             </div>

@@ -45,7 +45,8 @@
                                 <option value="">Select Category</option>
                                 @if($categories->count()>0)
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->title}}</option>
+                                        <option
+                                            value="{{$category->id}}" {{$category->id == $program->category_id?"selected":null}}>{{$category->title}}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -310,6 +311,15 @@
         $(document).ready(function () {
             $('#group_discount_description_div').hide()
             $('#sample_itinerary_description_div').hide()
+            @if(!empty($program))
+            @if($program->group_discount_available &&  !empty($program->group_discount_description))
+            $('#group_discount_description_div').show()
+            @endif
+            @if($program->has_sample_itinerary && !empty($program->sample_itinerary_description))
+            $('#sample_itinerary_description_div').show()
+            @endif
+            getSubCategories();
+            @endif
         })
 
         $("input[name='group_discount_available']").change(function () {

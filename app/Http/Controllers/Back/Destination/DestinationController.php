@@ -1,25 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Back\Program;
+namespace App\Http\Controllers\Back\Destination;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\Blog\BlogRequest;
-use App\Http\Requests\Program\ProgramRequest;
-use App\Services\Blog\BlogService;
-use App\Services\Category\CategoryService;
-use App\Services\Program\ProgramService;
+use App\Http\Requests\Destination\DestinationRequest;
+use App\Http\RequestsBack\Page\PageRequest;
+use App\Services\Destination\DestinationService;
+use App\Services\Page\PageService;
 use Illuminate\Http\Request;
 
-class ProgramController extends Controller
+class DestinationController extends Controller
 {
-    protected $program;
-    protected $category;
+    protected $destination;
 
-    public function __construct(
-        ProgramService $program, CategoryService $category)
+    public function __construct(DestinationService $destination)
     {
-        $this->program = $program;
-        $this->category = $category;
+        $this->destination = $destination;
     }
 
     /**
@@ -29,8 +26,8 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs = $this->program->paginate(25);
-        return view('back.program.index', compact('programs'));
+        $destinations = $this->destination->paginate(25);
+        return view('back.destination.index', compact('destinations'));
     }
 
     /**
@@ -40,8 +37,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent"=>1], true);
-        return view('back.program.create', compact('categories'));
+        return view('back.destination.create');
     }
 
     /**
@@ -50,15 +46,15 @@ class ProgramController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProgramRequest $request)
+    public function store(Request $request)
     {
         $data = $request->all();
-        if ($this->program->store($data)) {
+        if ($this->destination->store($data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('program.index');
+            return redirect()->route('destination.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('program.create');
+        return redirect()->route('destination.create');
     }
 
     /**
@@ -80,9 +76,8 @@ class ProgramController extends Controller
      */
     public function edit($slug)
     {
-        $program = $this->program->findByColumn('slug', $slug);
-        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent"=>1], true);
-        return view('back.program.edit', compact('program', 'categories'));
+        $destination = $this->destination->findByColumn('slug', $slug);
+        return view('back.destination.edit', compact('destination'));
     }
 
     /**
@@ -92,15 +87,15 @@ class ProgramController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProgramRequest $request, $slug)
+    public function update(DestinationRequest $request, $slug)
     {
         $data = $request->all();
-        if ($this->program->update($slug, $data)) {
+        if ($this->destination->update($slug, $data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('program.index');
+            return redirect()->route('destination.index', $slug);
         }
         toastr()->error('Something went wrong');
-        return view('back.program.edit', compact('program'));
+        return redirect()->route('destination.index', $slug);
     }
 
     /**
@@ -111,11 +106,12 @@ class ProgramController extends Controller
      */
     public function destroy($slug)
     {
-        if ($this->program->delete($slug)) {
+        if ($this->destination->delete($slug)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('program.index');
+            return redirect()->route('destination.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('program.index');
+        return redirect()->route('destination.index');
+
     }
 }

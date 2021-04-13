@@ -284,7 +284,6 @@
     <script>
         $(document).ready(function () {
             $("#parentPageId").hide();
-
             @if(!empty($page) && $page->placing == 'header')
             $("#isParent").show();
             @if(!$page->is_parent)

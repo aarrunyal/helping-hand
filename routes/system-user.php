@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\Blog\BlogController;
 use App\Http\Controllers\Back\Page\PageController;
 use \App\Http\Controllers\Back\Category\CategoryController;
 use \App\Http\Controllers\Back\Program\ProgramController;
+use \App\Http\Controllers\Back\Destination\DestinationController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -60,6 +61,11 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->resource('program', ProgramController::class);
     $route->get('program/{slug}/destroy', [ProgramController::class, "destroy"])->name('program.destroy');
     $route->post('program/{slug}/update', [ProgramController::class, "update"])->name('program.update');
+
+    //    Destination
+    $route->resource('destination', DestinationController::class);
+    $route->get('destination/{slug}/destroy', [DestinationController::class, "destroy"])->name('destination.destroy');
+    $route->post('destination/{slug}/update', [DestinationController::class, "update"])->name('destination-update');
 });
 
 
