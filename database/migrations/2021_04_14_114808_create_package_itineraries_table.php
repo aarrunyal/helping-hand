@@ -15,11 +15,11 @@ class CreatePackageItinerariesTable extends Migration
     {
         Schema::create('package_itineraries', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('program_id')->unsigned()->nullable()->index();
+            $table->bigInteger('package_id')->unsigned()->nullable()->index();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->foreign('program_id')->references('id')->on('programs')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

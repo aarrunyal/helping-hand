@@ -26,3 +26,8 @@ function getStatusLayout($status)
 {
     return '<span class="' . getTextColor($status) . '"><i class="' . getStatus($status) . '"></i></span>';
 }
+
+
+function formatDate($val, $format = "Y-m-d"){
+    return date($format, strtotime($val));
+}

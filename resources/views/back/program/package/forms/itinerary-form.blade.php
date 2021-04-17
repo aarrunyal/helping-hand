@@ -1,17 +1,17 @@
-<form class="kt-form kt-form--label-right" id="date-form" method="POST" enctype="multipart/form-data"
-      action="{{route('package.date-store-and-update', $package->slug)}}">
+<form class="kt-form kt-form--label-right" id="itinerary-form" method="POST" enctype="multipart/form-data"
+      action="{{route('package.itinerary-store-and-update', $package->slug)}}">
     {{csrf_field()}}
     <div class="row">
         <div class="col-lg-12 col-md-12">
-            <div class="kt-section__content" id="date-form-id">
-                @include('back.program.package.forms.custom-form.date-form')
+            <div class="kt-section__content" id="itinerary-form-id">
+                @include('back.program.package.forms.custom-form.itinerary-form')
             </div>
 
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-dark" onclick="getDateForm()">
+            <button type="button" class="btn btn-dark" onclick="getItineraryForm()">
                 <i class="fas fa-plus"></i>
             </button>
         </div>

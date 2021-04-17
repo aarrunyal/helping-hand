@@ -20,13 +20,13 @@ class CreatePackagesTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->string('image')->nullable();
-            $table->string('short_description')->nullable();
+            $table->text('short_description')->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_free')->default(1);
             $table->text('cost_description')->nullable();
             $table->boolean('dates_available')->default(1);
             $table->text('dates_description')->nullable();
-            $table->string('more_info')->nullable();
+            $table->text('more_info')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->boolean('is_active')->default(1);

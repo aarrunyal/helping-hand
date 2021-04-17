@@ -58,6 +58,10 @@
                             <th class="text-center">S.No.</th>
                             <th class="text-center">Image</th>
                             <th class="text-center">Title</th>
+                            <th class="text-center">Program</th>
+                            <th class="text-center">Destination</th>
+                            <th class="text-center">Free</th>
+                            <th class="text-center">Dates Available</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -77,10 +81,14 @@
                                         @endif
                                     </td>
                                     <td class="text-center">{{ucwords($package->title)}}</td>
+                                    <td class="text-center">{{!empty($package->program)?ucwords($package->program->title):"-"}}</td>
+                                    <td class="text-center">{{!empty($package->destination)?ucwords($package->destination->title):"-"}}</td>
+                                    <td class="text-center">{!! getStatusLayout($package->is_free) !!}</td>
+                                    <td class="text-center">{!! getStatusLayout($package->dates_available) !!}</td>
                                     <td class="text-center">{!! getStatusLayout($package->is_active) !!}</td>
                                     <td class="text-center">
-                                        <a href="{{route('program.edit', $package->slug)}}"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('program.destroy', $package->slug)}}"><i
+                                        <a href="{{route('package.edit', $package->slug)}}"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('package.destroy', $package->slug)}}"><i
                                                 class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
