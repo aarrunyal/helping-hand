@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Back\Program\Package;
 
 use App\Http\Controllers\Controller;
-use App\Services\Program\Package\PackagePricingService;
+use App\Services\Program\Package\PackageFaqService;
 use Illuminate\Http\Request;
 
-class PackagePricingController extends Controller
+class PackageFaqController extends Controller
 {
-    protected $pricing;
+    protected $faq;
 
 
     public function __construct(
-        PackagePricingService $pricing)
+        PackageFaqService $faq)
     {
-        $this->pricing = $pricing;
+        $this->faq = $faq;
     }
 
     /**
@@ -24,8 +24,8 @@ class PackagePricingController extends Controller
      */
     public function index($packageId)
     {
-        $pricings = $this->pricing->paginate(25);
-        return view('back.program.pricing.index', compact('pricings'));
+        $faqs = $this->faq->paginate(25);
+        return view('back.program.faq.index', compact('faqs'));
     }
 
     /**
@@ -37,7 +37,7 @@ class PackagePricingController extends Controller
     {
         $programs = $this->program->findByColumns(["is_active" => 1], true);
         $destinations = $this->destination->findByColumns(["is_active" => 1], true);
-        return view('back.program.pricing.create', compact('programs', 'destinations'));
+        return view('back.program.faq.create', compact('programs', 'destinations'));
     }
 
     /**
@@ -49,7 +49,7 @@ class PackagePricingController extends Controller
     public function storeAndUpdate(Request $request, $packageSlug)
     {
         $data = $request->all();
-        if ($this->pricing->storeAndUpdate($packageSlug, $data)) {
+        if ($this->faq->storeAndUpdate($packageSlug, $data)) {
             toastr()->success('Request processed successfully');
             return redirect()->route('package.edit', $packageSlug);
         }

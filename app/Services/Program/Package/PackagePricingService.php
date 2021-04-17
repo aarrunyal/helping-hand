@@ -64,11 +64,11 @@ class PackagePricingService extends Service
       for($i=0; $i<$size; $i++){
 //            if ($i < $size) {
                 $temp = [
-                    'id' => isset($data['id']) ? $data['id'][$i] : null,
                     'price' => $data['price'][$i],
                     'period' => $data['period'][$i],
                     'unit' => $data['unit'][$i],
-                    'is_active' => isset($data['is_active']) ? $data['is_active'][$i] : null,
+                    'id' => isset($data['id']) && isset($data['id'][$i]) ? $data['id'][$i] : null,
+                    'is_active' => isset($data['is_active'])  && isset($data['is_active'][$i])? $data['is_active'][$i] : null,
                 ];
 
             array_push($value, $temp);

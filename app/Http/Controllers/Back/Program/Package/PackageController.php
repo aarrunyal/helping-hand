@@ -89,12 +89,15 @@ class PackageController extends Controller
         $package = $this->package->findByColumn('slug', $slug);
         $pricings = $package->pricings;
         $dates = $package->dates;
+        $itineraries = $package->itineraries;
+        $faqs = $package->faqs;
         return view('back.program.package.edit', compact(
             'programs',
             'destinations',
             'package',
             'pricings',
-            'dates'));
+            'dates',
+            'itineraries','faqs'));
     }
 
     /**
@@ -133,10 +136,28 @@ class PackageController extends Controller
     }
 
     public function getPricingForm()
-    {$pricings = null;
-        return view('back.program.package.forms.custom-form.pricing-form',compact('pricings'));
-    }public function getDateForm()
-    {$dates = null;
-        return view('back.program.package.forms.custom-form.date-form',compact('dates'));
+    {
+        $pricings = null;
+        return view('back.program.package.forms.custom-form.pricing-form', compact('pricings'));
     }
+
+    public function getDateForm()
+    {
+        $dates = null;
+        return view('back.program.package.forms.custom-form.date-form', compact('dates'));
+    }
+
+    public function getFaqForm()
+    {
+        $faqs = null;
+        return view('back.program.package.forms.custom-form.faq-form', compact('faqs'));
+    }
+
+    public function getItineraryForm()
+    {
+        $itineraries = null;
+        return view('back.program.package.forms.custom-form.itinerary-form', compact('itineraries'));
+    }
+
+
 }

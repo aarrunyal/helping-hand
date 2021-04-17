@@ -37,7 +37,7 @@
                             </div>
                             <div class="tab-pane fade" id="v-pills-itinerary" role="tabpanel"
                                  aria-labelledby="v-pills-itinerary-tab">
-                                @include('back.program.package.forms.itinerary-from')
+                                @include('back.program.package.forms.itinerary-form')
                             </div>
                             <div class="tab-pane fade" id="v-pills-faq" role="tabpanel"
                                  aria-labelledby="v-pills-faq-tab">

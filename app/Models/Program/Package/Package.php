@@ -73,4 +73,14 @@ class Package extends Model
     {
         return $this->hasMany(PackageDates::class, 'package_id');
     }
+
+    protected function itineraries()
+    {
+        return $this->hasMany(PackageItinerary::class, 'package_id');
+    }
+
+    protected function faqs()
+    {
+        return $this->hasMany(PackageFaq::class, 'package_id');
+    }
 }

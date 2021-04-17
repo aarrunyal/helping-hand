@@ -13,42 +13,43 @@ use App\Models\Destination\Destination;
 use App\Models\Page\Page;
 use App\Models\Program\Package\Package;
 use App\Models\Program\Package\PackageDates;
+use App\Models\Program\Package\PackageFaq;
 use App\Models\Program\Package\PackagePricing;
 use App\Services\Service;
 use PhpParser\Node\Stmt\DeclareDeclare;
 
-class PackageDateService extends Service
+class PackageFaqService extends Service
 {
-    protected $uploadPath = "uploads/date";
-    protected $date;
+    protected $uploadPath = "uploads/faq";
+    protected $faq;
     protected $package;
 
     public function __construct(
         PackageService $package,
-        PackageDates $date)
+        PackageFaq $faq)
     {
         $this->package = $package;
-        $this->date = $date;
+        $this->faq = $faq;
     }
 
     public function paginate($limit)
     {
-        $dates = $this->date->orderBy('id', 'DESC')->paginate($limit);
-        return $dates;
+        $faqs = $this->faq->orderBy('id', 'DESC')->paginate($limit);
+        return $faqs;
     }
 
 
     public function findByColumn($column, $value)
     {
-        $dates = $this->date->where($column, $value)->first();
-        return $dates;
+        $faqs = $this->faq->where($column, $value)->first();
+        return $faqs;
     }
 
     public function delete($slug)
     {
         try {
-            $date = $this->findByColumn('slug', $slug);
-            return $date->delete();
+            $faq = $this->findByColumn('slug', $slug);
+            return $faq->delete();
         } catch (\Exception $ex) {
             return false;
         }
@@ -60,33 +61,33 @@ class PackageDateService extends Service
         $ids = [];
         $temp = [];
         unset($data['_token']);
-        $size = sizeof($data['start_from']);
+        $size = sizeof($data['title']);
         $value = [];
-      for($i=0; $i<$size; $i++){
+        for ($i = 0; $i < $size; $i++) {
 //            if ($i < $size) {
-                $temp = [
-                    'start_from' => formatDate($data['start_from'][$i]),
-                    'end_to' => formatDate($data['end_to'][$i]),
-                    'id' => isset($data['id']) && isset($data['id'][$i]) ? $data['id'][$i] : null,
-                    'is_active' => isset($data['is_active'])  && isset($data['is_active'][$i])? $data['is_active'][$i] : null,
-                ];
+            $temp = [
+                'title' => $data['title'][$i],
+                'description' => $data['description'][$i],
+                'id' => isset($data['id']) && isset($data['id'][$i]) ? $data['id'][$i] : null,
+                'is_active' => isset($data['is_active']) && isset($data['is_active'][$i]) ? $data['is_active'][$i] : null,
+            ];
 
             array_push($value, $temp);
         }
         foreach ($value as $i => $d) {
             $d['is_active'] = (isset($d['is_active']) && $d['is_active'] == "on") ? 1 : 0;;
             if (isset($d['id']) && !empty($d['id'])) {
-                $date = $this->date->find($d['id']);
-                $ids[] = $date->id;
-                $date->update($d);
+                $faq = $this->faq->find($d['id']);
+                $ids[] = $faq->id;
+                $faq->update($d);
             } else {
                 $d['package_id'] = $package->id;
-                $date = $this->date->create($d);
-                $ids[] = $date->id;
+                $faq = $this->faq->create($d);
+                $ids[] = $faq->id;
             }
         }
         if (sizeof($ids) > 0) {
-            $this->date->whereNotIn('id', $ids)->delete();
+            $this->faq->whereNotIn('id', $ids)->delete();
         }
         return true;
     }

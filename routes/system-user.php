@@ -12,6 +12,8 @@ use \App\Http\Controllers\Back\Destination\DestinationController;
 use \App\Http\Controllers\Back\Program\Package\PackageController;
 use App\Http\Controllers\Back\Program\Package\PackagePricingController;
 use App\Http\Controllers\Back\Program\Package\PackageDateController;
+use App\Http\Controllers\Back\Program\Package\PackageFaqController;
+use App\Http\Controllers\Back\Program\Package\PackageItineraryController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -77,13 +79,25 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('packages', [PackageController::class, "index"])->name('program.package-list');
     $route->get('pricing-form', [PackageController::class, "getPricingForm"])->name('package-pricing-custom-form');
     $route->get('date-form', [PackageController::class, "getDateForm"])->name('package-date-custom-form');
+    $route->get('date-form', [PackageController::class, "getDateForm"])->name('package-date-custom-form');
+    $route->get('faq-form', [PackageController::class, "getFaqForm"])->name('package-faq-custom-form');
+    $route->get('itinerary-form', [PackageController::class, "getItineraryForm"])->name('package-itinerary-custom-form');
+
 
     //    Pricing
-    $route->post('package/{slug}pricing/store-update', [PackagePricingController::class, "storeAndUpdate"])->name('package.pricing-store-and-update');
+    $route->post('package/{slug}/pricing/store-update', [PackagePricingController::class, "storeAndUpdate"])->name('package.pricing-store-and-update');
 
     //    Pricing
-    $route->post('package/{slug}date/store-update', [PackageDateController::class, "storeAndUpdate"])->name('package.date-store-and-update');
+    $route->post('package/{slug}/date/store-update', [PackageDateController::class, "storeAndUpdate"])->name('package.date-store-and-update');
+
+    //    Faq
+    $route->post('package/{slug}/faq/store-update', [PackageFaqController::class, "storeAndUpdate"])->name('package.faq-store-and-update');
+
+    //    Faq
+    $route->post('package/{slug}/itinerary/store-update', [PackageItineraryController::class, "storeAndUpdate"])->name('package.itinerary-store-and-update');
 });
+
+
 
 
 

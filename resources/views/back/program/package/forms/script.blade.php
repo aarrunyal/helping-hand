@@ -200,3 +200,67 @@
         $(e).closest('.date-form').remove()
     }
 </script>
+
+{{--Itineary script--}}
+<script>
+    function getItineraryForm() {
+        let url = '{{route("package-itinerary-custom-form")}}'
+        ajaxCall('GET', url, 'HTML', '', '#itinerary-form-id', function (response, selector) {
+                $(selector).append(response);
+            }, function (error) {
+            }
+        );
+    }
+
+    function removeItinerary(e) {
+        $(e).closest('.itinerary-form').remove()
+    }
+
+    $("#itinerary-form").submit((e) => {
+        let flag = [];
+        $.each($(".itinerary-form"), (k, v) => {
+            let title = $(v).find('input[name="title[]"]').val()
+            let description = $(v).find('textarea[name="description[]"]').val()
+            let temp = true;
+            temp = isNotNull(title, 'input[name="title[]"]');
+            flag.push(temp)
+            temp = isNotNull(description, 'textarea[name="description[]"]')
+            flag.push(temp)
+        })
+        if (flag.includes(false))
+            return false
+        return true
+    })
+</script>
+
+{{--FAQ script--}}
+<script>
+    function getFaqForm() {
+        let url = '{{route("package-faq-custom-form")}}'
+        ajaxCall('GET', url, 'HTML', '', '#faq-form-id', function (response, selector) {
+                $(selector).append(response);
+            }, function (error) {
+            }
+        );
+    }
+
+    function removeFaq(e) {
+        $(e).closest('.faq-form').remove()
+    }
+
+    $("#faq-form").submit((e) => {
+        let flag = [];
+        $.each($(".faq-form"), (k, v) => {
+            let title = $(v).find('input[name="title[]"]').val()
+            let description = $(v).find('textarea[name="description[]"]').val()
+            let temp = true;
+            temp = isNotNull(title, 'input[name="title[]"]');
+            flag.push(temp)
+            temp = isNotNull(description, 'textarea[name="description[]"]')
+            flag.push(temp)
+        })
+        if (flag.includes(false))
+            return false
+        return true
+    })
+</script>
