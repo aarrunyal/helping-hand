@@ -45,7 +45,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="{{asset('resources/back/assets/css/skins/aside/dark.css')}}" rel="stylesheet" type="text/css" />
 
     <!--end::Layout Skins -->
-    <link rel="shortcut icon" href="{{asset('resources/back/assets/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{asset('resources/back/assets/image/logos/favicon.ico')}}" />
 </head>
 
 <!-- end::Head -->
@@ -59,10 +59,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
             <!--begin::Aside-->
-            <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url(assets/media/bg/bg-4.jpg);">
+            <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('resources/back/assets/image/help.jpg')}});">
                 <div class="kt-grid__item">
                     <a href="#" class="kt-login__logo">
-                        <img src="{{asset('resources/back/assets/media/logos/logo-4.png')}}">
+                        <img src="{{asset('resources/front/image/logo.png')}}">
                     </a>
                 </div>
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">

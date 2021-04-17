@@ -28,10 +28,7 @@
                             </h3>
                         </div>
                     </div>
-                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" enctype="multipart/form-data"
-                          action="{{route('package.store')}}">
                         @include('back.program.package.form')
-                    </form>
                 </div>
             </div>
         </div>

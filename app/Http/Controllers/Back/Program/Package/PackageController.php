@@ -59,10 +59,10 @@ class PackageController extends Controller
         $data = $request->all();
         if ($this->package->store($data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('program.package.index');
+            return redirect()->route('package.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('program.package.create');
+        return redirect()->route('package.create');
     }
 
     /**
@@ -84,8 +84,11 @@ class PackageController extends Controller
      */
     public function edit($slug)
     {
+        $programs = $this->program->findByColumns(["is_active" => 1], true);
+        $destinations = $this->destination->findByColumns(["is_active" => 1], true);
         $package = $this->package->findByColumn('slug', $slug);
-        return view('back.program.package.edit', compact('package'));
+        $pricings = $package->pricings;
+        return view('back.program.package.edit', compact('programs', 'destinations', 'package', 'pricings'));
     }
 
     /**
@@ -100,10 +103,10 @@ class PackageController extends Controller
         $data = $request->all();
         if ($this->package->update($slug, $data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('program.package.index', $slug);
+            return redirect()->route('package.index', $slug);
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('program.package.index', $slug);
+        return redirect()->route('package.index', $slug);
     }
 
     /**
@@ -121,5 +124,10 @@ class PackageController extends Controller
         toastr()->error('Something went wrong');
         return redirect()->route('program.package.index');
 
+    }
+
+    public function getPricingForm()
+    {$pricings = null;
+        return view('back.program.package.forms.custom-form.pricing-form',compact('pricings'));
     }
 }
