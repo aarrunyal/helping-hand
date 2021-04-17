@@ -1,6 +1,6 @@
-@extends('layouts.layout')
+@extends('layouts.front.layout')
 @section('content')
-    <div class="row hero-image">
+    <div class="row hero-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover-1.jpg')}}');">
         <div class="col-lg-12">
             <h1 class="text-center">Help Those Most in Need </h1>
             <h3 class="text-center"> And see the world at the same time </h3>
@@ -51,11 +51,12 @@
 
         </div>
     </div>
-    <div class="row wrapper wrapper-1 ">
+    <div class="row wrapper wrapper-1 pb-3 ">
         <div class="container">
-            <h2 class="text-center my-3" style="color: #4265a2;">Our packages</h4>
-                <div class="d-flex justify-content-between my-4">
-                    <div class="card" style="width: 18rem;">
+            <h2 class="text-center my-3 text-default">Our packages</h2>
+            <div class="row">
+                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
                              alt="Card image cap">
@@ -65,29 +66,9 @@
                                 exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Photo Journalism $ Media Internship Nepal</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/intern.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Internship in Nepal</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
                 </div>
-                <div class="d-flex justify-content-between my-4">
-                    <div class="card" style="width: 18rem;">
+                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
                              alt="Card image cap">
@@ -97,96 +78,131 @@
                                 exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
+                </div>
+                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
+                    <div class="card border">
                         <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png"
+                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
                              alt="Card image cap">
                         <div class="card-body">
-                            <h6 class="card-title">Photo Journalism $ Media Internship Nepal</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/intern.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Internship in Nepal</h6>
+                            <h6 class="card-title">Research Volunteering Program</h6>
                             <p class="card-text">Are you thinking of volunteering in Nepal while also
                                 exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
                 </div>
-        </div>
-    </div>
-    <div class="row  wrapper wrapper-3 ">
-        <div class="container">
-            <div class="d-flex justify-content-between my-4 text-light">
-
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="widget counters  style1">
-                            <div class="counter-wrap">
-                                <div class="icon">
-                                </div>
-                                <span class="clearfix"></span>
-                                <span class="counter counterUp">2000</span>
-                            </div>
-                            <h5>Helpers</h5>
+                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                    <div class="card border">
+                        <img class="card-img-top"
+                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h6 class="card-title">Research Volunteering Program</h6>
+                            <p class="card-text">Are you thinking of volunteering in Nepal while also
+                                exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
                 </div>
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="widget counters  style1">
-                            <div class="counter-wrap">
-                                <div class="icon">
-                                </div>
-                                <span class="clearfix"></span>
-                                <span class="counter counterUp">21</span>
-                            </div>
-                            <h5>Years of Experience</h5>
+                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
+                    <div class="card border">
+                        <img class="card-img-top"
+                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h6 class="card-title">Research Volunteering Program</h6>
+                            <p class="card-text">Are you thinking of volunteering in Nepal while also
+                                exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="widget counters  style1">
-                            <div class="counter-wrap">
-                                <div class="icon">
-                                </div>
-                                <span class="clearfix"></span>
-                                <span class="counter counterUp">5374</span>
-                            </div>
-                            <h5>Happy Volunteers</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="vc_column-inner ">
-                    <div class="wpb_wrapper">
-                        <div class="widget counters  style1">
-                            <div class="counter-wrap">
-                                <div class="icon">
-                                </div>
-                                <span class="clearfix"></span>
-                                <span class="counter counterUp">1999</span>
-                            </div>
-                            <h5>Establishment Year</h5>
+                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
+                    <div class="card border">
+                        <img class="card-img-top"
+                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h6 class="card-title">Research Volunteering Program</h6>
+                            <p class="card-text">Are you thinking of volunteering in Nepal while also
+                                exploring the best this incredible country has to offer? Do you want to</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row  wrapper wrapper-1">
+    <div class="row  wrapper wrapper-3  pt-3">
         <div class="container">
-            <h2 class="text-center my-3" style="color: #4265a2;">Programs</h4>
-                <div class="d-flex justify-content-between my-4">
-                    <div class="card" style="width: 20rem;">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="widget counters  style1">
+                                <div class="counter-wrap">
+                                    <div class="icon">
+                                    </div>
+                                    <span class="clearfix"></span>
+                                    <span class="counter counterUp">2000</span>
+                                </div>
+                                <h5>Helpers</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="widget counters  style1">
+                                <div class="counter-wrap">
+                                    <div class="icon">
+                                    </div>
+                                    <span class="clearfix"></span>
+                                    <span class="counter counterUp">21</span>
+                                </div>
+                                <h5>Years of Experience</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="widget counters  style1">
+                                <div class="counter-wrap">
+                                    <div class="icon">
+                                    </div>
+                                    <span class="clearfix"></span>
+                                    <span class="counter counterUp">5374</span>
+                                </div>
+                                <h5>Happy Volunteers</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3">
+                    <div class="vc_column-inner ">
+                        <div class="wpb_wrapper">
+                            <div class="widget counters  style1">
+                                <div class="counter-wrap">
+                                    <div class="icon">
+                                    </div>
+                                    <span class="clearfix"></span>
+                                    <span class="counter counterUp">1999</span>
+                                </div>
+                                <h5>Establishment Year</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row  wrapper wrapper-1 py-3">
+        <div class="container">
+            <h2 class="text-center my-3" style="color: #4265a2;">Programs</h2>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
                              alt="Card image cap">
@@ -194,7 +210,9 @@
                             <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
                         </div>
                     </div>
-                    <div class="card" style="width: 20rem;">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="http://www.rcdpinternationalvolunteer.org/images/testi_img2.jpg"
                              alt="Card image cap">
@@ -202,17 +220,9 @@
                             <h4 class=" text-center card-title">INTERNSHIP ABROAD</h4>
                         </div>
                     </div>
-                    <div class="card" style="width: 20rem;">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img3.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class=" text-center card-title">RECOMMMENDED</h4>
-                        </div>
-                    </div>
                 </div>
-                <div class="d-flex justify-content-between my-4">
-                    <div class="card" style="width: 20rem;">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
                              alt="Card image cap">
@@ -220,7 +230,19 @@
                             <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
                         </div>
                     </div>
-                    <div class="card" style="width: 20rem;">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
+                        <img class="card-img-top"
+                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
+                             alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
                         <img class="card-img-top"
                              src="http://www.rcdpinternationalvolunteer.org/images/testi_img2.jpg"
                              alt="Card image cap">
@@ -228,26 +250,29 @@
                             <h4 class=" text-center card-title">INTERNSHIP ABROAD</h4>
                         </div>
                     </div>
-                    <div class="card" style="width: 20rem;">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="card border">
                         <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img3.jpg"
+                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
                              alt="Card image cap">
                         <div class="card-body">
-                            <h4 class=" text-center card-title">RECOMMMENDED</h4>
+                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 
     <div class="row  wrapper wrapper-2 destination">
         <div class="container">
             <div class="row my-4">
-                <div class="col-6">
+                <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-10">
-                            <h2 style="color: #4265a2;">Top Destination</h2>
+                            <h2 class="text-default">Top Destination</h2>
                             <ul>
                                 <li><a href="https://www.ifrevolunteers.org/peru/volunteer-opportunities-in-peru">Volunteer
                                         in Peru</a></li>
@@ -274,11 +299,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-xs-12 col-sm-12 col-md-6">
                     <div class="row">
                         <div class="col-2"></div>
                         <div class="col-10">
-                            <h2 style="color: #4265a2;">Popular Projects</h2>
+                            <h2 class="text-default">Popular Projects</h2>
                             <ul>
                                 <li><a href="https://www.ifrevolunteers.org/work-in-orphanage-volunteering.php">Work
                                         in orphanage</a></li>
@@ -310,10 +335,9 @@
     </div>
     <div class="row  wrapper wrapper-1 ">
         <div class="container">
-            <h2 class="text-center my-3" style="color: #4265a2;">Testimonials</h2>
-            <div class="d-flex justify-content-between my-4">
-
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <h2 class="text-center my-3 text-default">Testimonials</h2>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
                     <blockquote><br>
                         <p> It was completely worthwhile and very affordable for my low budget. I
                             would recommend this to anyone who is looking for a bit of an
@@ -321,8 +345,7 @@
                             couple of weeks and took on my role as part of the community. </p>
                         <small> <strong>Jessica</strong> (Volunteer in Kenya) </small>
                     </blockquote>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                </div> <div class="col-xs-12 col-sm-6 col-md-4">
                     <blockquote><br>
                         <p> I had a really wonderful experience volunteering...My host family was
                             amazing (great people, great food, also very nice that they could
@@ -333,8 +356,7 @@
                             nature. </p>
                         <small><strong> Marie</strong> (Volunteer in Costa Rica) </small>
                     </blockquote>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                </div><div class="col-xs-12 col-sm-6 col-md-4">
                     <blockquote><br>
                         <p> My daughter went on your volunteer program this past summer and had a very
                             rewarding experience in India. I wanted to let you know how very pleased
@@ -344,6 +366,7 @@
                     </blockquote>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
