@@ -12,42 +12,43 @@ namespace App\Services\Program\Package;
 use App\Models\Destination\Destination;
 use App\Models\Page\Page;
 use App\Models\Program\Package\Package;
+use App\Models\Program\Package\PackageDates;
 use App\Models\Program\Package\PackagePricing;
 use App\Services\Service;
 use PhpParser\Node\Stmt\DeclareDeclare;
 
-class PackagePricingService extends Service
+class PackageDateService extends Service
 {
-    protected $uploadPath = "uploads/pricing";
-    protected $pricing;
+    protected $uploadPath = "uploads/date";
+    protected $date;
     protected $package;
 
     public function __construct(
         PackageService $package,
-        PackagePricing $pricing)
+        PackageDates $date)
     {
         $this->package = $package;
-        $this->pricing = $pricing;
+        $this->date = $date;
     }
 
     public function paginate($limit)
     {
-        $pricings = $this->pricing->orderBy('id', 'DESC')->paginate($limit);
-        return $pricings;
+        $dates = $this->date->orderBy('id', 'DESC')->paginate($limit);
+        return $dates;
     }
 
 
     public function findByColumn($column, $value)
     {
-        $pricings = $this->pricing->where($column, $value)->first();
-        return $pricings;
+        $dates = $this->date->where($column, $value)->first();
+        return $dates;
     }
 
     public function delete($slug)
     {
         try {
-            $pricing = $this->findByColumn('slug', $slug);
-            return $pricing->delete();
+            $date = $this->findByColumn('slug', $slug);
+            return $date->delete();
         } catch (\Exception $ex) {
             return false;
         }
@@ -59,35 +60,33 @@ class PackagePricingService extends Service
         $ids = [];
         $temp = [];
         unset($data['_token']);
-        $size = sizeof($data['price']);
+        $size = sizeof($data['start_from']);
         $value = [];
       for($i=0; $i<$size; $i++){
 //            if ($i < $size) {
                 $temp = [
                     'id' => isset($data['id']) ? $data['id'][$i] : null,
-                    'price' => $data['price'][$i],
-                    'period' => $data['period'][$i],
-                    'unit' => $data['unit'][$i],
+                    'start_from' => formatDate($data['start_from'][$i]),
+                    'end_to' => formatDate($data['end_to'][$i]),
                     'is_active' => isset($data['is_active']) ? $data['is_active'][$i] : null,
                 ];
 
             array_push($value, $temp);
         }
-
         foreach ($value as $i => $d) {
             $d['is_active'] = (isset($d['is_active']) && $d['is_active'] == "on") ? 1 : 0;;
             if (isset($d['id']) && !empty($d['id'])) {
-                $pricing = $this->pricing->find($d['id']);
-                $ids[] = $pricing->id;
-                $pricing->update($d);
+                $date = $this->date->find($d['id']);
+                $ids[] = $date->id;
+                $date->update($d);
             } else {
                 $d['package_id'] = $package->id;
-                $pricing = $this->pricing->create($d);
-                $ids[] = $pricing->id;
+                $date = $this->date->create($d);
+                $ids[] = $date->id;
             }
         }
         if (sizeof($ids) > 0) {
-            $this->pricing->whereNotIn('id', $ids)->delete();
+            $this->date->whereNotIn('id', $ids)->delete();
         }
         return true;
     }

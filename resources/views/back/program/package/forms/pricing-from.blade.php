@@ -1,5 +1,5 @@
 <form class="kt-form kt-form--label-right" id="pricing-form" method="POST" enctype="multipart/form-data"
-      @if(empty($pricing))  action="{{route('package.pricing-store-and-update', $package->slug)}}"@endif>
+        action="{{route('package.pricing-store-and-update', $package->slug)}}">
     {{csrf_field()}}
     <div class="row">
         <div class="col-lg-12 col-md-12">

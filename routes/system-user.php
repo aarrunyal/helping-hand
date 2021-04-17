@@ -11,6 +11,7 @@ use \App\Http\Controllers\Back\Program\ProgramController;
 use \App\Http\Controllers\Back\Destination\DestinationController;
 use \App\Http\Controllers\Back\Program\Package\PackageController;
 use App\Http\Controllers\Back\Program\Package\PackagePricingController;
+use App\Http\Controllers\Back\Program\Package\PackageDateController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -75,11 +76,13 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->post('package/{slug}/update', [PackageController::class, "update"])->name('package-update');
     $route->get('packages', [PackageController::class, "index"])->name('program.package-list');
     $route->get('pricing-form', [PackageController::class, "getPricingForm"])->name('package-pricing-custom-form');
+    $route->get('date-form', [PackageController::class, "getDateForm"])->name('package-date-custom-form');
 
     //    Pricing
-    $route->resource('package.pricing', PackagePricingController::class);
-    $route->get('package.pricing/{slug}/destroy', [PackagePricingController::class, "destroy"])->name('package.pricing.destroy');
-    $route->post('package.pricing/{slug}/store-update', [PackagePricingController::class, "storeAndUpdate"])->name('package.pricing-store-and-update');
+    $route->post('package/{slug}pricing/store-update', [PackagePricingController::class, "storeAndUpdate"])->name('package.pricing-store-and-update');
+
+    //    Pricing
+    $route->post('package/{slug}date/store-update', [PackageDateController::class, "storeAndUpdate"])->name('package.date-store-and-update');
 });
 
 

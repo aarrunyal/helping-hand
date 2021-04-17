@@ -16,7 +16,7 @@ class CreatePackageDatesTable extends Migration
         Schema::create('package_dates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('package_id')->unsigned()->nullable()->index();
-            $table->dateTime('start_form')->nullable();
+            $table->dateTime('start_from')->nullable();
             $table->dateTime('end_to')->nullable();
             $table->boolean('is_active')->default(1);
             $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');

@@ -88,7 +88,13 @@ class PackageController extends Controller
         $destinations = $this->destination->findByColumns(["is_active" => 1], true);
         $package = $this->package->findByColumn('slug', $slug);
         $pricings = $package->pricings;
-        return view('back.program.package.edit', compact('programs', 'destinations', 'package', 'pricings'));
+        $dates = $package->dates;
+        return view('back.program.package.edit', compact(
+            'programs',
+            'destinations',
+            'package',
+            'pricings',
+            'dates'));
     }
 
     /**
@@ -129,5 +135,8 @@ class PackageController extends Controller
     public function getPricingForm()
     {$pricings = null;
         return view('back.program.package.forms.custom-form.pricing-form',compact('pricings'));
+    }public function getDateForm()
+    {$dates = null;
+        return view('back.program.package.forms.custom-form.date-form',compact('dates'));
     }
 }

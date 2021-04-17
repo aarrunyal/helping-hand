@@ -12,7 +12,6 @@
     var KTTinymce = function () {
         // Private functions
         var demos = function () {
-            s
             tinymce.init({
                 selector: '#kt-tinymce-3',
                 toolbar: false,
@@ -167,5 +166,37 @@
 
     function removePricing(e) {
         $(e).closest('.pricing-form').remove()
+    }
+</script>
+
+{{--Date script--}}
+<script>
+    function getDateForm() {
+        let url = '{{route("package-date-custom-form")}}'
+        ajaxCall('GET', url, 'HTML', '', '#date-form-id', function (response, selector) {
+                $(selector).append(response);
+            }, function (error) {
+            }
+        );
+    }
+
+    $("#date-form").submit((e) => {
+        let flag = [];
+        $.each($(".date-form"), (k, v) => {
+            let start_from = $(v).find('input[name="start_from[]"]').val()
+            let end_to = $(v).find('input[name="end_to[]"]').val()
+            let temp = true;
+            temp = isNotNull(start_from, 'input[name="start_from[]"]');
+            flag.push(temp)
+            temp = isNotNull(end_to, 'input[name="end_to[]"]')
+            flag.push(temp)
+        })
+        if (flag.includes(false))
+            return false
+        return true
+    })
+
+    function removeDate(e) {
+        $(e).closest('.date-form').remove()
     }
 </script>

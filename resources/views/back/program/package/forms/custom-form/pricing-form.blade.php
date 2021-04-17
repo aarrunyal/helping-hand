@@ -21,6 +21,7 @@
                                  <span class="kt-switch kt-switch--success">
         															<label>
         																<input type="checkbox"
+                                                                               {{(isset($price->is_active) && $price->is_active =='1')?"checked":''}}
                                                                                name="is_active[]">
         																<span></span>
         															</label>
