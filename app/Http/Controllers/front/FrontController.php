@@ -8,9 +8,12 @@ class FrontController
 {
 
 
-    public function index()
+    public function index($index = null)
     {
-        return view('front.index');
+        if ($index == "index") return
+            view('front.index');
+        return view('front.coming-soon');
+
     }
 
     public function blog()
@@ -36,8 +39,10 @@ class FrontController
     public function packageDetail()
     {
         return view('front.package');
-    }  public function programDetail()
-{
+    }
+
+    public function programDetail()
+    {
         return view('front.program-detail');
     }
 }
