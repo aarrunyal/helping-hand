@@ -9,6 +9,7 @@ use App\Http\Controllers\Back\Page\PageController;
 use \App\Http\Controllers\Back\Category\CategoryController;
 use \App\Http\Controllers\Back\Program\ProgramController;
 use \App\Http\Controllers\Back\Destination\DestinationController;
+use \App\Http\Controllers\Back\Program\Package\PackageController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -66,6 +67,12 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->resource('destination', DestinationController::class);
     $route->get('destination/{slug}/destroy', [DestinationController::class, "destroy"])->name('destination.destroy');
     $route->post('destination/{slug}/update', [DestinationController::class, "update"])->name('destination-update');
+
+    //    Package
+    $route->resource('package', PackageController::class);
+    $route->get('package/{slug}/destroy', [PackageController::class, "destroy"])->name('package.destroy');
+    $route->post('package/{slug}/update', [PackageController::class, "update"])->name('package-update');
+    $route->get('packages', [PackageController::class, "index"])->name('program.package-list');
 });
 
 

@@ -81,6 +81,11 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">Program</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('package.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Package</span></a></li>
 
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('client.index')}}"
