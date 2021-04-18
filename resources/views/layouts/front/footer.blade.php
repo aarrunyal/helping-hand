@@ -1,8 +1,8 @@
 <div class="row  wrapper wrapper-3 footer">
     <div class="container">
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <h4 class="text-center">GROUP VOLUNTEERING</h4>
+                <h4 class="text-center text-light">GROUP VOLUNTEERING</h4>
                 <ul>
                     <li class="mt-1"> <a href="https://www.ifrevolunteers.org/hands-on-medical-volunteer/">Hands
                             Medical Volunteer</a> </li>
@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <h4 class="text-center">SUMMER:</h4>
+                <h4 class="text-center text-light">SUMMER:</h4>
                 <ul>
                     <li class="mt-1">Youth Volunteer - Nepal</li>
                     <li class="mt-1">Youth Volunteer - India</li>
@@ -34,7 +34,7 @@
                     <li class="mt-1">Youth Volunteer - Costa Rica</li>
                 </ul>
             </div> <div class="col-xs-12 col-sm-6 col-md-3">
-                <h4 class="text-center">ASIA:</h4>
+                <h4 class="text-center text-light">ASIA:</h4>
                 <ul>
                     <li class="mt-1">Volunteer in Combodia</li>
                     <li class="mt-1">Volunteer in China</li>
@@ -59,7 +59,7 @@
 </div>
 <div class="row  wrapper wrapper-1">
     <div class="col-12 text-center mt-2">
-        <p class=""> © 2021 thehhfn.org All rights reserved. </p>
+        <p class=""> {{getSetting("SETTING_COPYRIGHT_TEXT")}} </p>
     </div>
 </div>
 </div>

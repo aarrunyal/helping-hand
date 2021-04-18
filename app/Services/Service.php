@@ -51,20 +51,20 @@ abstract class Service
         return false;
     }
 
-    public function createThumb(File $image, $width = 320, $height = 320)
+    public function createThumb(File $image, $width = 320, $height = null)
     {
-        try {
+//        try {
             $img = Image::make($image->getPathname());
-            $img->fit($width, $height);
+            $img->fit($width, $height, null, 'top-left');
             $path = sprintf('%s/thumb/%s', $image->getPath(), $image->getFilename());
             $directory = sprintf('%s/thumb', $image->getPath());
             if (!file_exists($directory)) {
                 mkdir($directory, 0755, true);
             }
             return $img->save($path);
-        } catch (\Exception $e) {
-            return '';
-        }
+//        } catch (\Exception $e) {
+//            return '';
+//        }
 
     }
 

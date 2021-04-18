@@ -58,7 +58,8 @@
                             <th class="text-center">S.No.</th>
                             <th class="text-center">Image</th>
                             <th class="text-center">Title</th>
-                            <th class="text-center">Group Discount Available</th>
+                            <th class="text-center">Group Discount Available</th><th class="text-center">Featured</th>
+
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -79,6 +80,7 @@
                                     </td>
                                     <td class="text-center">{{ucwords($program->title)}}</td>
                                     <td class="text-center">{!! getStatusLayout($program->group_discount_available) !!}</td>
+                                    <td class="text-center">{!! getStatusLayout($program->is_featured) !!}</td>
                                     <td class="text-center">{!! getStatusLayout($program->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('program.edit', $program->slug)}}"><i class="fas fa-edit"></i></a>

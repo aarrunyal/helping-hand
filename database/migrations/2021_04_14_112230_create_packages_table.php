@@ -29,6 +29,7 @@ class CreatePackagesTable extends Migration
             $table->text('more_info')->nullable();
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
+            $table->boolean('is_featured')->default(0);
             $table->boolean('is_active')->default(1);
             $table->foreign('program_id')->references('id')->on('programs')->onUpdate('cascade')->onDelete('cascade');;
             $table->foreign('destination_id')->references('id')->on('destinations')->onUpdate('cascade')->onDelete('cascade');;

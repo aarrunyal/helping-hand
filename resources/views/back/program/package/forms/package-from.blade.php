@@ -147,6 +147,22 @@
             </div>
             <div class="form-group row mt-3">
                 <div class="col-6">
+                    <label class="col-form-label">Make Feature</label>
+                </div>
+                <div class="col-6 text-right">
+                                 <span class="kt-switch kt-switch--success">
+        															<label>
+        																<input type="checkbox"
+                                                                               {{(isset($package->is_featured) && $package->is_featured =='1')?"checked":''}}
+                                                                               name="is_featured">
+        																<span></span>
+        															</label>
+        														</span>
+
+                </div>
+            </div>
+            <div class="form-group row mt-3">
+                <div class="col-6">
                     <label class="col-form-label">Status</label>
                 </div>
                 <div class="col-6 text-right">

@@ -44,6 +44,7 @@ class PackageService extends Service
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;;
         $data['dates_available'] = (isset($data['dates_available']) && $data['dates_available'] == "on") ? 1 : 0;;
         $data['is_free'] = (isset($data['is_free']) && $data['is_free'] == "on") ? 1 : 0;
+        $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
         if (isset($data['image'])) {
             $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
         }
@@ -56,11 +57,12 @@ class PackageService extends Service
 
     public function update($slug, $data)
     {
-        try {
+//        try {
             $package = $this->findByColumn('slug', $slug);
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             $data['dates_available'] = (isset($data['dates_available']) && $data['dates_available'] == "on") ? 1 : 0;;
             $data['is_free'] = (isset($data['is_free']) && $data['is_free'] == "on") ? 1 : 0;
+            $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
             if (isset($data['image'])) {
                 if (!empty($package->image)) {
                     $this->deleteUploadedImage($package->image, $this->uploadPath);
@@ -68,9 +70,9 @@ class PackageService extends Service
                 $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
             }
             return $package->update($data);
-        } catch (\Exception $ex) {
-            return false;
-        }
+//        } catch (\Exception $ex) {
+//            return false;
+//        }
     }
 
     public function delete($slug)
@@ -81,5 +83,21 @@ class PackageService extends Service
         } catch (\Exception $ex) {
             return false;
         }
+    }
+
+    public function findByColumns($data, $all = false, $limit = 6)
+    {
+        $packages = $this->package->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all)
+            $packages = $packages->take($limit)->get();
+        else
+            $packages = $packages->first();
+        return $packages;
     }
 }

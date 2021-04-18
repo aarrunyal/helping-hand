@@ -40,9 +40,10 @@ class Package extends Model
         'seo_title',
         'seo_description',
         'is_active',
+        'is_featured',
     ];
 
-    protected $appends = ['iamge_path'];
+    protected $appends = ['image_path'];
 
     public function getImagePathAttribute()
     {
