@@ -81,4 +81,22 @@ class PageService extends Service
             return false;
         }
     }
+
+    public function findByColumns($data, $all = false, $limit = 6)
+    {
+        $packages = $this->page->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all) {
+            if (!empty($limit))
+                $packages = $packages->take($limit);
+            $packages = $packages->orderBy('position', "DESC")->get();
+        } else
+            $packages = $packages->first();
+        return $packages;
+    }
 }

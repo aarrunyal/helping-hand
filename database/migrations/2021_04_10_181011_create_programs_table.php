@@ -31,6 +31,7 @@ class CreateProgramsTable extends Migration
             $table->boolean('has_sample_itinerary')->default(1);
             $table->text('sample_itinerary_description')->nullable();
             $table->boolean('is_active')->default(1);
+            $table->boolean('is_featured')->default(0);
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('sub_category_id')->references('id')->on('categories');
             $table->timestamps();
