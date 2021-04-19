@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 mt-3" id="content">
                             <label for="form-control-label">SEO Description</label>
-                            <textarea id="kt-tinymce-3" name="seo_description"
+                            <textarea id="seo_description" name="seo_description"
                                       class="tox-target">{{old('seo_description', isset($program->seo_description)?$program->seo_description:null)}}</textarea>
                         </div>
                     </div>
@@ -195,15 +195,53 @@
 </div>
 
 @section('page-script')
-    <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
-            type="text/javascript"></script>
-    <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
-            type="text/javascript"></script>
-
+        <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
+                type="text/javascript"></script>
+        <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
+                type="text/javascript"></script>
     <link rel="stylesheet" src="{{asset('resources/back/assets/css/tags/tags.css')}}">
     <script src="{{asset('resources/back/assets/js/tags/tags.js')}}"
             type="text/javascript"></script>
     <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
+    <script>
+        let ids = ['#kt-tinymce-4', '#short_description', '#dates', '#cost', '#seo_description'];
+        // ids.forEach(ele => {
+        //     ClassicEditor
+        //         .create(document.querySelector(ele), {
+        //             toolbar: {
+        //                 items:[
+        //                     'heading', '|',
+        //                     'alignment', '|',
+        //                     'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
+        //                     'link', '|',
+        //                     'bulletedList', 'numberedList', 'todoList',
+        //                     '-', // break point
+        //                     'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor', '|',
+        //                     'code', 'codeBlock', '|',
+        //                     'insertTable', '|',
+        //                     'outdent', 'indent', '|',
+        //                     'uploadImage', 'blockQuote', '|',
+        //                     'undo', 'redo'
+        //                 ]
+        //             }
+        //         })
+        //         .catch(error => {
+        //             console.error(error);
+        //         });
+        // })
+
+        ids.forEach(ele => {
+            let height = 200
+            if (ele == "#kt-tinymce-4")
+                height = 350
+            tinymce.init({
+                selector: ele,
+                height: height
+            });
+        });
+    </script>
+
+    </script>
     <script>
         $('input[name="tags"]').amsifySuggestags();
         /*validation*/
@@ -264,71 +302,6 @@
             // $('#parent_category_id').hide()
         });
         /*validation ends here*/
-    </script>
-    <script>
-        /*text editor*/
-        var KTTinymce = function () {
-            // Private functions
-            var demos = function () {
-
-                tinymce.init({
-                    selector: '#kt-tinymce-3',
-                    toolbar: false,
-                    statusbar: false,
-                    height: 200,
-                });
-                tinymce.init({
-                    selector: '#group_discount_description',
-                    toolbar: false,
-                    statusbar: false,
-                    height: 150,
-                });
-                tinymce.init({
-                    selector: '#sample_itinerary_description',
-                    toolbar: false,
-                    statusbar: false,
-                    height: 150,
-                });
-                tinymce.init({
-                    selector: '#short_description',
-                    toolbar: [
-                        'styleselect fontselect fontsizeselect',
-                        'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                        'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                    statusbar: false,
-                    plugins: 'advlist autolink link image lists charmap print preview code fullpage',
-                    height: 300,
-                });
-
-                tinymce.init({
-                    selector: '#kt-tinymce-4',
-                    menubar: false,
-                    statusbar:false,
-                    extended_valid_elements:"style,link[href|rel]",
-                    custom_elements:"style,link,~link",
-                    toolbar: [
-                        'styleselect fontselect fontsizeselect',
-                        'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                        'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                    plugins: 'advlist autolink link image lists charmap print preview code',
-                    height: 300,
-                });
-            };
-
-            return {
-                // public functions
-                init: function () {
-                    demos();
-                },
-            };
-        }();
-
-        // Initialization
-        jQuery(document).ready(function () {
-
-            KTTinymce.init();
-        });
-        /*text editor end here*/
     </script>
     <script>
         $(document).ready(function () {

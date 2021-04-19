@@ -711,8 +711,9 @@
 <!--begin::Page Vendors(used by this page) -->
 <script src="{{asset('resources/back/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js')}}"
         type="text/javascript"></script>
-
+{{--<script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>--}}
 <!--end::Page Vendors -->
+{{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>--}}
 
     @yield('page-script')
     @toastr_js
