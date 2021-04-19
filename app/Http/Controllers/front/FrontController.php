@@ -8,6 +8,7 @@ use App\Services\Destination\DestinationService;
 use App\Services\Page\PageService;
 use App\Services\Program\Package\PackageService;
 use App\Services\Program\ProgramService;
+use App\Services\Testimonial\TestimonialService;
 
 class FrontController
 {
@@ -15,17 +16,20 @@ class FrontController
     protected $program;
     protected $destination;
     protected $page;
+    protected $testimonial;
 
     function __construct(
         PackageService $package,
         ProgramService $program,
         DestinationService $destinationService,
-        PageService $pageService)
+        PageService $pageService,
+        TestimonialService  $testimonial)
     {
         $this->package = $package;
         $this->program = $program;
         $this->destination = $destinationService;
         $this->page = $pageService;
+        $this->testimonial = $testimonial;
     }
 
     public function index()
@@ -35,10 +39,15 @@ class FrontController
         $destinations = $this->destination->findByColumns(['is_active' => 1], true);
         $popularProject = $this->package->findByColumns(['is_active' => 1], true);
         $footerPages = $this->page->findByColumns(['is_active' => 1, "placing" => 'footer'], true);
+        $testimonials = $this->testimonial->findByColumns(['is_active'=>1], true, 9);
         return
             view('front.index', compact(
                 'packages',
-                'programs', 'destinations', 'popularProject', 'footerPages'));
+                'programs',
+                'destinations',
+                'popularProject',
+                'footerPages',
+                'testimonials'));
         return view('front.coming-soon');
 
     }

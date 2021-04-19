@@ -14,6 +14,7 @@ use App\Http\Controllers\Back\Program\Package\PackagePricingController;
 use App\Http\Controllers\Back\Program\Package\PackageDateController;
 use App\Http\Controllers\Back\Program\Package\PackageFaqController;
 use App\Http\Controllers\Back\Program\Package\PackageItineraryController;
+use App\Http\Controllers\Back\Testimonial\TestimonialController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -95,6 +96,12 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
 
     //    Faq
     $route->post('package/{slug}/itinerary/store-update', [PackageItineraryController::class, "storeAndUpdate"])->name('package.itinerary-store-and-update');
+
+    //    Testimonial
+    $route->resource('testimonial', TestimonialController::class);
+    $route->get('testimonial/{slug}/destroy', [TestimonialController::class, "destroy"])->name('testimonial.destroy');
+    $route->post('testimonial/{slug}/update', [TestimonialController::class, "update"])->name('testimonial-update');
+
 });
 
 

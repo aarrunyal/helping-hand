@@ -1,0 +1,401 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>jQuery serialScroll.js Content Scroller Examples</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  html,* { font-family: 'Inter'; box-sizing: border-box; }
+body { background-color: #fafafa; line-height:1.6;}
+.lead { font-size: 1.5rem; font-weight: 300; }
+.container { margin: 100px auto; max-width: 960px; }
+ul, li, h3, h2, h1, p{
+  padding:0;
+  margin:0;
+  list-style:none;
+}
+
+#screen{
+  position:relative;
+  height:425px;
+  width:725px;
+  margin-top:40px;
+}
+  #screen .next, #screen .prev{
+    position:absolute;
+    top:200px;
+  }
+  #screen .prev{
+    left:10px;
+  }
+  #screen .next{
+    right:10px;
+  }
+  #navigation{
+    width:600px;
+    text-align:center;
+    margin-left:62px;
+  }
+    #navigation ul{
+      margin-left:55px !important;
+      margin-left:35px;
+    }
+      #navigation li{
+        float:left;
+        margin:0 20px;
+        padding:10px 20px;
+        background-color:#EEE;
+      }
+        #navigation a{
+          color:#933;
+          font-weight:bolder;
+          text-decoration:none;
+        }
+        #sections{
+  overflow:hidden;
+  background-color:white;
+  width:600px;
+  height:369px;
+  clear:left;
+  margin-left:62px;
+}
+
+  #sections ul{
+    width:3660px;
+  }
+
+    #sections li{
+      float:left;
+      padding:11px 30px;
+    }
+      #sections li.fallen{
+        margin-top:369px;
+      }
+
+      #sections p{
+        width:550px;
+        margin:16px 0;
+        font-size:85%;
+        line-height:1.4em;
+      }
+
+      #sections h2{
+        color:#993333;
+        margin:20px 0pt;
+      }
+      #sections a{
+        color:#777;
+        font-weight:bolder;
+        text-decoration:none;
+      }
+  #screen2{
+  position:relative;
+  width:900px;
+  margin:20px;
+}
+  #screen2 #buttons{
+    border:1px solid #777;
+    margin-bottom:5px;
+    width:679px;
+  }
+
+  #screen2 #buttons a{
+    margin:10px 10px;
+    color:#69C;
+  }
+  #screen2 .prev{
+    float:left;
+  }
+  #screen2 .next{
+    float:right;
+  }
+
+#slideshow{
+  overflow:hidden;
+  width:680px;
+  border:1px solid #777;
+}
+
+  #slideshow ul{
+    width:3900px;
+    padding-left:225px;
+  }
+
+    #slideshow li{
+      float:left;
+      margin:0 16px;
+      cursor:pointer;
+    }
+
+#news-ticker{
+  width:800px;
+  height:79px;
+  background-color:white;
+  overflow:hidden;
+  margin:20px;
+}
+  #news-ticker h4{
+    color:#933;
+    display:inline;
+  }
+  #news-ticker div{
+    height:22px;
+    width:782px;
+    padding:8px;
+    margin-top:-1px;
+  }
+    #news-ticker div.first{
+      margin-top:0;
+    }
+
+  #news-ticker p{
+    font-size:11px;
+    margin-left: 0 !important;
+    margin-left: 5px;
+    display:inline;
+  }
+  .clear{
+  clear:both;
+  width:0;
+  height:0;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>jQuery serialScroll.js Content Scroller Examples</h1>
+    <div id="carbon-block" style="margin:50px auto"></div>
+<div style="margin:50px auto"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+    <p class="lead">A generic content scroller jQuery plugin that helps you create carousels, slideshows, image sliders, news tickers, and any elements that can be scrolled in a specific area.</p>
+    <h2>Carousel</h2>
+    <div id="screen">
+    <img class="prev" src="angle-left-solid.svg" alt="prev" width="42" height="53" />
+    <div id="navigation">
+      <ul>
+        <li><a href="#">Section 1</a></li>
+        <li><a href="#">Section 3</a></li>
+        <li><a href="#">Section 5</a></li>
+      </ul>
+    </div>
+    <div id="sections">
+      <ul>
+        <li>
+          <h2>Section 1</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+          <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+        </li>
+        <li>
+          <h2>Section 2</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+          <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+        </li>
+        <li class="fallen">
+          <h2>Section 3</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse et turpis sed metus fermentum pellentesque. Vestibulum auctor neque ac nunc elementum malesuada. Praesent non est sed libero vestibulum consectetuer. Sed vehicula. Vivamus quis tellus sit amet erat ultrices luctus. Fusce a ligula. Fusce viverra libero vitae velit. Aenean bibendum nibh non lorem. Suspendisse quis velit. Integer sit amet lacus. Curabitur tristique. Morbi eu lectus. Vestibulum tristique aliquam quam. Sed neque.</p>
+          <p>Nulla facilisi. Quisque eleifend libero. Sed eros. Morbi vel leo. Morbi varius tincidunt sem. Nam sodales volutpat velit. Suspendisse potenti. Duis vehicula pede non nisi. Proin elit pede, ultrices non, ultrices quis, vulputate sit amet, magna. Praesent sodales pellentesque justo. Donec blandit, augue id convallis congue, magna libero hendrerit erat, id blandit est lorem a tellus. Vestibulum tincidunt lectus quis metus. Pellentesque placerat lacus in urna.</p>
+        </li>
+        <li>
+          <h2>Section 4</h2>
+          <p>Nullam et sem eget massa pellentesque dapibus. Nulla sollicitudin enim quis odio. Quisque ipsum lorem, volutpat eget, condimentum ac, posuere id, risus. Suspendisse tortor metus, aliquet in, varius nec, hendrerit a, libero. Suspendisse iaculis. Fusce commodo urna ut enim. Fusce tempus eros. Phasellus sodales tellus id dolor. Integer sollicitudin, turpis ac interdum condimentum, enim enim tempus metus, sed imperdiet massa diam nec elit. Mauris ante augue, hendrerit non, commodo ac, porttitor eu, turpis.</p>
+          <p>In fermentum nibh ut diam. Mauris sagittis, tellus ac molestie fermentum, arcu orci pharetra mi, id vehicula massa leo vel pede. Nullam semper tincidunt lorem. Proin arcu libero, auctor sed, interdum egestas, ullamcorper et, lacus. Donec id lectus eget diam accumsan ullamcorper. Donec at urna et lacus condimentum pellentesque. Phasellus dapibus hendrerit massa. Sed sed ipsum. Quisque venenatis. Donec vel turpis.</p>
+        </li>
+        <li>
+          <h2>Section 5</h2>
+          <p>Nullam et sem eget massa pellentesque dapibus. Nulla sollicitudin enim quis odio. Quisque ipsum lorem, volutpat eget, condimentum ac, posuere id, risus. Suspendisse tortor metus, aliquet in, varius nec, hendrerit a, libero. Suspendisse iaculis. Fusce commodo urna ut enim. Fusce tempus eros. Phasellus sodales tellus id dolor. Integer sollicitudin, turpis ac interdum condimentum, enim enim tempus metus, sed imperdiet massa diam nec elit. Mauris ante augue, hendrerit non, commodo ac, porttitor eu, turpis.</p>
+          <p>In fermentum nibh ut diam. Mauris sagittis, tellus ac molestie fermentum, arcu orci pharetra mi, id vehicula massa leo vel pede. Nullam semper tincidunt lorem. Proin arcu libero, auctor sed, interdum egestas, ullamcorper et, lacus. Donec id lectus eget diam accumsan ullamcorper. Donec at urna et lacus condimentum pellentesque. Phasellus dapibus hendrerit massa.</p>
+        </li>
+      </ul>
+    </div>
+    <img class="next" src="angle-right-solid.svg" alt="next" width="42" height="53" />
+  </div>
+  <h2>Image Slider</h2>
+  <div id="screen2">
+    <div id="buttons">
+      <a class="prev" href="#">Previous</a>
+      <a class="next" href="#">Next</a>
+      <br class="clear" />
+    </div>
+    <div id="slideshow">
+      <ul>
+        <li><img width="225" height="300" src="https://source.unsplash.com/1lQgjx8Ak_k/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/y40SKmMGAk0/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/wXPyw3yWyCM/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/6mlAfBZFKmM/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/_8FlxavKFNQ/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/xi_jSXJbirE/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/1x65WpOy7fI/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/hcmMVVUlgrU/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/EbTFcAxJP6U/225x300" /></li>
+        <li><img width="225" height="300" src="https://source.unsplash.com/lVhZ0aNzCWg/225x300" /></li>
+      </ul>
+    </div>
+  </div>
+  <h2>News Ticker</h2>
+  <div id="ticker-container">
+    <button id="add-news" class="btn">Append 2 Items</button>
+    <button id="shuffle-news" class="btn">Shuffle</button>
+
+    <div id="news-ticker">
+      <div class="first">
+        <h4>News 1</h4>
+        <p>Nullam a leo. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas mollis vestibulum purus, rutrum sed.</p>
+      </div>
+      <div>
+        <h4>News 2</h4>
+        <p>Phasellus nunc ipsum, faucibus non, iaculis ac, sagittis malesuada, augue. Aliquam sollicitudin. Cras iaculis lorem sit amet.</p>
+      </div>
+      <div>
+        <h4>News 3</h4>
+        <p>Morbi condimentum. Sed id nunc eu arcu aliquet bibendum. Maecenas vestibulum eros fringilla tortor. Nunc purus.</p>
+      </div>
+      <div>
+        <h4>News 4</h4>
+        <p>Sed condimentum. Duis orci. Ut odio leo, dapibus pretium, rhoncus a, sodales eu, nibh. Vivamus consectetuer vestibulum.</p>
+      </div>
+      <div>
+        <h4>News 5</h4>
+        <p>Pellentesque varius ligula et enim. Nulla ut purus vel magna ullamcorper vestibulum. Aliquam at enim at ligula bibendum.</p>
+      </div>
+      <div>
+        <h4>News 6</h4>
+        <p>Suspendisse id quam at lectus placerat dignissim. Praesent nulla urna, rutrum sed. Maecenas vitae libero ac elit.</p>
+      </div>
+      <div>
+        <h4>News 7</h4>
+        <p>Etiam aliquet. Nulla consectetuer, nibh ut gravida consectetuer, nisl enim vestibulum nibh. Suspendisse potenti.</p>
+      </div>
+      <div>
+        <h4>News 8</h4>
+        <p>Aliquam porta, nisi id aliquam posuere, enim mi bibendum tellus, non venenatis nisi orci at mi. Curabitur placerat.</p>
+      </div>
+    </div>
+  </div>
+  </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="jquery.scrollTo.js"></script>
+<script src="jquery.serialScroll.js"></script>
+<script>
+  jQuery.easing.easeOutQuart = function (x, t, b, c, d) {
+  return -c * ((t=t/d-1)*t*t*t - 1) + b;
+};
+  $('#screen').serialScroll({
+    target:'#sections',
+    items:'li', // Selector to the items ( relative to the matched elements, '#sections' in this case )
+    prev:'img.prev',// Selector to the 'prev' button (absolute!, meaning it's relative to the document)
+    next:'img.next',// Selector to the 'next' button (absolute too)
+    axis:'xy',// The default is 'y' scroll on both ways
+    navigation:'#navigation li a',
+    duration:700,// Length of the animation (if you scroll 2 axes and use queue, then each axis take half this time)
+    force:true, // Force a scroll to the element specified by 'start' (some browsers don't reset on refreshes)
+    onBefore:function( e, elem, $pane, $items, pos ){
+      /**
+       * 'this' is the triggered element
+       * e is the event object
+       * elem is the element we'll be scrolling to
+       * $pane is the element being scrolled
+       * $items is the items collection at this moment
+       * pos is the position of elem in the collection
+       * if it returns false, the event will be ignored
+       */
+       //those arguments with a $ are jqueryfied, elem isn't.
+      e.preventDefault();
+      if( this.blur )
+        this.blur();
+    },
+    onAfter:function( elem ){
+      //'this' is the element being scrolled ($pane) not jqueryfied
+    }
+  });
+  $('#slideshow').serialScroll({
+    items:'li',
+    prev:'#screen2 a.prev',
+    next:'#screen2 a.next',
+    offset:-230, //when scrolling to photo, stop 230 before reaching it (from the left)
+    start:1, //as we are centering it, start at the 2nd
+    duration:1200,
+    force:true,
+    stop:true,
+    lock:false,
+    cycle:false, //don't pull back once you reach the end
+    easing:'easeOutQuart', //use this easing equation for a funny effect
+    jump: true //click on the images to scroll to them
+  });
+  var $news = $('#news-ticker');//we'll re use it a lot, so better save it to a var.
+  $news.serialScroll({
+    items:'div',
+    duration:2000,
+    force:true,
+    axis:'y',
+    easing:'linear',
+    lazy:true,// NOTE: it's set to true, meaning you can add/remove/reorder items and the changes are taken into account.
+    interval:1, // yeah! I now added auto-scrolling
+    step:2 // scroll 2 news each time
+  });
+
+  /**
+   * The following you don't need to see, is just for the "Add 2 Items" and "Shuffle"" buttons
+   * These exemplify the use of the option 'lazy'.
+   */
+  $('#add-news').click(function(){
+    var
+      $items = $news.find('div'),
+      num = $items.length + 1;
+
+    $items.slice(-2).clone().find('h4').each(function(i){
+      $(this).text( 'News ' + (num + i) );
+    }).end().appendTo($news);
+  });
+  $('#shuffle-news').click(function(){//don't shuffle the first, don't wanna deal with css
+    var shuffled = $news.find('div').get().slice(1).sort(function(){
+      return Math.round(Math.random())-0.5;//just a random number between -0.5 and 0.5
+    });
+    $(shuffled).appendTo($news);//add them all reordered
+  });
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>

@@ -221,39 +221,26 @@
     <div class="row  wrapper wrapper-1 ">
         <div class="container">
             <h2 class="text-center my-3 text-default">Testimonials</h2>
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <blockquote><br>
-                        <p> It was completely worthwhile and very affordable for my low budget. I
-                            would recommend this to anyone who is looking for a bit of an
-                            eye-opening adventure. I have gained a lot of perspective in the last
-                            couple of weeks and took on my role as part of the community. </p>
-                        <small> <strong>Jessica</strong> (Volunteer in Kenya) </small>
-                    </blockquote>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <blockquote><br>
-                        <p> I had a really wonderful experience volunteering...My host family was
-                            amazing (great people, great food, also very nice that they could
-                            accommodate my vegetarian diet) and all of the staff on site were very
-                            friendly and good at explaining what needed to be done. I learned so
-                            much. I had a an absolutely great time volunteering on this project and
-                            would recommend it to anyone with a sense of adventure and love of
-                            nature. </p>
-                        <small><strong> Marie</strong> (Volunteer in Costa Rica) </small>
-                    </blockquote>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <blockquote><br>
-                        <p> My daughter went on your volunteer program this past summer and had a very
-                            rewarding experience in India. I wanted to let you know how very pleased
-                            we were with the program and the leaders. It was an unforgettable
-                            experience for her that she will always cherish. </p>
-                        <small> <strong>Juliann</strong> (Volunteer in India) </small>
-                    </blockquote>
+            <div class="s-wrap">
+                <div class="s-move">
+                @if($testimonials->count()>0)
+                    @foreach($testimonials->chunk(3) as $three)
+                                @foreach($three as $testimonial)
+                                    <div class=" slide">
+                                        <blockquote style="background-image: url('{{asset('resources/front/image/quote.png')}}');"><br>
+                                            {!!  $testimonial->description!!}
+                                            <small> <strong>{{ucwords($testimonial->from)}}</strong> (Volunteer
+                                                in {{ucwords($testimonial->destination->title)}}) </small>
+                                        </blockquote>
+                                    </div>
+                                @endforeach
+                    @endforeach
+                @endif
                 </div>
             </div>
-
         </div>
     </div>
+@endsection
+@section('page-script')
+    <link rel="stylesheet" href="{{asset('resources/front/css/horizontal-slide.css')}}">
 @endsection

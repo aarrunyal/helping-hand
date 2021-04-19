@@ -205,31 +205,6 @@
     <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
     <script>
         let ids = ['#kt-tinymce-4', '#short_description', '#dates', '#cost', '#seo_description'];
-        // ids.forEach(ele => {
-        //     ClassicEditor
-        //         .create(document.querySelector(ele), {
-        //             toolbar: {
-        //                 items:[
-        //                     'heading', '|',
-        //                     'alignment', '|',
-        //                     'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', '|',
-        //                     'link', '|',
-        //                     'bulletedList', 'numberedList', 'todoList',
-        //                     '-', // break point
-        //                     'fontfamily', 'fontsize', 'fontColor', 'fontBackgroundColor', '|',
-        //                     'code', 'codeBlock', '|',
-        //                     'insertTable', '|',
-        //                     'outdent', 'indent', '|',
-        //                     'uploadImage', 'blockQuote', '|',
-        //                     'undo', 'redo'
-        //                 ]
-        //             }
-        //         })
-        //         .catch(error => {
-        //             console.error(error);
-        //         });
-        // })
-
         ids.forEach(ele => {
             let height = 200
             if (ele == "#kt-tinymce-4")
