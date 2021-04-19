@@ -40,7 +40,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent"=>1], true);
+        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 1], true);
         return view('back.program.create', compact('categories'));
     }
 
@@ -81,7 +81,7 @@ class ProgramController extends Controller
     public function edit($slug)
     {
         $program = $this->program->findByColumn('slug', $slug);
-        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent"=>1], true);
+        $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 1], true);
         return view('back.program.edit', compact('program', 'categories'));
     }
 
@@ -100,7 +100,7 @@ class ProgramController extends Controller
             return redirect()->route('program.index');
         }
         toastr()->error('Something went wrong');
-        return view('back.program.edit', compact('program'));
+        return redirect()->route('program.edit', $slug);
     }
 
     /**

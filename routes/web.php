@@ -13,11 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 @include('system-user.php');
-Route::get('/', [\App\Http\Controllers\front\FrontController::class,  'index']);
-Route::get('/{index?}', [\App\Http\Controllers\front\FrontController::class,  'index']);
-Route::get('/blog', [\App\Http\Controllers\front\FrontController::class,  'blog']);
-Route::get('/blog/detail', [\App\Http\Controllers\front\FrontController::class,  'blogDetail']);
-Route::get('/programs', [\App\Http\Controllers\front\FrontController::class,  'programs']);
-Route::get('/packages', [\App\Http\Controllers\front\FrontController::class,  'packages']);
-Route::get('/package/details', [\App\Http\Controllers\front\FrontController::class,  'packageDetail']);
-Route::get('/program/details', [\App\Http\Controllers\front\FrontController::class,  'programDetail']);
+if (env("APP_ENV") == "local") {
+    Route::get('/', [\App\Http\Controllers\front\FrontController::class, 'index']);
+//Route::get('/{index?}', [\App\Http\Controllers\front\FrontController::class,  'index']);
+    Route::get('/blog', [\App\Http\Controllers\front\FrontController::class, 'blog']);
+    Route::get('/blog/detail', [\App\Http\Controllers\front\FrontController::class, 'blogDetail']);
+    Route::get('/programs', [\App\Http\Controllers\front\FrontController::class, 'programs'])->name('programs');
+    Route::get('/program/{slug}/packages', [\App\Http\Controllers\front\FrontController::class, 'packages'])->name('program-package');
+    Route::get('/packages', [\App\Http\Controllers\front\FrontController::class, 'packages']);
+    Route::get('/package/{slug}', [\App\Http\Controllers\front\FrontController::class, 'packageDetail'])->name('package-details');
+    Route::get('/program/{slug}', [\App\Http\Controllers\front\FrontController::class, 'programDetail'])->name('program-details');;
+} else {
+    Route::get('/', function () {
+        return view('front.coming-soon');
+    });
+}

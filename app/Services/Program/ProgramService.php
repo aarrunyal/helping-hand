@@ -54,6 +54,7 @@ class ProgramService extends Service
         try {
             $program = $this->findByColumn('slug', $slug);
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+            $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
             $data['has_sample_itinerary'] = (isset($data['has_sample_itinerary']) && $data['has_sample_itinerary'] == "on") ? 1 : 0;
             $data['group_discount_available'] = (isset($data['group_discount_available']) && $data['group_discount_available'] == "on") ? 1 : 0;
             if (isset($data['image'])) {
@@ -81,7 +82,7 @@ class ProgramService extends Service
         }
     }
 
-    public function findByColumns($data, $all = false)
+    public function findByColumns($data, $all = false, $limit=6)
     {
         $response = $this->program->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {
@@ -91,7 +92,7 @@ class ProgramService extends Service
             }
         });
         if ($all)
-            return $response->get();
+            return $response->take($limit)->get();
         return $response->first();
     }
 }

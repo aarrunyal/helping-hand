@@ -52,7 +52,7 @@
 
         </div>
     </div>
-    <div class="row wrapper wrapper-1 pb-3 ">
+    <div class="row wrapper wrapper-1 pb-3 package">
         <div class="container">
             <h2 class="text-center my-3 text-default">Our packages</h2>
             <div class="row">
@@ -64,8 +64,9 @@
                                      src="{{$package->image_path['thumb']}}"
                                      alt="{{$package->title}}">
                                 <div class="card-body">
-                                    <h6 class="card-title">{{$package->title}}</h6>
-{{--                                    @dd($package->limit_short_description)--}}
+                                    <a href="{{route('package-details', $package->slug)}}"
+                                       class="card-title">{{$package->title}}</a>
+                                    {{--                                    @dd($package->limit_short_description)--}}
                                     <p class="card-text">{!! substr($package->short_description, 0,200) !!}...</p>
                                 </div>
                             </div>
@@ -142,75 +143,37 @@
 
         </div>
     </div>
-    <div class="row  wrapper wrapper-1 py-3">
+    <div class="row  wrapper wrapper-1 py-3 program">
         <div class="container">
             <h2 class="text-center my-3" style="color: #4265a2;">Programs</h2>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
+                @if($programs->count()>0)
+                    @foreach($programs as $program)
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="card border">
+                                <img class="card-img-top"
+                                     src="{{$program->image_path['thumb']}}"
+                                     alt="Card image cap">
+                                <div class="card-body ">
+                                    <a href="{{route('program-details', $program->slug)}}"
+                                       class="text-center card-title">{{strtoupper($program->title)}}</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img2.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class=" text-center card-title">INTERNSHIP ABROAD</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img2.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class=" text-center card-title">INTERNSHIP ABROAD</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="http://www.rcdpinternationalvolunteer.org/images/testi_img1.jpg"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h4 class="text-center card-title">VOLUNTEER ABROAD</h4>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
+            @if($programs->count()>0)
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <a href="{{route('programs')}}" class="btn btn-default">SEE ALL</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 
-    <div class="row  wrapper wrapper-2 destination">
+    <div class="row  wrapper wrapper-2 destination ">
         <div class="container">
             <div class="row my-4">
                 <div class="col-xs-12 col-sm-12 col-md-6">
@@ -218,29 +181,17 @@
                         <div class="col-2"></div>
                         <div class="col-10">
                             <h2 class="text-default">Top Destination</h2>
-                            <ul>
-                                <li><a href="https://www.ifrevolunteers.org/peru/volunteer-opportunities-in-peru">Volunteer
-                                        in Peru</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/costarica/volunteer-programs-in-costa-rica">Volunteer
-                                        in Costa Rica</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/guatemala/volunteer_in_guatemala.php">Volunteer
-                                        in Guatemala</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/nepal/volunteer-opportunities-in-nepal">Volunteer
-                                        in Nepal</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/india/volunteering-opportunities-in-india">Volunteer
-                                        in India</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/srilanka/volunteer-in-sri-lanka">Volunteer
-                                        in Sri Lanka</a></li>
-                                <li>
-                                    <a href="https://www.ifrevolunteers.org/thailand/volunteer-opportunities-in-thailand">Volunteer
-                                        in Thailand</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/kenya/volunteer-abroad-africa-kenya.php">Volunteer
-                                        in Kenya</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/ghana/volunteering-in-ghana">Volunteer
-                                        in Ghana</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/southafrica/volunteering-in-south-africa">Volunteer
-                                        in South Africa</a></li>
-                            </ul>
+                            @if($destinations->count()>0)
+                                <ul>
+                                    @foreach($destinations as $k=>$destination)
+                                        <li style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px">
+                                            <a href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p class=""><strong>No destinations available</strong></p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -249,28 +200,17 @@
                         <div class="col-2"></div>
                         <div class="col-10">
                             <h2 class="text-default">Popular Projects</h2>
-                            <ul>
-                                <li><a href="https://www.ifrevolunteers.org/work-in-orphanage-volunteering.php">Work
-                                        in orphanage</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/teaching-english-volunteering.php">Teaching
-                                        English</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/medical-volunteering.php">Health/
-                                        Medical projects</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/hiv-project-volunteering.php">HIV/AIDS
-                                        projects</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/teaching-monk-volunteering.php">Teaching
-                                        buddhist monks</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/elephant-conservation-volunteering.php">Elephant
-                                        conservation</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/turtle-conservation-volunteering.php">Turtle
-                                        conservation</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/coffee-farm-volunteering.php">Work
-                                        in coffee farm</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/street-children-volunteering.php">Street
-                                        children projects</a></li>
-                                <li><a href="https://www.ifrevolunteers.org/community-development-volunteering.php">Community
-                                        development</a></li>
-                            </ul>
+                            @if($popularProject->count()>0)
+                                <ul>
+                                    @foreach($popularProject as $k=>$project)
+                                        <li style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px">
+                                            <a href="{{route('program-details', $project->slug)}}">{{ucwords($project->title)}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <p class=""><strong>No projects available</strong></p>
+                            @endif
                         </div>
                     </div>
                 </div>

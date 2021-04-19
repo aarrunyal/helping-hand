@@ -1,18 +1,11 @@
 @extends('layouts.front.layout')
 @section('content')
-    <div class="row hero-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover.jpg')}}');">
+    <div class="row detail-hero-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover.jpg')}}');">
         <div class="col-lg-12">
-            <h1 class="text-center">Summer Volunteer Program Nepal </h1>
-            <h3 class="text-center"> And see the world at the same time </h3>
+            <h1 class="text-center mt-5">{{$program->title}} </h1>
 
             <div class="highLight">
-
-                <p class="text-center">  Nepal is the ideal volunteer destination
-                </p>
-                <p class="text-center"> Trusted by thousands of volunteers since 2006</p>
-                <p class="text-center">  Most affordable volunteer projects, starting at $100 Transparent fee payments</p>
-                <p class="text-center"> Work in Healthcare, Teaching, Conservation and more</p>
-
+                {!! $program->short_description!!}
             </div>
 
             <div class="text-center mt-4 mb-3">

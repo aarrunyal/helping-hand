@@ -73,7 +73,7 @@ class DestinationService extends Service
         }
     }
 
-    public function findByColumns($data, $all = false)
+    public function findByColumns($data, $all = false, $limit = null)
     {
         $response = $this->destination->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {
@@ -82,8 +82,11 @@ class DestinationService extends Service
                 }
             }
         });
-        if ($all)
+        if ($all) {
+            if (!empty($limit))
+                $response = $response->take($limit);
             return $response->get();
+        }
         return $response->first();
     }
 }

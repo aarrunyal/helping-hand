@@ -4,21 +4,21 @@
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4 class="text-center text-light">GROUP VOLUNTEERING</h4>
                 <ul>
-                    <li class="mt-1"> <a href="https://www.ifrevolunteers.org/hands-on-medical-volunteer/">Hands
-                            Medical Volunteer</a> </li>
-                    <li class="mt-1"> <a href="https://www.ifrevolunteers.org/family-volunteer/"> Family
+                    <li class="mt-1"><a href="https://www.ifrevolunteers.org/hands-on-medical-volunteer/">Hands
+                            Medical Volunteer</a></li>
+                    <li class="mt-1"><a href="https://www.ifrevolunteers.org/family-volunteer/"> Family
                             volunteering
                         </a></li>
-                    <li class="mt-1"> <a href="https://www.ifrevolunteers.org/alternative-spring-break/">
+                    <li class="mt-1"><a href="https://www.ifrevolunteers.org/alternative-spring-break/">
                             Alternative
                             spring break </a></li>
-                    <li class="mt-1"> <a
+                    <li class="mt-1"><a
                             href="https://www.ifrevolunteers.org/college-university-students-volunteer-abroad-program/">
                             University group program</a></li>
-                    <li class="mt-1"> <a href="https://www.ifrevolunteers.org/high-school-volunteer-abroad/">
+                    <li class="mt-1"><a href="https://www.ifrevolunteers.org/high-school-volunteer-abroad/">
                             High
                             school group program </a></li>
-                    <li class="mt-1"> <a href="https://www.ifrevolunteers.org/volunteer-abroad-programs/"> All
+                    <li class="mt-1"><a href="https://www.ifrevolunteers.org/volunteer-abroad-programs/"> All
                             Volunteer Programs </a></li>
                 </ul>
             </div>
@@ -33,7 +33,8 @@
                     <li class="mt-1">Youth Volunteer - Peru</li>
                     <li class="mt-1">Youth Volunteer - Costa Rica</li>
                 </ul>
-            </div> <div class="col-xs-12 col-sm-6 col-md-3">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
                 <h4 class="text-center text-light">ASIA:</h4>
                 <ul>
                     <li class="mt-1">Volunteer in Combodia</li>
@@ -45,14 +46,13 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <ul>
-                    <li class="mt-1">Tell a Friend</li>
-                    <li class="mt-1">Program Fee</li>
-                    <li class="mt-1">Resources</li>
-                    <li class="mt-1">FAQ</li>
-                    <li class="mt-1">Contact us</li>
-                    <li class="mt-1">Privacy policy</li>
-                </ul>
+                @if($pages->count()>0)
+                    <ul>
+                        @foreach($pages as $page)
+                            <li class="mt-1">{{ucwords($page->title)}}</li>
+                        @endforeach
+                    </ul>
+                @endif
             </div>
         </div>
     </div>
@@ -63,7 +63,6 @@
     </div>
 </div>
 </div>
-
 
 
 </div>

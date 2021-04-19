@@ -1,79 +1,31 @@
 @extends('layouts.front.layout')
 @section('content')
     <div class="container-fluid">
-        <div class="row d-flex">
-            <div class="col-12 mt-4 cover-image">
-                <img src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png" alt="blog-image"
-                     class="img-responsive" height="400px" width="100%">
+        <div class="row">
+            <div class="col-12 cover-image" style="background-image: url('{{asset('resources/front/image/cover-3.jpg')}}');">
             </div>
         </div>
         <div class="container">
             <div class="row blog-row wrapper">
                 <div class="col-xl-12 py-3 px-md-5 ">
                     <h2 class="text-center" style="color: #4265a2;">Packages</h2>
-                    <div class="d-flex justify-content-between my-4">
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Research Volunteering Program</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Photo Journalism $ Media Internship Nepal</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/intern.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Internship in Nepal</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between my-4">
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Research Volunteering Program</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Photo Journalism $ Media Internship Nepal</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
-                        <div class="card border" style="width: 18rem;">
-                            <img class="card-img-top"
-                                 src="https://thehhfn.org/wp-content/uploads/2017/04/intern.png"
-                                 alt="Card image cap">
-                            <div class="card-body">
-                                <h6 class="card-title">Internship in Nepal</h6>
-                                <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                    exploring the best this incredible country has to offer? Do you want to</p>
-                            </div>
-                        </div>
+                    <div class="row">
+                        @if($packages->count()>0)
+                            @foreach($packages as $i=>$package)
+                                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                                    <div class="card border">
+                                        <img class="card-img-top" width="300px"
+                                             src="{{$package->image_path['thumb']}}"
+                                             alt="{{$package->title}}">
+                                        <div class="card-body">
+                                            <h6 class="card-title">{{$package->title}}</h6>
+                                            {{--                                    @dd($package->limit_short_description)--}}
+                                            <p class="card-text">{!! substr($package->short_description, 0,200) !!}...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
                 {{--                  <div class="col-xl-4 sidebar ftco-animate bg-light pt-5 fadeInUp ftco-animated">--}}

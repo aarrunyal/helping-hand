@@ -113,6 +113,22 @@
                 </div>
                 <div class="form-group row mt-3">
                     <div class="col-6">
+                        <label class="col-form-label">Featured</label>
+                    </div>
+                    <div class="col-6 text-right">
+                         <span class="kt-switch kt-switch--success">
+															<label>
+																<input type="checkbox"
+                                                                       {{(isset($program->is_featured) && $program->is_featured =='1')?"checked":''}}
+                                                                       name="is_featured">
+																<span></span>
+															</label>
+														</span>
+
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="col-6">
                         <label class="col-form-label">Group Discount Available</label>
                     </div>
                     <div class="col-6 text-right">
@@ -275,14 +291,21 @@
                 });
                 tinymce.init({
                     selector: '#short_description',
-                    toolbar: false,
+                    toolbar: [
+                        'styleselect fontselect fontsizeselect',
+                        'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
+                        'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
                     statusbar: false,
-                    height: 150,
+                    plugins: 'advlist autolink link image lists charmap print preview code fullpage',
+                    height: 300,
                 });
 
                 tinymce.init({
                     selector: '#kt-tinymce-4',
                     menubar: false,
+                    statusbar:false,
+                    extended_valid_elements:"style,link[href|rel]",
+                    custom_elements:"style,link,~link",
                     toolbar: [
                         'styleselect fontselect fontsizeselect',
                         'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',

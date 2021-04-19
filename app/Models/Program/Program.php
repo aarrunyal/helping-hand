@@ -37,6 +37,7 @@ class Program extends Model
         'has_sample_itinerary',
         'sample_itinerary_description',
         'is_active',
+        'is_featured',
     ];
 
     protected $appends = ["image_path"];

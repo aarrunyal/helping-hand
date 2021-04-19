@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Back\Page;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Back\Blog\BlogRequest;
-use App\Http\RequestsBack\Page\PageRequest;
+use App\Http\Requests\Back\Page\PageRequest;
 use App\Services\Page\PageService;
 
 class PageController extends Controller
