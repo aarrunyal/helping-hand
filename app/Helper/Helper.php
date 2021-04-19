@@ -28,6 +28,15 @@ function getStatusLayout($status)
 }
 
 
-function formatDate($val, $format = "Y-m-d"){
+function formatDate($val, $format = "Y-m-d")
+{
     return date($format, strtotime($val));
+}
+
+function getSetting($config)
+{
+    $setting = \App\Models\Models\SiteSetting\SiteSetting::where('title', $config)->first();
+    if (!empty($setting))
+        return $setting->value;
+    return null;
 }

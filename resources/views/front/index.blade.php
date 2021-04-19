@@ -1,6 +1,7 @@
 @extends('layouts.front.layout')
 @section('content')
-    <div class="row hero-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover-1.jpg')}}');">
+    <div class="row hero-image"
+         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover-1.jpg')}}');">
         <div class="col-lg-12">
             <h1 class="text-center">Help Those Most in Need </h1>
             <h3 class="text-center"> And see the world at the same time </h3>
@@ -55,78 +56,22 @@
         <div class="container">
             <h2 class="text-center my-3 text-default">Our packages</h2>
             <div class="row">
-                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
+                @if($packages->count()>0)
+                    @foreach($packages as $i=>$package)
+                        <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                            <div class="card border">
+                                <img class="card-img-top" width="300px"
+                                     src="{{$package->image_path['thumb']}}"
+                                     alt="{{$package->title}}">
+                                <div class="card-body">
+                                    <h6 class="card-title">{{$package->title}}</h6>
+{{--                                    @dd($package->limit_short_description)--}}
+                                    <p class="card-text">{!! substr($package->short_description, 0,200) !!}...</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=" col-xs-12 col-sm-6 col-md-4   mt-2">
-                    <div class="card border">
-                        <img class="card-img-top"
-                             src="https://thehhfn.org/wp-content/uploads/2017/04/healths.png"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">Research Volunteering Program</h6>
-                            <p class="card-text">Are you thinking of volunteering in Nepal while also
-                                exploring the best this incredible country has to offer? Do you want to</p>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
@@ -141,7 +86,7 @@
                                     <div class="icon">
                                     </div>
                                     <span class="clearfix"></span>
-                                    <span class="counter counterUp">2000</span>
+                                    <span class="counter counterUp">{{getSetting("SETTING_HELPERS")}}</span>
                                 </div>
                                 <h5>Helpers</h5>
                             </div>
@@ -156,7 +101,7 @@
                                     <div class="icon">
                                     </div>
                                     <span class="clearfix"></span>
-                                    <span class="counter counterUp">21</span>
+                                    <span class="counter counterUp">{{getSetting("SETTING_YEAR_OF_EXPERIENCE")}}</span>
                                 </div>
                                 <h5>Years of Experience</h5>
                             </div>
@@ -171,7 +116,7 @@
                                     <div class="icon">
                                     </div>
                                     <span class="clearfix"></span>
-                                    <span class="counter counterUp">5374</span>
+                                    <span class="counter counterUp">{{getSetting("SETTING_HAPPY_VOLUNTEERS")}}</span>
                                 </div>
                                 <h5>Happy Volunteers</h5>
                             </div>
@@ -186,7 +131,7 @@
                                     <div class="icon">
                                     </div>
                                     <span class="clearfix"></span>
-                                    <span class="counter counterUp">1999</span>
+                                    <span class="counter counterUp">{{getSetting("SETTING_ESTABLISHMENT_YEAR")}}</span>
                                 </div>
                                 <h5>Establishment Year</h5>
                             </div>
@@ -345,7 +290,8 @@
                             couple of weeks and took on my role as part of the community. </p>
                         <small> <strong>Jessica</strong> (Volunteer in Kenya) </small>
                     </blockquote>
-                </div> <div class="col-xs-12 col-sm-6 col-md-4">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
                     <blockquote><br>
                         <p> I had a really wonderful experience volunteering...My host family was
                             amazing (great people, great food, also very nice that they could
@@ -356,7 +302,8 @@
                             nature. </p>
                         <small><strong> Marie</strong> (Volunteer in Costa Rica) </small>
                     </blockquote>
-                </div><div class="col-xs-12 col-sm-6 col-md-4">
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
                     <blockquote><br>
                         <p> My daughter went on your volunteer program this past summer and had a very
                             rewarding experience in India. I wanted to let you know how very pleased

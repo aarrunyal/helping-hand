@@ -1,18 +1,32 @@
-<div class="row" id="topbar">
-    <div class="col text-right">
-                          <span id="phone" class="">
-                             <i class="fas fa-phone"></i>
-                              9860089001 <br>
-                                    <small id="email" class="flext-row">
-                                        <i class="fas fa-at"></i>
-                                        info@thh.com</small>
-                              </span>
+<div class="row py-2">
+    <div class="col-xs-12 col-6 text-right">
+<span id="phone" class="">
+                                      @if(getSetting('SETTING_PHONE'))
+        <i class="fas fa-phone"></i>
+        {{getSetting('SETTING_PHONE')}}
+    @endif
+                                          <br>
+                                            <small id="email" class="flex-row mb-3">
+                                              @if(getSetting('SETTING_PHONE'))
+                                                    <i class="fas fa-at"></i>
+                                                    {{getSetting('SETTING_EMAIL')}}
+                                                @endif
+                                            </small>
+                                      </span>
     </div>
-    <div class="col text-right mt-2 social-icon">
-        <a href="#" class="social rounded-circle p-2"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social rounded-circle p-2"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="social rounded-circle p-2"><i class="fab fa-instagram-square"></i></a>
-        <a href="#" class="social rounded-circle p-2"><i class="fab fa-pinterest-p"></i></a>
+    <div class="col-xs-12 col-6 social-icon mt-2 text-right">
+        @if(getSetting('SETTING_FACEBOOK_URL'))
+            <a href="{{getSetting('SETTING_FACEBOOK_URL')}}" class="social rounded-circle p-2"><i
+                    class="fab fa-facebook-f"></i></a>
+        @endif
+        @if(getSetting('SETTING_TWITTER_URL'))
+            <a href="{{getSetting('SETTING_TWITTER_URL')}}" class="social rounded-circle p-2"><i
+                    class="fab fa-twitter"></i></a>
+        @endif
+        @if(getSetting('SETTING_INSTAGRAM_URL'))
+            <a href="{{getSetting('SETTING_INSTAGRAM_URL')}}" class="social rounded-circle p-2"><i
+                    class="fab fa-instagram-square"></i></a>
+        @endif
     </div>
 </div>
 <div class="row" id="header">
