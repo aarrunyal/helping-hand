@@ -151,9 +151,9 @@
                     @foreach($programs as $program)
                         <div class="col-xs-12 col-sm-6 col-md-4">
                             <div class="card border">
-                                <img class="card-img-top"
-                                     src="{{$program->image_path['thumb']}}"
-                                     alt="Card image cap">
+{{--                                <img class="card-img-top"--}}
+{{--                                     src="{{$program->image_path['thumb']}}"--}}
+{{--                                     alt="Card image cap">--}}
                                 <div class="card-body ">
                                     <a href="{{route('program-details', $program->slug)}}"
                                        class="text-center card-title">{{strtoupper($program->title)}}</a>
