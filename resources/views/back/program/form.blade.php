@@ -55,6 +55,14 @@
                         <div class="col-lg-6 col-md-6 mt-2" id="sub_category_div">
 
                         </div>
+                        <div class="col-lg-6 col-md-6 mt-3" id="">
+                            <label class="form-control-label">Destinations</label>
+                            <select multiple="multiple" id="destination-select" name="destination_ids[]">
+                                @foreach($destinations as $destination)
+                                    <option value="{{$destination->id}}">{{$destination->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div class="col-lg-12 col-md-12 mt-2">
                             <label class="form-control-label">Description</label>
@@ -85,12 +93,14 @@
             <div class="col-lg-4 col-md-4">
                 <div class="form-group row mt-4 ">
                     <div class="col">
+                        <label class="form-control-label">Cost Description</label>
                         <textarea class="form-control" name="cost" id="cost"
                                   placeholder="Cost">{{old('cost', isset($program->cost)?$program->cost:null)}}</textarea>
                     </div>
                 </div>
                 <div class="form-group row mt-4 ">
                     <div class="col">
+                        <label class="form-control-label">Dates Short Notes </label>
                         <textarea class="form-control" name="dates" id="dates"
                                   placeholder="Dates">{{old('dates', isset($program->dates)?$program->dates:null)}}</textarea>
                     </div>
@@ -195,23 +205,36 @@
 </div>
 
 @section('page-script')
-        <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
-                type="text/javascript"></script>
-        <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
-                type="text/javascript"></script>
+    <link href="{{asset("resources/back/assets/multiselect/css/multi-select.css")}}" media="screen" rel="stylesheet"
+          type="text/css">
+    <script src="{{asset("resources/back/assets/multiselect/js/jquery.multi-select.js")}}"
+            type="text/javascript"></script>
+            <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
+                    type="text/javascript"></script>
+            <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
+                    type="text/javascript"></script>
+{{--    <script src="https://cdn.tiny.cloud/1/vw9wwjinbsqgea5mjj04a8so8xyl7gli87av86epefga1icm/tinymce/5/tinymce.min.js"--}}
+            referrerpolicy="origin"></script>
+
     <link rel="stylesheet" src="{{asset('resources/back/assets/css/tags/tags.css')}}">
     <script src="{{asset('resources/back/assets/js/tags/tags.js')}}"
             type="text/javascript"></script>
     <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
     <script>
-        let ids = ['#kt-tinymce-4', '#short_description', '#dates', '#cost', '#seo_description'];
+        let ids = ['#kt-tinymce-4', '#short_description', '#dates', '#cost', '#seo_description', "#group_discount_description",
+            "#sample_itinerary_description"];
         ids.forEach(ele => {
-            let height = 200
+            let height = 350
             if (ele == "#kt-tinymce-4")
-                height = 350
+                height = 500
             tinymce.init({
                 selector: ele,
-                height: height
+                height: height,
+                toolbar: [
+                    'styleselect fontselect fontsizeselect',
+                    'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
+                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
+                plugins: 'advlist autolink link image lists charmap print preview code',
             });
         });
     </script>
@@ -321,6 +344,16 @@
 
     </script>
 
+    <script>
+        $('#destination-select').multiSelect({});
+        let destinationIds = null;
+        @if(!empty($program->destination_ids))
+            destinationIds = "{{$program->destination_ids}}"
+            destinationIds = destinationIds.split(",")
+            $('#destination-select').multiSelect('select', destinationIds);
+
+        @endif
+    </script>
 
     <!--end::Page Scripts -->
 @endsection

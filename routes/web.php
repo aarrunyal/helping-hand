@@ -23,6 +23,8 @@ if (env("APP_ENV") == "local") {
     Route::get('/packages', [\App\Http\Controllers\front\FrontController::class, 'packages']);
     Route::get('/package/{slug}', [\App\Http\Controllers\front\FrontController::class, 'packageDetail'])->name('package-details');
     Route::get('/program/{slug}', [\App\Http\Controllers\front\FrontController::class, 'programDetail'])->name('program-details');;
+    Route::get('/inquiry', [\App\Http\Controllers\front\FrontController::class, 'inquiry'])->name('inquiry');;
+    Route::get('/apply-now', [\App\Http\Controllers\front\FrontController::class, 'applyNow'])->name('apply-now');;
 } else {
     Route::get('/', function () {
         return view('front.coming-soon');

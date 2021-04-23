@@ -3,8 +3,13 @@
     padding: 0;
 }
 
-body, html {
+
+body, body * {
     font-family: Work Sans, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+.navbar {
+    z-index: 9999;
 }
 
 .dropdown-item:hover {
@@ -15,7 +20,8 @@ body, html {
 }
 
 .dropdown-item {
-    font-size: 0.7em !important;
+    padding: 2px;
+    font-size: 0.7rem !important;
 }
 
 #topbar {
@@ -42,6 +48,7 @@ body, html {
 
 .nav-link {
     color: white !important;
+    font-size: 16px;
 }
 
 .hero-image {
@@ -52,7 +59,8 @@ body, html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+    /*position: relative;*/
+    z-index: -9000;
 }
 
 
@@ -105,9 +113,21 @@ body, html {
     font-weight: bold;
 }
 
+.btn-apply-now {
+    background: #4265a2;
+    /*background: #ed6e1d !important;;*/
+    padding: 12px 30px;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0px auto;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
 .btn-default:hover {
     background: #ed6e1d;
-    color: #4265a2;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
@@ -151,6 +171,10 @@ body, html {
     color: #ed6e1d;
 }
 
+.wrapper h1 {
+    font-weight: bolder !important;
+    color: #ed6e1d;
+}
 .wrapper h3 {
     font-weight: bolder !important;
     font-size: 20px;
@@ -255,6 +279,13 @@ blockquote p {
 
 .side-bar ul li a {
     color: black !important;
+    font-weight: lighter !important;
+    font-size: medium;
+}
+.related-project ul li a {
+    color: black !important;
+    font-weight: lighter !important;
+    font-size: medium;
 }
 
 .related-project ul {

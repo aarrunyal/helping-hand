@@ -51,12 +51,13 @@ class ProgramService extends Service
 
     public function update($slug, $data)
     {
-        try {
+//        try {
             $program = $this->findByColumn('slug', $slug);
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
             $data['has_sample_itinerary'] = (isset($data['has_sample_itinerary']) && $data['has_sample_itinerary'] == "on") ? 1 : 0;
             $data['group_discount_available'] = (isset($data['group_discount_available']) && $data['group_discount_available'] == "on") ? 1 : 0;
+            $data['destination_ids'] = (isset($data['destination_ids']) && sizeof($data["destination_ids"])>0)?implode(',', $data["destination_ids"]):null;
             if (isset($data['image'])) {
                 if (!empty($program->image)) {
                     $this->deleteUploadedImage($program->image, $this->uploadPath);
@@ -64,9 +65,9 @@ class ProgramService extends Service
                 $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
             }
             return $program->update($data);
-        } catch (\Exception $ex) {
-            return false;
-        }
+//        } catch (\Exception $ex) {
+//            return false;
+//        }
     }
 
     public function delete($slug)
@@ -94,5 +95,13 @@ class ProgramService extends Service
         if ($all)
             return $response->take($limit)->get();
         return $response->first();
+    }
+
+    public function getOtherProgram($program){
+        $programs = $this->program->where('id', "!=",$program->id)->where(function ($qry){
+            if (!empty($program->category_id))
+                $qry->whereCategoryId($program->category_id);
+        })->take(10)->get();
+        return  $programs;
     }
 }

@@ -58,7 +58,9 @@
                             <th class="text-center">S.No.</th>
                             <th class="text-center">Image</th>
                             <th class="text-center">Title</th>
-                            <th class="text-center">Group Discount Available</th><th class="text-center">Featured</th>
+                            <th class="text-center">Destinations</th>
+                            <th class="text-center">Group Discount Available</th>
+                            <th class="text-center">Featured</th>
 
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
@@ -79,6 +81,17 @@
                                         @endif
                                     </td>
                                     <td class="text-center">{{ucwords($program->title)}}</td>
+                                    @if(!empty($program->destination_ids) &&  sizeof($program->destination_title)>0 )
+                                        <td class="text-center">
+                                            @foreach($program->destination_title as $title)
+                                                <span class="badge m-1"><small>{{$title}}</small></span>
+                                            @endforeach
+                                        </td>
+                                    @else
+                                        <td class="text-center">
+                                            -
+                                        </td>
+                                    @endif
                                     <td class="text-center">{!! getStatusLayout($program->group_discount_available) !!}</td>
                                     <td class="text-center">{!! getStatusLayout($program->is_featured) !!}</td>
                                     <td class="text-center">{!! getStatusLayout($program->is_active) !!}</td>

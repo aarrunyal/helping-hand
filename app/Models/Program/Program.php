@@ -2,6 +2,8 @@
 
 namespace App\Models\Program;
 
+use App\Models\Category\Category;
+use App\Models\Destination\Destination;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +27,7 @@ class Program extends Model
     protected $fillable = [
         'category_id',
         'sub_category_id',
+        'destination_ids',
         'title',
         'slug',
         'short_description',
@@ -40,15 +43,29 @@ class Program extends Model
         'is_featured',
     ];
 
-    protected $appends = ["image_path"];
+    protected $appends = ["image_path", "destination_title"];
 
     public function getImagePathAttribute()
     {
         if ($this->image) {
             return [
-                "thumb" => asset(  $this->uploadPath . "/thumb/" . $this->image),
-                "real" => asset(  $this->uploadPath . "/" . $this->image),
+                "thumb" => asset($this->uploadPath . "/thumb/" . $this->image),
+                "real" => asset($this->uploadPath . "/" . $this->image),
             ];
         }
+    }
+
+    public function getDestinationTitleAttribute()
+    {
+        $data = [];
+        if (!empty($this->destination_ids)) {
+            $ids = explode(",", $this->destination_ids);
+            $data = Destination::whereIn('id', $ids)->pluck('title')->all();
+        }
+        return $data;
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class, "category_id");
     }
 }

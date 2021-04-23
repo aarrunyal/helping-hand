@@ -23,7 +23,7 @@ class FrontController
         ProgramService $program,
         DestinationService $destinationService,
         PageService $pageService,
-        TestimonialService  $testimonial)
+        TestimonialService $testimonial)
     {
         $this->package = $package;
         $this->program = $program;
@@ -39,7 +39,7 @@ class FrontController
         $destinations = $this->destination->findByColumns(['is_active' => 1], true);
         $popularProject = $this->package->findByColumns(['is_active' => 1], true);
         $footerPages = $this->page->findByColumns(['is_active' => 1, "placing" => 'footer'], true);
-        $testimonials = $this->testimonial->findByColumns(['is_active'=>1], true, 9);
+        $testimonials = $this->testimonial->findByColumns(['is_active' => 1], true, 9);
         return
             view('front.index', compact(
                 'packages',
@@ -69,7 +69,7 @@ class FrontController
         return view('front.programs', compact('programs'));
     }
 
-    public function packages($slug=null)
+    public function packages($slug = null)
     {
         $filter = ["is_active" => 1];
         $program = $this->program->findByColumn('slug', $slug);
@@ -85,7 +85,23 @@ class FrontController
     }
 
     public function programDetail($slug)
-    { $program = $this->program->findByColumn('slug', $slug);
-        return view('front.program-detail', compact('program'));
+    {
+        $program = $this->program->findByColumn('slug', $slug);
+        $otherPrograms = $this->program->getOtherProgram($program);
+        $packages = null;
+        if (!empty($program->destination_ids))
+            $packages = $this->package->getPackageBy($program->destination_ids);
+
+        return view('front.program-detail', compact('program', 'otherPrograms', 'packages'));
+    }
+
+    public function inquiry()
+    {
+        return view('front.inquiry');
+    }
+
+    public function applyNow()
+    {
+        return view('front.apply-now');
     }
 }

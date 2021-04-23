@@ -100,4 +100,10 @@ class PackageService extends Service
             $packages = $packages->first();
         return $packages;
     }
+
+    public function getPackageBy($ids){
+        $ids = explode(",", $ids);
+        $packages = $this->package->whereIn('id', $ids)->whereIsActive(1)->get();
+        return $packages;
+    }
 }

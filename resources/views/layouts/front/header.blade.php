@@ -31,8 +31,8 @@
 </div>
 <div class="row" id="header">
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand ml-5" href="#">
+    <nav class="navbar navbar-expand-lg navbar-light ml-5">
+        <a class="navbar-brand " href="#">
             <img src="{{asset('resources/front/image/logo.png')}}" alt="logo" id="logo" height="75px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -41,12 +41,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto">
-
-                <!-- <li class="nav-item mr-2">
-    <a class="nav-link" href="#">Link</a>
-  </li> -->
                 <li class="nav-item mr-2 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,10 +103,13 @@
                             volunteers</a>
                     </div>
                 </li>
-
-
             </ul>
+          <div class="ml-auto mt-1">
+              <a href="{{'apply-now'}}" class="btn-apply-now ">Apply Now</a>
+          </div>
 
         </div>
     </nav>
+
+
 </div>

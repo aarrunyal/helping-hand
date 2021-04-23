@@ -15,6 +15,11 @@
           rel="stylesheet">
     <link rel="stylesheet" href="{{asset("resources/front/css/font-awesome/all.min.css")}}">
     <script src="{{asset("resources/front/js/font-awesome/all.min.js")}}" crossorigin="anonymous"></script>
+    {!! htmlScriptTagJsApi([
+             'action' => 'homepage',
+             'callback_then' => 'callbackThen',
+             'callback_catch' => 'callbackCatch'
+         ]) !!}
 </head>
 
 <body>

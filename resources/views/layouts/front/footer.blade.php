@@ -78,6 +78,20 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
+<script type="text/javascript">
+    function callbackThen(response){
+        // read HTTP status
+        console.log(response.status);
+
+        // read Promise object
+        response.json().then(function(data){
+            console.log(data);
+        });
+    }
+    function callbackCatch(error){
+        console.error('Error:', error)
+    }
+</script>
 @yield('page-script')
 </body>
 

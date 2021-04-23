@@ -7,6 +7,7 @@ use App\Http\Requests\Back\Blog\BlogRequest;
 use App\Http\Requests\Program\ProgramRequest;
 use App\Services\Blog\BlogService;
 use App\Services\Category\CategoryService;
+use App\Services\Destination\DestinationService;
 use App\Services\Program\ProgramService;
 use Illuminate\Http\Request;
 
@@ -14,12 +15,14 @@ class ProgramController extends Controller
 {
     protected $program;
     protected $category;
+    protected $destination;
 
     public function __construct(
-        ProgramService $program, CategoryService $category)
+        ProgramService $program, CategoryService $category, DestinationService $destination)
     {
         $this->program = $program;
         $this->category = $category;
+        $this->destination = $destination;
     }
 
     /**
@@ -41,7 +44,8 @@ class ProgramController extends Controller
     public function create()
     {
         $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 1], true);
-        return view('back.program.create', compact('categories'));
+        $destinations = $this->destination->findByColumns(["is_active" => 1], true);
+        return view('back.program.create', compact('categories', 'destinations'));
     }
 
     /**
@@ -82,7 +86,8 @@ class ProgramController extends Controller
     {
         $program = $this->program->findByColumn('slug', $slug);
         $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 1], true);
-        return view('back.program.edit', compact('program', 'categories'));
+        $destinations = $this->destination->findByColumns(["is_active" => 1], true);
+        return view('back.program.edit', compact('program', 'categories', 'destinations'));
     }
 
     /**

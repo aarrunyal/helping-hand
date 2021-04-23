@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Page\Page;
 use App\Services\Page\PageService;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
 class PageProvider extends ServiceProvider
@@ -30,6 +31,10 @@ class PageProvider extends ServiceProvider
      */
     public function boot()
     {
+        $siteKey = getSetting("SETTING_RECAPTCHA_SITE_KEY");
+        $secretKey = getSetting("SETTING_RECAPTCHA_SECRET_KEY");
+        Config::set('recaptcha.api_site_key', $siteKey);
+        Config::set('recaptcha.api_secret_key', $secretKey);
         $page = new Page();
         $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
         view()->composer('layouts.front.footer', function ($view) use ($footerPages) {

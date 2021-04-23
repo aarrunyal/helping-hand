@@ -20,7 +20,7 @@
             </div>
 
             <div class="text-center mt-4 mb-3">
-                <a class="btn-default" href="inquiry.html">GET MORE INFO </a>
+                <a class="btn-default" href="{{route('inquiry')}}">GET MORE INFO </a>
             </div>
             <p class="text-center small-text"> Take a minute to complete the form and we will be
                 in touch.
@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <div class="row  wrapper wrapper-2 destination ">
+    <div class="row  wrapper wrapper-2 destination">
         <div class="container">
             <div class="row my-4">
                 <div class="col-xs-12 col-sm-12 col-md-6">
@@ -184,7 +184,8 @@
                             @if($destinations->count()>0)
                                 <ul>
                                     @foreach($destinations as $k=>$destination)
-                                        <li style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px">
+                                        <li style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px"
+                                            ;>
                                             <a href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
                                         </li>
                                     @endforeach
@@ -221,23 +222,22 @@
     <div class="row  wrapper wrapper-1 ">
         <div class="container">
             <h2 class="text-center my-3 text-default">Testimonials</h2>
-            <div class="s-wrap">
-                <div class="s-move">
-                @if($testimonials->count()>0)
-                    @foreach($testimonials->chunk(3) as $three)
-                                @foreach($three as $testimonial)
-                                    <div class=" slide">
-                                        <blockquote style="background-image: url('{{asset('resources/front/image/quote.png')}}');"><br>
-                                            {!!  $testimonial->description!!}
-                                            <small> <strong>{{ucwords($testimonial->from)}}</strong> (Volunteer
-                                                in {{ucwords($testimonial->destination->title)}}) </small>
-                                        </blockquote>
-                                    </div>
-                                @endforeach
-                    @endforeach
-                @endif
+            @if($testimonials->count()>0)
+                <div class="s-wrap">
+                    <div class="s-move">
+                        @foreach($testimonials as $testimonial)
+                            <div class=" slide">
+                                <blockquote
+                                    style="background-image: url('{{asset('resources/front/image/quote.png')}}');"><br>
+                                    {!!  $testimonial->description!!}
+                                    <small> <strong>{{ucwords($testimonial->from)}}</strong> (Volunteer
+                                        in {{ucwords($testimonial->destination->title)}}) </small>
+                                </blockquote>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 @endsection
