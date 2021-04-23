@@ -225,16 +225,21 @@
             "#sample_itinerary_description"];
         ids.forEach(ele => {
             let height = 350
-            if (ele == "#kt-tinymce-4")
-                height = 500
+            let toolbar = [];
+            let plugins = null
+            if (ele == "#kt-tinymce-4"){
+                height = 500;
+                toolbar = [
+                    'styleselect fontselect fontsizeselect',
+                    'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
+                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code']
+                plugins='advlist autolink link image lists charmap print preview code'
+            }
             tinymce.init({
                 selector: ele,
                 height: height,
-                toolbar: [
-                    'styleselect fontselect fontsizeselect',
-                    'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                plugins: 'advlist autolink link image lists charmap print preview code',
+                toolbar:toolbar,
+                plugins:plugins ,
             });
         });
     </script>
