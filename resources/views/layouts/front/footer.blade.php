@@ -49,7 +49,9 @@
                 @if($pages->count()>0)
                     <ul>
                         @foreach($pages as $page)
-                            <li class="mt-1">{{ucwords($page->title)}}</li>
+                            <li class="mt-1">
+                                <a href="{{route('page', $page->slug)}}">{{ucwords($page->title)}}</a>
+                            </li>
                         @endforeach
                     </ul>
                 @endif
@@ -79,16 +81,17 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
 </script>
 <script type="text/javascript">
-    function callbackThen(response){
+    function callbackThen(response) {
         // read HTTP status
         console.log(response.status);
 
         // read Promise object
-        response.json().then(function(data){
+        response.json().then(function (data) {
             console.log(data);
         });
     }
-    function callbackCatch(error){
+
+    function callbackCatch(error) {
         console.error('Error:', error)
     }
 </script>

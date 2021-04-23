@@ -104,4 +104,10 @@ class FrontController
     {
         return view('front.apply-now');
     }
+
+    public function page($pageName)
+    {
+        $page = $this->page->findByColumn('slug', $pageName);
+        return view('front.page', compact('page'));
+    }
 }

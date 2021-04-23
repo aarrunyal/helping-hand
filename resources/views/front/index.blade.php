@@ -47,7 +47,7 @@
                     family during their stay in Nepal, gaining a more genuine understanding and
                     appreciation for the culture and the people they are helping.</p>
             </div>
-            <div class="mt-3"><a class="btn-default" href="https://thehhfn.org/about-us/" title="">READ
+            <div class="mt-3"><a class="btn-default" href="{{route('page', ['about-us'])}}" title="" style="color: white">READ
                     MORE</a></div>
 
         </div>
