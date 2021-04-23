@@ -32,7 +32,7 @@
 <div class="row" id="header">
 
     <nav class="navbar navbar-expand-lg navbar-light ml-5">
-        <a class="navbar-brand " href="#">
+        <a class="navbar-brand " href="/">
             <img src="{{asset('resources/front/image/logo.png')}}" alt="logo" id="logo" height="75px">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
