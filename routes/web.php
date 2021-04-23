@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 @include('system-user.php');
-if (env("APP_ENV") == "local") {
+//if (env("APP_ENV") == "local") {
     Route::get('/', [\App\Http\Controllers\front\FrontController::class, 'index']);
 //Route::get('/{index?}', [\App\Http\Controllers\front\FrontController::class,  'index']);
     Route::get('/blog', [\App\Http\Controllers\front\FrontController::class, 'blog']);
@@ -25,8 +25,9 @@ if (env("APP_ENV") == "local") {
     Route::get('/program/{slug}', [\App\Http\Controllers\front\FrontController::class, 'programDetail'])->name('program-details');;
     Route::get('/inquiry', [\App\Http\Controllers\front\FrontController::class, 'inquiry'])->name('inquiry');;
     Route::get('/apply-now', [\App\Http\Controllers\front\FrontController::class, 'applyNow'])->name('apply-now');;
-} else {
-    Route::get('/', function () {
-        return view('front.coming-soon');
-    });
+}
+//else {
+//    Route::get('/', function () {
+//        return view('front.coming-soon');
+//    });
 }
