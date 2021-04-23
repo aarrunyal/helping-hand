@@ -209,12 +209,12 @@
           type="text/css">
     <script src="{{asset("resources/back/assets/multiselect/js/jquery.multi-select.js")}}"
             type="text/javascript"></script>
-            <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
-                    type="text/javascript"></script>
-            <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
-                    type="text/javascript"></script>
-{{--    <script src="https://cdn.tiny.cloud/1/vw9wwjinbsqgea5mjj04a8so8xyl7gli87av86epefga1icm/tinymce/5/tinymce.min.js"--}}
-            referrerpolicy="origin"></script>
+    <script src="{{asset('resources/back/assets/plugins/custom/tinymce/tinymce.bundle.js')}}"
+            type="text/javascript"></script>
+    <script src="{{asset('resources/back/assets/js/pages/crud/forms/editors/tinymce.js')}}"
+            type="text/javascript"></script>
+    {{--    <script src="https://cdn.tiny.cloud/1/vw9wwjinbsqgea5mjj04a8so8xyl7gli87av86epefga1icm/tinymce/5/tinymce.min.js"--}}
+    referrerpolicy="origin"></script>
 
     <link rel="stylesheet" src="{{asset('resources/back/assets/css/tags/tags.css')}}">
     <script src="{{asset('resources/back/assets/js/tags/tags.js')}}"
@@ -224,22 +224,22 @@
         let ids = ['#kt-tinymce-4', '#short_description', '#dates', '#cost', '#seo_description', "#group_discount_description",
             "#sample_itinerary_description"];
         ids.forEach(ele => {
-            let height = 350
-            let toolbar = [];
+            let height = 200
+            let toolbar = ['alignleft aligncenter alignright alignjustify', 'bullist numlist'];
             let plugins = null
-            if (ele == "#kt-tinymce-4"){
-                height = 500;
+            if (ele == "#kt-tinymce-4") {
+                height = 400;
                 toolbar = [
                     'styleselect fontselect fontsizeselect',
                     'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
                     'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code']
-                plugins='advlist autolink link image lists charmap print preview code'
+                plugins = 'advlist autolink link image lists charmap print preview code'
             }
             tinymce.init({
                 selector: ele,
                 height: height,
-                toolbar:toolbar,
-                plugins:plugins ,
+                toolbar: toolbar,
+                plugins: plugins,
             });
         });
     </script>
@@ -354,8 +354,8 @@
         let destinationIds = null;
         @if(!empty($program->destination_ids))
             destinationIds = "{{$program->destination_ids}}"
-            destinationIds = destinationIds.split(",")
-            $('#destination-select').multiSelect('select', destinationIds);
+        destinationIds = destinationIds.split(",")
+        $('#destination-select').multiSelect('select', destinationIds);
 
         @endif
     </script>
