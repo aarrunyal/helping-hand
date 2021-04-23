@@ -225,7 +225,8 @@
             "#sample_itinerary_description"];
         ids.forEach(ele => {
             let height = 200
-            let toolbar = ['alignleft aligncenter alignright alignjustify', 'bullist numlist'];
+            let toolbar = ['alignleft aligncenter alignright alignjustify',
+                'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'];
             let plugins = null
             if (ele == "#kt-tinymce-4") {
                 height = 400;
