@@ -188,7 +188,7 @@ body, body * {
 }
 
 .wrapper p {
-    font-weight: lighter !important;
+    font-weight: normal !important;
     font-size: 0.8rem;
 }
 
