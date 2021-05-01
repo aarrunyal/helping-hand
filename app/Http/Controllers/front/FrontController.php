@@ -82,7 +82,8 @@ class FrontController
     public function packageDetail($slug)
     {
         $package = $this->package->findByColumns(['slug' => $slug]);
-        return view('front.package', compact('package'));
+        $otherPackages = $this->package->getOtherPackages(['program_id'=>$package->program_id, 'destination_id'=>$package->destination_id], $package->id);
+        return view('front.package', compact('package', 'otherPackages'));
     }
 
     public function programDetail($slug)

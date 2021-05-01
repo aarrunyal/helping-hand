@@ -44,7 +44,7 @@ class Package extends Model
         'is_featured',
     ];
 
-    protected $appends = ['image_path'];
+    protected $appends = ['image_path', 'include_list', 'exclude_list'];
 
     public function getImagePathAttribute()
     {
@@ -89,5 +89,15 @@ class Package extends Model
     protected function include_excludes()
     {
         return $this->hasMany(PackageIncludeExclude::class, 'package_id');
+    }
+
+    public function getIncludeListAttribute()
+    {
+        return $this->include_excludes->where('type', "include");
+    }
+
+    public function getExcludeListAttribute()
+    {
+        return $this->include_excludes->where('type', "exclude");
     }
 }

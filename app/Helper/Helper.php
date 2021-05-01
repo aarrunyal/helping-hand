@@ -40,3 +40,9 @@ function getSetting($config)
         return $setting->value;
     return null;
 }
+
+function getPackagesBy($data)
+{
+    $program = \App\Models\Program\Package\Package::where(function ($qry) use ($data) {
+    })->get();
+}

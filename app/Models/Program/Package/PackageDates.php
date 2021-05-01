@@ -13,4 +13,5 @@ class PackageDates extends Model
     protected $fillable = [
         'package_id', 'start_from', 'end_to', 'is_active',
     ];
+
 }

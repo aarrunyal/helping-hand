@@ -58,18 +58,18 @@ class PackageService extends Service
     public function update($slug, $data)
     {
 //        try {
-            $package = $this->findByColumn('slug', $slug);
-            $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-            $data['dates_available'] = (isset($data['dates_available']) && $data['dates_available'] == "on") ? 1 : 0;;
-            $data['is_free'] = (isset($data['is_free']) && $data['is_free'] == "on") ? 1 : 0;
-            $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
-            if (isset($data['image'])) {
-                if (!empty($package->image)) {
-                    $this->deleteUploadedImage($package->image, $this->uploadPath);
-                }
-                $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
+        $package = $this->findByColumn('slug', $slug);
+        $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+        $data['dates_available'] = (isset($data['dates_available']) && $data['dates_available'] == "on") ? 1 : 0;;
+        $data['is_free'] = (isset($data['is_free']) && $data['is_free'] == "on") ? 1 : 0;
+        $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
+        if (isset($data['image'])) {
+            if (!empty($package->image)) {
+                $this->deleteUploadedImage($package->image, $this->uploadPath);
             }
-            return $package->update($data);
+            $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
+        }
+        return $package->update($data);
 //        } catch (\Exception $ex) {
 //            return false;
 //        }
@@ -101,9 +101,21 @@ class PackageService extends Service
         return $packages;
     }
 
-    public function getPackageBy($ids){
+    public function getPackageBy($ids)
+    {
         $ids = explode(",", $ids);
         $packages = $this->package->whereIn('id', $ids)->whereIsActive(1)->get();
         return $packages;
+    }
+
+    public function getOtherPackages($data, $exceptId)
+    {
+        return $this->package->whereNotIn('id', [$exceptId])->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        })->get();
     }
 }

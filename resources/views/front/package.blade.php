@@ -30,38 +30,16 @@
             <div class="col-xs-12 col-sm-4 col-md-3 side-bar pt-4">
                 <div class="row side-heading text-center mb-2">
                     <div class="col">
-                        <h3 class="text-center p-2"> Volunteer Nepal</h3>
+                        <h3 class="text-center p-2"> {{$package->program->title}} {{$package->destination->title}}</h3>
                     </div>
                 </div>
                 <ul class="">
-                    <li class="border-bottom mb-2"><a
-                            href="https://www.ifrevolunteers.org/nepal/volunteer_in_nepal.php">Nepal Home </a></li>
-                    <li class="border-bottom mb-2"><a href="https://www.ifrevolunteers.org/nepal/work_in_orphanage.php">Work
-                            in Orphanage </a></li>
-                    <li class="border-bottom mb-2"><a href="https://www.ifrevolunteers.org/nepal/teaching_english.php">Teaching
-                            English </a></li>
-                    <li class="border-bottom mb-2"><a
-                            href="https://www.ifrevolunteers.org/nepal/work_local_health_project.php"> Work in Health
-                            Project</a></li>
-                    <li class="border-bottom mb-2"><a
-                            href="https://www.ifrevolunteers.org/nepal/teach_buddhist_monk.php"> Teaching Buddhist
-                            Monk</a></li>
-
-                    <li class="border-bottom mb-2"><a href="https://www.ifrevolunteers.org/nepal/conservation_work.php">
-                            Conservation Work</a></li>
-
-                    <li class="border-bottom mb-2"><a
-                            href="https://www.ifrevolunteers.org/nepal/photo_journalism_project.php"> Photo Journalism
-                            Project</a></li>
-
-                    <li class="border-bottom mb-2"><a
-                            href="https://www.ifrevolunteers.org/nepal/photo_journalism_project.php"> Language &amp;
-                            Culture</a></li>
-
-                    <li class="border-bottom mb-2"><a href="https://www.ifrevolunteers.org/nepal/nepal_reviews.php">
-                            Volunteers' Reviews</a></li>
-
-
+                    @if($otherPackages->count()>0)
+                        @foreach($otherPackages as $p)
+                            <li class="border-bottom mb-2"><a
+                                    href="{{route('package-details', $p->slug)}}">{{ucwords($p->title)}} </a></li>
+                        @endforeach
+                        @endif
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-8 col-md-9 wrapper-1 pt-4 package-detail">
@@ -71,12 +49,15 @@
                         @if(!empty($package->more_info))
                             <li><a class="nav-link tab-item" data-toggle="tab" href="#dateCost">Dates/Cost</a></li>
                         @endif
+                        @if(($package->itineraries->count()>0))
+                            <li><a class="nav-link tab-item" data-toggle="tab" href="#itinerary">Itinerary</a></li>
+                        @endif
+                        @if(($package->faqs->count()>0))
+                            <li><a class="nav-link tab-item" data-toggle="tab" href="#faq">FAQ</a></li>
+                        @endif
                         @if(!empty($package->more_info))
                             <li><a class="nav-link tab-item" data-toggle="tab" href="#moreInfo">More Info</a></li>
                         @endif
-                        <li><a class="nav-link tab-item" data-toggle="tab" href="#yellow">Yellow</a></li>
-                        <li><a class="nav-link tab-item" data-toggle="tab" href="#green">Green</a></li>
-                        <li><a class="nav-link tab-item" data-toggle="tab" href="#blue">Blue</a></li>
                     </ul>
                     <div class="tab-content mt-3">
                         <div class="tab-pane active" id="overview">
@@ -106,45 +87,65 @@
                                 <h3>Dates</h3>
                                 <p> {!! $package->dates_description !!}
                                 </p>
+                                @if($package->dates_available && $package->dates->count()>0)
+                                    <h5>Available Dates</h5>
+                                    <ul class="ml-3" style="list-style-type:square;">
+                                        @foreach($package->dates as $l)
+                                            @if($l->is_active)
+                                                <li>{{formatDate($l->start_from, "Y M d")." - ".formatDate($l->end_to, "Y M d")}}</li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                @endif
+
+
                                 <h3>Cost</h3>
                                 <p> {!! $package->cost_description !!}</p>
                                 @if(!$package->is_free && $package->pricings->count()>0)
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
-                                        <h5>Volunteer Program Fee</h5>
-                                        <table class="table">
-                                            <tr>
-                                                <th>Duration</th>
-                                                <th>Price</th>
-                                            </tr>
-                                            @foreach($package->pricings as $price)
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            <h5>Volunteer Program Fee</h5>
+                                            <table class="table">
+                                                <thead style="background: #ed6e1d">
                                                 <tr>
-                                                    <td>{{$price->period ." ".$price->unit}}</td>
-                                                    <td>{{$price->price}}</td>
+                                                    <th>Duration</th>
+                                                    <th>Price</th>
                                                 </tr>
-                                            @endforeach
-                                        </table>
+                                                </thead>
+                                                @foreach($package->pricings as $price)
+                                                    @if($price->is_active)
+                                                        <tr>
+                                                            <td>{{$price->period ." ".$price->unit}}</td>
+                                                            <td>{{$price->price}}</td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
+                                            </table>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-6">
+                                            @if($package->include_list->count()>0)
+                                                <h5>Package fee includes:</h5>
+                                                <ul class="ml-3" style="list-style-type:square;">
+                                                    @foreach($package->include_list as $l)
+                                                        @if($l->is_active)
+                                                            <li>{{ucwords($l->title)}}</li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                            @if($package->include_list->count()>0)
+                                                <h5>Package fee excludes:</h5>
+                                                <ul class="ml-3" style="list-style-type:square;">
+                                                    @foreach($package->exclude_list as $l)
+                                                        @if($l->is_active)
+                                                            <li>{{ucwords($l->title)}}</li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            @endif
+                                        </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
-                                        Program Fees Cover:
-                                        Accommodation (hostel)
-                                        Food (only breakfast and dinnery)
-                                        Airport pick-up and transfer
-                                        Program Orientation
-                                        In-country support
-                                        Personalized project
-                                        Pre-departure information
-                                        Certificate of completion
-                                        Fundraising ideas and letters
-                                        Discount for returning volunteers
-                                        Program Fees Exclude:
-                                        Visas
-                                        Airfare
-                                        Personal expenses on soft drinks and foods
-                                        Daily transportation
-                                        Airport return transfer
-                                    </div>
-                                </div>
                                 @endif
                             </div>
                         @endif
@@ -154,14 +155,26 @@
                                 <p> {!! $package->more_info !!}</p>
                             </div>
                         @endif
-                        <div class="tab-pane" id="yellow">
-                            <h1>Yellow</h1>
-                            <p>yellow yellow yellow yellow yellow</p>
-                        </div>
-                        <div class="tab-pane" id="green">
-                            <h1>Green</h1>
-                            <p>green green green green green</p>
-                        </div>
+                        @if(!empty($package->itineraries->count()>0))
+                            <div class="tab-pane" id="itinerary">
+                                @foreach($package->itineraries as $itinerary)
+                                    @if($itinerary->is_active)
+                                        <p><strong>{{$itinerary->title}}</strong></p>
+                                        <p>{{$itinerary->description}}</p>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+                        @if(!empty($package->faqs->count()>0))
+                            <div class="tab-pane" id="faq">
+                                @foreach($package->faqs as $faq)
+                                    @if($faq->is_active)
+                                        <p><strong>{{$faq->title}}</strong></p>
+                                        <p>{{$faq->description}}</p>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="tab-pane" id="blue">
                             <h1>Blue</h1>
                             <p>blue blue blue blue blue</p>
