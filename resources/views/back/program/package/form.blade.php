@@ -19,6 +19,8 @@
                                role="tab" aria-controls="v-pills-itinerary" aria-selected="false">Itinerary</a>
                             <a class="nav-link" id="v-pills-faq-tab" data-toggle="tab" href="#v-pills-faq"
                                role="tab" aria-controls="v-pills-faq" aria-selected="false">Faqs</a>
+                            <a class="nav-link" id="v-pills-faq-tab" data-toggle="tab" href="#v-pills-include-exclude"
+                               role="tab" aria-controls="v-pills-faq" aria-selected="false">Include/Exclude</a>
                         @endif
                     </div>
                     <div class="tab-content ml-5" id="v-pills-tabContent">
@@ -42,6 +44,10 @@
                             <div class="tab-pane fade" id="v-pills-faq" role="tabpanel"
                                  aria-labelledby="v-pills-faq-tab">
                                 @include('back.program.package.forms.faq-from')
+                            </div>
+                            <div class="tab-pane fade" id="v-pills-include-exclude" role="tabpanel"
+                                 aria-labelledby="v-pills-faq-tab">
+                                @include('back.program.package.forms.include-exclude-from')
                             </div>
                         @endif
                     </div>

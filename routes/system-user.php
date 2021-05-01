@@ -15,6 +15,7 @@ use App\Http\Controllers\Back\Program\Package\PackageDateController;
 use App\Http\Controllers\Back\Program\Package\PackageFaqController;
 use App\Http\Controllers\Back\Program\Package\PackageItineraryController;
 use App\Http\Controllers\Back\Testimonial\TestimonialController;
+use \App\Http\Controllers\Back\Program\Package\PackageIncludeExcludeController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -83,6 +84,7 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('date-form', [PackageController::class, "getDateForm"])->name('package-date-custom-form');
     $route->get('faq-form', [PackageController::class, "getFaqForm"])->name('package-faq-custom-form');
     $route->get('itinerary-form', [PackageController::class, "getItineraryForm"])->name('package-itinerary-custom-form');
+    $route->get('include-exclude-form', [PackageController::class, "getIncludeExcludeForm"])->name('package-include-exclude-custom-form');
 
 
     //    Pricing
@@ -96,6 +98,8 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
 
     //    Faq
     $route->post('package/{slug}/itinerary/store-update', [PackageItineraryController::class, "storeAndUpdate"])->name('package.itinerary-store-and-update');
+
+    $route->post('package/{slug}/include-exclude/store-update', [PackageIncludeExcludeController::class, "storeAndUpdate"])->name('package.include-exclude-store-and-update');
 
     //    Testimonial
     $route->resource('testimonial', TestimonialController::class);

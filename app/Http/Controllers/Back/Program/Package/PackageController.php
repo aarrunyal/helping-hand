@@ -91,13 +91,16 @@ class PackageController extends Controller
         $dates = $package->dates;
         $itineraries = $package->itineraries;
         $faqs = $package->faqs;
+        $includeExcludes = $package->include_excludes;
         return view('back.program.package.edit', compact(
             'programs',
             'destinations',
             'package',
             'pricings',
             'dates',
-            'itineraries','faqs'));
+            'itineraries',
+            'faqs',
+            'includeExcludes'));
     }
 
     /**
@@ -157,6 +160,12 @@ class PackageController extends Controller
     {
         $itineraries = null;
         return view('back.program.package.forms.custom-form.itinerary-form', compact('itineraries'));
+    }
+
+    public function getIncludeExcludeForm()
+    {
+        $includeExcludes = null;
+        return view('back.program.package.forms.custom-form.include-exclude-form', compact('includeExcludes'));
     }
 
 

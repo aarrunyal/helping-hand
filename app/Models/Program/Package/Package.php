@@ -2,6 +2,7 @@
 
 namespace App\Models\Program\Package;
 
+use App\Models\Category\Category;
 use App\Models\Destination\Destination;
 use App\Models\Program\Program;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -83,5 +84,10 @@ class Package extends Model
     protected function faqs()
     {
         return $this->hasMany(PackageFaq::class, 'package_id');
+    }
+
+    protected function include_excludes()
+    {
+        return $this->hasMany(PackageIncludeExclude::class, 'package_id');
     }
 }

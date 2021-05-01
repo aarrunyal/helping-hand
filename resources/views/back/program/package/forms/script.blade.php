@@ -264,3 +264,36 @@
         return true
     })
 </script>
+<script>
+    function getIncludeExcludeForm() {
+        let url = '{{route("package-include-exclude-custom-form")}}'
+        ajaxCall('GET', url, 'HTML', '', '#include-exclude-form-id', function (response, selector) {
+                $(selector).append(response);
+            }, function (error) {
+            }
+        );
+    }
+
+    function removeIncludeExclude(e) {
+        $(e).closest('.include-exclude-form').remove()
+    }
+
+    $("#include-exclude-form").submit((e) => {
+        let flag = [];
+        $.each($(".include-exclude-form"), (k, v) => {
+            let title = $(v).find('input[name="title[]"]').val()
+            let description = $(v).find('textarea[name="description[]"]').val()
+            let type = $(v).find('select[name="type[]"]').val()
+            let temp = true;
+            temp = isNotNull(title, 'input[name="title[]"]');
+            flag.push(temp)
+            temp = isNotNull(type, 'select[name="type[]"]');
+            flag.push(temp)
+            temp = isNotNull(description, 'textarea[name="description[]"]')
+            flag.push(temp)
+        })
+        if (flag.includes(false))
+            return false
+        return true
+    })
+</script>
