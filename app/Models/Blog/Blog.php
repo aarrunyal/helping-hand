@@ -47,8 +47,8 @@ class Blog extends Model
         $path = [];
         if (!empty($this->social_share_image)) {
             $path = [
-                "thumb" => $this->uploadPath . "/thumb/" . $this->social_share_image,
-                "real" => $this->uploadPath . "/" . $this->social_share_image,
+                "thumb" => asset($this->uploadPath . "/thumb/" . $this->social_share_image),
+                "real" =>asset( $this->uploadPath . "/" . $this->social_share_image),
             ];
         }
         return $path;

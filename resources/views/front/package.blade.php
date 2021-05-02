@@ -3,22 +3,15 @@
     <div class="row hero-image"
          style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover.jpg')}}');">
         <div class="col-lg-12">
-            <h1 class="text-center">Summer Volunteer Program Nepal </h1>
-            <h3 class="text-center"> And see the world at the same time </h3>
-
+            <h1 class="text-center">{{ucwords($package->title)}} </h1>
             <div class="highLight">
+                 {!! $package->short_description !!}
 
-                <p class="text-center"> Nepal is the ideal volunteer destination
-                </p>
-                <p class="text-center"> Trusted by thousands of volunteers since 2006</p>
-                <p class="text-center"> Most affordable volunteer projects, starting at $100 Transparent fee
-                    payments</p>
-                <p class="text-center"> Work in Healthcare, Teaching, Conservation and more</p>
 
             </div>
 
             <div class="text-center mt-4 mb-3">
-                <a class="btn-default" href="inquiry.html">GET MORE INFO </a>
+                <a class="btn-default" href="{{route('inquiry')}}" style="color: white">GET MORE INFO </a>
             </div>
             <p class="text-center small-text"> Take a minute to complete the form and we will be
                 in touch.
@@ -78,6 +71,9 @@
                             @if(!empty($package))
                                 <h3>{{$package->title}}</h3>
                                 <p> {!! $package->description !!}</p>
+                                <div class="text-center mt-4 mb-3">
+                                    <a class="btn-default" href="{{route('inquiry')}}" style="color: white">GET MORE INFO </a>
+                                </div>
                             @else
                                 <h3>No data found</h3>
                             @endif
@@ -153,6 +149,9 @@
                         @if(!empty($package->more_info))
                             <div class="tab-pane" id="moreInfo">
                                 <p> {!! $package->more_info !!}</p>
+                                <div class="text-center mt-4 mb-3">
+                                    <a class="btn-default" href="{{route('inquiry')}}" style="color: white">GET MORE INFO </a>
+                                </div>
                             </div>
                         @endif
                         @if(!empty($package->itineraries->count()>0))
@@ -175,10 +174,6 @@
                                 @endforeach
                             </div>
                         @endif
-                        <div class="tab-pane" id="blue">
-                            <h1>Blue</h1>
-                            <p>blue blue blue blue blue</p>
-                        </div>
                     </div>
                 </div>
             </div>

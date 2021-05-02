@@ -47,7 +47,8 @@
                     family during their stay in Nepal, gaining a more genuine understanding and
                     appreciation for the culture and the people they are helping.</p>
             </div>
-            <div class="mt-3"><a class="btn-default" href="{{route('page', ['about-us'])}}" title="" style="color: white">READ
+            <div class="mt-3"><a class="btn-default" href="{{route('page', ['about-us'])}}" title=""
+                                 style="color: white">READ
                     MORE</a></div>
 
         </div>
@@ -65,9 +66,13 @@
                                      alt="{{$package->title}}">
                                 <div class="card-body">
                                     <a href="{{route('package-details', $package->slug)}}"
-                                       class="card-title">{{$package->title}}</a>
+                                       class="card-title text-center">{{$package->title}}</a>
                                     {{--                                    @dd($package->limit_short_description)--}}
-                                    <p class="card-text">{!! substr($package->short_description, 0,200) !!}...</p>
+                                    {{--                                    <p class="card-text">--}}
+                                    {{--                                    </p>--}}
+                                </div>
+                                <div class="card-body">
+                                    {!! $package->short_desctiption !!}...
                                 </div>
                             </div>
                         </div>

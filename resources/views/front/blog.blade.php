@@ -1,65 +1,82 @@
 @extends('layouts.front.layout')
 @section('content')
-    <div class="container wrapper">
-        <div class="row d-flex">
-            <div class="col-xl-8 py-3 px-md-5">
-                <div class="row pt-md-4">
-                    <div class="col-md-12">
-                            <div class="">
-                                <img  class="blog-single-cover" src="https://thehhfn.org/wp-content/uploads/2017/04/audio.png" width="100%"></img>
-                            </div>
-{{--                        <div class="ml-3 mt-2 blog-date" style="position: relative">--}}
-{{--                            <h3 class="text-center">12 <br>OCT</h3>--}}
-{{--                        </div>--}}
-
-                    </div>
+    <div class="row wrapper wrapper-1">
+        <div class="col-lg-12 my-5">
+            <h1 class="text-center">Blog</h1>
+        </div>
+    </div>
+    @if($featuredBlog->count()>0)
+        <div class="container">
+            <div class="row wrapper wrapper-3">
+                <div class="col-12 text-center">
+                    <span class="display-4 text-light">Popular Articles</span>
                 </div>
-                <div class="row">
-                        <div class="col-md-12">
-                            <div class="blog-entry ftco-animate d-md-flex fadeInUp ftco-animated">
-                                <div class="text text-2 pl-md-4">
-                                    <h3 class="mb-2 mt-2"><a href="single.html">A Loving Heart is the Truest Wisdom</a></h3>
-                                    <div class="meta-wrap">
-                                        <p class="meta">
-                                            <span><i class="icon-calendar mr-2"></i>June 28, 2019</span>
-                                            <span><a href="single.html"><i class="icon-folder-o mr-2"></i>Travel</a></span>
-                                        </p>
+                @foreach($featuredBlog as $b)
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 my-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-4">
+                                        <a href="{{route('blog-detail', $b->slug)}}">
+                                        <img class=" img-responsive" src="{{$b->image_path['thumb']}}" width="150px"
+                                             height="120px">
+                                        </a>
                                     </div>
-                                    <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    <p><a href="#" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+                                    <div class="col-xs-6 col-sm-6 col-md-8">
+                                        <h3 class="mb-2 mt-2"><a href="{{route('blog-detail', $b->slug)}}">{{$b->title}}</a></h3>
+                                        <div class="meta-wrap">
+                                            <p class="meta">
+                                                <span><i class="icon-calendar mr-2"></i>{{formatDate($b->created_at,"Y M d")}}</span>
+                                                <span><a href="#"><i class="icon-folder-o mr-2"></i>{{ucwords($b->tags)}}</a></span>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                </div>
-            </div>
-            <div class="col-xl-4 sidebar ftco-animate bg-light pt-5 fadeInUp ftco-animated">
-                <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-                    <h3 class="sidebar-heading" style="color: #4265a2;">Popular Articles</h3>
-                    <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url('https://thehhfn.org/wp-content/uploads/2017/04/audio.png');"></a>
-                        <div class="text">
-                            <h6 class=""><a href="#">Even the all-powerful Pointing has no control</a></h6>
-                            <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="block-21 mb-4 d-flex">
-                        <a class="blog-img mr-4" style="background-image: url('https://thehhfn.org/wp-content/uploads/2017/04/audio.png');"></a>
-                        <div class="text">
-                            <h6 class="heading"><a href="#">Even the all-powerful Pointing has no control</a></h6>
-                            <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span> June 28, 2019</a></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+                @endforeach
             </div>
         </div>
-    </div>
-    @endsection
+    @endif
+    @if($otherBlog->count()>0)
+        <div class="container wrapper wrapper-1">
+            <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 my-3">
+                        <div class="text-center my-2">
+                            <h2 class="text-default">Other</h2>
+                            <hr>
+                        </div>
+                        @foreach($otherBlog as $b)
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <a href="{{route('blog-detail', $b->slug)}}">
+                                        <img class="rounded-circle img-responsive"
+                                             src="{{$b->image_path['thumb']}}"
+                                             width="200px">
+                                        </a>
+                                    </div>
+                                    <div class="col-9">
+                                        <h3 class="mb-2 mt-2"><a href="{{route('blog-detail', $b->slug)}}">{{$b->title}}</a></h3>
+                                        <div class="meta-wrap">
+                                            <p class="meta">
+                                                <span><i class="icon-calendar mr-2"></i>{{formatDate($b->created_at,"Y M d")}}</span>
+                                                <span><a href="#"><i class="icon-folder-o mr-2"></i>{{ucwords($b->tags)}}</a></span>
+                                            </p>
+                                        </div>
+                                        <p class="mb-4">{!! substr($b->content, 0, 700) !!}...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+            </div>
+        </div>
+    @endif
+@endsection
 @section('page-specific-css')
     <link rel="stylesheet" href="{{asset('resources/front/css/blog.css')}}">
 @endsection

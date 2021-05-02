@@ -44,7 +44,7 @@ class Package extends Model
         'is_featured',
     ];
 
-    protected $appends = ['image_path', 'include_list', 'exclude_list'];
+    protected $appends = ['image_path', 'include_list', 'exclude_list', 'limited_description'];
 
     public function getImagePathAttribute()
     {
@@ -53,6 +53,12 @@ class Package extends Model
                 "thumb" => asset($this->uploadPath . "/thumb/" . $this->image),
                 "real" => asset($this->uploadPath . "/" . $this->image),
             ];
+        }
+    }
+
+    public function getLimitedDescription(){
+        if (!empty($this->description)){
+            return substr($this->descripition);
         }
     }
 

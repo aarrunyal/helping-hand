@@ -4,7 +4,6 @@
         <div class="col-lg-12 my-5">
             <h1 class="text-center">{{ucwords($page->name)}}</h1>
         </div>
-
     </div>
     <div class="container wrapper wrapper-2" style="min-height: 300px">
         <div class="row my-4" >

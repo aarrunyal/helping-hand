@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\front;
 
 
+use App\Services\Blog\BlogService;
 use App\Services\Destination\DestinationService;
 use App\Services\Page\PageService;
 use App\Services\Program\Package\PackageService;
@@ -17,19 +18,21 @@ class FrontController
     protected $destination;
     protected $page;
     protected $testimonial;
+    protected $blog;
 
     function __construct(
         PackageService $package,
         ProgramService $program,
         DestinationService $destinationService,
         PageService $pageService,
-        TestimonialService $testimonial)
+        TestimonialService $testimonial, BlogService $blog)
     {
         $this->package = $package;
         $this->program = $program;
         $this->destination = $destinationService;
         $this->page = $pageService;
         $this->testimonial = $testimonial;
+        $this->blog = $blog;
     }
 
     public function index()
@@ -54,12 +57,17 @@ class FrontController
 
     public function blog()
     {
-        return view('front.blog');
+        $featuredBlog = $this->blog->findByColumns(["is_active" => 1, "is_featured" => 1], true);
+        $otherBlog = $this->blog->findByColumns(["is_active" => 1, "is_featured" => 0], true);
+        return view('front.blog', compact('featuredBlog', 'otherBlog'));
     }
 
-    public function blogDetail()
+    public function blogDetail($slug)
     {
-        return view('front.blog-detail');
+        $blog = $this->blog->findByColumn('slug', $slug);
+        if (empty($blog))
+            return redirect()->route('blog-main');
+        return view('front.blog-detail', compact('blog'));
     }
 
     public function programs()
@@ -82,7 +90,7 @@ class FrontController
     public function packageDetail($slug)
     {
         $package = $this->package->findByColumns(['slug' => $slug]);
-        $otherPackages = $this->package->getOtherPackages(['program_id'=>$package->program_id, 'destination_id'=>$package->destination_id], $package->id);
+        $otherPackages = $this->package->getOtherPackages(['program_id' => $package->program_id, 'destination_id' => $package->destination_id], $package->id);
         return view('front.package', compact('package', 'otherPackages'));
     }
 

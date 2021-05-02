@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 //if (env("APP_ENV") == "local") {
     Route::get('/', [\App\Http\Controllers\front\FrontController::class, 'index']);
 //Route::get('/{index?}', [\App\Http\Controllers\front\FrontController::class,  'index']);
-    Route::get('/blog', [\App\Http\Controllers\front\FrontController::class, 'blog']);
-    Route::get('/blog/detail', [\App\Http\Controllers\front\FrontController::class, 'blogDetail']);
+    Route::get('/blog', [\App\Http\Controllers\front\FrontController::class, 'blog'])->name('blog-main');
+    Route::get('/blog/{slug}', [\App\Http\Controllers\front\FrontController::class, 'blogDetail'])->name('blog-detail');
     Route::get('/programs', [\App\Http\Controllers\front\FrontController::class, 'programs'])->name('programs');
     Route::get('/program/{slug}/packages', [\App\Http\Controllers\front\FrontController::class, 'packages'])->name('program-package');
     Route::get('/packages', [\App\Http\Controllers\front\FrontController::class, 'packages']);

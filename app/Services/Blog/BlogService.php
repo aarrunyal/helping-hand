@@ -39,6 +39,9 @@ class BlogService extends Service
         try {
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
+            if (isset($data['social_share_image'])) {
+                $data['social_share_image'] = $this->upload($data['social_share_image'], null, null, $this->uploadPath);
+            }
             return $this->blog->create($data);
         } catch (\Exception $ex) {
             return false;
@@ -74,5 +77,22 @@ class BlogService extends Service
         } catch (\Exception $ex) {
             return false;
         }
+    }
+
+    public function findByColumns($data, $all = false, $limit = null)
+    {
+        $response = $this->blog->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all) {
+            if ($limit)
+                $response = $response->take($limit);
+            return $response->get();
+        }
+        return $response->first();
     }
 }
