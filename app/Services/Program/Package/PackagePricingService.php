@@ -91,4 +91,22 @@ class PackagePricingService extends Service
         }
         return true;
     }
+    public function findByColumns($data, $all = false, $limit = 6)
+    {
+        $pricings = $this->pricing->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all) {
+            if ($limit)
+                $pricings = $pricings->take($limit);
+            $pricings = $pricings->get();
+        } else
+            $pricings = $pricings->first();
+        return $pricings;
+    }
+
 }

@@ -62,14 +62,14 @@ class PackageDateService extends Service
         unset($data['_token']);
         $size = sizeof($data['start_from']);
         $value = [];
-      for($i=0; $i<$size; $i++){
+        for ($i = 0; $i < $size; $i++) {
 //            if ($i < $size) {
-                $temp = [
-                    'start_from' => formatDate($data['start_from'][$i]),
-                    'end_to' => formatDate($data['end_to'][$i]),
-                    'id' => isset($data['id']) && isset($data['id'][$i]) ? $data['id'][$i] : null,
-                    'is_active' => isset($data['is_active'])  && isset($data['is_active'][$i])? $data['is_active'][$i] : null,
-                ];
+            $temp = [
+                'start_from' => formatDate($data['start_from'][$i]),
+                'end_to' => formatDate($data['end_to'][$i]),
+                'id' => isset($data['id']) && isset($data['id'][$i]) ? $data['id'][$i] : null,
+                'is_active' => isset($data['is_active']) && isset($data['is_active'][$i]) ? $data['is_active'][$i] : null,
+            ];
 
             array_push($value, $temp);
         }
@@ -89,5 +89,23 @@ class PackageDateService extends Service
             $this->date->whereNotIn('id', $ids)->delete();
         }
         return true;
+    }
+
+    public function findByColumns($data, $all = false, $limit = 6)
+    {
+        $dates = $this->date->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all) {
+            if ($limit)
+                $dates = $dates->take($limit);
+            $dates = $dates->get();
+        } else
+            $dates = $dates->first();
+        return $dates;
     }
 }

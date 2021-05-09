@@ -13,4 +13,11 @@ class PackagePricing extends Model
     protected $fillable = [
         'package_id', 'period', 'unit', 'price', 'is_active',
     ];
+
+    protected $appends = ['duration'];
+
+    public function getDurationAttribute()
+    {
+        return $this->period . " " . $this->unit . "- $" . $this->price;
+    }
 }

@@ -56,9 +56,9 @@ class Package extends Model
         }
     }
 
-    public function getLimitedDescription(){
+    public function getLimitedDescriptionAttribute(){
         if (!empty($this->description)){
-            return substr($this->descripition);
+            return substr($this->descripition, 0, 200);
         }
     }
 

@@ -26,6 +26,12 @@ use Illuminate\Support\Facades\Route;
     Route::get('/inquiry', [\App\Http\Controllers\front\FrontController::class, 'inquiry'])->name('inquiry');;
     Route::get('/apply-now', [\App\Http\Controllers\front\FrontController::class, 'applyNow'])->name('apply-now');;
     Route::get('/{pageName}', [\App\Http\Controllers\front\FrontController::class, 'page'])->name('page');;
+    Route::get('/destination/{id}/program', [\App\Http\Controllers\front\FrontController::class, 'programByDestination'])->name('programs-by-destination');;
+    Route::get('/program/{id}/package', [\App\Http\Controllers\front\FrontController::class, 'packageByProgram'])->name('packages-by-program');;
+    Route::get('/package/{id}/dates', [\App\Http\Controllers\front\FrontController::class, 'getPackageDates'])->name('dates-by-package');;
+    Route::get('/package/{id}/pricing', [\App\Http\Controllers\front\FrontController::class, 'getPackagePricing'])->name('prices-by-package');;
+    Route::post('/user/application', [\App\Http\Controllers\front\FrontController::class, 'submitApplication'])->name('application');;
+    Route::post('/user/inquiry', [\App\Http\Controllers\front\FrontController::class, 'submitInquiry'])->name('submit-inquiry');;
 //}
 //else {
 //    Route::get('/', function () {

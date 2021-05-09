@@ -4,9 +4,16 @@
 namespace App\Http\Controllers\front;
 
 
+use App\Http\Requests\Front\Application\ApplicationRequest;
+use App\Http\Requests\Front\Inquiry\InquiryRequest;
+use App\Models\Program\Package\PackagePricing;
+use App\Services\Application\ApplicationService;
 use App\Services\Blog\BlogService;
 use App\Services\Destination\DestinationService;
+use App\Services\Inquiry\InquiryService;
 use App\Services\Page\PageService;
+use App\Services\Program\Package\PackageDateService;
+use App\Services\Program\Package\PackagePricingService;
 use App\Services\Program\Package\PackageService;
 use App\Services\Program\ProgramService;
 use App\Services\Testimonial\TestimonialService;
@@ -19,13 +26,22 @@ class FrontController
     protected $page;
     protected $testimonial;
     protected $blog;
+    protected $date;
+    protected $pricing;
+    protected $application;
+    protected $inquiry;
 
     function __construct(
         PackageService $package,
         ProgramService $program,
         DestinationService $destinationService,
         PageService $pageService,
-        TestimonialService $testimonial, BlogService $blog)
+        TestimonialService $testimonial,
+        BlogService $blog,
+        PackageDateService $dateService,
+        PackagePricingService $pricingService,
+        ApplicationService $application,
+        InquiryService $inquiry)
     {
         $this->package = $package;
         $this->program = $program;
@@ -33,6 +49,10 @@ class FrontController
         $this->page = $pageService;
         $this->testimonial = $testimonial;
         $this->blog = $blog;
+        $this->date = $dateService;
+        $this->pricing = $pricingService;
+        $this->application = $application;
+        $this->inquiry = $inquiry;
     }
 
     public function index()
@@ -107,17 +127,61 @@ class FrontController
 
     public function inquiry()
     {
-        return view('front.inquiry');
+        $destinations = $this->destination->findByColumns(["is_active" => 1], true);
+        return view('front.inquiry', compact('destinations'));
     }
 
     public function applyNow()
     {
-        return view('front.apply-now');
+        $destinations = $this->destination->findByColumns(["is_active" => 1], true);
+        return view('front.apply-now', compact('destinations'));
     }
 
     public function page($pageName)
     {
         $page = $this->page->findByColumn('slug', $pageName);
         return view('front.page', compact('page'));
+    }
+
+    public function programByDestination($destinationId)
+    {
+        $programs = $this->program->findAllByDestinationId($destinationId);
+        return response()->json($programs);
+    }
+
+    public function packageByProgram($programId)
+    {
+        $programs = $this->package->findByWhereIn('program_id', [$programId], [], true);
+        return response()->json($programs);
+    }
+
+    public function getPackageDates($packageId)
+    {
+        $programs = $this->date->findByColumns(['is_active' => 1, 'package_id' => $packageId], true);
+        return response()->json($programs);
+    }
+
+    public function getPackagePricing($packageId)
+    {
+        $programs = $this->pricing->findByColumns(['is_active' => 1, 'package_id' => $packageId], true);
+        return response()->json($programs);
+    }
+
+    public function submitApplication(ApplicationRequest $request)
+    {
+        $response =$this->application->store($request->all());
+        if ($response){
+            return redirect()->route('apply-now')->with(["msg"=>"success"]);
+        }
+        return redirect()->route('apply-now')->with(["msg"=>"error"]);
+    }
+
+    public function submitInquiry(InquiryRequest  $request)
+    {
+        $response =$this->inquiry->store($request->all());
+        if ($response){
+            return redirect()->route('inquiry')->with(["msg"=>"success"]);
+        }
+        return redirect()->route('inquiry')->with(["msg"=>"error"]);
     }
 }

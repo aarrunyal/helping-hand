@@ -118,4 +118,21 @@ class PackageService extends Service
             }
         })->get();
     }
+
+    public function findByWhereIn($column, $value, $data=[], $all = false, $limit = null)
+    {
+        $response = $this->package->whereIn($column, $value)->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all) {
+            if (!empty($limit))
+                $response = $response->take($limit);
+            return $response->get();
+        }
+        return $response->first();
+    }
 }
