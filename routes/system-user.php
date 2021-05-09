@@ -16,6 +16,8 @@ use App\Http\Controllers\Back\Program\Package\PackageFaqController;
 use App\Http\Controllers\Back\Program\Package\PackageItineraryController;
 use App\Http\Controllers\Back\Testimonial\TestimonialController;
 use \App\Http\Controllers\Back\Program\Package\PackageIncludeExcludeController;
+use App\Http\Controllers\Back\Inquiry\InquiryController;
+use App\Http\Controllers\Back\Application\ApplicationController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -106,9 +108,14 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('testimonial/{slug}/destroy', [TestimonialController::class, "destroy"])->name('testimonial.destroy');
     $route->post('testimonial/{slug}/update', [TestimonialController::class, "update"])->name('testimonial-update');
 
+//Inquiry
+    $route->get('inquiry', [InquiryController::class, "index"])->name('inquiry.index');
+    $route->get('inquiry/{id}', [InquiryController::class, "getDetail"])->name('inquiry.detail');
+    $route->post('inquiry/{id}', [InquiryController::class, "update"])->name('inquiry.update');
+
+    //Application
+    $route->get('application', [ApplicationController::class, "index"])->name('application.index');
+    $route->get('application/{id}', [ApplicationController::class, "getDetail"])->name('application.detail');
+    $route->post('application/{id}', [ApplicationController::class, "update"])->name('application.update');
+
 });
-
-
-
-
-

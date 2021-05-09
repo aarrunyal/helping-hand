@@ -102,6 +102,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$pages->links()}}
                 </div>
             </div>
         </div>

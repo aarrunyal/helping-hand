@@ -17,6 +17,8 @@ use App\Services\Program\Package\PackagePricingService;
 use App\Services\Program\Package\PackageService;
 use App\Services\Program\ProgramService;
 use App\Services\Testimonial\TestimonialService;
+use Artesaos\SEOTools\Facades\SEOTools;
+use PhpParser\Node\Stmt\If_;
 
 class FrontController
 {
@@ -63,6 +65,7 @@ class FrontController
         $popularProject = $this->package->findByColumns(['is_active' => 1], true);
         $footerPages = $this->page->findByColumns(['is_active' => 1, "placing" => 'footer'], true);
         $testimonials = $this->testimonial->findByColumns(['is_active' => 1], true, 9);
+        $this->setSeo();
         return
             view('front.index', compact(
                 'packages',
@@ -169,19 +172,38 @@ class FrontController
 
     public function submitApplication(ApplicationRequest $request)
     {
-        $response =$this->application->store($request->all());
-        if ($response){
-            return redirect()->route('apply-now')->with(["msg"=>"success"]);
+        $response = $this->application->store($request->all());
+        if ($response) {
+            return redirect()->route('apply-now')->with(["msg" => "success"]);
         }
-        return redirect()->route('apply-now')->with(["msg"=>"error"]);
+        return redirect()->route('apply-now')->with(["msg" => "error"]);
     }
 
-    public function submitInquiry(InquiryRequest  $request)
+    public function submitInquiry(InquiryRequest $request)
     {
-        $response =$this->inquiry->store($request->all());
-        if ($response){
-            return redirect()->route('inquiry')->with(["msg"=>"success"]);
+        $response = $this->inquiry->store($request->all());
+        if ($response) {
+            return redirect()->route('inquiry')->with(["msg" => "success"]);
         }
-        return redirect()->route('inquiry')->with(["msg"=>"error"]);
+        return redirect()->route('inquiry')->with(["msg" => "error"]);
+    }
+
+    public function setSeo($value = null, $type = "program", $image = null)
+    {
+        $title = !empty($value->title) ? $value->title : getSetting("SETTING_SEO_TITLE");
+        $description = !empty($value->seo_description) ? $value->seo_description : getSetting("SETTING_SEO_DESCRIPTION");
+        $imagePath = $image;
+        if (empty($imagePath)) {
+            $imagePath = getSetting("SETTING_SOCIAL_SHARE_IMAGE", "image_path");
+            $imagePath = sizeof($imagePath) > 0 ? $imagePath['real'] : null;
+        }
+        $url = request()->url();
+        SEOTools::setTitle($title);
+        SEOTools::setDescription($description);
+        SEOTools::opengraph()->setUrl($url);
+        SEOTools::opengraph()->addProperty('type', $type);
+        SEOTools::twitter()->setSite($url);
+        if (!empty($imagePath))
+            SEOTools::jsonLd()->addImage($imagePath);
     }
 }

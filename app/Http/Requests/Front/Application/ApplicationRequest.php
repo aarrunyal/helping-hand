@@ -38,7 +38,7 @@ class ApplicationRequest extends FormRequest
             "pricing_id" => 'required',
             "emergency_contact_details" => 'required',
             "academic_qualification" => 'required',
-            "g-recaptcha-response" => "recaptcha"
+//            "g-recaptcha-response" => "recaptcha"
         ];
     }
 
@@ -59,7 +59,7 @@ class ApplicationRequest extends FormRequest
             "pricing_id.required" => 'Duration is required',
             "emergency_contact_details.required" => 'Emergency contact is required',
             "academic_qualification.required" => 'Academic Qualification is required',
-            "g-recaptcha-response.recaptcha" => 'Recaptcha is no checked',
+//            "g-recaptcha-response.recaptcha" => 'Recaptcha is no checked',
         ];
     }
 }

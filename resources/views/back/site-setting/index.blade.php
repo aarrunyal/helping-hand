@@ -69,7 +69,15 @@
                                 <tr>
                                     <td class="text-center">{{$c+1}}</td>
                                     <td class="text-center">{{ucwords($setting->title)}}</td>
-                                    <td class="text-center">{{$setting->value}}</td>
+                                    <td class="text-center">
+                                        @if($setting->type =="file")
+                                            @if(sizeof($setting->image_path)>0)
+                                            <img src="{{$setting->image_path['thumb']}}" alt="logo" width="80px" height="80px">
+                                                @endif
+                                        @else
+                                            {{$setting->value}}
+                                            @endif
+                                    </td>
                                     <td class="text-center">{!! getStatusLayout($setting->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('site-setting.edit', $setting->id)}}"><i class="fas fa-edit"></i></a>
@@ -85,6 +93,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$siteSettings->links()}}
                 </div>
             </div>
         </div>

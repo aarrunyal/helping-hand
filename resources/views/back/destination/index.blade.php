@@ -82,6 +82,7 @@
                             </tr>
                         @endif
                         </tbody>
+                        {{$destinations->links()}}
                     </table>
                 </div>
             </div>

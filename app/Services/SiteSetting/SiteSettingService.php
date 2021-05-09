@@ -14,7 +14,7 @@ use App\Services\Service;
 
 class SiteSettingService extends Service
 {
-    protected $uploadPath = "uploads/siteSetting";
+    protected $uploadPath = "uploads/site-setting";
     protected $siteSetting;
 
     public function __construct(SiteSetting $siteSetting)
@@ -46,14 +46,18 @@ class SiteSettingService extends Service
 
     public function update($id, $data)
     {
-        try {
+//        try {
             $siteSetting = $this->findByColumn('id', $id);
-
+            if (isset($data['type']) && $data['type'] == "file" && !empty($data['value'])) {
+                if (!empty($siteSetting->value))
+                    $this->deleteUploadedImage($this->uploadPath, $siteSetting->value);
+                $data['value'] = $this->upload($data['value'], null, null, $this->uploadPath);
+            }
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             return $siteSetting->update($data);
-        } catch (\Exception $ex) {
-            return false;
-        }
+//        } catch (\Exception $ex) {
+//            return false;
+//        }
     }
 
     public function delete($id)

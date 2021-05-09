@@ -16,17 +16,30 @@
                                    value="{{old('slug', isset($siteSetting->title)?$siteSetting->title:'')}}" readonly>
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
+                        <input type="text" value="{{$siteSetting->type}}" name="type">
                         <div class="col-lg-12 col-md-12 mt-5">
                             <label class="form-control-label">* Value</label>
-                            <input type="text" name="value" class="form-control" placeholder="Value"
-                                   value="{{old('title', isset($siteSetting->value)?$siteSetting->value:null)}}">
-                            <span class="text-danger">{{ $errors->first('value') }}</span>
+                            @if($siteSetting->type =="text")
+
+                                <input type="text" name="value" class="form-control" placeholder="Value"
+                                       value="{{old('title', isset($siteSetting->value)?$siteSetting->value:null)}}">
+                                <span class="text-danger">{{ $errors->first('value') }}</span>
+
+                            @elseif($siteSetting->type =="text-area")
+                                <textarea name="value" class="form-control"
+                                          placeholder="Value">{{old('title', isset($siteSetting->value)?$siteSetting->value:null)}}</textarea>
+                                <span class="text-danger">{{ $errors->first('value') }}</span>
+                            @elseif($siteSetting->type =="file")
+                                <input type="file" class="form-control" placeholder="Logo" name="value">
+                                <span class="text-danger">{{ $errors->first('value') }}</span>
+                            @endif
+
+
                         </div>
                     </div>
+
                 </div>
-
             </div>
-
             <div class="col-lg-4 col-md-4">
 
                 <div class="form-group row mt-3">

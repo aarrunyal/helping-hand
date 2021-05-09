@@ -177,7 +177,7 @@ return [
         Yoeunes\Toastr\ToastrServiceProvider::class,
         \App\Providers\PageProvider::class,
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
-
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
     ],
 
     /*
@@ -231,7 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
-
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

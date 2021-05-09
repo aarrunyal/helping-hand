@@ -73,6 +73,9 @@
 <script src="{{asset('resources/front/js/jquery.js')}}"></script>
 <script src="{{asset('resources/front/js/popper-min.js')}}"></script>
 <script src="{{asset('resources/front/js/bootstrap.js')}}"></script>
+@if(getSetting("SETTING_CUSTOM_HEADER_SCRIPTS"))
+    {{ getSetting("SETTING_CUSTOM_FOOTER_SCRIPTS")}}
+@endif
 <script type="text/javascript">
 </script>
 @yield('page-script')

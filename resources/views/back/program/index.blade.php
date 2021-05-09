@@ -109,6 +109,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$programs->links()}}
                 </div>
             </div>
         </div>

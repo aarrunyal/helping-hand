@@ -17,6 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->bigInteger("destination_id")->nullable()->unsigned()->index();
             $table->bigInteger("program_id")->nullable()->unsigned()->index();
+            $table->bigInteger("package_id")->nullable()->unsigned()->index();
             $table->bigInteger("date_id")->nullable()->unsigned()->index();
             $table->bigInteger("pricing_id")->nullable()->unsigned()->index();
             $table->string("first_name")->nullable();
@@ -38,6 +39,7 @@ class CreateApplicationsTable extends Migration
             $table->boolean("is_served")->default(0);
             $table->foreign("destination_id")->references('id')->on('destinations')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("program_id")->references('id')->on('destinations')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign("package_id")->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("date_id")->references('id')->on('destinations')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign("pricing_id")->references('id')->on('destinations')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

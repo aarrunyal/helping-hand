@@ -44,25 +44,20 @@ class InquiryService extends Service
 
     public function store($data)
     {
-//        try {
+        try {
         return $this->inquiry->create($data);
-//        } catch (\Exception $ex) {
-//            return false;
-//        }
+        } catch (\Exception $ex) {
+            return false;
+        }
     }
 
-    public function update($slug, $data)
+    public function update($id, $data)
     {
 //        try {
-        $inquiry = $this->findByColumn('slug', $slug);
-        if (isset($data['social_share_image'])) {
-            if (!empty($inquiry->social_share_image)) {
-                $this->deleteUploadedImage($inquiry->social_share_image, $this->uploadPath);
-            }
-            $data['social_share_image'] = $this->upload($data['social_share_image'], null, null, $this->uploadPath);
-        }
-        $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-        $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
+        $inquiry = $this->findByColumn('id', $id);
+        $data['is_read'] = (isset($data['is_read']) && $data['is_read'] == "on") ? 1 : 0;
+        $data['is_served'] = (isset($data['is_served']) && $data['is_served'] == "on") ? 1 : 0;
+        $data['is_email_forwarded'] = (isset($data['is_email_forwarded']) && $data['is_email_forwarded'] == "on") ? 1 : 0;
         return $inquiry->update($data);
 //        } catch (\Exception $ex) {
 //            return false;

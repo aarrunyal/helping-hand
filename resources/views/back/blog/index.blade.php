@@ -116,6 +116,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$blogs->links()}}
                 </div>
             </div>
         </div>

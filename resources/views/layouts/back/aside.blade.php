@@ -98,10 +98,26 @@
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">Page</span></a></li>
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('inquiry.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Inquiry</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('application.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Application</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('testimonial.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Testimonial</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('system-user.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">User</span></a></li>
+
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('site-setting.index')}}"
                         class="kt-menu__link ">

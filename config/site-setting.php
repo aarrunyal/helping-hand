@@ -6,6 +6,7 @@ return [
     ["title" => "SETTING_SEO_TITLE", "type" => "text"],
     ["title" => "SETTING_SEO_DESCRIPTION", "type" => "text"],
     ["title" => "SETTING_LOGO", "type" => "file"],
+    ["title" => "SETTING_SOCIAL_SHARE_IMAGE", "type" => "file"],
     ["title" => "SETTING_PHONE", "type" => "text"],
     ["title" => "SETTING_EMAIL", "type" => "text"],
     ["title" => "SETTING_CUSTOM_HEADER_SCRIPTS", "type" => "text-area"],

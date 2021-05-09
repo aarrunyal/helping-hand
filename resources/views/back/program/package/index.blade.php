@@ -100,6 +100,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$packages->links()}}
                 </div>
             </div>
         </div>

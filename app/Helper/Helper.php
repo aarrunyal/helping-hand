@@ -33,11 +33,14 @@ function formatDate($val, $format = "Y-m-d")
     return date($format, strtotime($val));
 }
 
-function getSetting($config)
+function getSetting($config, $field = null)
 {
     $setting = \App\Models\Models\SiteSetting\SiteSetting::where('title', $config)->first();
-    if (!empty($setting))
+    if (!empty($setting)) {
+        if (!empty($field))
+            return $setting[$field];
         return $setting->value;
+    }
     return null;
 }
 

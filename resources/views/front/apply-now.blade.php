@@ -296,7 +296,7 @@
             let url = "{{route('prices-by-package', ":package_id")}}"
             url = url.replace(":package_id", packageId)
             ajaxCall("GET", url, "JSON", null, "#pricing_id", function (response, selector) {
-                $(selector).html(buildSelect(response, "Select Pricing", 'duration'))
+                $(selector).html(buildSelect(response, "Duration of stay", 'duration'))
             }, function (response) {
             })
         }
