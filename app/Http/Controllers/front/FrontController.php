@@ -188,10 +188,10 @@ class FrontController
         return redirect()->route('inquiry')->with(["msg" => "error"]);
     }
 
-    public function setSeo($value = null, $type = "program", $image = null)
+    public function setSeo($title = null,$description=null, $type = "program", $image = null)
     {
-        $title = !empty($value->title) ? $value->title : getSetting("SETTING_SEO_TITLE");
-        $description = !empty($value->seo_description) ? $value->seo_description : getSetting("SETTING_SEO_DESCRIPTION");
+        $title = !empty($title) ? $title : getSetting("SETTING_SEO_TITLE");
+        $description = !empty($description) ? $description : getSetting("SETTING_SEO_DESCRIPTION");
         $imagePath = $image;
         if (empty($imagePath)) {
             $imagePath = getSetting("SETTING_SOCIAL_SHARE_IMAGE", "image_path");

@@ -18,6 +18,7 @@ use App\Http\Controllers\Back\Testimonial\TestimonialController;
 use \App\Http\Controllers\Back\Program\Package\PackageIncludeExcludeController;
 use App\Http\Controllers\Back\Inquiry\InquiryController;
 use App\Http\Controllers\Back\Application\ApplicationController;
+use App\Http\Controllers\Back\Media\MediaController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -117,5 +118,10 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('application', [ApplicationController::class, "index"])->name('application.index');
     $route->get('application/{id}', [ApplicationController::class, "getDetail"])->name('application.detail');
     $route->post('application/{id}', [ApplicationController::class, "update"])->name('application.update');
+
+    //    Testimonial
+    $route->resource('media', MediaController::class);
+    $route->get('media/{id}/destroy', [MediaController::class, "destroy"])->name('media.destroy');
+
 
 });
