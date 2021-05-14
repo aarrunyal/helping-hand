@@ -47,14 +47,17 @@ class SiteSettingService extends Service
     public function update($id, $data)
     {
 //        try {
-            $siteSetting = $this->findByColumn('id', $id);
-            if (isset($data['type']) && $data['type'] == "file" && !empty($data['value'])) {
-                if (!empty($siteSetting->value))
-                    $this->deleteUploadedImage($this->uploadPath, $siteSetting->value);
-                $data['value'] = $this->upload($data['value'], null, null, $this->uploadPath);
-            }
-            $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-            return $siteSetting->update($data);
+        $siteSetting = $this->findByColumn('id', $id);
+        if (isset($data['type']) && $data['type'] == "file" && !empty($data['value'])) {
+            if (!empty($siteSetting->value))
+                $this->deleteUploadedImage($this->uploadPath, $siteSetting->value);
+            $data['value'] = $this->upload($data['value'], null, null, $this->uploadPath);
+        }
+        if (isset($data['title']) && $data['title'] == "SETTING_ROBOTS") {
+            file_put_contents('robots.txt', $data['value']);
+        }
+        $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+        return $siteSetting->update($data);
 //        } catch (\Exception $ex) {
 //            return false;
 //        }

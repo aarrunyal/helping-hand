@@ -26,7 +26,7 @@
                                 <span class="text-danger">{{ $errors->first('value') }}</span>
 
                             @elseif($siteSetting->type =="text-area")
-                                <textarea name="value" class="form-control"
+                                <textarea name="value" class="form-control" rows="15"
                                           placeholder="Value">{{old('title', isset($siteSetting->value)?$siteSetting->value:null)}}</textarea>
                                 <span class="text-danger">{{ $errors->first('value') }}</span>
                             @elseif($siteSetting->type =="file")

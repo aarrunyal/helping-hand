@@ -1,2 +1,6 @@
 User-agent: *
-Disallow:
+Disallow: /iwsadmin
+Disallow: /advance_search
+Disallow: /search
+Disallow: /blog/search
+Disallow: /trip-booking
