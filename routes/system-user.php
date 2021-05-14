@@ -19,6 +19,7 @@ use \App\Http\Controllers\Back\Program\Package\PackageIncludeExcludeController;
 use App\Http\Controllers\Back\Inquiry\InquiryController;
 use App\Http\Controllers\Back\Application\ApplicationController;
 use App\Http\Controllers\Back\Media\MediaController;
+use App\Http\Controllers\Back\Menu\MenuController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -119,9 +120,14 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('application/{id}', [ApplicationController::class, "getDetail"])->name('application.detail');
     $route->post('application/{id}', [ApplicationController::class, "update"])->name('application.update');
 
-    //    Testimonial
+    //    Media
     $route->resource('media', MediaController::class);
     $route->get('media/{id}/destroy', [MediaController::class, "destroy"])->name('media.destroy');
 
+    //    Media
+    $route->resource('menu', MenuController::class);
+    $route->get('menu/{id}/destroy', [MenuController::class, "destroy"])->name('menu.destroy');
+    $route->post('menu/{id}', [MenuController::class, "update"])->name('menu-update');
+    $route->get('menu/custom-form/{type}', [MenuController::class, "getCustomForm"])->name('menu.custom-form');
 
 });

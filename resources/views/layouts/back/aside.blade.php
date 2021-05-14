@@ -128,6 +128,11 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-blog"></i></span>
                         <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li>
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('menu.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-blog"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Menu</span></a></li>
 
             </ul>
         </div>
