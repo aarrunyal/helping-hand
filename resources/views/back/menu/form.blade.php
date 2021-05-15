@@ -38,13 +38,26 @@
                             <input type="text" name="title" id="title" class="form-control"
                                    value="{{old('title',!empty($menu)?$menu->title:null)}}" placeholder="Menu Title">
                         </div>
-                        <div class=" col-lg-4 col-md-4" id="link_div">
+                        <div class=" col-lg-4 col-md-4">
+                            <label class="form-control-label">* Position</label>
+                            <select name="position" id="" class="form-control">
+                                @for($i=1; $i<=10; $i++)
+                                    <option
+                                        value="{{$i}}" {{old('position', (!empty($menu)&&$menu->position?$menu->position:'10')=='10'?'selected':'')}}> {{$i}}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class=" col-lg-4 col-md-4 mt-3" id="link_div">
                             <label class="form-control-label">* Link</label>
                             <input type="text" name="link" id="link" class="form-control"
                                    value="{{old('link', !empty($menu)?$menu->link:null)}}" placeholder="Menu Link">
                         </div>
                         <div class=" col-lg-4 col-md-4 mt-3" id="reference_id_div">
-
+                            @if(!empty($menu) && $menu->is_parent == 0)
+                                <select id="reference_id" name="reference_id">
+                                    <option value="{{$menu->reference_id}}" selected>{{$menu->reference_id}}</option>
+                                </select>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -90,14 +103,13 @@
                 </div>
             </div>
 
-
             <div class="col-lg-4 col-md-4">
 
                 <div class="form-group row mt-3">
                     <label class="col-1 col-form-label">Have no children</label>
                     <span class="kt-switch kt-switch--success ml-5">
 															<label>
-																<input type="checkbox" checked
+																<input type="checkbox"
                                                                        onchange="triggerEventForNonParent()"
                                                                        {{(isset($menu->is_parent) && $menu->is_parent =='1')?"checked":''}}
                                                                        name="is_parent" id="is_parent">
@@ -148,7 +160,7 @@
             @if(!empty($menu))
             $("#link_div").show()
             @if($menu->is_parent && $menu->children->count()>0)
-            $("#is_parent").prop('checked', false)
+            $("#is_parent").prop('checked', true)
             triggerEventForNonParent()
             @endif
             @endif
@@ -178,15 +190,16 @@
             let flag = [];
             flag.push(isNotNull(title, "input[name='title']"));
             flag.push(isNotNull(type, "select[name='type']"));
-            if (isParent) {
+            if (!isParent) {
                 if (type == 'single')
                     flag.push(isNotNull(link, "input[name='link']"));
                 else
                     flag.push(isNotNull(referenceId, "select[name='reference_id']"));
             }
+            console.log(flag)
             if (flag.includes(false))
                 return false;
-            if (!isParent)
+            if (isParent)
                 return validateChildren()
             return true;
         })
@@ -207,13 +220,14 @@
 
         function triggerEventForNonParent() {
             let isParent = $('#is_parent').prop('checked');
-            if (!isParent) {
+            if (isParent) {
                 $("#child_section").show()
                 $("#link_div").hide()
                 $("#reference_id_div").html('')
                 getCustomChildForm()
             } else {
                 $("#child_div").html('')
+                $("#reference_id_div").show()
                 getCustomForm()
             }
         }

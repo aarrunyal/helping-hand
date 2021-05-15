@@ -61,6 +61,7 @@
                             <th class="text-center">Type</th>
 
                             <th class="text-center">Children</th>
+                            <th class="text-center">Position</th>
                             {{--                            <th class="text-center">Children</th>--}}
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
@@ -92,6 +93,9 @@
                                             <span class="badge badge-secondary">- </span>
                                         @endif
 
+                                    </td>
+                                    <td class="text-center">
+                                            <span class="badge badge-secondary">{{$menu->position}} </span>
                                     </td>
                                     {{--                                    <td class="text-center">{!! getStatusLayout($menu->is_parent) !!}</td>--}}
                                     <td class="text-center">{!! getStatusLayout($menu->is_active) !!}</td>

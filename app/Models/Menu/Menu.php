@@ -26,6 +26,7 @@ class Menu extends Model
         'slug',
         'link',
         'type',
+        'position',
         'is_parent',
         'is_active',
     ];

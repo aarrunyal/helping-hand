@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Menu\Menu;
 use App\Models\Page\Page;
 use App\Services\Page\PageService;
 use Illuminate\Support\Facades\Config;
@@ -37,8 +38,15 @@ class PageProvider extends ServiceProvider
         Config::set('recaptcha.api_secret_key', $secretKey);
         $page = new Page();
         $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
+        $menu = new Menu();
+        $menus = $menu->whereNull('parent_id')->whereIsActive(1)->orderBy('position')->get();
         view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
             $view->with(['pages' => $footerPages]);
+
+        });
+//        dd($menus->first()->children->first()->title);
+        view()->composer('layouts.front.header', function ($view) use ($menus) {
+            $view->with(['menus' => $menus]);
 
         });
     }

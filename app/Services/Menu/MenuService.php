@@ -39,7 +39,7 @@ class MenuService extends Service
 
     public function paginate($limit)
     {
-        $menus = $this->menu->whereIsParent(1)->orderBy('id', 'DESC')->paginate($limit);
+        $menus = $this->menu->whereNull('parent_id')->orderBy('id', 'DESC')->paginate($limit);
         return $menus;
     }
 
@@ -61,14 +61,13 @@ class MenuService extends Service
         $children = [];
         $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-        if ($data['is_parent'] && $data['type'] != 'single')
+        if ($data['type'] != 'single' && isset($data['reference_id']))
             $data['link'] = $this->getLink($data['type'], $data['reference_id']);
         if (isset($data['child_reference_id']) && sizeof($data['child_reference_id']) > 0) {
             $children = $this->buildChildren($data);
             unset($data['child_reference_id']);
             unset($data['child_title']);
         }
-        $data['is_parent'] = 1;
         $menu = $this->menu->create($data);
         if ($menu && sizeof($children) > 0) {
             $this->createAndUpdateChildren($menu->id, $children);
@@ -145,9 +144,9 @@ class MenuService extends Service
         $children = [];
         $menu = $this->findByColumn('slug', $slug);
         $menuId = $menu->id;
-        $data['is_parent'] = 1;
+        $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-        if ($data['is_parent'] && $data['type'] != 'single' && isset($data['reference_id']))
+        if ( $data['type'] != 'single' && isset($data['reference_id']))
             $data['link'] = $this->getLink($data['type'], $data['reference_id']);
         if (isset($data['child_reference_id']) && sizeof($data['child_reference_id']) > 0) {
             $children = $this->buildChildren($data);

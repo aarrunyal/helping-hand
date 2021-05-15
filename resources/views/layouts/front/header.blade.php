@@ -43,70 +43,37 @@
 
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ABOUT US
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item p-1" href="#">About HHFN</a>
-                        <a class="dropdown-item p-1" href="#">Our Team</a>
-                        <a class="dropdown-item p-1" href="#">Become a
-                            volunteers</a>
-                    </div>
-                </li>
-                <li class="nav-item mr-2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        VOLUNTEERING PROGRAM
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item p-1" href="#">About HHFN</a>
-                        <a class="dropdown-item p-1" href="#">Our Team</a>
-                        <a class="dropdown-item p-1" href="#">Become a
-                            volunteers</a>
-                    </div>
-                </li>
-                <li class="nav-item mr-2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        WORK CAMP
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item p-1" href="#">About HHFN</a>
-                        <a class="dropdown-item p-1" href="#">Our Team</a>
-                        <a class="dropdown-item p-1" href="#">Become a
-                            volunteers</a>
-                    </div>
-                </li>
-                <li class="nav-item mr-2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        CHARITY TREK
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item p-1" href="#">About HHFN</a>
-                        <a class="dropdown-item p-1" href="#">Our Team</a>
-                        <a class="dropdown-item p-1" href="#">Become a
-                            volunteers</a>
-                    </div>
-                </li>
-                <li class="nav-item mr-2 dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        CONNECT WITH US
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item p-1" href="#">About HHFN</a>
-                        <a class="dropdown-item p-1" href="#">Our Team</a>
-                        <a class="dropdown-item p-1" href="#">Become a
-                            volunteers</a>
-                    </div>
-                </li>
+                @if($menus->count()>0)
+                    @foreach($menus as $menu)
+                        @if($menu->is_parent)
+                            <li class="nav-item mr-2 dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ucwords($menu->title)}}
+                                </a>
+                                @if($menu->children->count()>0)
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @foreach($menu->children as $child)
+                                            <a class="dropdown-item p-1"
+                                               href="{{$child->link}}">{{ucwords($child->title)}}</a>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </li>
+                        @else
+                            <li class="nav-item mr-2 dropdown">
+                                <a class="nav-link " href="{{$menu->link}}" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    {{$menu->title}}
+                                </a>
+                            </li>
+                        @endif
+                    @endforeach
+                @endif
             </ul>
-          <div class="ml-auto mt-1">
-              <a href="{{'apply-now'}}" class="btn-apply-now ">Apply Now</a>
-          </div>
+            <div class="ml-auto mt-1">
+                <a href="{{'apply-now'}}" class="btn-apply-now ">Apply Now</a>
+            </div>
 
         </div>
     </nav>
