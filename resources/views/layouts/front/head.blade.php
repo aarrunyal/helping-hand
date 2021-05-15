@@ -19,7 +19,7 @@
         {!! htmlScriptTagJsApi() !!}
     @endif
     @if(getSetting("SETTING_CUSTOM_HEADER_SCRIPTS"))
-       {{ getSetting("SETTING_CUSTOM_HEADER_SCRIPTS")}}
+       {!! getSetting("SETTING_CUSTOM_HEADER_SCRIPTS") !!}
     @endif
 </head>
 
