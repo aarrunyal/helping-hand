@@ -140,4 +140,21 @@ class MenuController extends Controller
             $programs = $this->menu->getValues($type);
         return view('back.menu.custom-form.custom-select', compact('type', 'packages', 'blogs', 'programs', 'pages'));
     }
+
+    public function getChildForm($type)
+    {
+        $packages = null;
+        $blogs = null;
+        $programs = null;
+        $pages = null;
+        if ($type == 'page')
+            $pages = $this->menu->getValues($type);
+        if ($type == 'blog')
+            $blogs = $this->menu->getValues($type);
+        if ($type == 'package')
+            $packages = $this->menu->getValues($type);
+        if ($type == 'program')
+            $programs = $this->menu->getValues($type);
+        return view('back.menu.custom-form.child-form', compact('type', 'packages', 'blogs', 'programs', 'pages'));
+    }
 }

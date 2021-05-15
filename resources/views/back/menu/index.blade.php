@@ -57,7 +57,11 @@
                         <tr>
                             <th class="text-center">S.No.</th>
                             <th class="text-center">Title</th>
-                            <th class="text-center">Link</th>
+{{--                            <th class="text-center">Associated To</th>--}}
+                            <th class="text-center">Type</th>
+
+                            <th class="text-center">Children</th>
+                            {{--                            <th class="text-center">Children</th>--}}
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -69,12 +73,32 @@
                                 <tr>
                                     <td class="text-center">{{$c+1}}</td>
                                     <td class="text-center">{{ucwords($menu->title)}}</td>
-                                    <td class="text-center">{{($menu->link)}}</td>
+{{--                                    <td class="text-center">--}}
+{{--                                        <span--}}
+{{--                                            class="badge badge-secondary">{{!$menu->is_parent?$menu->parent->title:'-'}}</span>--}}
+{{--                                    </td>--}}
+                                    <td class="text-center">
+                                        <span class="badge badge-secondary">{{strtoupper($menu->type)}}</span>
+                                    </td>
+
+                                    <td class="text-center">
+                                        @if($menu->children->count()>0)
+                                            @foreach($menu->children as $child)
+                                                <span class="badge badge-secondary">
+                                                    <a href="{{$child->link}}" target="_blank" class="text-dark">{{$child->title}}</a>
+                                                </span>
+                                            @endforeach
+                                        @else
+                                            <span class="badge badge-secondary">- </span>
+                                        @endif
+
+                                    </td>
+                                    {{--                                    <td class="text-center">{!! getStatusLayout($menu->is_parent) !!}</td>--}}
                                     <td class="text-center">{!! getStatusLayout($menu->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('menu.edit', $menu->slug)}}"><i class="fas fa-edit"></i></a>
                                         <a href="{{route('menu.destroy', $menu->slug)}}"><i
-                                                    class="fas fa-trash"></i></a>
+                                                class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

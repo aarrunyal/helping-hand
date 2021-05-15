@@ -20,6 +20,7 @@ class Menu extends Model
     }
 
     protected $fillable = [
+        'parent_id',
         'reference_id',
         'title',
         'slug',
@@ -28,4 +29,12 @@ class Menu extends Model
         'is_parent',
         'is_active',
     ];
+
+    public function parent(){
+        return $this->belongsTo(Menu::class, 'parent_id');
+    }
+
+    public function children(){
+        return $this->hasMany(Menu::class, 'parent_id')->whereIsParent(0);
+    }
 }

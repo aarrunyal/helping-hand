@@ -129,5 +129,6 @@ Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($ro
     $route->get('menu/{id}/destroy', [MenuController::class, "destroy"])->name('menu.destroy');
     $route->post('menu/{id}', [MenuController::class, "update"])->name('menu-update');
     $route->get('menu/custom-form/{type}', [MenuController::class, "getCustomForm"])->name('menu.custom-form');
+    $route->get('menu/child-form/{type}', [MenuController::class, "getChildForm"])->name('menu.child-form');
 
 });

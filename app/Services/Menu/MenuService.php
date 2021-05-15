@@ -39,7 +39,7 @@ class MenuService extends Service
 
     public function paginate($limit)
     {
-        $menus = $this->menu->orderBy('id', 'DESC')->paginate($limit);
+        $menus = $this->menu->whereIsParent(1)->orderBy('id', 'DESC')->paginate($limit);
         return $menus;
     }
 
@@ -58,14 +58,63 @@ class MenuService extends Service
     public function store($data)
     {
 //        try {
+        $children = [];
         $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
         if ($data['is_parent'] && $data['type'] != 'single')
             $data['link'] = $this->getLink($data['type'], $data['reference_id']);
-        return $this->menu->create($data);
+        if (isset($data['child_reference_id']) && sizeof($data['child_reference_id']) > 0) {
+            $children = $this->buildChildren($data);
+            unset($data['child_reference_id']);
+            unset($data['child_title']);
+        }
+        $data['is_parent'] = 1;
+        $menu = $this->menu->create($data);
+        if ($menu && sizeof($children) > 0) {
+            $this->createAndUpdateChildren($menu->id, $children);
+        }
+        return $menu;
 //        } catch (\Exception $ex) {
 //            return false;
 //        }
+    }
+
+    function createAndUpdateChildren($menuId, $children)
+    {
+        $childMenuIdArray = [];
+        foreach ($children as $child) {
+            $child['parent_id'] = $menuId;
+            if (empty($child['id'])) {
+                $m = $this->menu->create($child);
+                $childMenuIdArray[] = $m->id;
+            } else {
+                $menu = $this->findByColumn('id', $child['id']);
+                $menu->update($child);
+                $childMenuIdArray[] = $child['id'];
+            }
+        }
+
+        if (sizeof($childMenuIdArray) > 0) {
+            $this->menu->whereParentId($menuId)->whereNotIn('id', $childMenuIdArray)->delete();
+        }
+        return true;
+    }
+
+    function buildChildren($data)
+    {
+        $children = [];
+        for ($i = 0; $i < sizeof($data['child_reference_id']); $i++) {
+            $children[] = [
+                'id' => (isset($data['child_id'][$i]) && !empty($data['child_id'][$i])) ? $data['child_id'][$i] : null,
+                'type' => $data['type'],
+                'title' => $data['child_title'][$i],
+                'link' => !empty($data['child_reference_id'][$i])?$this->getLink($data['type'], $data['child_reference_id'][$i]):null,
+                'reference_id' => $data['child_reference_id'][$i],
+                'is_parent' => 0,
+                'is_active' => (isset($data['is_active']) && $data['is_active'] == 1) ? 1 : 0,
+            ];
+        }
+        return $children;
     }
 
     function getLink($type, $referenceId)
@@ -92,24 +141,38 @@ class MenuService extends Service
 
     public function update($slug, $data)
     {
-        try {
-            $menu = $this->findByColumn('slug', $slug);
-            $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
-            $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-            if ($data['is_parent'] && $data['type'] != 'single')
-                $data['link'] = $this->getLink($data['type'], $data['reference_id']);
-            return $menu->update($data);
-        } catch (\Exception $ex) {
-            return false;
+//        try {
+        $children = [];
+        $menu = $this->findByColumn('slug', $slug);
+        $menuId = $menu->id;
+        $data['is_parent'] = 1;
+        $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+        if ($data['is_parent'] && $data['type'] != 'single' && isset($data['reference_id']))
+            $data['link'] = $this->getLink($data['type'], $data['reference_id']);
+        if (isset($data['child_reference_id']) && sizeof($data['child_reference_id']) > 0) {
+            $children = $this->buildChildren($data);
+            unset($data['child_reference_id']);
+            unset($data['child_title']);
         }
+//        dd($children);
+        if ($menu->update($data) && sizeof($children) > 0) {
+            $this->createAndUpdateChildren($menuId, $children);
+        }
+
+        return true;
+//        } catch (\Exception $ex) {
+//            return false;
+//        }
     }
 
     public function delete($slug)
     {
         try {
             $menu = $this->findByColumn('slug', $slug);
-            if (!empty($menu->social_share_image)) {
-                $this->deleteUploadedImage($menu->social_share_image, $this->uploadPath);
+            if ($menu->children->count() > 0) {
+                foreach ($menu->children as $child) {
+                    $child->delete();
+                }
             }
             return $menu->delete();
         } catch (\Exception $ex) {

@@ -48,18 +48,56 @@
                         </div>
                     </div>
                 </div>
+                <div class="row mt-5" id="child_section">
+                    <div class="col-6">
+                        <h5>Child Menu</h5>
+                    </div>
+                    <div class="col-6 text-right">
+                        <button type="button" class="btn btn-outline-dark"
+                                onclick="getCustomChildForm()">
+                            <i class="fas fa-plus"></i>
+                        </button>
 
+                    </div>
+                    <div class="col-12" id="child_div">
+                        @if(!empty($menu) && $menu->children->count()>0)
+                            @foreach($menu->children as $child)
+                              <div class="row">
+                                  <div class="col-4">
+                                      <label class="form-control-label">* Title</label>
+                                      <input type="text" name="child_reference_id[]" value="{{$child->reference_id}}" hidden>
+                                      <input type="text" name="child_id[]" value="{{$child->id}}" hidden>
+                                      <input type="text" name="child_title[]" class="form-control" value="{{$child->title}}"
+                                             placeholder="Menu Title" readonly>
+                                  </div>
+                                  <div class="col-4">
+                                      <label class="form-control-label">* Link</label>
+                                      <input type="text" class="form-control" value="{{$child->link}}"
+                                             placeholder="Menu Link" readonly>
+                                  </div>
+                                  <div class="col-2">
+                                      <button type="button" class="btn btn-outline-dark mt-4" onclick="removeForm(this)">
+                                          <i class="fas fa-trash"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
             </div>
+
 
             <div class="col-lg-4 col-md-4">
 
                 <div class="form-group row mt-3">
-                    <label class="col-1 col-form-label">Is Parent</label>
+                    <label class="col-1 col-form-label">Have no children</label>
                     <span class="kt-switch kt-switch--success ml-5">
 															<label>
 																<input type="checkbox" checked
+                                                                       onchange="triggerEventForNonParent()"
                                                                        {{(isset($menu->is_parent) && $menu->is_parent =='1')?"checked":''}}
-                                                                       name="is_parent">
+                                                                       name="is_parent" id="is_parent">
 																<span></span>
 															</label>
 														</span>
@@ -103,41 +141,18 @@
         $(document).ready(() => {
             // $("#link_div").hide()
             $("#reference_id_div").hide()
+            $("#child_section").hide()
             @if(!empty($menu))
             $("#link_div").show()
-            {{--$("#reference_id_div").hide()--}}
-            {{--let selection = $('select[name="type"]').val();--}}
-            {{--if (selection == 'single') {--}}
-            {{--    $("#link_div").show()--}}
-            {{--} else {--}}
-            {{--    getCustomForm();--}}
-            {{--    $("#reference_id_div").show()--}}
-            {{--    let referenceId = '{{$menu->reference_id}}'--}}
-            {{--    let selector = `#reference_id option[value=${referenceId}]`--}}
-            {{--    // console.log(selector)--}}
-            {{--    // $('#reference_id').val(referenceId).trigger('change');--}}
-            {{--    $('#reference_id').prop('selected',true).trigger('change');;--}}
-            // }
+            @if($menu->is_parent && $menu->children->count()>0)
+            $("#is_parent").prop('checked', false)
+            triggerEventForNonParent()
+            @endif
             @endif
         })
-        $("#btn-add").click(() => {
-            let html = `  <div class="row mt-3">
-                            <div class=" col-lg-10 col-md-10">
-                                <label class="form-control-label">* Title</label>
-                                <input type="text" name="title[]" class="form-control" placeholder="Destination Title">
-                            </div>
-                            <div class=" col-lg-2 col-md-2 mt-4">
-                                <button type="button" class="btn btn-outline-dark" onclick="removeForm(this)">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                    </div>`
-            $("#destination-input-container").append(html);
-        })
-
 
         function removeForm(e) {
-            $(e).closest('.row').html("");
+            $(e).closest('.row').remove();
         }
 
         $('select[name="type"]').change(() => {
@@ -166,10 +181,11 @@
                 else
                     flag.push(isNotNull(referenceId, "select[name='reference_id']"));
             }
-            console.log(title, link, type, referenceId)
-            console.log(flag)
-            if (flag.includes(false))
+            if (flag.includes(false)) {
+                if (!isParent)
+                    validateChildren()
                 return false;
+            }
             return true;
         })
 
@@ -185,6 +201,49 @@
             }, function (error) {
 
             })
+        }
+
+        function triggerEventForNonParent() {
+            let isParent = $('#is_parent').prop('checked');
+            if (!isParent) {
+                $("#child_section").show()
+                $("#link_div").hide()
+                $("#reference_id_div").html('')
+                getCustomChildForm()
+            } else {
+                $("#child_div").html('')
+                getCustomForm()
+            }
+        }
+
+        // $("#is_parent").change(() => {
+        //
+        // })
+
+        function getCustomChildForm() {
+            let type = $("select[name='type']").val()
+            let url = '{{route("menu.child-form", ":type")}}';
+            url = url.replace(':type', type);
+            ajaxCall('GET', url, 'HTML', '', '#child_div', function (response, selector) {
+                $(selector).append(response)
+            }, function (error) {
+
+            })
+        }
+
+        function validateChildren() {
+            let flag = [];
+            $.each($(".child-form"), (i, v) => {
+                flag = [];
+                let select = $(v).find('select').val();
+                let title = $(v).find('input').val();
+                flag.push(isNotNull(select, "select[name='child_reference_id[]']", 'This field is required'));
+                flag.push(isNotNull(title, "input[name='child_title[]']", 'Title is required'));
+                console.log(select)
+            })
+            if (flag.includes(false))
+                return false;
+            return true;
         }
 
     </script>
