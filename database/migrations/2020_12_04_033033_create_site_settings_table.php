@@ -17,7 +17,7 @@ class CreateSiteSettingsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('type')->nullable();
-            $table->string('value')->nullable();
+            $table->text('value')->nullable();
             $table->boolean('is_active')->default(1);
             $table->timestamps();
             $table->softDeletes();

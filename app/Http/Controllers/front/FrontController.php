@@ -82,6 +82,7 @@ class FrontController
     {
         $featuredBlog = $this->blog->findByColumns(["is_active" => 1, "is_featured" => 1], true);
         $otherBlog = $this->blog->findByColumns(["is_active" => 1, "is_featured" => 0], true);
+        $this->setSeo(null, null, 'blog', null);
         return view('front.blog', compact('featuredBlog', 'otherBlog'));
     }
 
@@ -90,6 +91,7 @@ class FrontController
         $blog = $this->blog->findByColumn('slug', $slug);
         if (empty($blog))
             return redirect()->route('blog-main');
+        $this->setSeo($blog->seo_title, $blog->seo_description, 'package', $blog->image_path);
         return view('front.blog-detail', compact('blog'));
     }
 
@@ -114,6 +116,7 @@ class FrontController
     {
         $package = $this->package->findByColumns(['slug' => $slug]);
         $otherPackages = $this->package->getOtherPackages(['program_id' => $package->program_id, 'destination_id' => $package->destination_id], $package->id);
+        $this->setSeo($package->seo_title, $package->seo_description, 'package', $package->image_path);
         return view('front.package', compact('package', 'otherPackages'));
     }
 
@@ -124,7 +127,7 @@ class FrontController
         $packages = null;
         if (!empty($program->destination_ids))
             $packages = $this->package->getPackageBy($program->destination_ids);
-
+        $this->setSeo($program->seo_title, $program->seo_description, 'program', $program->image_path);
         return view('front.program-detail', compact('program', 'otherPrograms', 'packages'));
     }
 
@@ -143,6 +146,7 @@ class FrontController
     public function page($pageName)
     {
         $page = $this->page->findByColumn('slug', $pageName);
+        $this->setSeo($page->seo_title, $page->seo_description, 'program', $page->image_path);
         return view('front.page', compact('page'));
     }
 
@@ -188,14 +192,14 @@ class FrontController
         return redirect()->route('inquiry')->with(["msg" => "error"]);
     }
 
-    public function setSeo($title = null,$description=null, $type = "program", $image = null)
+    public function setSeo($title = null, $description = null, $type = "program", $image = null)
     {
         $title = !empty($title) ? $title : getSetting("SETTING_SEO_TITLE");
         $description = !empty($description) ? $description : getSetting("SETTING_SEO_DESCRIPTION");
         $imagePath = $image;
-        if (empty($imagePath)) {
+        if (empty($imagePath) || sizeof($image) <= 0) {
             $imagePath = getSetting("SETTING_SOCIAL_SHARE_IMAGE", "image_path");
-            $imagePath = sizeof($imagePath) > 0 ? $imagePath['real'] : null;
+            $imagePath = !empty($imagePath) && sizeof($imagePath) > 0 ? $imagePath['real'] : null;
         }
         $url = request()->url();
         SEOTools::setTitle($title);
