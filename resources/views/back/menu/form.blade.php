@@ -62,25 +62,28 @@
                     <div class="col-12" id="child_div">
                         @if(!empty($menu) && $menu->children->count()>0)
                             @foreach($menu->children as $child)
-                              <div class="row">
-                                  <div class="col-4">
-                                      <label class="form-control-label">* Title</label>
-                                      <input type="text" name="child_reference_id[]" value="{{$child->reference_id}}" hidden>
-                                      <input type="text" name="child_id[]" value="{{$child->id}}" hidden>
-                                      <input type="text" name="child_title[]" class="form-control" value="{{$child->title}}"
-                                             placeholder="Menu Title" readonly>
-                                  </div>
-                                  <div class="col-4">
-                                      <label class="form-control-label">* Link</label>
-                                      <input type="text" class="form-control" value="{{$child->link}}"
-                                             placeholder="Menu Link" readonly>
-                                  </div>
-                                  <div class="col-2">
-                                      <button type="button" class="btn btn-outline-dark mt-4" onclick="removeForm(this)">
-                                          <i class="fas fa-trash"></i>
-                                      </button>
-                                  </div>
-                              </div>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label class="form-control-label">* Title</label>
+                                        <input type="text" name="child_reference_id[]" value="{{$child->reference_id}}"
+                                               hidden>
+                                        <input type="text" name="child_id[]" value="{{$child->id}}" hidden>
+                                        <input type="text" name="child_title[]" class="form-control"
+                                               value="{{$child->title}}"
+                                               placeholder="Menu Title" readonly>
+                                    </div>
+                                    <div class="col-4">
+                                        <label class="form-control-label">* Link</label>
+                                        <input type="text" class="form-control" value="{{$child->link}}"
+                                               placeholder="Menu Link" readonly>
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-outline-dark mt-4"
+                                                onclick="removeForm(this)">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             @endforeach
                         @endif
                     </div>
@@ -181,11 +184,10 @@
                 else
                     flag.push(isNotNull(referenceId, "select[name='reference_id']"));
             }
-            if (flag.includes(false)) {
-                if (!isParent)
-                    validateChildren()
+            if (flag.includes(false))
                 return false;
-            }
+            if (!isParent)
+                return validateChildren()
             return true;
         })
 
@@ -239,7 +241,6 @@
                 let title = $(v).find('input').val();
                 flag.push(isNotNull(select, "select[name='child_reference_id[]']", 'This field is required'));
                 flag.push(isNotNull(title, "input[name='child_title[]']", 'Title is required'));
-                console.log(select)
             })
             if (flag.includes(false))
                 return false;

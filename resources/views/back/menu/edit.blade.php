@@ -28,7 +28,7 @@
                             </h3>
                         </div>
                     </div>
-                    <form class="kt-form kt-form--label-right" id="destination-create" method="POST" action="{{route('menu-update', $menu->slug)}}" enctype="multipart/form-data">
+                    <form class="kt-form kt-form--label-right" id="menu" method="POST" action="{{route('menu-update', $menu->slug)}}" enctype="multipart/form-data">
                         @include('back.menu.form')
                     </form>
                 </div>
