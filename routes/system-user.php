@@ -20,6 +20,7 @@ use App\Http\Controllers\Back\Inquiry\InquiryController;
 use App\Http\Controllers\Back\Application\ApplicationController;
 use App\Http\Controllers\Back\Media\MediaController;
 use App\Http\Controllers\Back\Menu\MenuController;
+use App\Http\Controllers\Back\Dashboard\DashboardController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -29,13 +30,11 @@ Route::get('admin/login', function () {
 });
 
 Route::post('/admin-login', [LoginController::class, "login"])->name('admin.login');
-
 Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($route) {
     $route->get('logout', [LoginController::class, "logout"])->name('admin.logout');
-    $route->get('dashboard', function () {
-        return view('back.dashboard.index');
-    })->name('admin.dashboard');
-
+    $route->get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    $route->get('google/analytics', [DashboardController::class, 'getGoogleAnalyticsData'])->name('dashboard.analytics');
+    $route->get('application-by-destination', [DashboardController::class, 'applicationByDestination'])->name('dashboard.application-by-destination');
 //    category
     $route->resource('category', CategoryController::class);
     $route->get('category/{slug}/destroy', [CategoryController::class, "destroy"])->name('category.destroy');

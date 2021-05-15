@@ -20,6 +20,7 @@ class Application extends Model
         'program_id',
         'date_id',
         'pricing_id',
+        'package_id',
         'first_name',
         'last_name',
         'phone_no',
@@ -39,7 +40,7 @@ class Application extends Model
         'is_served',
 
     ];
-    protected $appends = ['planned_for_text', 'full_name'];
+    protected $appends = [ 'full_name'];
 
     public function getFullNameAttribute()
     {

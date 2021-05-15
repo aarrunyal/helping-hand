@@ -40,9 +40,11 @@ class ProgramService extends Service
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
         $data['has_sample_itinerary'] = (isset($data['has_sample_itinerary']) && $data['has_sample_itinerary'] == "on") ? 1 : 0;
         $data['group_discount_available'] = (isset($data['group_discount_available']) && $data['group_discount_available'] == "on") ? 1 : 0;
+        $data['is_featured'] = (isset($data['is_featured']) && $data['is_featured'] == "on") ? 1 : 0;
         if (isset($data['image'])) {
             $data['image'] = $this->upload($data['image'], null, null, $this->uploadPath);
         }
+        $data['destination_ids'] = (isset($data['destination_ids']) && sizeof($data["destination_ids"]) > 0) ? implode(',', $data["destination_ids"]) : null;
         return $this->program->create($data);
 //        } catch (\Exception $ex) {
 //            return false;
@@ -126,5 +128,8 @@ class ProgramService extends Service
     public function findAllByDestinationId($destinationId)
     {
         return $this->program->whereRaw('FIND_IN_SET(?,destination_ids)', [$destinationId])->whereIsActive(1)->get();
+    }
+    public function totalApplications(){
+        return $this->program->count();
     }
 }

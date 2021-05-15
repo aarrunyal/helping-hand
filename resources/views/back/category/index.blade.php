@@ -59,7 +59,6 @@
                             <th class="text-center">Title</th>
                             <th class="text-center">Parent</th>
                             <th class="text-center">parent Title</th>
-                            <th class="text-center">Requested</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -73,7 +72,6 @@
                                     <td class="text-center">{{ucwords($category->title)}}</td>
                                     <td class="text-center">{!! getStatusLayout($category->is_parent) !!}</td>
                                     <td class="text-center">{{((!empty($category->parent)?ucwords($category->parent->title):'-'))}}</td>
-                                    <td class="text-center">{!! getStatusLayout($category->is_requested) !!}</td>
                                     <td class="text-center">{!! getStatusLayout($category->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('category.edit', $category->slug)}}"><i class="fas fa-edit"></i></a>

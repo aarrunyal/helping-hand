@@ -12,6 +12,7 @@ namespace App\Services\Application;
 use App\Models\Application\Application;
 use App\Models\Page\Page;
 use App\Services\Service;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationService extends Service
 {
@@ -44,7 +45,7 @@ class ApplicationService extends Service
     public function store($data)
     {
 //        try {
-            return $this->application->create($data);
+        return $this->application->create($data);
 //        } catch (\Exception $ex) {
 //            return false;
 //        }
@@ -78,7 +79,7 @@ class ApplicationService extends Service
 
     public function findByColumns($data, $all = false, $limit = 6)
     {
-        $packages = $this->application->where(function ($qry) use ($data) {
+        $applications = $this->application->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {
                 foreach ($data as $k => $d) {
                     $qry->where($k, $data[$k]);
@@ -87,10 +88,32 @@ class ApplicationService extends Service
         });
         if ($all) {
             if (!empty($limit))
-                $packages = $packages->take($limit);
-            $packages = $packages->orderBy('position', "DESC")->get();
+                $applications = $applications->take($limit);
+            $applications = $applications->orderBy('id', "DESC")->get();
         } else
-            $packages = $packages->first();
-        return $packages;
+            $applications = $applications->first();
+        return $applications;
+    }
+
+    public function totalApplications()
+    {
+        return $this->application->count();
+    }
+
+    public function applicationByDestination()
+    {
+        $result = [['country', 'total']];
+        $response = $this->application->select(DB::raw('count(applications.destination_id) as total, destinations.title as country'))
+            ->join('destinations', 'destinations.id', "applications.destination_id")
+            ->orderByRaw('count(applications.destination_id) DESC')
+            ->groupBy('destinations.title')
+            ->take(5)
+            ->get();;
+        if (!empty($response)) {
+            foreach ($response as $res) {
+                $result[] = [$res['country'], $res['total']];
+            }
+        }
+        return $result;
     }
 }

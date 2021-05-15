@@ -89,9 +89,13 @@ class InquiryService extends Service
         if ($all) {
             if (!empty($limit))
                 $packages = $packages->take($limit);
-            $packages = $packages->orderBy('position', "DESC")->get();
+            $packages = $packages->orderBy('id', "DESC")->get();
         } else
             $packages = $packages->first();
         return $packages;
+    }
+
+    public function totalApplications(){
+        return $this->inquiry->count();
     }
 }

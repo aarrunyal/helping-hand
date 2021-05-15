@@ -135,4 +135,8 @@ class PackageService extends Service
         }
         return $response->first();
     }
+
+    public function totalApplications(){
+        return $this->package->count();
+    }
 }

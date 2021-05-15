@@ -34,6 +34,7 @@ class ApplicationRequest extends FormRequest
             "nationality" => 'required',
             "destination_id" => 'required',
             "program_id" => 'required',
+            "package_id" => 'required',
             "date_id" => 'required',
             "pricing_id" => 'required',
             "emergency_contact_details" => 'required',
