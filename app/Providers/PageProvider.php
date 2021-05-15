@@ -38,7 +38,7 @@ class PageProvider extends ServiceProvider
         Config::set('recaptcha.api_secret_key', $secretKey);
         $page = new Page();
         $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
-//        $menu = new Menu();
+        $menu = new Menu();
         $menus = $menu->whereNull('parent_id')->whereIsActive(1)->orderBy('position')->get();
         view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
             $view->with(['pages' => $footerPages]);
