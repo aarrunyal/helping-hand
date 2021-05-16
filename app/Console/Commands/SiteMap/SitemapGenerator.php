@@ -12,7 +12,7 @@ class SitemapGenerator extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'sitemap:g';
 
     /**
      * The console command description.
