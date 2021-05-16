@@ -39,8 +39,14 @@ class PageProvider extends ServiceProvider
             Config::set('recaptcha.api_site_key', $siteKey);
             Config::set('recaptcha.api_secret_key', $secretKey);
         }
-        $page = new Page();
-        $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
+        if (Schema::hasTable('site_settings')) {
+            $page = new Page();
+            $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
+            view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
+                $view->with(['pages' => $footerPages]);
+
+            });
+        }
         if (Schema::hasTable('menus')) {
             $menu = new Menu();
             $menus = $menu->whereNull('parent_id')->whereIsActive(1)->orderBy('position')->get();
@@ -49,10 +55,7 @@ class PageProvider extends ServiceProvider
 
             });
         }
-        view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
-            $view->with(['pages' => $footerPages]);
 
-        });
 //        dd($menus->first()->children->first()->title);
     }
 }
