@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.0",
         "spatie/laravel-analytics": "^3.11",
+        "spatie/laravel-sitemap": "^5.8",
         "yoeunes/toastr": "^1.2"
     },
     "require-dev": {
