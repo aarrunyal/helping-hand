@@ -27,10 +27,10 @@ Route::get('admin/login', function () {
         return view('back.auth.login');
     else
         return redirect()->route('admin.dashboard');
-});
+})->name('admin.auth');
 
 Route::post('/admin-login', [LoginController::class, "login"])->name('admin.login');
-Route::group(['middleware' => "super-admin", "prefix" => "admin"], function ($route) {
+Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function ($route) {
     $route->get('logout', [LoginController::class, "logout"])->name('admin.logout');
     $route->get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     $route->get('google/analytics', [DashboardController::class, 'getGoogleAnalyticsData'])->name('dashboard.analytics');

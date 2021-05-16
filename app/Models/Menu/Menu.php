@@ -23,6 +23,7 @@ class Menu extends Model
         'parent_id',
         'reference_id',
         'title',
+        'placing',
         'slug',
         'link',
         'type',

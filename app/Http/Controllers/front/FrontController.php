@@ -6,7 +6,6 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Requests\Front\Application\ApplicationRequest;
 use App\Http\Requests\Front\Inquiry\InquiryRequest;
-use App\Models\Program\Package\PackagePricing;
 use App\Services\Application\ApplicationService;
 use App\Services\Blog\BlogService;
 use App\Services\Destination\DestinationService;
@@ -63,7 +62,6 @@ class FrontController
         $programs = $this->program->findByColumns(["is_active" => 1, "is_featured" => 1], true, 6);
         $destinations = $this->destination->findByColumns(['is_active' => 1], true);
         $popularProject = $this->package->findByColumns(['is_active' => 1], true);
-        $footerPages = $this->page->findByColumns(['is_active' => 1, "placing" => 'footer'], true);
         $testimonials = $this->testimonial->findByColumns(['is_active' => 1], true, 9);
         $this->setSeo();
         return
@@ -72,7 +70,6 @@ class FrontController
                 'programs',
                 'destinations',
                 'popularProject',
-                'footerPages',
                 'testimonials'));
         return view('front.coming-soon');
 
@@ -145,6 +142,8 @@ class FrontController
 
     public function page($pageName)
     {
+        if ($pageName=='hhf')
+            return redirect()->route('admin.auth');
         $page = $this->page->findByColumn('slug', $pageName);
         $this->setSeo($page->seo_title, $page->seo_description, 'program', $page->image_path);
         return view('front.page', compact('page'));
@@ -210,4 +209,11 @@ class FrontController
         if (!empty($imagePath))
             SEOTools::jsonLd()->addImage($imagePath);
     }
+
+public function error500(){
+        return view('front.errors.500');
+}
+public function error404(){
+        return view('front.errors.404');
+}
 }

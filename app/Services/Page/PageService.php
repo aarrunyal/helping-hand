@@ -28,11 +28,6 @@ class PageService extends Service
         return $pages;
     }
 
-    function getParents()
-    {
-        $parentPages = $this->page->whereParentId(null)->whereIsParent(1)->get();
-        return $parentPages;
-    }
 
     public function findByColumn($column, $value)
     {
@@ -45,6 +40,9 @@ class PageService extends Service
 //        try {
         $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
         $data['is_parent'] = (isset($data['is_parent']) && $data['is_parent'] == "on") ? 1 : 0;
+        if (isset($data['social_share_image'])) {
+            $data['social_share_image'] = $this->upload($data['social_share_image'], null, null, $this->uploadPath);
+        }
         return $this->page->create($data);
 //        } catch (\Exception $ex) {
 //            return false;

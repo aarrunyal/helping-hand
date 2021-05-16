@@ -33,8 +33,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        $parentPages = $this->page->getParents();
-        return view('back.page.create', compact('parentPages'));
+        return view('back.page.create');
     }
 
     /**
@@ -74,8 +73,7 @@ class PageController extends Controller
     public function edit($slug)
     {
         $page = $this->page->findByColumn('slug', $slug);
-        $parentPages = $this->page->getParents();
-        return view('back.page.edit', compact('page', 'parentPages'));
+        return view('back.page.edit', compact('page'));
     }
 
     /**

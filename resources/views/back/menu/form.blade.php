@@ -38,13 +38,26 @@
                             <input type="text" name="title" id="title" class="form-control"
                                    value="{{old('title',!empty($menu)?$menu->title:null)}}" placeholder="Menu Title">
                         </div>
-                        <div class=" col-lg-4 col-md-4">
+                        <div class=" col-lg-2 col-md-2">
                             <label class="form-control-label">* Position</label>
                             <select name="position" id="" class="form-control">
                                 @for($i=1; $i<=10; $i++)
                                     <option
                                         value="{{$i}}" {{old('position', (!empty($menu)&&$menu->position?$menu->position:'10')=='10'?'selected':'')}}> {{$i}}</option>
                                 @endfor
+                            </select>
+                        </div>
+                        <div class=" col-lg-2 col-md-2">
+                            <label class="form-control-label">* Position</label>
+                            <select name="placing" id="" class="form-control">
+                                <option
+                                    value="header" {{old('placing',((!empty($menu) &&$menu->placing)?$menu->placing:'header')=='header'?'selected':null)}} >
+                                    Header
+                                </option>
+                                <option
+                                    value="footer" {{old('placing',((!empty($menu) &&$menu->placing)?$menu->placing:'header')=='footer'?'selected':null)}} >
+                                    Footer
+                                </option>
                             </select>
                         </div>
                         <div class=" col-lg-4 col-md-4 mt-3" id="link_div">

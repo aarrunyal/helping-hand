@@ -22,18 +22,15 @@ class Page extends Model
     }
 
     protected $fillable = [
-        'parent_id',
         'name',
         'slug',
         'title',
-        'placing',
         'seo_title',
         'seo_key_words',
         'seo_description',
         'social_share_image',
         'position',
         'description',
-        'is_parent',
         'is_active',
 
     ];

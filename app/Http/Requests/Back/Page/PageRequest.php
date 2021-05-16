@@ -27,7 +27,6 @@ class PageRequest extends FormRequest
             "title"=>"required",
             "name"=>"required",
             "description"=>"required",
-            "placing"=>"required",
         ];
     }
 }

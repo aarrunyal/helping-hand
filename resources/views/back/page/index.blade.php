@@ -59,8 +59,6 @@
                             <th class="text-center">Image</th>
                             <th class="text-center">Page Title</th>
                             <th class="text-center">Display Name</th>
-                            <th class="text-center">Placing</th>
-                            <th class="text-center">Parent</th>
                             <th class="text-center">Parent Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
@@ -80,12 +78,6 @@
                                     </td>
                                     <td class="text-center">{{ucwords($page->title)}}</td>
                                     <td class="text-center">{{ucwords($page->name)}}</td>
-                                    <td class="text-center">
-                                        <span class="badge badge-primary">
-                                            {{strtoupper($page->placing)}}
-                                        </span>
-                                    </td>
-                                    <td class="text-center">{!! getStatusLayout($page->is_parent) !!}</td>
                                     <td class="text-center">{{$page->parent_name?ucwords($page->parent_name):'-'}}</td>
                                     <td class="text-center">{!! getStatusLayout($page->is_active) !!}</td>
                                     <td class="text-center">

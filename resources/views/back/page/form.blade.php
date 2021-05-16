@@ -31,56 +31,6 @@
                             <span class="text-danger">{{ $errors->first('name') }}</span>
                         </div>
 
-                        <div class="col-lg-3 col-md-3 mt-5">
-                            <label class="form-control-label">Placing</label>
-                            <select name="placing" id="placing" class="form-control">
-                                <option value="null">Select Placing</option>
-                                <option
-                                    value="header" {{((isset($page->placing)?$page->placing:null)=='header'?'selected':null)}}>
-                                    Header
-                                </option>
-                                <option
-                                    value="footer" {{((isset($page->placing)?$page->placing:null)=='footer'?'selected':null)}}>
-                                    Footer
-                                </option>
-                            </select>
-                            <span class="text-danger">{{ $errors->first('placing') }}</span>
-                        </div>
-
-
-                            <div class="col-4 mt-5" id="isParent">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label class="col-form-label">Is Parent</label>
-                                    </div>
-                                    <div class="col-6">
-                              <span class="kt-switch kt-switch--success">
-															<label>
-																<input type="checkbox" checked
-                                                                       {{(isset($page->is_parent) && $page->is_parent =='1')?"checked":''}}
-                                                                       name="is_parent">
-																<span></span>
-															</label>
-														</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        @if($parentPages->count()>0)
-                            <div class="col-8 form-group mt-5" id="parentPageId">
-                                <label class="form-control-label">Parent Page</label>
-                                <select class="form-control" name="parent_id" id="">
-                                    <option value="">Select Parent Page</option>
-                                    @foreach($parentPages as $parentPage)
-                                        <option
-                                            value="{{$parentPage->id}}" {{(!empty($page->parent_id)?$page->parent_id:null)==$parentPage->id?"selected":null}}>{{ucwords($parentPage->title)}}</option>
-                                    @endforeach
-                                    {{--                                <option value="">Select Parent Page</option>--}}
-                                    {{--                                <option value="">Select Parent Page</option>--}}
-                                </select>
-                            </div>
-                        @endif
                         <div class="col-lg-12 col-md-12 mt-5" id="content">
                             <textarea id="kt-tinymce-4" name="description"
                                       class="tox-target">{{old('description', isset($page->description)?$page->description:null)}}</textarea>
@@ -92,17 +42,12 @@
                 <div class="kt-section__content">
                     <div class="form-group row">
                         <div class="col-lg-12 col-md-12">
-                            <label class="form-control-label">Blog Title</label>
+                            <label class="form-control-label">Seo Title</label>
                             <input type="text" name="seo_title" class="form-control" placeholder="Seo Title"
                                    value="{{old('seo_title', isset($page->seo_title)?$page->seo_title:null)}}">
                             <span class="text-danger">{{ $errors->first('seo_title') }}</span>
                         </div>
-                        <div class="col-lg-12 col-md-12 mt-5">
-                            <label class="form-control-label">Seo Keywords</label>
-                            {{--                            <input type="text" class="form-control" name="tags" placeholder="Tags"/>--}}
-                            <input type="text" name="tags" class="form-control" placeholder="Seo Keywords"
-                                   value="{{old('tags', isset($page->seo_keywords)?$page->seo_keywords:null)}}">
-                        </div>
+
                         <div class="col-lg-12 col-md-12 mt-3" id="content">
                             <label for="form-control-label">SEO Description</label>
                             <textarea id="kt-tinymce-3" name="seo_description"

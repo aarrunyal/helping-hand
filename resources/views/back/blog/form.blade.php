@@ -24,18 +24,19 @@
                             {{--                            <span class="text-danger">{{ $errors->first('title') }}</span>--}}
                         </div>
                         <div class="col-lg-3 col-md-3 mt-5">
-                            <label class="form-control-label">Type</label>
-                            <select name="type" id="" class="form-control">
-                                <option value="null">Select Type</option>
-                                <option
-                                    value="blog" {{((isset($blog->type)?$blog->type:null)=='blog'?'selected':null)}}>
-                                    Blog
-                                </option>
-                                <option
-                                    value="news" {{((isset($blog->type)?$blog->type:null)=='news'?'selected':null)}}>
-                                    News
-                                </option>
-                            </select>
+{{--                            <label class="form-control-label">Type</label>--}}
+{{--                            <select name="type" id="" class="form-control">--}}
+{{--                                <option value="null">Select Type</option>--}}
+{{--                                <option--}}
+{{--                                    value="blog" {{((isset($blog->type)?$blog->type:null)=='blog'?'selected':null)}}>--}}
+{{--                                    Blog--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="news" {{((isset($blog->type)?$blog->type:null)=='news'?'selected':null)}}>--}}
+{{--                                    News--}}
+{{--                                </option>--}}
+{{--                            </select>--}}
+                            <input type="text" value="blog" name="blog">
                             {{--                            <span class="text-danger">{{ $errors->first('title') }}</span>--}}
                         </div>
                         <div class="col-lg-12 col-md-12 mt-5" id="content">
@@ -98,12 +99,7 @@
                     </div>
                 </div>
 
-                <div class="custom-file">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="" name="social_share_image">
-                        <label class="custom-file-label" for="social_share_image">Social Share Image</label>
-                    </div>
-                </div>
+
                 <div class="form-group row mt-4">
                     <div class="custom-file">
                         <textarea class="form-control" name="social_share_description" id="social_share_description"

@@ -39,19 +39,30 @@ class PageProvider extends ServiceProvider
             Config::set('recaptcha.api_site_key', $siteKey);
             Config::set('recaptcha.api_secret_key', $secretKey);
         }
-        if (Schema::hasTable('site_settings')) {
-            $page = new Page();
-            $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
-            view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
-                $view->with(['pages' => $footerPages]);
-
-            });
-        }
+//        if (Schema::hasTable('pages')) {
+//            $page = new Page();
+//            $footerPages = $page->whereIsActive(1)->wherePlacing('footer')->orderBy('position', "ASC")->get();
+//            view()->composer('layouts.front.footer', function ($view) use ($footerPages) {
+//                $view->with(['pages' => $footerPages]);
+//
+//            });
+//        }
         if (Schema::hasTable('menus')) {
             $menu = new Menu();
-            $menus = $menu->whereNull('parent_id')->whereIsActive(1)->orderBy('position')->get();
-            view()->composer('layouts.front.header', function ($view) use ($menus) {
-                $view->with(['menus' => $menus]);
+            $headerMenus = $menu->whereNull('parent_id')->wherePlacing('header')->whereIsActive(1)->orderBy('position')->get();
+            view()->composer('layouts.front.header', function ($view) use ($headerMenus) {
+                $view->with(['menus' => $headerMenus]);
+
+            });
+            $footer_menus_with_children = $menu->whereNull('parent_id')->wherePlacing('footer')->whereIsActive(1)
+                ->whereHas('children', function ($qry){})->orderBy('position')->take(3)->get();
+            view()->composer('layouts.front.footer', function ($view) use ($footer_menus_with_children) {
+                $view->with(['menus' => $footer_menus_with_children]);
+
+            });
+            $footer_menus = $menu->whereNull('parent_id')->wherePlacing('footer')->whereIsActive(1)->orderBy('position')->get();
+            view()->composer('layouts.front.footer', function ($view) use ($footer_menus) {
+                $view->with(['footer_menus' => $footer_menus]);
 
             });
         }

@@ -6,7 +6,7 @@
         </div>
     </div>
     @if($featuredBlog->count()>0)
-        <div class="container">
+        <div class="container" style="min-height:500px">
             <div class="row wrapper wrapper-3">
                 <div class="col-12 text-center">
                     <span class="display-4 text-light">Popular Articles</span>

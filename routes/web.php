@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
     Route::get('/package/{id}/pricing', [\App\Http\Controllers\front\FrontController::class, 'getPackagePricing'])->name('prices-by-package');;
     Route::post('/user/application', [\App\Http\Controllers\front\FrontController::class, 'submitApplication'])->name('application');;
     Route::post('/user/inquiry', [\App\Http\Controllers\front\FrontController::class, 'submitInquiry'])->name('submit-inquiry');;
+    Route::get('error/500', [\App\Http\Controllers\front\FrontController::class, 'error500'])->name('error-500');;
+Route::get('error/404', [\App\Http\Controllers\front\FrontController::class, 'error404'])->name('error-404');;
 //}
 //else {
 //    Route::get('/', function () {
