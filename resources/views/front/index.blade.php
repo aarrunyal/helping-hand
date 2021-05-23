@@ -59,7 +59,7 @@
             <div class="row">
                 @if($packages->count()>0)
                     @foreach($packages as $i=>$package)
-                        <div class=" col-xs-12 col-sm-6 col-md-4 text-center   mt-2">
+                        <div class=" col-xs-12 col-sm-6 col-md-4 text-center   mt-3">
                             <div class="card border">
                                 <img class="card-img-top" width="300px"
                                      src="{{$package->image_path['thumb']}}"
@@ -161,7 +161,7 @@
             <div class="row">
                 @if($programs->count()>0)
                     @foreach($programs as $program)
-                        <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center mt-3">
                             <div class="card border">
                                 <img class="card-img-top"
                                      src="{{$program->image_path['thumb']}}"

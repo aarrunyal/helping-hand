@@ -28,29 +28,27 @@
     </div>
 </div>
 <div class="row" id="header">
-
-    <nav class="navbar navbar-expand-lg navbar-light ml-5">
-        <a class="navbar-brand " href="/">
+<div class="container" >
+    <nav class="col-md-12 navbar navbar-expand-lg navbar-light px-5"  >
+        <a class="navbar-brand" href="/">
             <img src="{{asset('resources/front/image/logo.png')}}" alt="logo" id="logo" height="75px">
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto text-center">
                 @if($menus->count()>0)
                     @foreach($menus as $menu)
                         @if($menu->is_parent)
-                            <li class="nav-item mr-2 dropdown">
+                            <li class="nav-item mx-2 dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ucwords($menu->title)}}
                                 </a>
                                 @if($menu->children->count()>0)
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu p-3 text-center" aria-labelledby="navbarDropdown">
                                         @foreach($menu->children as $child)
                                             <a class="dropdown-item p-1"
                                                href="{{$child->link}}">{{ucwords($child->title)}}</a>
@@ -59,7 +57,7 @@
                                 @endif
                             </li>
                         @else
-                            <li class="nav-item mr-2 dropdown">
+                            <li class="nav-item mx-2 dropdown">
                                 <a class="nav-link " href="{{$menu->link}}" role="button"
                                    aria-haspopup="true" aria-expanded="false">
                                     {{$menu->title}}
@@ -67,14 +65,17 @@
                             </li>
                         @endif
                     @endforeach
+                    <li class="nav-item mx-2">
+                        <a class="nav-link btn btn-primary bg-primary" href="{{route('apply-now')}}">Apply
+                            Now</a>
+                    </li>
                 @endif
-            </ul>
-            <div class="ml-auto mt-1">
-                <a href="{{route('apply-now')}}" class="btn-apply-now ">Apply Now</a>
-            </div>
 
+            </ul>
         </div>
     </nav>
+</div>
 
 
 </div>
+
