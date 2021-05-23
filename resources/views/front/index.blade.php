@@ -196,9 +196,10 @@
                             @if($destinations->count()>0)
                                 <ul class="ml-4">
                                     @foreach($destinations as $k=>$destination)
-                                        <li class="" style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px"
+                                        <li class=""
+                                            style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px"
                                             ;>
-                                            <a  href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
+                                            <a href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -235,16 +236,23 @@
         <div class="container">
             <h2 class="text-center my-3 text-default">Testimonials</h2>
             @if($testimonials->count()>0)
-                <div class="s-wrap">
-                    <div class="s-move">
-                        @foreach($testimonials as $testimonial)
-                            <div class=" slide">
-                                <blockquote
-                                    style="background-image: url('{{asset('resources/front/image/quote.png')}}');"><br>
-                                    {!!  $testimonial->description!!}
-                                    <small> <strong>{{ucwords($testimonial->from)}}</strong> (Volunteer
-                                        in {{ucwords($testimonial->destination->title)}}) </small>
-                                </blockquote>
+                <div id="carouselExampleIndicators " class="carousel slide" data-ride="carousel" style="width:100%;">
+                    <div class="carousel-inner">
+                        @foreach($testimonials->chunk(3) as $i=>$testimonial)
+                            <div class="carousel-item  {{$i==1?'active':null}}">
+                                <div class="row">
+                                    @foreach($testimonial as $index=>$test)
+                                        <div class="col-md-4">
+                                            <blockquote
+                                                style="background-image:
+                                                    url('{{asset('resources/front/image/quote.png')}}');"><br>
+                                                {!!  $test->description!!}
+                                                <small> <strong>{{ucwords($test->from)}}</strong> (Volunteer
+                                                    in {{ucwords($test->destination->title)}}) </small>
+                                            </blockquote>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         @endforeach
                     </div>
@@ -252,7 +260,15 @@
             @endif
         </div>
     </div>
+    </div>
 @endsection
 @section('page-script')
     <link rel="stylesheet" href="{{asset('resources/front/css/horizontal-slide.css')}}">
+    <script>
+        $(document).ready(() => {
+            $('.carousel').carousel({
+                interval: 30000
+            })
+        })
+    </script>
 @endsection
