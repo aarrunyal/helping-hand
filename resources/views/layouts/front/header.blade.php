@@ -1,5 +1,5 @@
 <div class="row py-2">
-    <div class="col-xs-12 col-sm-6 col-md-6  text-right ">
+    <div class="col-6  text-right ">
         @if(getSetting('SETTING_PHONE'))
             <i class="fas fa-phone"></i>
             {{getSetting('SETTING_PHONE')}}
@@ -12,7 +12,7 @@
             @endif
         </small>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-6 social-icon text-right mt-2">
+    <div class="col-6 social-icon text-right mt-2">
         @if(getSetting('SETTING_FACEBOOK_URL'))
             <a href="{{getSetting('SETTING_FACEBOOK_URL')}}" class="social rounded-circle p-2"><i
                     class="fab fa-facebook-f"></i></a>
