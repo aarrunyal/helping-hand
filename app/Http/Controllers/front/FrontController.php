@@ -61,7 +61,7 @@ class FrontController
         $packages = $this->package->findByColumns(["is_active" => 1, "is_featured" => 1], true, 6);
         $programs = $this->program->findByColumns(["is_active" => 1, "is_featured" => 1], true, 6);
         $destinations = $this->destination->findByColumns(['is_active' => 1], true);
-        $popularProject = $this->package->findByColumns(['is_active' => 1], true);
+        $popularProject = $this->package->findByColumns(['is_active' => 1, 'is_featured'=>0], true);
         $testimonials = $this->testimonial->findByColumns(['is_active' => 1], true, 9);
         $this->setSeo();
         return
