@@ -24,4 +24,5 @@ return [
     ["title" => "SETTING_DESTINATION_DESCRIPTION", "type" => "text-area"],
     ["title" => "SETTING_SAFETY_AND_SUPERVISION", "type" => "text-area"],
     ["title" => "SETTING_CONTACT_US_DESCRIPTION", "type" => "text-area"],
+    ["title" => "SETTING_ADDRESS", "type" => "text-area"],
 ];

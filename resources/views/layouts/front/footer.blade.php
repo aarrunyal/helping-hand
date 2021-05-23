@@ -26,6 +26,15 @@
                     </ul>
                 @endif
             </div>
+                    <div class="col-xs-12 col-sm-6 col-md-4 text-center font-weight-light mt-4">
+                        @if(getSetting('SETTING_ADDRESS'))
+                            <address>
+                                {{getSetting('SETTING_ADDRESS')}}
+                            </address>
+                            @endif
+                    </div>
+
+            </div>
         </div>
     </div>
 </div>
