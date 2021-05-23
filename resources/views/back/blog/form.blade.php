@@ -36,7 +36,7 @@
 {{--                                    News--}}
 {{--                                </option>--}}
 {{--                            </select>--}}
-                            <input type="text" value="blog" name="blog">
+{{--                            <input type="text" value="blog" name="blog">--}}
                             {{--                            <span class="text-danger">{{ $errors->first('title') }}</span>--}}
                         </div>
                         <div class="col-lg-12 col-md-12 mt-5" id="content">
@@ -99,7 +99,12 @@
                     </div>
                 </div>
 
-
+                <div class="custom-file">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="" name="social_share_image">
+                        <label class="custom-file-label" for="social_share_image">Social Share Image</label>
+                    </div>
+                </div>
                 <div class="form-group row mt-4">
                     <div class="custom-file">
                         <textarea class="form-control" name="social_share_description" id="social_share_description"

@@ -15,12 +15,12 @@
                     </div>
                 @endforeach
             @endif
-            <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="col-xs-12 col-sm-6 col-md-4">
                 @if($footer_menus->count()>0)
                     <ul>
                         @foreach($footer_menus as $page)
                             <li class="mt-1">
-                                <a href="{{route('page', $page->slug)}}">{{ucwords($page->title)}}</a>
+                                <a href="{{$page->link}}">{{ucwords($page->title)}}</a>
                             </li>
                         @endforeach
                     </ul>

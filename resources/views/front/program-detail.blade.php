@@ -25,8 +25,8 @@
         <div class="row wrapper ">
             <div class="col-xs-12 col-sm-4 col-md-3 side-bar pt-4 ">
                 <div class="row side-heading text-center mb-2">
-                    <div class="col">
-                        <h3 class="text-center p-2"> {{!empty($program->category)?$program->category->title:null}}</h3>
+                    <div class="col-12">
+                        <h6 class="text-center text-light p-2"> {{!empty($program->category)?$program->category->title:null}}</h6>
                     </div>
                 </div>
                 @if(!empty($packages) && $packages->count()>0)

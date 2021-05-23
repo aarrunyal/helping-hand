@@ -4,7 +4,7 @@
     <div class="kt-subheader  kt-grid__item" id="kt_subheader">
         <div class="kt-container  kt-container--fluid ">
             <div class="kt-subheader__main">
-                <h3 class="kt-subheader__title">Program</h3>
+                <h3 class="kt-subheader__title">Package</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
 
             </div>
@@ -23,7 +23,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Program
+                                Package
                             </h3>
                         </div>
                     </div>

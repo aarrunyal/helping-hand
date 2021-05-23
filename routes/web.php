@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/blog/{slug}', [\App\Http\Controllers\front\FrontController::class, 'blogDetail'])->name('blog-detail');
     Route::get('/programs', [\App\Http\Controllers\front\FrontController::class, 'programs'])->name('programs');
     Route::get('/program/{slug}/packages', [\App\Http\Controllers\front\FrontController::class, 'packages'])->name('program-package');
-    Route::get('/packages', [\App\Http\Controllers\front\FrontController::class, 'packages']);
+    Route::get('/packages', [\App\Http\Controllers\front\FrontController::class, 'packages'])->name('packages');
     Route::get('/package/{slug}', [\App\Http\Controllers\front\FrontController::class, 'packageDetail'])->name('package-details');
     Route::get('/program/{slug}', [\App\Http\Controllers\front\FrontController::class, 'programDetail'])->name('program-details');;
     Route::get('/inquiry', [\App\Http\Controllers\front\FrontController::class, 'inquiry'])->name('inquiry');;

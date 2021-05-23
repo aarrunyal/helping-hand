@@ -111,10 +111,15 @@ class FrontController
 
     public function packageDetail($slug)
     {
+        $imageUrl = null;
         $package = $this->package->findByColumns(['slug' => $slug]);
+        if (sizeof($package->image_path) > 0 && isset($package->image_path['real']))
+            $imageUrl = $package->image_path['real'];
+        else
+            $imageUrl = asset('resources/front/image/cover.jpg');
         $otherPackages = $this->package->getOtherPackages(['program_id' => $package->program_id, 'destination_id' => $package->destination_id], $package->id);
         $this->setSeo($package->seo_title, $package->seo_description, 'package', $package->image_path);
-        return view('front.package', compact('package', 'otherPackages'));
+        return view('front.package', compact('imageUrl', 'package', 'otherPackages'));
     }
 
     public function programDetail($slug)

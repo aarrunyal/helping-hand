@@ -70,7 +70,7 @@
                 @endif
             </ul>
             <div class="ml-auto mt-1">
-                <a href="{{'apply-now'}}" class="btn-apply-now ">Apply Now</a>
+                <a href="{{route('apply-now')}}" class="btn-apply-now ">Apply Now</a>
             </div>
 
         </div>

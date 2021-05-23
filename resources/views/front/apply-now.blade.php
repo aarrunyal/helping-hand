@@ -199,12 +199,14 @@
                                 <span class="text-danger">{{$errors->first('first_name')}}</span>
                             </div>
 
-                            <div class="col-12 offset-2">
-                                <div class="form-group text-center ml-4">
-                                    {!! htmlFormSnippet() !!}
-                                    <span class="text-danger">{{$errors->first(' g-recaptcha-response')}}</span>
+                            @if(getSetting('SETTING_RECAPTCHA_SITE_KEY'))
+                                <div class="col-12 offset-2">
+                                    <div class="form-group text-center ml-4">
+                                        {!! htmlFormSnippet() !!}
+                                        <span class="text-danger">{{$errors->first(' g-recaptcha-response')}}</span>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="col-12">
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn-default">

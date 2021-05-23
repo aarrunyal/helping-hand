@@ -41,18 +41,19 @@ class PageProvider extends ServiceProvider
         }
         if (Schema::hasTable('menus')) {
             $menu = new Menu();
-            $headerMenus = $menu->whereNull('parent_id')->wherePlacing('    header')->whereIsActive(1)->orderBy('position')->get();
+            $headerMenus = $menu->whereNull('parent_id')->wherePlacing('header')->whereIsActive(1)->orderByRaw('CAST(position AS SIGNED)')->get();
             view()->composer('layouts.front.header', function ($view) use ($headerMenus) {
                 $view->with(['menus' => $headerMenus]);
 
             });
             $footer_menus_with_children = $menu->whereNull('parent_id')->wherePlacing('footer')->whereIsActive(1)
-                ->whereHas('children', function ($qry){})->orderBy('position')->take(3)->get();
+                ->whereHas('children', function ($qry){})->orderByRaw('CAST(position AS SIGNED)')->take(3)->get();
             view()->composer('layouts.front.footer', function ($view) use ($footer_menus_with_children) {
                 $view->with(['menus' => $footer_menus_with_children]);
 
             });
-            $footer_menus = $menu->whereNull('parent_id')->wherePlacing('footer')->whereIsActive(1)->orderBy('position')->get();
+            $footer_menus = $menu->whereNull('parent_id')->wherePlacing('footer')->whereIsActive(1)
+                ->doesnthave('children' )->orderByRaw('CAST(position AS SIGNED)')->get();
             view()->composer('layouts.front.footer', function ($view) use ($footer_menus) {
                 $view->with(['footer_menus' => $footer_menus]);
 

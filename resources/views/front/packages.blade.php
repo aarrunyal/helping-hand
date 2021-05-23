@@ -6,21 +6,19 @@
             </div>
         </div>
         <div class="container">
-            <div class="row blog-row wrapper">
+            <div class="row blog-row wrapper" >
                 <div class="col-xl-12 py-3 px-md-5 ">
-                    <h2 class="text-center" style="color: #4265a2;">Packages</h2>
-                    <div class="row">
+                    <h2 class="text-center" style="color: #4265a2;">Programs</h2>
+                    <div class="row mt-4">
                         @if($packages->count()>0)
-                            @foreach($packages as $i=>$package)
-                                <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                            @foreach($packages as $program)
+                                <div class="col-xs-12 col-sm-6 col-md-4 mt-4">
                                     <div class="card border">
-                                        <img class="card-img-top" width="300px"
-                                             src="{{$package->image_path['thumb']}}"
-                                             alt="{{$package->title}}">
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{$package->title}}</h6>
-                                            {{--                                    @dd($package->limit_short_description)--}}
-                                            <p class="card-text">{!! substr($package->short_description, 0,200) !!}...</p>
+                                        <img class="card-img-top"
+                                             src="{{!empty($program->image)?$program->image_path['thumb']:null}}"
+                                             alt="Card image cap">
+                                        <div class="card-body text-center">
+                                            <a href="{{route('package-details', $program->slug)}}" class="font-weight-bold text-center card-title">{{strtoupper($program->title)}}</a>
                                         </div>
                                     </div>
                                 </div>

@@ -6,9 +6,9 @@
         </div>
     </div>
     <div class="container wrapper" style="min-height: 300px">
-        <div class="row my-4" >
-            <div class="col-12 mx-3">
-            {!! $page->description !!}
+        <div class="row my-4">
+            <div class="col-12 mx-3" id="editor">
+                {!! $page->description !!}
             </div>
         </div>
     </div>
@@ -16,10 +16,9 @@
 @section('page-script')
     <link rel="stylesheet" href="{{asset('resources/front/css/horizontal-slide.css')}}">
 @endsection
-@section('page-specific-css')
-{{--    <style>--}}
-{{--        ul li{--}}
-{{--            list-style-type: circle;--}}
-{{--        }--}}
-{{--    </style>--}}
+@section('page-script')
+    <script>
+        $('#editor').find('ul').css('list-style-type', 'circle');
+    </script>
 @endsection
+

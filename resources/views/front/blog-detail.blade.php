@@ -14,15 +14,15 @@
         <div class="row blog-row">
             <div class="col-xl-12 py-5 px-md-5">
                 <h4>{{ $blog->title }}</h4>
-                <div class="row pt-md-4">
+                <div class="row pt-md-4" id="editor">
                     {!! $blog->content !!}
-                    <div class="tag-widget post-tag-container mb-5 mt-5">
-                        <div class="social-icon">
-                            <a href="#" class="rounded-circle p-2"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="rounded-circle p-2"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="rounded-circle p-2"><i class="fab fa-instagram-square"></i></a>
-                            <a href="#" class="rounded-circle p-2"><i class="fab fa-pinterest-p"></i></a>
-                        </div>
+                </div>
+                <div class="tag-widget post-tag-container mb-5 mt-5">
+                    <div class="social-icon">
+                        <a href="#" class="rounded-circle p-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="rounded-circle p-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="rounded-circle p-2"><i class="fab fa-instagram-square"></i></a>
+                        <a href="#" class="rounded-circle p-2"><i class="fab fa-pinterest-p"></i></a>
                     </div>
                 </div>
             </div>
@@ -31,4 +31,13 @@
 @endsection
 @section('page-specific-css')
     <link rel="stylesheet" href="{{asset('resources/front/css/blog.css')}}">
+
+
 @endsection
+{{--@section('page-script')--}}
+{{--    <script>--}}
+{{--        $(document).ready(()=>{--}}
+{{--            $('#editor').find('ul').css('list-style-type', 'circle');--}}
+{{--        })--}}
+{{--    </script>--}}
+{{--@endsection--}}

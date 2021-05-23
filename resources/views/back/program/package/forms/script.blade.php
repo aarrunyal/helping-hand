@@ -20,31 +20,42 @@
             });
 
 
+
             tinymce.init({
                 selector: '#short_description',
-                toolbar: false,
+                toolbar: true,
                 statusbar: false,
-                height: 150,
+                height: 200,
+            });  tinymce.init({
+                selector: '#dates_description',
+                toolbar: true,
+                statusbar: false,
+                height: 200,
+            });  tinymce.init({
+                selector: '#cost_description',
+                toolbar: true,
+                statusbar: false,
+                height: 200,
             });
 
             tinymce.init({
                 selector: '#kt-tinymce-4',
-                menubar: false,
+                menubar: true,
                 toolbar: [
                     'styleselect fontselect fontsizeselect',
                     'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                plugins: 'advlist autolink link image lists charmap print preview code',
+                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code|fullscreen| forecolor backcolor'],
+                plugins: 'advlist autolink link image lists charmap print preview code table fullscreen textcolor',
                 height: 300,
             });
             tinymce.init({
                 selector: '#more_info',
-                menubar: false,
+                menubar: true,
                 toolbar: [
                     'styleselect fontselect fontsizeselect',
                     'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                plugins: 'advlist autolink link image lists charmap print preview code',
+                    'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code|fullscreen| forecolor backcolor'],
+                plugins: 'advlist autolink link image lists charmap print preview code table fullscreen textcolor',
                 height: 300,
             });
         };
@@ -188,8 +199,8 @@
             let temp = true;
             temp = isNotNull(start_from, 'input[name="start_from[]"]');
             flag.push(temp)
-            temp = isNotNull(end_to, 'input[name="end_to[]"]')
-            flag.push(temp)
+            // temp = isNotNull(end_to, 'input[name="end_to[]"]')
+            // flag.push(temp)
         })
         if (flag.includes(false))
             return false

@@ -80,7 +80,7 @@ class PageService extends Service
         }
     }
 
-    public function findByColumns($data, $all = false, $limit = 6)
+    public function findByColumns($data, $all = false, $limit = null)
     {
         $packages = $this->page->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {

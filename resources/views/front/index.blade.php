@@ -47,7 +47,7 @@
                     family during their stay in Nepal, gaining a more genuine understanding and
                     appreciation for the culture and the people they are helping.</p>
             </div>
-            <div class="mt-3"><a class="btn-default" href="{{route('page', ['about-us'])}}" title=""
+            <div class="mt-3"><a class="btn-default" href="{{route('page', ['about-hhf'])}}" title=""
                                  style="color: white">READ
                     MORE</a></div>
 
@@ -79,6 +79,13 @@
                     @endforeach
                 @endif
             </div>
+            @if($packages->count()>0)
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <a href="{{route('packages')}}" class="btn btn-default">SEE ALL</a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <div class="row  wrapper wrapper-3  pt-3">
@@ -187,11 +194,11 @@
                         <div class="col-10">
                             <h2 class="text-default">Top Destination</h2>
                             @if($destinations->count()>0)
-                                <ul>
+                                <ul class="ml-4">
                                     @foreach($destinations as $k=>$destination)
-                                        <li style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px"
+                                        <li class="" style="list-style-image: url('{{asset('resources/front/image/check.png')}}'); height: 25px"
                                             ;>
-                                            <a href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
+                                            <a  href="{{route('program-details', $destination->slug)}}">{{ucwords($destination->title)}}</a>
                                         </li>
                                     @endforeach
                                 </ul>

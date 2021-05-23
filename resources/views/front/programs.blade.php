@@ -16,8 +16,8 @@
                                         <img class="card-img-top"
                                              src="{{!empty($program->image)?$program->image_path['thumb']:null}}"
                                              alt="Card image cap">
-                                        <div class="card-body">
-                                            <a href="{{route('program-details', $program->slug)}}" class="text-center card-title">{{strtoupper($program->title)}}</a>
+                                        <div class="card-body text-center">
+                                            <a href="{{route('program-details', $program->slug)}}" class="font-weight-bold text-center card-title">{{strtoupper($program->title)}}</a>
                                         </div>
                                     </div>
                                 </div>

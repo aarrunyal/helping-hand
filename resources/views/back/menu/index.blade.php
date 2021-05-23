@@ -62,6 +62,7 @@
 
                             <th class="text-center">Children</th>
                             <th class="text-center">Position</th>
+                            <th class="text-center">Paced At</th>
                             {{--                            <th class="text-center">Children</th>--}}
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
@@ -98,6 +99,7 @@
                                             <span class="badge badge-secondary">{{$menu->position}} </span>
                                     </td>
                                     {{--                                    <td class="text-center">{!! getStatusLayout($menu->is_parent) !!}</td>--}}
+                                    <td class="text-center">{{$menu->placing}}</td>
                                     <td class="text-center">{!! getStatusLayout($menu->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('menu.edit', $menu->slug)}}"><i class="fas fa-edit"></i></a>

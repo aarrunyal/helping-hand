@@ -202,12 +202,13 @@
 
                 tinymce.init({
                     selector: '#kt-tinymce-4',
+                    fix_list_elements: true,
                     menubar: true,
                     toolbar: [
                         'styleselect fontselect fontsizeselect',
                         'undo redo | cut copy paste | bold italic | link image | alignleft aligncenter alignright alignjustify',
-                        'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code'],
-                    plugins: 'advlist autolink link image lists charmap print preview code',
+                        'bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code|fullscreen| forecolor backcolor'],
+                    plugins: 'advlist autolink link image lists charmap print preview code table fullscreen textcolor',
                     height: 300,
                 });
             };
