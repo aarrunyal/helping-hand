@@ -1,15 +1,19 @@
 @extends('layouts.front.layout')
 @section('content')
+{{--    @dd($program->image_path)--}}
+
+
     <div class="row detail-hero-image"
-         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('{{asset('resources/front/image/cover.jpg')}}');">
+         style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+             url('{{$imageUrl}}');">
         <div class="col-lg-12">
             <h1 class="text-center mt-5">{{$program->title}} </h1>
 
-            <div class="highLight">
+            <div class="highLight mt-5 ">
                 {!! $program->short_description!!}
             </div>
 
-            <div class="text-center mt-4 mb-3">
+            <div class="text-center mt-5 mb-3">
                 <a class="btn-default" href="inquiry.html">GET MORE INFO </a>
             </div>
             <p class="text-center small-text"> Take a minute to complete the form and we will be
@@ -18,8 +22,8 @@
         </div>
     </div>
     <div class="container">
-        <div class="row wrapper">
-            <div class="col-xs-12 col-sm-4 col-md-3 side-bar pt-4">
+        <div class="row wrapper ">
+            <div class="col-xs-12 col-sm-4 col-md-3 side-bar pt-4 ">
                 <div class="row side-heading text-center mb-2">
                     <div class="col">
                         <h3 class="text-center p-2"> {{!empty($program->category)?$program->category->title:null}}</h3>
@@ -41,7 +45,7 @@
             {{--                </div>--}}
             {{--            @endif--}}
 
-            <div class="col-xs-12 col-sm-8 col-md-9 wrapper-1 pt-4">
+            <div class="col-xs-12 col-sm-8 col-md-9  pt-4 " id="editor">
                 @if($program->destination_ids)
                     <small>Available in :
                         @foreach($program->destination_title as $title)
@@ -104,4 +108,9 @@
         </div>
     </div>
 
+@endsection
+@section('page-script')
+    <script>
+        $('#editor').find('ul').css('list-style-type','circle');
+    </script>
 @endsection

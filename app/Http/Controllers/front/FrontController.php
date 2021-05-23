@@ -119,13 +119,18 @@ class FrontController
 
     public function programDetail($slug)
     {
+        $imageUrl = null;
         $program = $this->program->findByColumn('slug', $slug);
+        if (sizeof($program->image_path) > 0 && isset($program->image_path['real']))
+            $imageUrl = $program->image_path['real'];
+        else
+            $imageUrl = asset('resources/front/image/cover.jpg');
         $otherPrograms = $this->program->getOtherProgram($program);
         $packages = null;
         if (!empty($program->destination_ids))
             $packages = $this->package->getPackageBy($program->destination_ids);
         $this->setSeo($program->seo_title, $program->seo_description, 'program', $program->image_path);
-        return view('front.program-detail', compact('program', 'otherPrograms', 'packages'));
+        return view('front.program-detail', compact('imageUrl','program', 'otherPrograms', 'packages'));
     }
 
     public function inquiry()
@@ -142,7 +147,7 @@ class FrontController
 
     public function page($pageName)
     {
-        if ($pageName=='hhf')
+        if ($pageName == 'hhf')
             return redirect()->route('admin.auth');
         $page = $this->page->findByColumn('slug', $pageName);
         $this->setSeo($page->seo_title, $page->seo_description, 'program', $page->image_path);
@@ -210,10 +215,13 @@ class FrontController
             SEOTools::jsonLd()->addImage($imagePath);
     }
 
-public function error500(){
+    public function error500()
+    {
         return view('front.errors.500');
-}
-public function error404(){
+    }
+
+    public function error404()
+    {
         return view('front.errors.404');
-}
+    }
 }

@@ -3,7 +3,7 @@
         <div class="row mt-2">
             @if($menus->count()>0)
                 @foreach($menus as $menu)
-                    <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="col-xs-12 col-sm-6 col-md-4">
                         <h4 class=" text-light ">{{$menu->title}}</h4>
                         <ul>
                             @if($menu->children->count()>0)

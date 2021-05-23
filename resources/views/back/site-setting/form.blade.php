@@ -16,7 +16,7 @@
                                    value="{{old('slug', isset($siteSetting->title)?$siteSetting->title:'')}}" readonly>
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
-                        <input type="text" value="{{$siteSetting->type}}" name="type">
+                        <input type="text" value="{{$siteSetting->type}}" name="type" hidden>
                         <div class="col-lg-12 col-md-12 mt-5">
                             <label class="form-control-label">* Value</label>
                             @if($siteSetting->type =="text")

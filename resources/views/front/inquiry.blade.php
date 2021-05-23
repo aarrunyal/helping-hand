@@ -107,7 +107,8 @@
                                         <option value="">Select Projects</option>
                                     </select>
                                 </div>
-                            </div> <div class="col-12">
+                            </div>
+                            <div class="col-12">
                                 <div class="form-group">
                                     <select class="form-control" name="message_permitted"
                                             id="message_permitted">
@@ -115,10 +116,14 @@
                                             messages
                                             to expedite communication?
                                         </option>
-                                        <option {{!empty(old('message_permitted')) && old('message_permitted')==1?'selected':null}} value="1">Yes,
+                                        <option
+                                            {{!empty(old('message_permitted')) && old('message_permitted')==1?'selected':null}} value="1">
+                                            Yes,
                                             I give consent to receive texts to expedite communication.
                                         </option>
-                                        <option {{(!empty(old('message_permitted')) && old('message_permitted')==0)?'selected':null}}  value="0">No, I do
+                                        <option
+                                            {{(!empty(old('message_permitted')) && old('message_permitted')==0)?'selected':null}}  value="0">
+                                            No, I do
                                             not want to receive text messages at this time.
                                         </option>
                                     </select>
@@ -130,24 +135,25 @@
                                           placeholder="We'd appreciate if you explain in detail the kind of volunteering project you're passionate about so we can offer you the most rewarding volunteer experience">{{old('description')}}</textarea>
                                 </div>
                             </div>
-
+                            @if(getSetting('SETTING_RECAPTCHA_SITE_KEY'))
                                 <div class="col-12 offset-2">
                                     <div class="form-group text-center ml-4">
                                         {!! htmlFormSnippet() !!}
                                         <span class="text-danger">{{$errors->first(' g-recaptcha-response')}}</span>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="form-group text-center">
-                                        <button type="submit" class="btn-default">
-                                            Send Me My Information Pack
-                                        </button>
-                                    </div>
+                            @endif
+                            <div class="col-12">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn-default">
+                                        Send Me My Information Pack
+                                    </button>
                                 </div>
-
                             </div>
+
                         </div>
                     </div>
+                </div>
             </form>
         </div>
 

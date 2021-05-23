@@ -76,7 +76,7 @@
                                         </blockquote>
                                     </td>
                                     <td class="text-center">{{ucwords($testimonial->from)}}</td>
-                                    <td class="text-center">{{$testimonial->destination_id?ucwords($testimonial->destination->title):null}}</td>
+                                    <td class="text-center">{{!empty($testimonial->destination)?ucwords($testimonial->destination->title):null}}</td>
                                     <td class="text-center">{!! getStatusLayout($testimonial->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('testimonial.edit', $testimonial->id)}}"><i class="fas fa-edit"></i></a>

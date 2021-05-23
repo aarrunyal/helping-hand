@@ -88,6 +88,7 @@ class PageController extends Controller
         $data = $request->all();
         if ($this->page->update($slug, $data)){
             toastr()->success('Request processed successfully');
+            return redirect()->route('page.index');
         }
         toastr()->error('Something went wrong');
         return redirect()->route('page.edit', $slug);

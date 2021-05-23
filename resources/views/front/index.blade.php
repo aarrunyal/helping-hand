@@ -59,14 +59,14 @@
             <div class="row">
                 @if($packages->count()>0)
                     @foreach($packages as $i=>$package)
-                        <div class=" col-xs-12 col-sm-6 col-md-4    mt-2">
+                        <div class=" col-xs-12 col-sm-6 col-md-4 text-center   mt-2">
                             <div class="card border">
                                 <img class="card-img-top" width="300px"
                                      src="{{$package->image_path['thumb']}}"
                                      alt="{{$package->title}}">
                                 <div class="card-body">
                                     <a href="{{route('package-details', $package->slug)}}"
-                                       class="card-title text-center">{{$package->title}}</a>
+                                       class="card-title text-center font-weight-bold">{{$package->title}}</a>
                                     {{--                                    @dd($package->limit_short_description)--}}
                                     {{--                                    <p class="card-text">--}}
                                     {{--                                    </p>--}}
@@ -154,14 +154,14 @@
             <div class="row">
                 @if($programs->count()>0)
                     @foreach($programs as $program)
-                        <div class="col-xs-12 col-sm-6 col-md-4">
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center">
                             <div class="card border">
                                 <img class="card-img-top"
                                      src="{{$program->image_path['thumb']}}"
                                      alt="Card image cap">
                                 <div class="card-body ">
                                     <a href="{{route('program-details', $program->slug)}}"
-                                       class="text-center card-title">{{strtoupper($program->title)}}</a>
+                                       class="text-center card-title font-weight-bold">{{strtoupper($program->title)}}</a>
                                 </div>
                             </div>
                         </div>

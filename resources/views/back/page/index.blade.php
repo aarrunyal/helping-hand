@@ -59,7 +59,6 @@
                             <th class="text-center">Image</th>
                             <th class="text-center">Page Title</th>
                             <th class="text-center">Display Name</th>
-                            <th class="text-center">Parent Name</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -78,7 +77,6 @@
                                     </td>
                                     <td class="text-center">{{ucwords($page->title)}}</td>
                                     <td class="text-center">{{ucwords($page->name)}}</td>
-                                    <td class="text-center">{{$page->parent_name?ucwords($page->parent_name):'-'}}</td>
                                     <td class="text-center">{!! getStatusLayout($page->is_active) !!}</td>
                                     <td class="text-center">
                                         <a href="{{route('page.edit', $page->slug)}}"><i class="fas fa-edit"></i></a>
