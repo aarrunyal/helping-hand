@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="row" id="header">
-<div class="container" >
+{{--<div class="container" >--}}
     <nav class="col-md-12 navbar navbar-expand-lg navbar-light px-5"  >
         <a class="navbar-brand" href="/">
             <img src="{{asset('resources/front/image/logo.png')}}" alt="logo" id="logo" height="75px">
@@ -38,7 +38,7 @@
         </button>
 
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto text-center">
+            <ul class="navbar-nav text-center">
                 @if($menus->count()>0)
                     @foreach($menus as $menu)
                         @if($menu->is_parent)
@@ -74,7 +74,7 @@
             </ul>
         </div>
     </nav>
-</div>
+{{--</div>--}}
 
 
 </div>

@@ -35,19 +35,19 @@
             </div>
             <div class="col-xs-12 col-sm-8 col-md-9  pt-4 package-detail">
                 <div id="content">
-                    <ul class="nav nav-tabs" id="tab-list">
-                        <li class="nav-link tab-item active"><a data-toggle="tab" href="#overview">Overview</a></li>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-link tab-item tab-link active" ><a data-toggle="tab" href="#overview">Overview</a></li>
 {{--                        @if($package->dates_available && $package->dates->count()>0)--}}
-                            <li><a class="nav-link tab-item" data-toggle="tab" href="#dateCost">Dates/Cost</a></li>
+                            <li><a class="nav-link tab-item tab-link" data-toggle="tab" href="#dateCost">Dates/Cost</a></li>
 {{--                        @endif--}}
                         @if(($package->itineraries->count()>0))
-                            <li><a class="nav-link tab-item" data-toggle="tab" href="#itinerary">Itinerary</a></li>
+                            <li><a class="nav-link tab-item tab-link" data-toggle="tab" href="#itinerary">Itinerary</a></li>
                         @endif
                         @if(($package->faqs->count()>0))
-                            <li><a class="nav-link tab-item" data-toggle="tab" href="#faq">FAQ</a></li>
+                            <li><a class="nav-link tab-item tab-link" data-toggle="tab" href="#faq">FAQ</a></li>
                         @endif
                         @if(!empty($package->more_info))
-                            <li><a class="nav-link tab-item" data-toggle="tab" href="#moreInfo">More Info</a></li>
+                            <li><a class="nav-link tab-item tab-link" data-toggle="tab" href="#moreInfo">More Info</a></li>
                         @endif
                     </ul>
                     <div class="tab-content mt-3">

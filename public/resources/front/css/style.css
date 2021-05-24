@@ -340,6 +340,10 @@ blockquote p {
     color: white !important;
 }
 
+.tab-link {
+     background-color: #ffffff !important;
+}
+
 @media only screen and (min-width: 600px) {
     .cover-image {
         min-height: 550px;
