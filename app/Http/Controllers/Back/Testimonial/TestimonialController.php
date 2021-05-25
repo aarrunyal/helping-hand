@@ -111,8 +111,11 @@ class TestimonialController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->testimonial->delete($id))
+        if ($this->testimonial->delete($id)) {
+            toastr()->success('Request processed successfully');
             return redirect()->route('testimonial.index');
+        }
+        toastr()->error('Something went wrong');
         return redirect()->route('testimonial.index');
     }
 }

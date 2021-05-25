@@ -236,10 +236,10 @@
         <div class="container">
             <h2 class="text-center my-3 text-default">Testimonials</h2>
             @if($testimonials->count()>0)
-                <div id="carouselExampleIndicators " class="carousel slide" data-ride="carousel" style="width:100%;">
+                <div id="carouselExampleIndicators " class="carousel slide" data-ride="carousel" style="width:100%; min-height: 150px">
                     <div class="carousel-inner">
                         @foreach($testimonials->chunk(3) as $i=>$testimonial)
-                            <div class="carousel-item  {{$i==1?'active':null}}">
+                            <div class="carousel-item  {{$i==0?'active':null}}">
                                 <div class="row">
                                     @foreach($testimonial as $index=>$test)
                                         <div class="col-md-4">

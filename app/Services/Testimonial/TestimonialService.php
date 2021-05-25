@@ -55,14 +55,14 @@ class TestimonialService extends Service
 //        }
     }
 
-    public function delete($slug)
+    public function delete($id)
     {
-        try {
-            $testimonial = $this->findByColumn('slug', $slug);
+//        try {
+            $testimonial = $this->findByColumn('id', $id);
             return $testimonial->delete();
-        } catch (\Exception $ex) {
-            return false;
-        }
+//        } catch (\Exception $ex) {
+//            return false;
+//        }
     }
 
     public function findByColumns($data, $all = false, $limit = null)
