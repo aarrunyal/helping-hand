@@ -9,7 +9,7 @@
     <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
         <div class="kt-aside__brand-logo">
             <a href="{{route('admin.dashboard')}}">
-                <img alt="Logo" class="mt-2" src="{{asset('resources/front/image/logo.png')}}" height="80px"/>
+{{--                <img alt="Logo" class="mt-2" src="{{asset('resources/front/image/logo.png')}}" height="80px"/>--}}
             </a>
         </div>
         <div class="kt-aside__brand-tools">
@@ -66,68 +66,68 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-shapes"></i></span>
                         <span class="ml-5 kt-menu__link-text">Category</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('blog.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-blog"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Blog</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('destination.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-map-marker-alt"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Destination</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('program.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-calendar"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Program</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('package.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-box"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Package</span></a></li>
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('blog.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-blog"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Blog</span></a></li>--}}
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('destination.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-map-marker-alt"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Destination</span></a></li>--}}
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('program.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-calendar"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Program</span></a></li>--}}
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('package.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-box"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Package</span></a></li>--}}
 
 {{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
 {{--                        href="{{route('client.index')}}"--}}
 {{--                        class="kt-menu__link ">--}}
 {{--                        <span><i class="fas fa-blog"></i></span>--}}
 {{--                        <span class="ml-5 kt-menu__link-text">Client</span></a></li>--}}
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('page.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-pager"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Page</span></a></li>
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('page.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-pager"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Page</span></a></li>--}}
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('media.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-photo-video"></i></span>
                         <span class="ml-5 kt-menu__link-text">Media</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('inquiry.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-address-book"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Inquiry</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('application.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-first-order"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Application</span></a></li>
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('testimonial.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-star"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Testimonial</span></a></li>
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('inquiry.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-address-book"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Inquiry</span></a></li>--}}
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('application.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-first-order"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Application</span></a></li>--}}
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('testimonial.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-star"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Testimonial</span></a></li>--}}
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('system-user.index')}}"
                         class="kt-menu__link ">
                         <span><i class="fas fa-user"></i></span>
                         <span class="ml-5 kt-menu__link-text">User</span></a></li>
 
-                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{route('site-setting.index')}}"
-                        class="kt-menu__link ">
-                        <span><i class="fas fa-cogs"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li>
+{{--                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a--}}
+{{--                        href="{{route('site-setting.index')}}"--}}
+{{--                        class="kt-menu__link ">--}}
+{{--                        <span><i class="fas fa-cogs"></i></span>--}}
+{{--                        <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li>--}}
                 <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
                         href="{{route('menu.index')}}"
                         class="kt-menu__link ">

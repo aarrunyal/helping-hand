@@ -18,8 +18,8 @@ class SystemUserSeeder extends Seeder
                     'first_name' => 'Super',
                     'last_name' => 'Admin',
                     'user_name'=>'helping-hand',
-                    'email'=>'admin@helpinhand.org',
-                    'password'=>bcrypt('HelpingHand123!'),
+                    'email'=>'admin@doc.com',
+                    'password'=>bcrypt('doc123'),
                     'is_active'=>1,
                 )
             ));

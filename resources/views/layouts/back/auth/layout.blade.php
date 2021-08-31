@@ -62,7 +62,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside" style="background-image: url({{asset('resources/back/assets/image/help.jpg')}});">
                 <div class="kt-grid__item">
                     <a href="#" class="kt-login__logo">
-                        <img src="{{asset('resources/front/image/logo.png')}}">
+{{--                        <img src="{{asset('resources/front/image/logo.png')}}">--}}
                     </a>
                 </div>
                 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
