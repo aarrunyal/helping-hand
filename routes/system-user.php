@@ -18,9 +18,11 @@ use App\Http\Controllers\Back\Testimonial\TestimonialController;
 use \App\Http\Controllers\Back\Program\Package\PackageIncludeExcludeController;
 use App\Http\Controllers\Back\Inquiry\InquiryController;
 use App\Http\Controllers\Back\Application\ApplicationController;
+use App\Http\Controllers\Back\Course\CourseController;
 use App\Http\Controllers\Back\Media\MediaController;
 use App\Http\Controllers\Back\Menu\MenuController;
 use App\Http\Controllers\Back\Dashboard\DashboardController;
+use App\Http\Controllers\Back\Department\DepartmentController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -41,6 +43,17 @@ Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function 
     $route->post('category/{slug}/update', [CategoryController::class, "update"])->name('category.update');
     $route->get('category/{id}/sub-category', [CategoryController::class, "getSubCategoryByCategory"])->name('subcategory-by-category');
 
+//    department
+    $route->resource('department', DepartmentController::class);
+    $route->post('department/{id}/update', [DepartmentController::class, "update"])->name('department.update');
+    $route->get('department/{id}/destroy', [DepartmentController::class, "destroy"])->name('department.destroy');
+
+//    course
+    $route->resource('course', CourseController::class);
+    $route->post('course/{id}/update', [CourseController::class, "update"])->name('course.update');
+    $route->get('course/{id}/destroy', [CourseController::class, "destroy"])->name('course.destroy');
+
+//    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->post('blog-category/{slug}', [BlogCategoryController::class, "update"])->name('blog-category-update');;
 
