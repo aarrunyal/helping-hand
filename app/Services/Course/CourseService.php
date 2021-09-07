@@ -6,6 +6,7 @@ use App\Models\Course\Course;
 
 class CourseService
 {
+    protected $course;
 
     public function __construct(Course $course)
     {
@@ -14,14 +15,20 @@ class CourseService
 
     public function paginate($limit)
     {
-        $departments = $this->course->orderBy('id', 'DESC')->paginate($limit);
-        return $departments;
+        $courses = $this->course->orderBy('id', 'DESC')->paginate($limit);
+        return $courses;
+    }
+
+    public function all()
+    {
+        $courses = $this->course->whereIsActive(1)->orderBy('id', 'DESC')->get();
+        return $courses;
     }
 
     public function findByColumn($column, $value)
     {
-        $departments = $this->course->where($column, $value)->first();
-        return $departments;
+        $courses = $this->course->where($column, $value)->first();
+        return $courses;
     }
 
     public function store($data)

@@ -23,6 +23,7 @@ use App\Http\Controllers\Back\Media\MediaController;
 use App\Http\Controllers\Back\Menu\MenuController;
 use App\Http\Controllers\Back\Dashboard\DashboardController;
 use App\Http\Controllers\Back\Department\DepartmentController;
+use App\Http\Controllers\Back\Document\DocumentController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -52,6 +53,11 @@ Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function 
     $route->resource('course', CourseController::class);
     $route->post('course/{id}/update', [CourseController::class, "update"])->name('course.update');
     $route->get('course/{id}/destroy', [CourseController::class, "destroy"])->name('course.destroy');
+
+//    document
+    $route->resource('document', DocumentController::class);
+    $route->post('document/{id}/update', [DocumentController::class, "update"])->name('document.update');
+    $route->get('document/{id}/destroy', [DocumentController::class, "destroy"])->name('document.destroy');
 
 //    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->resource('blog-category', BlogCategoryController::class);

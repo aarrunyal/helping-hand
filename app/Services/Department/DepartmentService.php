@@ -6,6 +6,7 @@ use App\Models\Department\Department;
 
 class DepartmentService
 {
+    protected $department;
 
     public function __construct(Department $department)
     {

@@ -146,6 +146,12 @@
                         <span><i class="fas fa-bars"></i></span>
                         <span class="ml-5 kt-menu__link-text">Course</span></a></li>
 
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('document.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-file"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Document</span></a></li>
+
             </ul>
         </div>
     </div>
