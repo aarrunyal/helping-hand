@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Back\Announcement\AnnouncementController;
 use App\Http\Controllers\Back\Auth\LoginController;
 use App\Http\Controllers\Back\SystemUser\SystemUserController;
 use App\Http\Controllers\Back\SiteSetting\SiteSettingController;
@@ -58,6 +59,11 @@ Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function 
     $route->resource('document', DocumentController::class);
     $route->post('document/{id}/update', [DocumentController::class, "update"])->name('document.update');
     $route->get('document/{id}/destroy', [DocumentController::class, "destroy"])->name('document.destroy');
+
+//    announcement
+    $route->resource('announcement', AnnouncementController::class);
+    $route->post('announcement/{id}/update', [AnnouncementController::class, "update"])->name('announcement.update');
+    $route->get('announcement/{id}/destroy', [AnnouncementController::class, "destroy"])->name('announcement.destroy');
 
 //    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->resource('blog-category', BlogCategoryController::class);

@@ -12,9 +12,7 @@
                     <div class="form-group row">
                         <div class="col-lg-6">
                             <label class="form-control-label">* Document File</label>
-                            <input type="file" name="file[]" class="form-control" placeholder="Document Name"
-                                value="{{ old('title', isset($document->title) ? $document->title : null) }}">
-                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                            <input type="file" name="files[]" class="form-control" placeholder="Document Name" multiple>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">* Document Name</label>

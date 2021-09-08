@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->bigInteger('course_id')->unsigned()->index()->nullable();
-            $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('downloadable')->default(1);
             $table->boolean('viewable')->default(1);
             $table->string('access_type');
