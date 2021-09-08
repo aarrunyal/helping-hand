@@ -69,5 +69,11 @@ class AnnouncementService
             return $response->get();
         return $response->first();
     }
+
+    public function getActive()
+    {
+        $response = $this->announcement->whereIsActive(1)->get();
+        return $response;
+    }
 }
 

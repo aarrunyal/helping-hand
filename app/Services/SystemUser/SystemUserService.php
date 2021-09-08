@@ -63,6 +63,34 @@ class SystemUserService
             return false;
         }
     }
+    public function findByColumns($data, $all = false)
+    {
+        $response = $this->user->where(function ($qry) use ($data) {
+            if (sizeof($data) > 0) {
+                foreach ($data as $k => $d) {
+                    $qry->where($k, $data[$k]);
+                }
+            }
+        });
+        if ($all)
+            return $response->get();
+        return $response->first();
+    }
+
+    public function getTeacher()
+    {
+        return $this->user->whereUserType('teacher')->get();
+    }
+
+    public function getStaff()
+    {
+        return $this->user->whereUserType('staff')->get();
+    }
+
+    public function getStudent()
+    {
+        return $this->user->whereUserType('student')->get();
+    }
 
     public function getParentCategory()
     {

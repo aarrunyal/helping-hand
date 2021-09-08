@@ -11,7 +11,7 @@ use App\Services\Category\CategoryService;
 class CategoryController
 {
 
-    public $category;
+    protected $category;
 
 
     public function __construct(CategoryService $category)
