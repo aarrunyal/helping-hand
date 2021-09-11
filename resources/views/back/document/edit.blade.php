@@ -33,7 +33,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                               Department
+                               Document
                             </h3>
                         </div>
                     </div>

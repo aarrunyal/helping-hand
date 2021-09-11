@@ -3,10 +3,11 @@
 namespace App\Services\DocumnetFile;
 
 use App\Models\DocumentFile\DocumentFile;
+use App\Services\Service;
 
-class DocumentFileServie
+class DocumentFileServie extends Service
 {
-    protected $uploadPath = "uploads/documentFile";
+    protected $uploadPath = "uploads/document-file";
     protected $documentFile;
 
     public function __construct(DocumentFile $documentFile)
@@ -29,7 +30,17 @@ class DocumentFileServie
     public function store($data)
     {
         try {
-            return $this->documentFile->create($data);
+            if (isset($data['files'])) {
+                for ($i=0; $i < count($data['files']); $i++) {
+                    $file = [];
+                    $file['document_id'] = $data['document_id'];
+                    $file['file_path'] = $this->fileUpload($data['files'][$i], $this->uploadPath);
+                    $file['name'] = substr($data['files'][0]->getClientOriginalName(), 0, strpos($data['files'][0]->getClientOriginalName(), "."));
+                    $file['type'] = $data['files'][$i]->getClientOriginalExtension();
+                    $this->documentFile->create($file);
+                }
+            }
+            return true;
         } catch (\Exception $ex) {
             return false;
         }
@@ -49,6 +60,10 @@ class DocumentFileServie
     {
         try {
             $documentFile = $this->findByColumn('id', $id);
+            // dd($documentFile->file_path);
+            if (!empty($documentFile->file_path)) {
+                $this->fileDelete($documentFile->file_path, $this->uploadPath);
+            }
             return $documentFile->delete();
         } catch (\Exception $ex) {
             return false;

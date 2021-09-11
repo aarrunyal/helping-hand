@@ -11,10 +11,6 @@
                 <div class="kt-section__content">
                     <div class="form-group row">
                         <div class="col-lg-6">
-                            <label class="form-control-label">* Document File</label>
-                            <input type="file" name="files[]" class="form-control" placeholder="Document Name" multiple>
-                        </div>
-                        <div class="col-lg-6">
                             <label class="form-control-label">* Document Name</label>
                             <input type="text" name="title" class="form-control" placeholder="Document Name"
                                 value="{{ old('title', isset($document->title) ? $document->title : null) }}">
@@ -49,6 +45,9 @@
                                 <option value="teacher"
                                     {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
                                     Teacher</option>
+                                <option value="staff"
+                                    {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
+                                    Staff</option>
                                 <option value="student"
                                     {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
                                     Student</option>

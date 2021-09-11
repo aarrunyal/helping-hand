@@ -25,6 +25,7 @@ use App\Http\Controllers\Back\Menu\MenuController;
 use App\Http\Controllers\Back\Dashboard\DashboardController;
 use App\Http\Controllers\Back\Department\DepartmentController;
 use App\Http\Controllers\Back\Document\DocumentController;
+use App\Http\Controllers\Back\DocumentFile\DocumentFileController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -59,6 +60,13 @@ Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function 
     $route->resource('document', DocumentController::class);
     $route->post('document/{id}/update', [DocumentController::class, "update"])->name('document.update');
     $route->get('document/{id}/destroy', [DocumentController::class, "destroy"])->name('document.destroy');
+
+//    document file
+    $route->resource('document-file', DocumentFileController::class);
+    $route->post('document-file/{id}/update', [DocumentFileController::class, "update"])->name('document-file.update');
+    $route->get('document-file/{id}/destroy', [DocumentFileController::class, "destroy"])->name('document-file.destroy');
+    $route->get('document-file-form', [DocumentFileController::class, "getDocumentFileForm"])->name('document-file-custom-form');
+    $route->get('document-file-view/{id}', [DocumentFileController::class, "getDocumentFileView"])->name('document-file-view');
 
 //    announcement
     $route->resource('announcement', AnnouncementController::class);

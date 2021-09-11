@@ -11,10 +11,15 @@ class Document extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['document_file_id','title', 'description', 'course_id', 'downloadable', 'viewable', 'access_type', 'is_active'];
+    protected $fillable = ['title', 'description', 'course_id', 'downloadable', 'viewable', 'access_type', 'is_active'];
 
     public function course()
     {
         return $this->belongsTo(Course::class, 'course_id');
+    }
+
+    public function documentFiles()
+    {
+        return $this->hasMany(DocumentFile::class, 'document_id');
     }
 }

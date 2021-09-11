@@ -18,6 +18,7 @@ class CreateDocumentFilesTable extends Migration
             $table->bigInteger('document_id')->unsigned()->index()->nullable();
             $table->foreign('document_id')->references('id')->on('documents')->onUpdate('cascade')->onDelete('cascade');
             $table->string('file_path');
+            $table->string('name');
             $table->string('type');
             $table->timestamps();
         });

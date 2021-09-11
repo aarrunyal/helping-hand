@@ -8,13 +8,11 @@ use App\Services\Service;
 
 class DocumentService extends Service
 {
-    protected $uploadPath = "uploads/document";
-    protected $document, $documentFile;
+    protected $document;
 
     public function __construct(Document $document, DocumentFileServie $documentFile)
     {
         $this->document = $document;
-        $this->documentFile = $documentFile;
     }
 
     public function paginate($limit)
@@ -35,19 +33,8 @@ class DocumentService extends Service
             $data['downloadable'] = (isset($data['downloadable']) && $data['downloadable'] == "on") ? 1 : 0;
             $data['viewable'] = (isset($data['viewable']) && $data['viewable'] == "on") ? 1 : 0;
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
-            $document = $this->document->create($data);
-            if (isset($data['files']) && !empty($document)) {
-                for ($i=0; $i < count($data['files']); $i++) {
-                    $file = [];
-                    $tempName = $this->fileUpload($data['files'][$i], $this->uploadPath);
-                    $file['document_id'] = $document->id;
-                    $file['file_path'] = asset($this->uploadPath . '/' . $tempName);
-                    $file['type'] = $data['files'][$i]->getClientOriginalExtension();
-                    $this->documentFile->store($file);
-                }
-            }
-            return $document;
-        } catch (\Exception $ex) {
+            return $this->document->create($data);
+            } catch (\Exception $ex) {
             return false;
         }
     }
