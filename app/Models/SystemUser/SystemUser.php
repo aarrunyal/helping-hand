@@ -14,6 +14,7 @@ class SystemUser extends Authenticatable
         'phone',
         'password',
         'last_login_time',
+        'user_type',
         'is_active',
         'remember_token',
     ];

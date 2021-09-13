@@ -20,7 +20,10 @@ class CreateDocumentFilesTable extends Migration
             $table->string('file_path');
             $table->string('name');
             $table->string('type');
+            $table->string('upload_by');
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -26,6 +26,7 @@ use App\Http\Controllers\Back\Dashboard\DashboardController;
 use App\Http\Controllers\Back\Department\DepartmentController;
 use App\Http\Controllers\Back\Document\DocumentController;
 use App\Http\Controllers\Back\DocumentFile\DocumentFileController;
+use App\Http\Controllers\Back\DocumentRequest\DocumentRequestController;
 
 Route::get('admin/login', function () {
     if (!auth()->guard('super-admin')->check())
@@ -67,11 +68,16 @@ Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function 
     $route->get('document-file/{id}/destroy', [DocumentFileController::class, "destroy"])->name('document-file.destroy');
     $route->get('document-file-form', [DocumentFileController::class, "getDocumentFileForm"])->name('document-file-custom-form');
     $route->get('document-file-view/{id}', [DocumentFileController::class, "getDocumentFileView"])->name('document-file-view');
-
-//    announcement
+    //    announcement
     $route->resource('announcement', AnnouncementController::class);
     $route->post('announcement/{id}/update', [AnnouncementController::class, "update"])->name('announcement.update');
     $route->get('announcement/{id}/destroy', [AnnouncementController::class, "destroy"])->name('announcement.destroy');
+
+//  document request
+    $route->resource('document-request', DocumentRequestController::class);
+    $route->post('document-request/{id}/update', [DocumentRequestController::class, "update"])->name('document-request.update');
+    $route->get('document-request/{id}/destroy', [DocumentRequestController::class, "destroy"])->name('document-request.destroy');
+    $route->get('document-request-form', [DocumentRequestController::class, "getDocumentRequestForm"])->name('document-request-form');
 
 //    $route->resource('blog-category', BlogCategoryController::class);
 //    $route->resource('blog-category', BlogCategoryController::class);

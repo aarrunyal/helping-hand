@@ -24,18 +24,19 @@
             <div class="kt-portlet__body">
                 @if ($document->access_type != 'student')
                     <form action="{{ route('document-file.store') }}" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-8">
-                            <input class="form-control" type="hidden" name="document_id" value="{{ $document->id }}">
-                            <input type="file" name="files[]" class="form-control" placeholder="Document File"
-                                multiple>
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-8">
+                                <input class="form-control" type="hidden" name="document_id"
+                                    value="{{ $document->id }}">
+                                <input type="file" name="files[]" class="form-control" placeholder="Document File"
+                                    multiple>
+                            </div>
+                            <div class="col-4">
+                                <button class="btn btn-success">Upload</button>
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <button class="btn btn-success">Upload</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
                 @endif
 
                 <div class="row mt-5">
@@ -53,21 +54,21 @@
                                         <img src="{{ asset('resources/back/assets/image/file') . '/' . $documentFile->type . '.png' }}"
                                             alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
                                     @endif
-                                   @if($document->downloadable == '1')
+                                    @if ($document->downloadable == '1')
                                         <span class="m-4">
-                                        <a href="{{ $documentFile->file }}" target="_blank"><i
-                                                class="text-success fa fa-download"></i></a>
-                                    </span>
-                                   @endif
-                                       <span class="m-4">
-                                        <a href="{{ route('document-file-view', $documentFile->id) }}" target="_blank"><i
+                                            <a href="{{ $documentFile->file }}" target="_blank"><i
+                                                    class="text-success fa fa-download"></i></a>
+                                        </span>
+                                    @endif
+                                    {{-- <span class="m-4">
+                                        <a href="{{ route('document-file-view', [$documentFile->id]) }}" target="_blank"><i
                                                 class="text-info fas fa-eye"></i></a>
-                                    </span>
-                                    @if($document->access_type != 'student')
-                                    <span class="m-4">
-                                        <a href="{{ $documentFile->file }}" target="_blank"><i
-                                                class="text-danger fas fa-trash"></i></a>
-                                    </span>
+                                    </span> --}}
+                                    @if ($document->access_type != 'student')
+                                        <span class="m-4">
+                                            <a href="{{ route('document-file.destroy', $documentFile->id) }}"><i
+                                                    class="text-danger fas fa-trash"></i></a>
+                                        </span>
                                     @endif
                                 </div>
 

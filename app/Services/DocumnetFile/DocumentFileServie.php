@@ -37,6 +37,7 @@ class DocumentFileServie extends Service
                     $file['file_path'] = $this->fileUpload($data['files'][$i], $this->uploadPath);
                     $file['name'] = substr($data['files'][0]->getClientOriginalName(), 0, strpos($data['files'][0]->getClientOriginalName(), "."));
                     $file['type'] = $data['files'][$i]->getClientOriginalExtension();
+                    $file['upload_by'] = auth()->user()->id;
                     $this->documentFile->create($file);
                 }
             }
@@ -60,10 +61,10 @@ class DocumentFileServie extends Service
     {
         try {
             $documentFile = $this->findByColumn('id', $id);
-            // dd($documentFile->file_path);
             if (!empty($documentFile->file_path)) {
                 $this->fileDelete($documentFile->file_path, $this->uploadPath);
             }
+            $documentFile->update(['deleted_by' => auth()->user()->id]);
             return $documentFile->delete();
         } catch (\Exception $ex) {
             return false;

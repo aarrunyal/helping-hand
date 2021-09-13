@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Back\DocumentFile;
+namespace App\Http\Controllers\Back\DocumentRequest;
 
 use App\Http\Controllers\Controller;
-use App\Services\Document\DocumentService;
-use App\Services\DocumnetFile\DocumentFileServie;
+use App\Http\Requests\Back\DocumentRequest\DocumentRequestRequest;
+use App\Services\DocumentRequest\DocumentRequestService;
 use Illuminate\Http\Request;
 
-class DocumentFileController extends Controller
+class DocumentRequestController extends Controller
 {
-    protected $documentFile;
+    protected $documentRequest;
 
-    protected $document;
-
-    public function __construct(DocumentFileServie $documentFile, DocumentService $document)
+    public function __construct(DocumentRequestService $documentRequest)
     {
-        $this->documentFile = $documentFile;
-        $this->document = $document;
+        $this->documentRequest = $documentRequest;
     }
 
     /**
@@ -26,8 +23,9 @@ class DocumentFileController extends Controller
      */
     public function index()
     {
-        // $documents = $this->documentFile->paginate(25);
-        // return view('back.document.index', compact('documents'));
+        $documentRequests = $this->documentRequest->getData(25);
+        // dd($documentRequests);
+        return view('back.document-request.index', compact('documentRequests'));
     }
 
     /**
@@ -37,7 +35,7 @@ class DocumentFileController extends Controller
      */
     public function create()
     {
-        // return view('back.documentFile.create');
+        return view('back.document-request.create');
     }
 
     /**
@@ -46,15 +44,15 @@ class DocumentFileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentRequestRequest $request)
     {
         $data = $request->all();
-        if ($this->documentFile->store($data)) {
+        if ($this->documentRequest->store($data)) {
             toastr()->success('Request Processed successfully');
-            return redirect()->route('document.index');
+            return redirect()->route('document-request.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('document.index');
+        return redirect()->route('document-request.index');
     }
 
     /**
@@ -76,8 +74,8 @@ class DocumentFileController extends Controller
      */
     public function edit($id)
     {
-        // $documentFile = $this->documentFile->findByColumn('id', $id);
-        // return view('back.documentFile.edit',compact('documentFile'));
+        $documentRequest = $this->documentRequest->findByColumn('id', $id);
+        return view('back.document-request.edit',compact('documentRequest'));
     }
 
     /**
@@ -87,15 +85,15 @@ class DocumentFileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DocumentRequestRequest $request, $id)
     {
         $data = $request->all();
-        if ($this->documentFile->update($id, $data)) {
+        if ($this->documentRequest->update($id, $data)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('document.index');
+            return redirect()->route('document-request.index');
         }
         toastr()->error('Something went wrong');
-        return redirect()->route('document.create');
+        return redirect()->route('document-request.create');
     }
 
     /**
@@ -106,19 +104,18 @@ class DocumentFileController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->documentFile->delete($id)) {
+        if ($this->documentRequest->delete($id)) {
             toastr()->success('Request processed successfully');
-            return redirect()->route('document.index');
+            return redirect()->route('document-request.index');
         }
         // toastr()->error('Something went wrong');
-        // return redirect()->route('document.index');
+        // return redirect()->route('document-request.index');
     }
 
-    public function getDocumentFileForm(Request $request)
+    public function getDocumentRequestForm(Request $request)
     {
-        $document_id = $request->id;
-        $documentFiles = $this->documentFile->findByColumns(['document_id' => $request->id], true);
-        $document = $this->document->findByColumn('id', $document_id);
-        return view('back.document.custom-form.document-file-form', compact('documentFiles','document'));
+        $id = $request->id;
+        $documentRequest = $this->documentRequest->findByColumn('id', $id);
+        return view('back.document-request.custom-form.document-request-form', compact('documentRequest'));
     }
 }

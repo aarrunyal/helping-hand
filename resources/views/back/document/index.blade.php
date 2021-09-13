@@ -134,6 +134,7 @@
      function getItineraryForm(id) {
         let url = '{{route("document-file-custom-form")}}'
         ajaxCall('GET', url, 'HTML',{ id: id }, '#document-file-form-id', function (response, selector) {
+                $(selector).html("");
                 $(selector).append(response);
             }, function (error) {
             }

@@ -10,7 +10,7 @@ class DocumentService extends Service
 {
     protected $document;
 
-    public function __construct(Document $document, DocumentFileServie $documentFile)
+    public function __construct(Document $document)
     {
         $this->document = $document;
     }
@@ -31,10 +31,11 @@ class DocumentService extends Service
     {
         try {
             $data['downloadable'] = (isset($data['downloadable']) && $data['downloadable'] == "on") ? 1 : 0;
-            $data['viewable'] = (isset($data['viewable']) && $data['viewable'] == "on") ? 1 : 0;
+            // $data['viewable'] = (isset($data['viewable']) && $data['viewable'] == "on") ? 1 : 0;
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+            $data['created_by'] = auth()->user()->id;
             return $this->document->create($data);
-            } catch (\Exception $ex) {
+        } catch (\Exception $ex) {
             return false;
         }
     }

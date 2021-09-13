@@ -20,8 +20,9 @@ class CreateDocumentsTable extends Migration
             $table->bigInteger('course_id')->unsigned()->index()->nullable();
             $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');
             $table->boolean('downloadable')->default(1);
-            $table->boolean('viewable')->default(1);
+            // $table->boolean('viewable')->default(1);
             $table->string('access_type');
+            $table->string('created_by');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
         });

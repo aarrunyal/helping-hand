@@ -40,34 +40,19 @@
                             <select class="form-control" name="access_type" id="course_id">
                                 <option value="">Select Access Type</option>
                                 <option value="all"
-                                    {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'all' ? $document->access_type : '') ? 'selected' : '' }}>
                                     All</option>
                                 <option value="teacher"
-                                    {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'teacher'  ? $document->access_type : '') ? 'selected' : '' }}>
                                     Teacher</option>
                                 <option value="staff"
-                                    {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'staff'  ? $document->access_type : '') ? 'selected' : '' }}>
                                     Staff</option>
                                 <option value="student"
-                                    {{ old('access_type', isset($document->access_type) ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'student'  ? $document->access_type : '') ? 'selected' : '' }}>
                                     Student</option>
                             </select>
                             <span class="text-danger">{{ $errors->first('access_type') }}</span>
-                        </div>
-                        <div class="col-lg-6" id="is_active">
-                            <div class="form-group row mt-4">
-                                <label class="col-4 col-form-label">Status</label>
-                                <div class="col-4">
-                                    <span class="kt-switch kt-switch--success">
-                                        <label>
-                                            <input type="checkbox"
-                                                {{ isset($document->is_active) && $document->is_active == '1' ? 'checked' : '' }}
-                                                name="is_active">
-                                            <span></span>
-                                        </label>
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -87,7 +72,22 @@
                         </span>
                     </div>
                 </div>
-                <div class="form-group row">
+                  <div class="col-lg-6" id="is_active">
+                            <div class="form-group row mt-4">
+                                <label class="col-4 col-form-label">Status</label>
+                                <div class="col-4">
+                                    <span class="kt-switch kt-switch--success">
+                                        <label>
+                                            <input type="checkbox"
+                                                {{ isset($document->is_active) && $document->is_active == '1' ? 'checked' : '' }}
+                                                name="is_active">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                {{-- <div class="form-group row">
                     <label class="col-4 col-form-label">Viewable</label>
                     <div class="col-4">
                         <span class="kt-switch kt-switch--success">
@@ -99,7 +99,7 @@
                             </label>
                         </span>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 

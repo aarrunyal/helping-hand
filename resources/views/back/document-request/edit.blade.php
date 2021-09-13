@@ -13,8 +13,8 @@
                 <div class="kt-input-icon kt-input-icon--right kt-subheader__search kt-hidden">
                     <input type="text" class="form-control" placeholder="Search order..." id="generalSearch">
                     <span class="kt-input-icon__icon kt-input-icon__icon--right">
-                        <span><i class="flaticon2-search-1"></i></span>
-                    </span>
+											<span><i class="flaticon2-search-1"></i></span>
+										</span>
                 </div>
             </div>
         </div>
@@ -33,11 +33,13 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Document
+                               Document
                             </h3>
                         </div>
                     </div>
-                    <iframe src="{{ $documentFile->file }}" width="100%" height="600"></iframe>
+                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('document-request.update', $documentRequest->id)}}">
+                        @include('back.document-request.form')
+                    </form>
                 </div>
             </div>
         </div>

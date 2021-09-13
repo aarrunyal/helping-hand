@@ -33,11 +33,14 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Document
+                                Document Request
                             </h3>
                         </div>
                     </div>
-                    <iframe src="{{ $documentFile->file }}" width="100%" height="600"></iframe>
+                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST"
+                        action="{{ route('document-request.store') }}" enctype="multipart/form-data">
+                        @include('back.document-request.form')
+                    </form>
                 </div>
             </div>
         </div>

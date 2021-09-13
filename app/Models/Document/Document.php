@@ -11,7 +11,7 @@ class Document extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'course_id', 'downloadable', 'viewable', 'access_type', 'is_active'];
+    protected $fillable = ['title', 'description', 'course_id', 'downloadable', 'access_type', 'created_by', 'is_active'];
 
     public function course()
     {

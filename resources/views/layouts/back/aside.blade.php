@@ -157,6 +157,20 @@
                         class="kt-menu__link ">
                         <span><i class="fas fa-file"></i></span>
                         <span class="ml-5 kt-menu__link-text">Announcement</span></a></li>
+                @if(auth()->user()->user_type == 'admin')
+                <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('document-request.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-file"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Document Request</span></a></li>
+
+                @else
+                    <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{route('document-request.index')}}"
+                        class="kt-menu__link ">
+                        <span><i class="fas fa-file"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Requested Document</span></a></li>
+                @endif
 
             </ul>
         </div>
