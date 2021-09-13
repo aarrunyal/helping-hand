@@ -23,8 +23,7 @@ class DocumentRequestController extends Controller
      */
     public function index()
     {
-        $documentRequests = $this->documentRequest->getData(25);
-        // dd($documentRequests);
+        $documentRequests = $this->documentRequest->paginate(25);
         return view('back.document-request.index', compact('documentRequests'));
     }
 

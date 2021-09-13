@@ -9,6 +9,7 @@ use App\Services\Course\CourseService;
 use App\Services\Department\DepartmentService;
 use App\Services\Destination\DestinationService;
 use App\Services\Document\DocumentService;
+use App\Services\DocumentRequest\DocumentRequestService;
 use App\Services\GoogleAnalytics\GoogleAnalyticsService;
 use App\Services\Inquiry\InquiryService;
 use App\Services\Program\Package\PackageService;
@@ -21,8 +22,9 @@ class DashboardController
     protected $announcement;
     protected $application;
     protected $course;
-    protected $department;
     protected $document;
+    protected $documentRequest;
+    protected $department;
     protected $inquiry;
     protected $destination;
     protected $program;
@@ -39,7 +41,8 @@ class DashboardController
         DepartmentService $departmentService,
         AnnouncementService $announcementService,
         DocumentService $documentService,
-        SystemUserService $systemUserService
+        SystemUserService $systemUserService,
+        DocumentRequestService $documentRequestService
     )
     {
         $this->analytics = $analyticsService;
@@ -53,6 +56,7 @@ class DashboardController
         $this->program = $programService;
         $this->package = $packageService;
         $this->systemUser = $systemUserService;
+        $this->documentRequest = $documentRequestService;
     }
 
     function index()
@@ -62,6 +66,8 @@ class DashboardController
         $courses = $this->course->findByColumns([], true);
         $departments = $this->department->findByColumns([], true);
         $documents = $this->document->findByColumns([], true);
+        $documentRequests = $this->documentRequest->paginate(5);
+        $latestAnnouncements = $this->announcement->findByColumns([], true, 5);
         $totalAnnouncements = $this->announcement->findByColumns([], true);
         $inquiries = $this->inquiry->findByColumns([], true, 5);
         $staffs = $this->systemUser->getStaff();
@@ -77,9 +83,11 @@ class DashboardController
             'announcements',
             'applications',
             'courses',
-            'departments',
             'documents',
+            'documentRequests',
+            'departments',
             'inquiries',
+            'latestAnnouncements',
             'staffs',
             'students',
             'teachers',

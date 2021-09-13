@@ -5,7 +5,7 @@
 <!-- begin:: Page -->
 
 <!-- begin:: Header Mobile -->
-<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+<div id="kt_header_mobile" class="kt-header-mobile kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
         <a href="index.html">
 {{--            <img alt="Logo" src="assets/media/logos/logo-light.png" />--}}
@@ -27,7 +27,7 @@
         <!-- /				 Uncomment this to display the close button of the panel -->
         <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
 
-        <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+        <div class="kt-aside kt-aside--fixed kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
 
             <!-- begin:: Aside -->
             <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
@@ -72,7 +72,7 @@
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
             <!-- begin:: Header -->
-            <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
+            <div id="kt_header" class="kt-header kt-grid__item kt-header--fixed ">
 
                 <!-- begin:: Header Menu -->
 
@@ -80,7 +80,7 @@
 <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
 -->
                 <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
-                    <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
+                    <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile kt-header-menu--layout-default ">
 
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                             <div class="kt-header__topbar-user">
                                 <span class="kt-header__topbar-welcome kt-hidden-mobile">Hi,</span>
-                                <span class="kt-header__topbar-username kt-hidden-mobile">{{auth()->guard('super-admin')->user()->first_name}}</span>
+                                <span class="kt-header__topbar-username kt-hidden-mobile">{{auth()->guard('super-user')->user()->first_name}}</span>
                                 <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                     <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
                                 </div>
                                 <div class="kt-user-card__name">
-                                    {{auth()->guard('super-admin')->user()->full_name  }}
+                                    {{auth()->guard('super-user')->user()->full_name  }}
                                 </div>
 
                             </div>
@@ -122,7 +122,7 @@
                             <!--begin: Navigation -->
                             <div class="kt-notification">
                                 <div class="kt-notification__custom kt-space-between">
-                                    <a href="{{route('admin.logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+                                    <a href="{{route('user.logout')}}" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
                                 </div>
                             </div>
 
@@ -138,4 +138,4 @@
 
             <!-- end:: Header -->
 
-            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+            <div class="kt-content kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">

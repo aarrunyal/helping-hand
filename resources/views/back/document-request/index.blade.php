@@ -1,8 +1,8 @@
 @extends('layouts.back.layout')
 @section('content')
     <!-- begin:: Content Head -->
-    <div class="kt-subheader  kt-grid__item" id="kt_subheader">
-        <div class="kt-container  kt-container--fluid ">
+    <div class="kt-subheader kt-grid__item" id="kt_subheader">
+        <div class="kt-container kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">Document Request</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
@@ -24,7 +24,7 @@
 
 
     <!-- begin:: Content -->
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
 
         <!--begin::Portlet-->
         <div class="row">
@@ -72,7 +72,7 @@
                         </div>
                         <!-- begin:: Uplaod Modal -->
 
-                        <div class="  kt-portlet__body">
+                        <div class=" kt-portlet__body">
 
                                 <table class="table table-striped- table-bordered table-hover table-checkable">
                                     <thead>
@@ -98,7 +98,7 @@
                                                     @if (auth()->user()->user_type == 'admin')
                                                         <td class="text-center">{{ $documentRequest->user->first_name }} {{ $documentRequest->user->last_name }}</td>
                                                     @endif
-                                                    <td class="text-center">{{ $documentRequest->status }} </td>
+                                                    <td class="text-center">{!! getStatusLayouts($documentRequest->status) !!}</td>
                                                     <td class="text-center">
                                                         @if (auth()->user()->user_type == 'admin')
                                                             <a href=""

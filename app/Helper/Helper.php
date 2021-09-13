@@ -11,6 +11,20 @@ function getStatus($status)
     }
 }
 
+function getStatuss($status)
+{
+    switch ($status) {
+        case 'approve':
+            return 'APPROVE';
+
+        case 'processing':
+            return 'PROCESSING';
+
+        case 'denied':
+            return 'DENIED';
+    }
+}
+
 function getTextColor($status)
 {
     switch ($status) {
@@ -22,9 +36,28 @@ function getTextColor($status)
     }
 }
 
+function getTextColors($status)
+{
+    switch ($status) {
+        case 'approve':
+            return 'success';
+
+        case 'processing':
+            return 'primary';
+
+        case 'denied':
+            return 'danger';
+    }
+}
+
 function getStatusLayout($status)
 {
     return '<span class="' . getTextColor($status) . '"><i class="' . getStatus($status) . '"></i></span>';
+}
+
+function getStatusLayouts($status)
+{
+    return '<span class="badge badge-'. getTextColors($status) .'">'. getStatuss($status) . '</span>';
 }
 
 

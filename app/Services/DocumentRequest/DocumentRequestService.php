@@ -15,8 +15,11 @@ class DocumentRequestService
 
     public function paginate($limit)
     {
-        $documentRequests = $this->documentRequest->orderBy('id', 'DESC')->paginate($limit);
-        return $documentRequests;
+        if(auth()->user()->user_type == 'admin') {
+            return $this->documentRequest->orderBy('id', 'DESC')->paginate($limit);
+         }else {
+             return $this->findByColumns(['user_id' => auth()->user()->id], true);
+         }
     }
 
     public function findByColumn($column, $value)
@@ -54,7 +57,7 @@ class DocumentRequestService
         }
     }
 
-    public function findByColumns($data, $all = false)
+    public function findByColumns($data, $all = false, $limit = null)
     {
         $response = $this->documentRequest->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {
@@ -63,9 +66,13 @@ class DocumentRequestService
                 }
             }
         });
-        if ($all)
-            return $response->get();
-        return $response->first();
+        if ($all) {
+            if (!empty($limit))
+                $response = $response->take($limit);
+            $response = $response->orderBy('id', "DESC")->get();
+        } else
+            $response = $response->first();
+        return $response;
     }
 
     public function getData($limit)

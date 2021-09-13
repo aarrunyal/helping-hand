@@ -28,17 +28,17 @@ use App\Http\Controllers\Back\Document\DocumentController;
 use App\Http\Controllers\Back\DocumentFile\DocumentFileController;
 use App\Http\Controllers\Back\DocumentRequest\DocumentRequestController;
 
-Route::get('admin/login', function () {
-    if (!auth()->guard('super-admin')->check())
+Route::get('user/login', function () {
+    if (!auth()->guard('super-user')->check())
         return view('back.auth.login');
     else
-        return redirect()->route('admin.dashboard');
-})->name('admin.auth');
-
+        return redirect()->route('user.dashboard');
+})->name('user.auth');
+Route::get('/', [DashboardController::class, 'index'])->name('user.home')->middleware('super-user');
 Route::post('/admin-login', [LoginController::class, "login"])->name('admin.login');
-Route::group(['middleware' => "super-admin", "prefix" => "hhf/admin"], function ($route) {
-    $route->get('logout', [LoginController::class, "logout"])->name('admin.logout');
-    $route->get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+Route::group(['middleware' => "super-user", "prefix" => "hhf/user"], function ($route) {
+    $route->get('logout', [LoginController::class, "logout"])->name('user.logout');
+    $route->get('dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
     $route->get('google/analytics', [DashboardController::class, 'getGoogleAnalyticsData'])->name('dashboard.analytics');
     $route->get('application-by-destination', [DashboardController::class, 'applicationByDestination'])->name('dashboard.application-by-destination');
 //    category

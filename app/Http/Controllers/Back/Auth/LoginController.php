@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('super-admin')->except('logout');
+//        $this->middleware('super-user')->except('logout');
     }
 
     public function showLoginForm()
@@ -118,7 +118,7 @@ class LoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect()->intended(route('admin.dashboard'));
+            : redirect()->intended(route('user.dashboard'));
     }
 
     /**
@@ -178,7 +178,7 @@ class LoginController extends Controller
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/admin/login');
+            : redirect('/user/login');
     }
 
     /**
@@ -199,6 +199,6 @@ class LoginController extends Controller
      */
     protected function guard()
     {
-        return Auth::guard('super-admin');
+        return Auth::guard('super-user');
     }
 }

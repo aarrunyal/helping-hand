@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
 
-        'super-admin' => [
+        'super-user' => [
             'driver' => 'session',
             'provider' => 'system_users',
         ],

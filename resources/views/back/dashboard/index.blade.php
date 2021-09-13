@@ -1,8 +1,8 @@
 @extends('layouts.back.layout')
 @section('content')
     <!-- begin:: Content Head -->
-    <div class="kt-subheader  kt-grid__item" id="kt_subheader">
-        <div class="kt-container  kt-container--fluid ">
+    <div class="kt-subheader kt-grid__item" id="kt_subheader">
+        <div class="kt-container kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">Dashboard</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
@@ -17,14 +17,13 @@
     <!-- end:: Content Head -->
 
     <!-- begin:: Content -->
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
 
         <!--Begin::Dashboard 1-->
 
         <!--Begin::Row-->
         <div class="row">
             <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
-
                 <!--begin:: Widgets/Activity-->
                 <div class="kt-portlet kt-portlet--fit kt-portlet--head-lg kt-portlet--head-overlay kt-portlet--skin-solid ">
                     <div class="kt-portlet__head kt-portlet__head--noborder kt-portlet__space-x">
@@ -105,7 +104,7 @@
                                                 </g>
                                             </svg> </span>
                                         <span class="kt-widget17__subtitle">
-                                          {{ $announcements->count() }}
+                                            {{ $announcements->count() }}
                                         </span>
                                         <span class="kt-widget17__desc">
                                             Active Announcement
@@ -127,7 +126,7 @@
                                                 </g>
                                             </svg> </span>
                                         <span class="kt-widget17__subtitle">
-                                           {{ $totalAnnouncements->count() }}
+                                            {{ $totalAnnouncements->count() }}
                                         </span>
                                         <span class="kt-widget17__desc">
                                             Total Announcement
@@ -161,51 +160,10 @@
                         </div>
                     </div>
                 </div>
-
                 <!--end:: Widgets/Activity-->
             </div>
+
             <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
-
-                <!--begin:: Widgets/Inbound Bandwidth-->
-                <div class="kt-portlet__body kt-portlet__body--fit">
-                    <div class="kt-widget17">
-                        <div class="kt-widget17__visual kt-widget17__visual--chart kt-portlet-fit--top kt-portlet-fit--sides"
-                            style="background-color: #fd397a">
-                            <div class="kt-widget17__chart" style="height:200px;">
-                            </div>
-                        </div>
-                        <div class="kt-widget17__stats">
-                            <div class="kt-widget17__items">
-                                <div class="kt-widget17__item">
-                                    <span class="kt-widget17__icon">
-                                        <i class="fas fa-users"></i></span>
-                                    <span class="kt-widget17__subtitle" id="activeUser">
-                                        0
-                                    </span>
-
-                                    <span class="kt-widget17__desc">
-                                        Active User
-                                    </span>
-                                </div>
-                                {{-- <div class="kt-widget17__item"> --}}
-                                {{-- <span class="kt-widget17__icon"> --}}
-                                {{-- <i class="fas fa-users"></i> --}}
-                                {{-- </span> --}}
-                                {{-- <span class="kt-widget17__subtitle" id="totalUserSevenDays"> --}}
-                                {{-- 0 --}}
-                                {{-- </span> --}}
-                                {{-- <span class="kt-widget17__desc"> --}}
-                                {{-- Users in 7 days --}}
-                                {{-- </span> --}}
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--end:: Widgets/Inbound Bandwidth-->
-                <div class="kt-space-20"></div>
-
                 <!--begin:: Widgets/Outbound Bandwidth-->
                 <div class="kt-portlet__body kt-portlet__body--fit">
                     <div class="kt-widget17">
@@ -229,10 +187,10 @@
                                 </div>
                                 <div class="kt-widget17__item">
                                     <span class="kt-widget17__icon">
-                                        <i class="fas fas fa-chalkboard-teacher"></i>
+                                        <i class="fas fa-chalkboard-teacher"></i>
                                     </span>
                                     <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                         {{ $teachers->count() }}
+                                        {{ $teachers->count() }}
                                     </span>
                                     <span class="kt-widget17__desc">
                                         Total Teacher
@@ -277,16 +235,15 @@
 
                     </div>
                 </div>
-
                 <!--end:: Widgets/Outbound Bandwidth-->
             </div>
-            <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
 
-                <div class="kt-portlet kt-portlet--height-fluid">
+            <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
+                <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                                Applications
+                                Document Reqest
                             </h3>
                         </div>
                     </div>
@@ -294,45 +251,128 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
                                 <div class="kt-widget5">
-                                    @if ($applications->count() > 0)
-                                        @foreach ($applications as $application)
-                                            <div class="kt-widget5__item">
-                                                <div class="kt-widget5__content">
-                                                    <div class="kt-widget5__section">
-                                                        <a href="#" class="kt-widget5__title">
-                                                            {{ $application->full_name }}
-                                                        </a>
-                                                        <p class="kt-widget5__desc">
-                                                            {{ $application->email }} /{{ $application->phone_no }}
-                                                        </p>
-                                                        <div class="kt-widget5__info">
-                                                            <span>Address:</span>
-                                                            <span class="kt-font-info">{{ $application->address }}</span>
-                                                            <span>Destination</span>
-                                                            <span
-                                                                class="kt-font-info">{{ !empty($application->destination) ? $application->destination->title : '-' }}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="kt-widget5__content">
-                                                    <div class="kt-widget5__stats">
-                                                        <span
-                                                            class="kt-widget5__number">{{ !empty($application->package) ? $application->package->title : '-' }}</span>
-                                                        <span
-                                                            class="kt-widget5__sales">{{ !empty($application->program) ? $application->program->title : '-' }}</span>
-                                                        <span
-                                                            class="kt-widget5__sales">{{ !empty($application->date) ? $application->date->start_from_text : '-' }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                    <!--begin::Tap pane-->
+                                    <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
+                                        aria-labelledby="kt_tab_pane_11_3">
+                                        <!--begin::Table-->
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-vertical-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="p-0 text-center w-40px"></th>
+                                                        <th class="p-0 text-center min-w-200px"></th>
+                                                        <th class="p-0 text-center min-w-100px"></th>
+                                                        <th class="p-0 text-center min-w-125px"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if ($documentRequests->count() > 0)
+                                                        @foreach ($documentRequests as $documentRequest)
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $documentRequest->title }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $documentRequest->description }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $documentRequest->user->first_name }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    {!! getStatusLayouts($documentRequest->status) !!}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tap pane-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kt-portlet">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                Announcement
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
+                                <div class="kt-widget5">
+                                    <!--begin::Tap pane-->
+                                    <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
+                                        aria-labelledby="kt_tab_pane_11_3">
+                                        <!--begin::Table-->
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless table-vertical-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="p-0 text-center w-40px"></th>
+                                                        <th class="p-0 text-center min-w-200px"></th>
+                                                        <th class="p-0 text-center min-w-100px"></th>
+                                                        <th class="p-0 text-center min-w-125px"></th>
+                                                        <th class="p-0 text-center min-w-110px"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if ($latestAnnouncements->count() > 0)
+                                                        @foreach ($latestAnnouncements as $announcement)
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->title }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->description }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->notice_for }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->format_start_date }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->format_end_date }}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--end::Table-->
+                                    </div>
+                                    <!--end::Tap pane-->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4 col-xl-3 order-xl-1">
                 <div class="kt-portlet__body kt-portlet__body--fit">
                     <div class="kt-widget17">
@@ -343,6 +383,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-8 col-xl-5 order-xl-1">
                 <div class="kt-widget17">
                     <div
@@ -351,56 +392,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
-                <div class="kt-portlet kt-portlet--height-fluid">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Inquires
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
-                                <div class="kt-widget5">
-                                    @if ($inquiries->count() > 0)
-                                        @foreach ($inquiries as $inquiry)
-                                            <div class="kt-widget5__item">
-                                                <div class="kt-widget5__content">
-                                                    <div class="kt-widget5__section">
-                                                        <a href="#" class="kt-widget5__title">
-                                                            {{ $inquiry->full_name }}
-                                                        </a>
-                                                        <p class="kt-widget5__desc">
-                                                            {{ $inquiry->email }} /{{ $inquiry->phone_no }}
-                                                        </p>
-                                                        <div class="kt-widget5__info">
-                                                            <span>Destination:</span>
-                                                            <span
-                                                                class="kt-font-info">{{ !empty($inquiry->destination) ? $inquiry->destination->title : '-' }}</span>
 
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="kt-widget5__content">
-                                                    <div class="kt-widget5__stats">
-                                                        <span
-                                                            class="kt-widget5__number">{{ !empty($inquiry->program) ? $inquiry->program->title : '-' }}</span>
-                                                        <span
-                                                            class="kt-widget5__sales">{{ ucwords(str_replace('_', ' ', $inquiry->planed_for)) }}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    @endif
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!--End::Row-->
@@ -446,6 +438,7 @@
     </script>
 
     <script type="text/javascript">
+
         // Load the Visualization API and the corechart package.
         google.charts.load('current', {
             'packages': ['corechart']
@@ -464,14 +457,15 @@
             data.addColumn('string', 'Topping');
             data.addColumn('number', 'Slices');
             data.addRows([
-                ['Report', 3],
-                ['Articles', 1],
+                ['Report', {{ $students->count() }}],
+                ['Articles', 2],
                 ['Thesis', 1],
+                ['Sales', 1],
             ]);
 
             // Set chart options
             var options = {
-                'title': 'Documents by category',
+                'title': 'Documents by Category',
                 'width': 400,
                 'height': 400
             };

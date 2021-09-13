@@ -153,7 +153,7 @@ class FrontController
     public function page($pageName)
     {
         if ($pageName == 'hhf')
-            return redirect()->route('admin.auth');
+            return redirect()->route('user.auth');
         $page = $this->page->findByColumn('slug', $pageName);
         $this->setSeo($page->seo_title, $page->seo_description, 'program', $page->image_path);
         return view('front.page', compact('page'));

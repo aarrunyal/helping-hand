@@ -23,7 +23,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect('admin/login')->withErrors('You are not authorized to login.');
+                return redirect('user/login')->withErrors('You are not authorized to login.');
             }
         }
 

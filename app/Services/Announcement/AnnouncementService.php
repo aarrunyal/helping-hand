@@ -56,7 +56,7 @@ class AnnouncementService
         }
     }
 
-    public function findByColumns($data, $all = false)
+    public function findByColumns($data, $all = false, $limit = null)
     {
         $response = $this->announcement->where(function ($qry) use ($data) {
             if (sizeof($data) > 0) {
@@ -65,9 +65,13 @@ class AnnouncementService
                 }
             }
         });
-        if ($all)
-            return $response->get();
-        return $response->first();
+        if ($all) {
+            if (!empty($limit))
+                $response = $response->take($limit);
+            $response = $response->orderBy('id', "DESC")->get();
+        } else
+            $response = $response->first();
+        return $response;
     }
 
     public function getActive()

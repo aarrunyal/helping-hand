@@ -16,9 +16,9 @@ class SystemUser
      */
     public function handle($request, Closure $next)
     {
-        Auth::shouldUse('super-admin');
-        if (!\auth()->guard('super-admin')->check()) {
-            return redirect('admin/login')->withErrors('You are not authorized to login.');
+        Auth::shouldUse('super-user');
+        if (!\auth()->guard('super-user')->check()) {
+            return redirect('user/login')->withErrors('You are not authorized to login.');
         }
         return $next($request);
 
