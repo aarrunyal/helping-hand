@@ -21,6 +21,8 @@ class CreateSystemUsersTable extends Migration
             $table->string('email')->unique()->index()->nullable();
             $table->string('phone')->index()->nullable();
             $table->string('password')->nullable();
+            $table->bigInteger('department_id')->unsigned()->index()->nullable();
+            $table->foreign('department_id')->references('id')->on('departments')->onUpdate('cascade')->onDelete('cascade');
             $table->string('user_type')->nullable();
             $table->dateTime('last_login_time')->nullable();
             $table->boolean('is_active')->default(1)->index()->nullable();

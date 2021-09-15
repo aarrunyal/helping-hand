@@ -1,6 +1,6 @@
 <!--begin::Form-->
-{{--title, is_parent, parent_id, is_active, is_requested,--}}
-{{csrf_field()}}
+{{-- title, is_parent, parent_id, is_active, is_requested, --}}
+{{ csrf_field() }}
 <div class="kt-portlet__body">
     <div class="kt-section">
         <h3 class="kt-section__title">
@@ -13,13 +13,13 @@
                         <div class="col-lg-6">
                             <label class="form-control-label">*First Name</label>
                             <input type="text" name="first_name" class="form-control" placeholder="First Name"
-                                   value="{{old('first_name', isset($user->first_name)?$user->first_name:null)}}">
+                                value="{{ old('first_name', isset($user->first_name) ? $user->first_name : null) }}">
                             <span class="text-danger">{{ $errors->first('first_name') }}</span>
                         </div>
                         <div class="col-lg-6">
                             <label class="form-control-label">*Last Name</label>
                             <input type="text" name="last_name" class="form-control" placeholder="Last Name"
-                                   value="{{old('last_name', isset($user->last_name)?$user->last_name:null)}}">
+                                value="{{ old('last_name', isset($user->last_name) ? $user->last_name : null) }}">
                             <span class="text-danger">{{ $errors->first('last_name') }}</span>
                         </div>
                     </div>
@@ -27,37 +27,38 @@
                         <div class="col-lg-6">
                             <label class="form-control-label">*Email</label>
                             <input type="text" name="email" class="form-control" placeholder="Email"
-                                   value="{{old('email', isset($user->email)?$user->email:null)}}" autocomplete="off">
+                                value="{{ old('email', isset($user->email) ? $user->email : null) }}"
+                                autocomplete="off">
                             <span class="text-danger">{{ $errors->first('email') }}</span>
                         </div>
-                        {{--<div class="col-lg-6">--}}
-                        {{--<label class="form-control-label">*Username</label>--}}
-                        {{--<input type="text" name="username" class="form-control" placeholder="Category Name"--}}
-                        {{--value="{{old('username', isset($user->username)?$user->username:null)}}">--}}
-                        {{--<span class="text-danger">{{ $errors->first('username') }}</span>--}}
-                        {{--</div>--}}
+                        {{-- <div class="col-lg-6"> --}}
+                        {{-- <label class="form-control-label">*Username</label> --}}
+                        {{-- <input type="text" name="username" class="form-control" placeholder="Category Name" --}}
+                        {{-- value="{{old('username', isset($user->username)?$user->username:null)}}"> --}}
+                        {{-- <span class="text-danger">{{ $errors->first('username') }}</span> --}}
+                        {{-- </div> --}}
                         <div class="col-lg-6">
                             <label class="form-control-label">*Phone</label>
                             <input type="text" name="phone" class="form-control" placeholder="Phone"
-                                   value="{{old('phone', isset($user->phone)?$user->phone:null)}}">
+                                value="{{ old('phone', isset($user->phone) ? $user->phone : null) }}">
                             <span class="text-danger">{{ $errors->first('phone') }}</span>
                         </div>
                     </div>
 
-                    @if(empty($user))
+                    @if (empty($user))
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <label class="form-control-label">*Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Password"
-                                       value="{{old('phone', isset($user->password)?$user->password:null)}}"
-                                       autocomplete="off">
+                                    value="{{ old('phone', isset($user->password) ? $user->password : null) }}"
+                                    autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="col-lg-6">
                                 <label class="form-control-label">*Confirm Password</label>
                                 <input type="password" name="password_confirmation" class="form-control"
-                                       placeholder="Password Confirmation"
-                                       value="{{old('phone', isset($user->password_confirmation)?$user->password_confirmation:null)}}">
+                                    placeholder="Password Confirmation"
+                                    value="{{ old('phone', isset($user->password_confirmation) ? $user->password_confirmation : null) }}">
                                 <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             </div>
                         </div>
@@ -67,16 +68,48 @@
 
             <div class="col-lg-4 col-md-4">
                 <div class="form-group row">
+                    <label class="form-control-label">* User Type</label>
+                    <select class="form-control" name="user_type" id="course_id">
+                        <option value="">Select User Type</option>
+                        <option value="admin"
+                            {{ old('user_type', isset($user->user_type) && $user->user_type == 'admin' ? $user->user_type : '') ? 'selected' : '' }}>
+                            Admin</option>
+                        <option value="teacher"
+                            {{ old('user_type', isset($user->user_type) && $user->user_type == 'teacher' ? $user->user_type : '') ? 'selected' : '' }}>
+                            Teacher</option>
+                        <option value="student"
+                            {{ old('user_type', isset($user->user_type) && $user->user_type == 'student' ? $user->user_type : '') ? 'selected' : '' }}>
+                            Student</option>
+                    </select>
+                    <span class="text-danger">{{ $errors->first('user_type') }}</span>
+                </div>
+
+                <div class="form-group row">
+                    <label class="form-control-label">* Department</label>
+                    <select class="form-control" name="department_id" id="department_id">
+                        <option value="">Select Department</option>
+                        @if ($departments->count() > 0)
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}"
+                                    {{ old('department_id', isset($user->department_id) ? $user->department_id : '') == $department->id ? 'selected' : '' }}>
+                                    {{ ucwords($department->title) }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+
+                    <span class="text-danger">{{ $errors->first('department_id') }}</span>
+                </div>
+                <div class="form-group row">
                     <label class="col-4 col-form-label">Status</label>
                     <div class="col-4">
-														<span class="kt-switch kt-switch--success">
-															<label>
-																<input type="checkbox"
-                                                                       {{(isset($user->is_active) && $user->is_active =='1')?"checked":''}}
-                                                                       name="is_active">
-																<span></span>
-															</label>
-														</span>
+                        <span class="kt-switch kt-switch--success">
+                            <label>
+                                <input type="checkbox"
+                                    {{ isset($user->is_active) && $user->is_active == '1' ? 'checked' : '' }}
+                                    name="is_active">
+                                <span></span>
+                            </label>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -89,7 +122,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <button type="submit" class="btn btn-brand">Save</button>
-                <a href="{{route('system-user.index')}}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('system-user.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
         </div>
     </div>
@@ -99,9 +132,9 @@
 
     <!--begin::Page Scripts(used by this page) -->
     <script>
-        var KTFormControls = function () {
+        var KTFormControls = function() {
             // Private functions
-            var demo2 = function () {
+            var demo2 = function() {
                 $("#kt_form_2").validate({
                     // define validation rules
                     rules: {
@@ -120,37 +153,32 @@
                             required: true,
                             email: true,
                         },
-                        @if(empty($user))
-                        password: {
-                            required: true
+                        user_type: {
+                            required: true,
                         },
-                        password_confirmation: {
+                        @if (empty($user))
+                            password: {
                             required: true
-                        },
+                            },
+                            password_confirmation: {
+                            required: true
+                            },
                         @endif
                     },
 
                     //display error alert on form submit
-                    invalidHandler: function (event, validator) {
+                    invalidHandler: function(event, validator) {
                         swal.fire({
                             "title": "",
                             "text": "There are some errors in your submission. Please correct them.",
                             "type": "error",
-                            "confirmButtonClass": "btn btn-secondary",
-                            "onClose": function (e) {
-                                swal.fire({
-                                    "title": "",
-                                    "text": "New user created.",
-                                    "type": "success",
-                                    "confirmButtonClass": "btn btn-secondary"
-                                });
-                            }
+                            "confirmButtonClass": "btn btn-secondary"
                         });
 
                         event.preventDefault();
                     },
 
-                    submitHandler: function (form) {
+                    submitHandler: function(form) {
                         form[0].submit(); // submit the form
                         swal.fire({
                             "title": "",
@@ -166,13 +194,13 @@
 
             return {
                 // public functions
-                init: function () {
+                init: function() {
                     demo2();
                 }
             };
         }();
 
-        jQuery(document).ready(function () {
+        jQuery(document).ready(function() {
             KTFormControls.init();
             // $('#parent_category_id').hide()
         });
@@ -180,8 +208,8 @@
     <script>
 
     </script>
-    {{--<script src="{{asset('resources/back/assets/js/pages/crud/forms/validation/form-controls.js')}}"--}}
-    {{--type="text/javascript"></script>--}}
+    {{-- <script src="{{asset('resources/back/assets/js/pages/crud/forms/validation/form-controls.js')}}" --}}
+    {{-- type="text/javascript"></script> --}}
 
     <!--end::Page Scripts -->
 @endsection

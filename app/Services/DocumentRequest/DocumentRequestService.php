@@ -15,11 +15,7 @@ class DocumentRequestService
 
     public function paginate($limit)
     {
-        if(auth()->user()->user_type == 'admin') {
-            return $this->documentRequest->orderBy('id', 'DESC')->paginate($limit);
-         }else {
-             return $this->findByColumns(['user_id' => auth()->user()->id], true);
-         }
+        return $this->documentRequest->orderBy('id', 'DESC')->paginate($limit);
     }
 
     public function findByColumn($column, $value)
@@ -75,12 +71,12 @@ class DocumentRequestService
         return $response;
     }
 
-    public function getData($limit)
+    public function getDocumentRequest()
     {
         if(auth()->user()->user_type == 'admin') {
-           return $this->paginate($limit);
+            return $this->findByColumns([], true, 5);
         }else {
-            return $this->findByColumns(['user_id' => auth()->user()->id], true);
+            return $this->findByColumns(['user_id' => auth()->user()->id], true, 5);
         }
     }
 }

@@ -25,11 +25,13 @@ class Announcement extends Model
     public function getFormatStartDateAttribute()
     {
         $date = Carbon::createFromFormat('Y-m-d', $this->start_date);
-        return $date->format('Y'). " ". $date->format('F'). " ". $date->format('d');
+        $month = substr($date->format('F'), 0, 3);
+        return $date->format('d'). " ". $month . " ".  $date->format('Y');
     }
     public function getFormatEndDateAttribute()
     {
         $date = Carbon::createFromFormat('Y-m-d', $this->end_date);
-        return $date->format('Y'). " ". $date->format('F'). " ". $date->format('d');
+        $month = substr($date->format('F'), 0, 3);
+        return $date->format('d'). " ". $month . " ".  $date->format('Y');
     }
 }

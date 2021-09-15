@@ -2,18 +2,14 @@
 
 function getStatus($status)
 {
+    // dd($status);
     switch ($status) {
-        case 1:
+        case '1':
             return 'fas fa-check';
 
-        case 0:
+        case '0':
             return 'fas fa-times-circle';
-    }
-}
 
-function getStatuss($status)
-{
-    switch ($status) {
         case 'approve':
             return 'APPROVE';
 
@@ -28,17 +24,12 @@ function getStatuss($status)
 function getTextColor($status)
 {
     switch ($status) {
-        case 1:
+        case '1':
             return 'text-success';
 
-        case 0:
+        case '0':
             return 'text-danger';
-    }
-}
 
-function getTextColors($status)
-{
-    switch ($status) {
         case 'approve':
             return 'success';
 
@@ -57,7 +48,7 @@ function getStatusLayout($status)
 
 function getStatusLayouts($status)
 {
-    return '<span class="badge badge-'. getTextColors($status) .'">'. getStatuss($status) . '</span>';
+    return '<span class="badge badge-'. getTextColor($status) .'">'. getStatus($status) . '</span>';
 }
 
 

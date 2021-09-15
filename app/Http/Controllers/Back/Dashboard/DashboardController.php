@@ -61,13 +61,13 @@ class DashboardController
 
     function index()
     {
-        $announcements = $this->announcement->getActive();
+        $announcements = $this->announcement->findByColumns(['is_active' => 1], true);
         $applications = $this->application->findByColumns([], true, 5);
-        $courses = $this->course->findByColumns([], true);
-        $departments = $this->department->findByColumns([], true);
-        $documents = $this->document->findByColumns([], true);
-        $documentRequests = $this->documentRequest->paginate(5);
-        $latestAnnouncements = $this->announcement->findByColumns([], true, 5);
+        $courses = $this->course->findByColumns(['is_active' => 1], true);
+        $departments = $this->department->findByColumns(['is_active' => 1], true);
+        $documents = $this->document->findByColumns(['is_active' => 1], true);
+        $documentRequests = $this->documentRequest->getDocumentRequest();
+        $latestAnnouncements = $this->announcement->getAnnouncement();
         $totalAnnouncements = $this->announcement->findByColumns([], true);
         $inquiries = $this->inquiry->findByColumns([], true, 5);
         $staffs = $this->systemUser->getStaff();

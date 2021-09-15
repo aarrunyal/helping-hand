@@ -23,7 +23,6 @@
     <!--begin::Global Theme Styles(used by all pages) -->
     <link href="{{asset('resources/back/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('resources/back/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-
     <!--end::Global Theme Styles -->
 
     <!--begin::Layout Skins(used by all pages) -->

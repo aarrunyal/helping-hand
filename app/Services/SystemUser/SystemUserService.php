@@ -35,23 +35,23 @@ class SystemUserService
 
     public function store($data)
     {
-//        try {
+       try {
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             return $this->user->create($data);
-//        } catch (\Exception $ex) {
-//            return false;
-//        }
+       } catch (\Exception $ex) {
+           return false;
+       }
     }
 
     public function update($id, $data)
     {
-//        try {
+       try {
             $user = $this->findByColumn('id', $id);
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
             return $user->update($data);
-//        } catch (\Exception $ex) {
-//            return false;
-//        }
+       } catch (\Exception $ex) {
+           return false;
+       }
     }
 
     public function delete($id)

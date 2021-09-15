@@ -62,6 +62,45 @@
                         <span class="ml-5 kt-menu__link-text">Dashboard</span></a></li>
                 @if (auth()->user()->user_type == 'admin')
                     <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                            href="{{ route('system-user.index') }}" class="kt-menu__link ">
+                            <span><i class="fas fa-user"></i></span>
+                            <span class="ml-5 kt-menu__link-text">User</span></a></li>
+                @endif
+                @if (auth()->user()->user_type != 'student')
+                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                            href="{{ route('document.index') }}" class="kt-menu__link ">
+                            <span><i class="fas fa-file-invoice"></i></span>
+                            <span class="ml-5 kt-menu__link-text">Document</span></a></li>
+                @endif
+                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{ route('announcement.index') }}" class="kt-menu__link ">
+                        <span><i class="fas fa-bullhorn"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Announcement</span></a></li>
+                @if (auth()->user()->user_type == 'admin')
+                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                            href="{{ route('document-request.index') }}" class="kt-menu__link ">
+                            <span><i class="fas fa-file-upload"></i></span>
+                            <span class="ml-5 kt-menu__link-text">Document Request</span></a></li>
+                @else
+                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                            href="{{ route('document-request.index') }}" class="kt-menu__link ">
+                            <span><i class="fas fa-file"></i></span>
+                            <span class="ml-5 kt-menu__link-text">Requested Document</span></a></li>
+                @endif
+                @if (auth()->user()->user_type != 'student')
+                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{ route('course.index') }}" class="kt-menu__link ">
+                        <span><i class="fas fa-book-reader"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Course</span></a></li>
+                @endif
+                 @if (auth()->user()->user_type != 'student')
+                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{ route('department.index') }}" class="kt-menu__link ">
+                        <span><i class="fas fa-building"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Department</span></a></li>
+                        @endif
+                @if (auth()->user()->user_type == 'admin')
+                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                             href="{{ route('category.index') }}" class="kt-menu__link ">
                             <span><i class="fas fa-shapes"></i></span>
                             <span class="ml-5 kt-menu__link-text">Category</span></a></li>
@@ -97,12 +136,12 @@
                 {{-- class="kt-menu__link "> --}}
                 {{-- <span><i class="fas fa-pager"></i></span> --}}
                 {{-- <span class="ml-5 kt-menu__link-text">Page</span></a></li> --}}
-                @if (auth()->user()->user_type == 'admin')
+                {{-- @if (auth()->user()->user_type == 'admin')
                     <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                             href="{{ route('media.index') }}" class="kt-menu__link ">
                             <span><i class="fas fa-photo-video"></i></span>
                             <span class="ml-5 kt-menu__link-text">Media</span></a></li>
-                @endif
+                @endif --}}
                 {{-- <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a --}}
                 {{-- href="{{route('inquiry.index')}}" --}}
                 {{-- class="kt-menu__link "> --}}
@@ -118,57 +157,19 @@
                 {{-- class="kt-menu__link "> --}}
                 {{-- <span><i class="fas fa-star"></i></span> --}}
                 {{-- <span class="ml-5 kt-menu__link-text">Testimonial</span></a></li> --}}
-                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{ route('system-user.index') }}" class="kt-menu__link ">
-                        <span><i class="fas fa-user"></i></span>
-                        <span class="ml-5 kt-menu__link-text">User</span></a></li>
+
 
                 {{-- <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a --}}
                 {{-- href="{{route('site-setting.index')}}" --}}
                 {{-- class="kt-menu__link "> --}}
                 {{-- <span><i class="fas fa-cogs"></i></span> --}}
                 {{-- <span class="ml-5 kt-menu__link-text">Site Setting</span></a></li> --}}
-                @if (auth()->user()->user_type == 'admin')
+                {{-- @if (auth()->user()->user_type == 'admin')
                     <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                             href="{{ route('menu.index') }}" class="kt-menu__link ">
                             <span><i class="fas fa-bars"></i></span>
                             <span class="ml-5 kt-menu__link-text">Menu</span></a></li>
-                @endif
-                @if (auth()->user()->user_type == 'admin')
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('department.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-building"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Department</span></a></li>
-                @endif
-                @if (auth()->user()->user_type == 'admin')
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('course.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-book-reader"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Course</span></a></li>
-                @endif
-                @if (auth()->user()->user_type != 'student')
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('document.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-file-invoice"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Document</span></a></li>
-                @endif
-                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                        href="{{ route('announcement.index') }}" class="kt-menu__link ">
-                        <span><i class="fas fa-bullhorn"></i></span>
-                        <span class="ml-5 kt-menu__link-text">Announcement</span></a></li>
-
-                @if (auth()->user()->user_type == 'admin')
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('document-request.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-file-upload"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Document Request</span></a></li>
-
-                @else
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('document-request.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-file"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Requested Document</span></a></li>
-                @endif
+                @endif --}}
 
             </ul>
         </div>

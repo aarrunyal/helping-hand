@@ -77,6 +77,8 @@
                                 <th class="text-center">S.No.</th>
                                 <th class="text-center">Title</th>
                                 <th class="text-center">Description</th>
+                                <th class="text-center">Category Title</th>
+                                <th class="text-center">Department Title</th>
                                 <th class="text-center">Course Title</th>
                                 <th class="text-center">Access Type</th>
                                 <th class="text-center">Total Document</th>
@@ -93,9 +95,13 @@
                                         <td class="text-center">{{ ucwords($document->title) }}</td>
                                         <td class="text-center">{{ $document->description }}</td>
                                         <td class="text-center">
+                                            {{ !empty($document->category) ? ucwords($document->category->title) : '-' }}</td>
+                                        <td class="text-center">
+                                            {{ !empty($document->department) ? ucwords($document->department->title) : '-' }}</td>
+                                        <td class="text-center">
                                             {{ !empty($document->course) ? ucwords($document->course->title) : '-' }}</td>
                                         <td class="text-center">{{ ucwords($document->access_type) }}</td>
-                                        <td class="text-center">{{  $document->documentFiles->count()  }}</td>
+                                        <td class="text-center">{{  $document->document_files->count()  }}</td>
                                         <td class="text-center">{!! getStatusLayout($document->is_active) !!}</td>
                                         <td class="text-center">
                                             <a href="" onclick="getItineraryForm({{ $document->id }})" data-toggle="modal" data-target="#uploadFile"><i

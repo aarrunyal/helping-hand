@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Back\SystemUser;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SystemUser\SystemUserRequest;
+use App\Http\Requests\Back\SystemUser\SystemUserRequest;
+use App\Services\Department\DepartmentService;
 use App\Services\SystemUser\SystemUserService;
+use Illuminate\Http\Request;
 
 class SystemUserController extends Controller
 {
     protected $user;
+    protected $department;
 
-    public function __construct(SystemUserService $user)
+    public function __construct(SystemUserService $user, DepartmentService $department)
     {
         $this->user = $user;
+        $this->department = $department;
     }
 
     /**
@@ -33,7 +37,8 @@ class SystemUserController extends Controller
      */
     public function create()
     {
-        return view('back.system-user.create');
+        $departments = $this->department->findByColumns(['is_active' => 1], true);
+        return view('back.system-user.create', compact('departments'));
     }
 
     /**
@@ -74,7 +79,8 @@ class SystemUserController extends Controller
     public function edit($id)
     {
         $user = $this->user->findByColumn('id', $id);
-        return view('back.system-user.edit', compact('user'));
+        $departments = $this->department->findByColumns(['is_active' => 1], true);
+        return view('back.system-user.edit', compact('user', 'departments'));
     }
 
     /**
@@ -84,14 +90,13 @@ class SystemUserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SystemUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         if ($this->user->update($id, $data)) {
             toastr()->success('Request processed successfully');
             return redirect()->route('system-user.index');
         }
-
         toastr()->error('Something went wrong');
         return redirect()->route('system-user.create');
     }

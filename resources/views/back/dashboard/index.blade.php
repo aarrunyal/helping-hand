@@ -165,76 +165,194 @@
 
             <div class="col-lg-6 col-xl-4 order-lg-1 order-xl-1">
                 <!--begin:: Widgets/Outbound Bandwidth-->
-                <div class="kt-portlet__body kt-portlet__body--fit">
-                    <div class="kt-widget17">
-                        <div class="kt-widget17__visual kt-widget17__visual--chart kt-portlet-fit--top kt-portlet-fit--sides"
-                            style="background-color: #fd397a">
-                            <div class="kt-widget17__chart" style="height:200px;">
-                            </div>
-                        </div>
-                        <div class="kt-widget17__stats">
-                            <div class="kt-widget17__items">
-                                <div class="kt-widget17__item">
-                                    <span class="kt-widget17__icon">
-                                        <i class="fas fa-users"></i>
-                                    </span>
-                                    <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                        {{ $totalUsers->count() }}
-                                    </span>
-                                    <span class="kt-widget17__desc">
-                                        Total User
-                                    </span>
-                                </div>
-                                <div class="kt-widget17__item">
-                                    <span class="kt-widget17__icon">
-                                        <i class="fas fa-chalkboard-teacher"></i>
-                                    </span>
-                                    <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                        {{ $teachers->count() }}
-                                    </span>
-                                    <span class="kt-widget17__desc">
-                                        Total Teacher
-                                    </span>
+                @if (auth()->user()->user_type != 'student')
+                    <div class="kt-portlet__body kt-portlet__body--fit">
+                        <div class="kt-widget17">
+                            <div class="kt-widget17__visual kt-widget17__visual--chart kt-portlet-fit--top kt-portlet-fit--sides"
+                                style="background-color: #fd397a">
+                                <div class="kt-widget17__chart" style="height:200px;">
                                 </div>
                             </div>
-                            <div class="kt-widget17__items">
-                                <div class="kt-widget17__item">
-                                    <span class="kt-widget17__icon">
-                                        <i class="fas fa-user-tie"></i>
-                                    </span>
-                                    <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                        {{ $staffs->count() }}
-                                    </span>
-                                    <span class="kt-widget17__desc">
-                                        Total Staff
-                                    </span>
+                            <div class="kt-widget17__stats">
+                                <div class="kt-widget17__items">
+                                    <div class="kt-widget17__item">
+                                        <span class="kt-widget17__icon">
+                                            <i class="fas fa-users"></i>
+                                        </span>
+                                        <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
+                                            {{ $totalUsers->count() }}
+                                        </span>
+                                        <span class="kt-widget17__desc">
+                                            Total User
+                                        </span>
+                                    </div>
+                                    <div class="kt-widget17__item">
+                                        <span class="kt-widget17__icon">
+                                            <i class="fas fa-chalkboard-teacher"></i>
+                                        </span>
+                                        <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
+                                            {{ $teachers->count() }}
+                                        </span>
+                                        <span class="kt-widget17__desc">
+                                            Total Teacher
+                                        </span>
+                                    </div>
                                 </div>
-                                <div class="kt-widget17__item">
-                                    <span class="kt-widget17__icon">
-                                        <i class="fas fa-user-graduate"></i>
-                                    </span>
-                                    <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                        {{ $students->count() }}
-                                    </span>
-                                    <span class="kt-widget17__desc">
-                                        Total Student
-                                    </span>
+                                <div class="kt-widget17__items">
+                                    <div class="kt-widget17__item">
+                                        <span class="kt-widget17__icon">
+                                            <i class="fas fa-user-tie"></i>
+                                        </span>
+                                        <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
+                                            {{ $staffs->count() }}
+                                        </span>
+                                        <span class="kt-widget17__desc">
+                                            Total Staff
+                                        </span>
+                                    </div>
+                                    <div class="kt-widget17__item">
+                                        <span class="kt-widget17__icon">
+                                            <i class="fas fa-user-graduate"></i>
+                                        </span>
+                                        <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
+                                            {{ $students->count() }}
+                                        </span>
+                                        <span class="kt-widget17__desc">
+                                            Total Student
+                                        </span>
+                                    </div>
+                                    {{-- <div class="kt-widget17__item"> --}}
+                                    {{-- <span class="kt-widget17__icon"> --}}
+                                    {{-- <i class="fas fa-users"></i></span> --}}
+                                    {{-- <span class="kt-widget17__subtitle" id="totalUserInMonth"> --}}
+                                    {{-- 0 --}}
+                                    {{-- </span> --}}
+                                    {{-- <span class="kt-widget17__desc"> --}}
+                                    {{-- User in a month --}}
+                                    {{-- </span> --}}
+                                    {{-- </div> --}}
                                 </div>
-                                {{-- <div class="kt-widget17__item"> --}}
-                                {{-- <span class="kt-widget17__icon"> --}}
-                                {{-- <i class="fas fa-users"></i></span> --}}
-                                {{-- <span class="kt-widget17__subtitle" id="totalUserInMonth"> --}}
-                                {{-- 0 --}}
-                                {{-- </span> --}}
-                                {{-- <span class="kt-widget17__desc"> --}}
-                                {{-- User in a month --}}
-                                {{-- </span> --}}
-                                {{-- </div> --}}
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Course
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
+                                    <div class="kt-widget5">
+                                        <!--begin::Tap pane-->
+                                        <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
+                                            aria-labelledby="kt_tab_pane_11_3">
+                                            <!--begin::Table-->
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-vertical-center">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="p-0 text-center w-40px"></th>
+                                                            <th class="p-0 text-center min-w-200px"></th>
+                                                            <th class="p-0 text-center min-w-200px"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @if (!empty(auth()->user()) && !empty(auth()->user()->department->course))
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">1
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->title }}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->description }}
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                        @endif
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--end::Table-->
+                                        </div>
+                                        <!--end::Tap pane-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet">
+                        <div class="kt-portlet__head">
+                            <div class="kt-portlet__head-label">
+                                <h3 class="kt-portlet__head-title">
+                                    Department
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="kt-portlet__body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
+                                    <div class="kt-widget5">
+                                        <!--begin::Tap pane-->
+                                        <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
+                                            aria-labelledby="kt_tab_pane_11_3">
+                                            <!--begin::Table-->
+                                            <div class="table-responsive">
+                                                <table class="table table-borderless table-vertical-center">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="p-0 text-center w-40px"></th>
+                                                            <th class="p-0 text-center min-w-200px"></th>
+                                                            <th class="p-0 text-center min-w-100px"></th>
+                                                            <th class="p-0 text-center min-w-125px"></th>
+                                                            <th class="p-0 text-center min-w-110px"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                       @if (!empty(auth()->user()) && !empty(auth()->user()->department))
+                                                                <tr>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">1
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->title }}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <span
+                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->description }}
+                                                                        </span>
+                                                                    </td>
+                                                                </tr>
+                                                        @endif
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <!--end::Table-->
+                                        </div>
+                                        <!--end::Tap pane-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
                 <!--end:: Widgets/Outbound Bandwidth-->
             </div>
 
@@ -242,9 +360,15 @@
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title">
-                                Document Reqest
-                            </h3>
+                            @if (auth()->user()->user_type == 'admin')
+                                <h3 class="kt-portlet__head-title">
+                                    Document Request
+                                </h3>
+                            @else
+                                <h3 class="kt-portlet__head-title">
+                                    Requested Document
+                                </h3>
+                            @endif
                         </div>
                     </div>
                     <div class="kt-portlet__body">
@@ -409,36 +533,7 @@
 @section('page-script')
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('resources/back/assets/js/ajax.js') }}"></script>
-    <script>
-        $(document).ready(() => {
-            googleAnalytics();
-            applicationByDestination();
-        })
-
-        function googleAnalytics() {
-            let url = '{{ route('dashboard.analytics') }}'
-            ajaxCall('GET', url, 'JSON', '', '', function(response, selector) {
-                $('#activeUser').text(response.active_user)
-                $('#totalUserSevenDays').text(response.total_user[7][0].visitors)
-                $('#totalUserFifteenDays').text(response.total_user[15][0].visitors)
-                $('#totalUserInMonth').text(response.total_user[30][0].visitors)
-            }, function(error) {
-
-            })
-        }
-
-        function applicationByDestination() {
-            let url = '{{ route('dashboard.application-by-destination') }}'
-            ajaxCall('GET', url, 'JSON', '', '', function(response, selector) {
-                curveChart(response)
-            }, function(error) {
-
-            })
-        }
-    </script>
-
     <script type="text/javascript">
-
         // Load the Visualization API and the corechart package.
         google.charts.load('current', {
             'packages': ['corechart']
@@ -473,27 +568,6 @@
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
             chart.draw(data, options);
-        }
-    </script>
-    <script type="text/javascript">
-        function curveChart(res) {
-            google.charts.load('current', {
-                'packages': ['corechart']
-            });
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable(res);
-                var options = {
-                    title: 'Applications from countries',
-                    curveType: 'function',
-                    legend: {
-                        position: 'bottom'
-                    }
-                };
-                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-                chart.draw(data, options);
-            }
         }
     </script>
 @endsection

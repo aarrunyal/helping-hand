@@ -4,17 +4,24 @@ namespace App\Http\Controllers\Back\Document;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\Document\DocumentRequest;
+use App\Services\Category\CategoryService;
 use App\Services\Course\CourseService;
+use App\Services\Department\DepartmentService;
 use App\Services\Document\DocumentService;
 
 class DocumentController extends Controller
 {
-    protected $document, $course;
+    protected $document;
+    protected $course;
+    protected $department;
+    protected $category;
 
-    public function __construct(DocumentService $document, CourseService $course)
+    public function __construct(DocumentService $document, CourseService $course, DepartmentService $department, CategoryService $category)
     {
         $this->document = $document;
         $this->course = $course;
+        $this->department = $department;
+        $this->category = $category;
     }
 
     /**
@@ -36,7 +43,9 @@ class DocumentController extends Controller
     public function create()
     {
         $courses = $this->course->all();
-        return view('back.document.create', compact('courses'));
+        $categories = $this->category->getParents();
+        $departments = $this->department->findByColumns(['is_active' => 1], true);
+        return view('back.document.create', compact('courses', 'categories', 'departments'));
     }
 
     /**
@@ -75,9 +84,11 @@ class DocumentController extends Controller
      */
     public function edit($id)
     {
-        $courses = $this->course->all();
         $document = $this->document->findByColumn('id', $id);
-        return view('back.document.edit',compact('document','courses'));
+        $courses = $this->course->all();
+        $categories = $this->category->getParents();
+        $departments = $this->department->findByColumns(['is_active' => 1], true);
+        return view('back.document.edit',compact('document','courses', 'categories','departments'));
     }
 
     /**

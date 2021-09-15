@@ -89,8 +89,8 @@ Route::group(['middleware' => "super-user", "prefix" => "hhf/user"], function ($
 
 
     $route->resource('system-user', SystemUserController::class);
-    $route->get('system-user/{slug}/destroy', [SystemUserController::class, "destroy"])->name('system-user.destroy');
-    $route->post('system-user/{slug}/update', [SystemUserController::class, "update"])->name('system-user.update');
+    $route->post('system-user/{id}/update', [SystemUserController::class, "update"])->name('system-user.update');
+    $route->get('system-user/{id}/destroy', [SystemUserController::class, "destroy"])->name('system-user.destroy');
 
     $route->resource('site-setting', SiteSettingController::class);
     $route->get('site-setting/{slug}/destroy', [SiteSettingController::class, "destroy"])->name('site-setting.destroy');

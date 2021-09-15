@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Back\Department;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\Department\DepartmentRequest;
+use App\Services\Course\CourseService;
 use App\Services\Department\DepartmentService;
 
 class DepartmentController extends Controller
 {
     protected $department;
+    protected $course;
 
-    public function __construct(DepartmentService $department)
+    public function __construct(DepartmentService $department, CourseService $course)
     {
         $this->department = $department;
+        $this->course = $course;
     }
 
     /**
@@ -33,7 +36,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('back.department.create');
+        $courses = $this->course->all();
+        return view('back.department.create', compact('courses'));
     }
 
     /**
@@ -73,7 +77,8 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $department = $this->department->findByColumn('id', $id);
-        return view('back.department.edit',compact('department'));
+        $courses = $this->course->all();
+        return view('back.department.edit',compact('department', 'courses'));
     }
 
     /**

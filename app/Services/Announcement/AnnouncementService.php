@@ -74,10 +74,15 @@ class AnnouncementService
         return $response;
     }
 
-    public function getActive()
+    public function getAnnouncement()
     {
-        $response = $this->announcement->whereIsActive(1)->get();
-        return $response;
+        if(auth()->user()->user_type == 'admin') {
+            return $this->findByColumns(['is_active' => 1], true, 5);
+        }else {
+            $user_type = auth()->user()->user_type;
+            return $this->findByColumns(['notice_for' => $user_type, 'is_active' => 1], true, 5);
+        }
     }
+
 }
 

@@ -40,40 +40,37 @@
                             <select class="form-control" name="access_type" id="course_id">
                                 <option value="">Select Access Type</option>
                                 <option value="all"
-                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'all' ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) && $document->access_type == 'all' ? $document->access_type : '') ? 'selected' : '' }}>
                                     All</option>
                                 <option value="teacher"
-                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'teacher'  ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) && $document->access_type == 'teacher' ? $document->access_type : '') ? 'selected' : '' }}>
                                     Teacher</option>
                                 <option value="staff"
-                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'staff'  ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) && $document->access_type == 'staff' ? $document->access_type : '') ? 'selected' : '' }}>
                                     Staff</option>
                                 <option value="student"
-                                    {{ old('access_type', isset($document->access_type) &&  $document->access_type == 'student'  ? $document->access_type : '') ? 'selected' : '' }}>
+                                    {{ old('access_type', isset($document->access_type) && $document->access_type == 'student' ? $document->access_type : '') ? 'selected' : '' }}>
                                     Student</option>
                             </select>
                             <span class="text-danger">{{ $errors->first('access_type') }}</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Downloadable</label>
-                    <div class="col-4">
-                        <span class="kt-switch kt-switch--success">
-                            <label>
-                                <input type="checkbox"
-                                    {{ isset($document->downloadable) && $document->downloadable == '1' ? 'checked' : '' }}
-                                    name="downloadable">
-                                <span></span>
-                            </label>
-                        </span>
-                    </div>
-                </div>
-                  <div class="col-lg-6" id="is_active">
-                            <div class="form-group row mt-4">
+                        <div class="col-lg-6" id="is_active">
+                            <div class="form-group row m-2">
+                                <label class="col-4 col-form-label">Downloadable</label>
+                                <div class="col-4">
+                                    <span class="kt-switch kt-switch--success">
+                                        <label>
+                                            <input type="checkbox"
+                                                {{ isset($document->downloadable) && $document->downloadable == '1' ? 'checked' : '' }}
+                                                name="downloadable">
+                                            <span></span>
+                                        </label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6" id="is_active">
+                            <div class="form-group row m-2">
                                 <label class="col-4 col-form-label">Status</label>
                                 <div class="col-4">
                                     <span class="kt-switch kt-switch--success">
@@ -87,6 +84,37 @@
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4">
+                <div class="form-group row">
+                    <label class="form-control-label">Category Name</label>
+                    <select class="form-control" name="category_id" id="course_id">
+                        <option value="">Select Category</option>
+                        @if ($categories->count() > 0)
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ old('category_id', isset($document->category_id) ? $document->category_id : '') == $category->id ? 'selected' : '' }}>
+                                    {{ ucwords($category->title) }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                    <label class="form-control-label">Department Name</label>
+                    <select class="form-control" name="department_id" id="department_id">
+                        <option value="">Select Department</option>
+                        @if ($departments->count() > 0)
+                            @foreach ($departments as $department)
+                                <option value="{{ $department->id }}"
+                                    {{ old('department_id', isset($document->department_id) ? $document->department_id : '') == $department->id ? 'selected' : '' }}>
+                                    {{ ucwords($department->title) }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
+
                 {{-- <div class="form-group row">
                     <label class="col-4 col-form-label">Viewable</label>
                     <div class="col-4">

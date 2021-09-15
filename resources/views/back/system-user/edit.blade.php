@@ -33,12 +33,12 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title">
-                               Category
+                                User
                             </h3>
                         </div>
                     </div>
-                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST" action="{{route('system-user.update', $user->id)}}">
-                        <input type="hidden" name="id" value="{{$user->id}}">
+                    <form class="kt-form kt-form--label-right" id="kt_form_2" method="POST"
+                          action="{{route('system-user.update', $user->id)}}">
                         @include('back.system-user.form')
                     </form>
                 </div>

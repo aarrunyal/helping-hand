@@ -17,10 +17,23 @@
                             <span class="text-danger">{{ $errors->first('title') }}</span>
                         </div>
                         <div class="col-lg-6" id="description">
-                           <label class="form-control-label">* Description</label>
+                            <label class="form-control-label">* Description</label>
                             <input type="text" name="description" class="form-control" placeholder="Description"
-                            value="{{ old('description', isset($department->description) ? $department->description : null) }}">
+                                value="{{ old('description', isset($department->description) ? $department->description : null) }}">
                             <span class="text-danger">{{ $errors->first('description') }}</span>
+                        </div>
+                        <div class="col-lg-6" id="is_active">
+                            <label class="form-control-label">Status</label>
+                            <div class="col-4">
+                                <span class="kt-switch kt-switch--success">
+                                    <label>
+                                        <input type="checkbox"
+                                            {{ isset($department->is_active) && $department->is_active == '1' ? 'checked' : '' }}
+                                            name="is_active">
+                                        <span></span>
+                                    </label>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -28,17 +41,17 @@
 
             <div class="col-lg-4 col-md-4">
                 <div class="form-group row">
-                    <label class="col-4 col-form-label">Status</label>
-                    <div class="col-4">
-                        <span class="kt-switch kt-switch--success">
-                            <label>
-                                <input type="checkbox"
-                                    {{ isset($department->is_active) && $department->is_active == '1' ? 'checked' : '' }}
-                                    name="is_active">
-                                <span></span>
-                            </label>
-                        </span>
-                    </div>
+                    <label class="form-control-label">Course Name</label>
+                    <select class="form-control" name="course_id" id="course_id">
+                        <option value="">Select Course</option>
+                        @if ($courses->count() > 0)
+                            @foreach ($courses as $course)
+                                <option value="{{ $course->id }}"
+                                    {{ old('course_id', isset($department->course_id) ? $department->course_id : '') == $course->id ? 'selected' : '' }}>
+                                    {{ ucwords($course->title) }}</option>
+                            @endforeach
+                        @endif
+                    </select>
                 </div>
             </div>
         </div>
