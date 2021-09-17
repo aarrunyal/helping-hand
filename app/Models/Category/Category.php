@@ -2,6 +2,7 @@
 
 namespace App\Models\Category;
 
+use App\Models\Document\Document;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,5 +35,10 @@ class Category extends Model
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'category_id');
     }
 }

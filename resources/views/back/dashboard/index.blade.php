@@ -264,23 +264,23 @@
                                                     </thead>
                                                     <tbody>
                                                         @if (!empty(auth()->user()) && !empty(auth()->user()->department->course))
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">1
-                                                                        </span>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->title }}
-                                                                        </span>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->description }}
-                                                                        </span>
-                                                                    </td>
-                                                                </tr>
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">1
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->title }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->course->description }}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
                                                         @endif
                                                     </tbody>
                                                 </table>
@@ -321,24 +321,24 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                       @if (!empty(auth()->user()) && !empty(auth()->user()->department))
-                                                                <tr>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">1
-                                                                        </span>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->title }}
-                                                                        </span>
-                                                                    </td>
-                                                                    <td class="text-center">
-                                                                        <span
-                                                                            class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->description }}
-                                                                        </span>
-                                                                    </td>
-                                                                </tr>
+                                                        @if (!empty(auth()->user()) && !empty(auth()->user()->department))
+                                                            <tr>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">1
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->title }}
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center">
+                                                                    <span
+                                                                        class="label label-lg label-light-primary label-inline">{{ auth()->user()->department->description }}
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
                                                         @endif
                                                     </tbody>
                                                 </table>
@@ -534,11 +534,22 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="{{ asset('resources/back/assets/js/ajax.js') }}"></script>
     <script type="text/javascript">
+        $(document).ready(() => {
+            getCategory();
+        });
+        var category = "";
         // Load the Visualization API and the corechart package.
         google.charts.load('current', {
             'packages': ['corechart']
         });
 
+        function getCategory() {
+            let url = '{{ route('getcategory') }}'
+            ajaxCall('GET', url, 'json', '', '', function(response) {
+                category = response;
+                console.log(response, category.length);
+            }, function(error) {});
+        }
         // Set a callback to run when the Google Visualization API is loaded.
         google.charts.setOnLoadCallback(drawChart);
 
@@ -551,12 +562,11 @@
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
             data.addColumn('number', 'Slices');
-            data.addRows([
-                ['Report', {{ $students->count() }}],
-                ['Articles', 2],
-                ['Thesis', 1],
-                ['Sales', 1],
+            for(let i = 0; i< category.length; i++){
+                data.addRows([
+                [category[i].title, category[i].count]
             ]);
+            }
 
             // Set chart options
             var options = {

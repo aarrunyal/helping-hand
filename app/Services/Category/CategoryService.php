@@ -31,6 +31,9 @@ class CategoryService extends Service
     public function getParents()
     {
         $categories = $this->category->whereIsParent(1)->orderBy('id', 'DESC')->get();
+        foreach($categories as $category) {
+            $category['count'] = $category->documents->count();
+        }
         return $categories;
     }
 

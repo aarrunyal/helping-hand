@@ -121,4 +121,10 @@ class CategoryController
         $categories = $this->category->findByColumns(['is_active' => 1, "is_parent" => 0, "parent_id" => $id], true);
         return view('back.category.custom.sub-category', compact('categories'));
     }
+
+    public function getCategory()
+    {
+        $categories = $this->category->getParents();
+        return $categories;
+    }
 }

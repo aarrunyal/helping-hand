@@ -36,7 +36,7 @@ Route::get('user/login', function () {
 })->name('user.auth');
 Route::get('/', [DashboardController::class, 'index'])->name('user.home')->middleware('super-user');
 Route::post('/admin-login', [LoginController::class, "login"])->name('admin.login');
-Route::group(['middleware' => "super-user", "prefix" => "hhf/user"], function ($route) {
+Route::group(['middleware' => "super-user", "prefix" => "admin"], function ($route) {
     $route->get('logout', [LoginController::class, "logout"])->name('user.logout');
     $route->get('dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
     $route->get('google/analytics', [DashboardController::class, 'getGoogleAnalyticsData'])->name('dashboard.analytics');
@@ -46,6 +46,7 @@ Route::group(['middleware' => "super-user", "prefix" => "hhf/user"], function ($
     $route->get('category/{slug}/destroy', [CategoryController::class, "destroy"])->name('category.destroy');
     $route->post('category/{slug}/update', [CategoryController::class, "update"])->name('category.update');
     $route->get('category/{id}/sub-category', [CategoryController::class, "getSubCategoryByCategory"])->name('subcategory-by-category');
+    $route->get('get/category', [CategoryController::class, "getCategory"])->name('getcategory');
 
 //    department
     $route->resource('department', DepartmentController::class);
