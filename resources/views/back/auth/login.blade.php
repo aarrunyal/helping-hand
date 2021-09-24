@@ -17,6 +17,9 @@
             <!--begin::Signin-->
             <div class="kt-login__form">
                 <div class="kt-login__title">
+                    <h3>Document Management System</h3>
+                </div>
+                <div class="kt-login__title">
                     <h3>Sign In</h3>
                 </div>
 

@@ -1,23 +1,19 @@
 <?php
 
-
 namespace App\Http\Controllers\Back\Media;
 
-
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Back\SiteSetting\SiteSettingRequest;
-use App\Services\Media\MediaService;
+use App\Services\DocumnetFile\DocumentFileServie;
 use Illuminate\Http\Request;
 
-class MediaController extends Controller
+class MediaController
 {
 
-    public $media;
+    public $documentFile;
 
 
-    public function __construct(MediaService $mediaService)
+    public function __construct(DocumentFileServie $documentFile)
     {
-        $this->media = $mediaService;
+        $this->documentFile = $documentFile;
     }
 
     /**
@@ -27,8 +23,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $medias = $this->media->paginate(10);
-        return view('back.media.index', compact('medias'));
+        $documentFiles = $this->documentFile->paginate(25);
+        return view('back.media.index', compact('documentFiles'));
     }
 
     /**
@@ -38,7 +34,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        return view('back.media.create');
+        // return view('back.documentFile.create');
     }
 
     /**
@@ -49,12 +45,12 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        if ($this->media->store($request)) {
-            toastr()->success('Request processed successfully');
-            return redirect()->route('media.index');
-        }
-        toastr()->error('Something went wrong');
-        return redirect()->route('media.create');
+        // if ($this->documentFile->store($request)) {
+        //     toastr()->success('Request processed successfully');
+        //     return redirect()->route('documentFile.index');
+        // }
+        // toastr()->error('Something went wrong');
+        // return redirect()->route('documentFile.create');
     }
 
     /**
@@ -76,8 +72,8 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
-        $media = $this->media->findByColumn('id', $id);
-        return view('back.media.edit', compact('media'));
+        // $documentFile = $this->documentFile->findByColumn('id', $id);
+        // return view('back.documentFile.edit', compact('documentFile'));
     }
 
     /**
@@ -87,15 +83,15 @@ class MediaController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SiteSettingRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        if ($this->media->update($id, $data)) {
-            toastr()->success('Request processed successfully');
-            return redirect()->route('media.index');
-        }
-        toastr()->error('Something went wrong');
-        return redirect()->route('media.create');
+        // $data = $request->all();
+        // if ($this->documentFile->update($id, $data)) {
+        //     toastr()->success('Request processed successfully');
+        //     return redirect()->route('documentFile.index');
+        // }
+        // toastr()->error('Something went wrong');
+        // return redirect()->route('documentFile.create');
     }
 
     /**
@@ -106,11 +102,12 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->media->delete($id)) {
-            toastr()->success('Request processed successfully');
-            return redirect()->route('media.index');
-        }
-        toastr()->error('Something went wrong');
-        return redirect()->route('media.index');
+        // if ($this->documentFile->delete($id)) {
+        //     toastr()->success('Request processed successfully');
+        //     return redirect()->route('documentFile.index');
+        // }
+        // toastr()->error('Something went wrong');
+        // return redirect()->route('documentFile.index');
     }
 }
+

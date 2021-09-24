@@ -66,6 +66,10 @@
                             <span><i class="fas fa-user"></i></span>
                             <span class="ml-5 kt-menu__link-text">User</span></a></li>
                 @endif
+                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                            href="{{ route('media.index') }}" class="kt-menu__link ">
+                            <span><i class="fas fa-shapes"></i></span>
+                            <span class="ml-5 kt-menu__link-text">Media</span></a></li>
                 @if (auth()->user()->user_type != 'student')
                     <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                             href="{{ route('document.index') }}" class="kt-menu__link ">
@@ -105,6 +109,7 @@
                             <span><i class="fas fa-shapes"></i></span>
                             <span class="ml-5 kt-menu__link-text">Category</span></a></li>
                 @endif
+
                 {{-- <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a --}}
                 {{-- href="{{route('blog.index')}}" --}}
                 {{-- class="kt-menu__link "> --}}

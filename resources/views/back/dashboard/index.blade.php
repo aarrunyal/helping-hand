@@ -199,17 +199,7 @@
                                     </div>
                                 </div>
                                 <div class="kt-widget17__items">
-                                    <div class="kt-widget17__item">
-                                        <span class="kt-widget17__icon">
-                                            <i class="fas fa-user-tie"></i>
-                                        </span>
-                                        <span class="kt-widget17__subtitle" id="totalUserFifteenDays">
-                                            {{ $staffs->count() }}
-                                        </span>
-                                        <span class="kt-widget17__desc">
-                                            Total Staff
-                                        </span>
-                                    </div>
+
                                     <div class="kt-widget17__item">
                                         <span class="kt-widget17__icon">
                                             <i class="fas fa-user-graduate"></i>
@@ -547,7 +537,6 @@
             let url = '{{ route('getcategory') }}'
             ajaxCall('GET', url, 'json', '', '', function(response) {
                 category = response;
-                console.log(response, category.length);
             }, function(error) {});
         }
         // Set a callback to run when the Google Visualization API is loaded.

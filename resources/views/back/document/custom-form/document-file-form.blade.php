@@ -50,9 +50,13 @@
                                     @elseif ($documentFile->type == 'doc' || $documentFile->type == 'docx')
                                         <img src="{{ asset('resources/back/assets/image/file/word.png') }}"
                                             alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
-                                    @else
-                                        <img src="{{ asset('resources/back/assets/image/file') . '/' . $documentFile->type . '.png' }}"
+                                    @elseif ($documentFile->type == 'pdf')
+                                        <img src="{{ asset('resources/back/assets/image/file/pdf.png') }}"
                                             alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
+                                    @else
+                                        <img src="{{ $documentFile->file }}" alt="{{ $documentFile->name }}"
+                                            class="m-3 img-fluid"
+                                            style="height: 212px !important; width: 100%; !important">
                                     @endif
                                     @if ($document->downloadable == '1')
                                         <span class="m-4">
