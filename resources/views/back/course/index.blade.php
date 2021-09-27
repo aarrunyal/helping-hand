@@ -72,8 +72,13 @@
                                     <td class="text-center">{{ $course->description }}</td>
                                     <td class="text-center">{!! getStatusLayout($course->is_active) !!}</td>
                                     <td class="text-center">
-                                        <a href="{{route('course.edit', $course->id)}}"><i class="fas fa-edit"></i></a>
-                                        <a href="{{route('course.destroy', $course->id)}}"><i class="fas fa-trash"></i></a>
+                                        @if (auth()->user()->user_type == 'admin')
+                                            <a href="{{route('course.edit', $course->id)}}"><i class="fas fa-edit"></i></a>
+                                            <a href="{{route('course.destroy', $course->id)}}"><i
+                                                    class="fas fa-trash"></i></a>
+                                        @else
+                                            <span>-</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

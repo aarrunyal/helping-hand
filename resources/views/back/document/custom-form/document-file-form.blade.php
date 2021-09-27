@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="kt-portlet__body">
-                @if ($document->access_type != 'student')
+                @if (auth()->user()->user_type != 'student')
                     <form action="{{ route('document-file.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">

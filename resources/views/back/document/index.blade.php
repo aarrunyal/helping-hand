@@ -53,7 +53,7 @@
 
                 <!-- begin:: Uplaod Modal -->
                 <div class="modal fade" id="uploadFile" data-backdrop="static" tabindex="-1" role="dialog"
-                    aria-labelledby="uploadFile" aria-hidden="true">
+                     aria-labelledby="uploadFile" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -61,69 +61,73 @@
                                     <i aria-hidden="true" class="ki ki-close"></i>
                                 </button>
                             </div>
-                            <div class="modal-body" id="document-file-form-id"">
+                            <div class="modal-body" id="document-file-form-id"
+                            ">
 
-                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- begin:: Uplaod Modal -->
+            </div>
+            <!-- begin:: Uplaod Modal -->
 
-                <div class="kt-portlet__body">
+            <div class="kt-portlet__body">
 
-                    <table class="table table-striped- table-bordered table-hover table-checkable">
-                        <thead>
+                <table class="table table-striped- table-bordered table-hover table-checkable">
+                    <thead>
+                    <tr>
+                        <th class="text-center">S.No.</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-center">Category Title</th>
+                        <th class="text-center">Department Title</th>
+                        <th class="text-center">Course Title</th>
+                        <th class="text-center">Access Type</th>
+                        <th class="text-center">Total Document</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @if ($documents->count() > 0)
+                        @foreach ($documents as $c => $document)
                             <tr>
-                                <th class="text-center">S.No.</th>
-                                <th class="text-center">Title</th>
-                                <th class="text-center">Description</th>
-                                <th class="text-center">Category Title</th>
-                                <th class="text-center">Department Title</th>
-                                <th class="text-center">Course Title</th>
-                                <th class="text-center">Access Type</th>
-                                <th class="text-center">Total Document</th>
-                                <th class="text-center">Status</th>
-                                <th class="text-center">Actions</th>
+                                <td class="text-center">{{ $c + 1 }}</td>
+                                <td class="text-center">{{ ucwords($document->title) }}</td>
+                                <td class="text-center">{{ $document->description }}</td>
+                                <td class="text-center">
+                                    {{ !empty($document->category) ? ucwords($document->category->title) : '-' }}</td>
+                                <td class="text-center">
+                                    {{ !empty($document->department) ? ucwords($document->department->title) : '-' }}</td>
+                                <td class="text-center">
+                                    {{ !empty($document->course) ? ucwords($document->course->title) : '-' }}</td>
+                                <td class="text-center">{{ ucwords($document->access_type) }}</td>
+                                <td class="text-center">{{  $document->document_files->count()  }}</td>
+                                <td class="text-center">{!! getStatusLayout($document->is_active) !!}</td>
+                                <td class="text-center">
+                                    <a href="" onclick="getItineraryForm({{ $document->id }})" data-toggle="modal"
+                                       data-target="#uploadFile"><i
+                                            class="fas fa-eye"></i></a>
+                                    @if (auth()->user()->user_type != 'student' && auth()->user()->id == $document->created_by)
+                                        <a href="{{ route('document.edit', $document->id) }}"><i
+                                                class="fas fa-edit"></i></a>
+                                        <a href="{{ route('document.destroy', $document->id) }}"><i
+                                                class="fas fa-trash"></i></a>
+                                    @endif
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-
-                            @if ($documents->count() > 0)
-                                @foreach ($documents as $c => $document)
-                                    <tr>
-                                        <td class="text-center">{{ $c + 1 }}</td>
-                                        <td class="text-center">{{ ucwords($document->title) }}</td>
-                                        <td class="text-center">{{ $document->description }}</td>
-                                        <td class="text-center">
-                                            {{ !empty($document->category) ? ucwords($document->category->title) : '-' }}</td>
-                                        <td class="text-center">
-                                            {{ !empty($document->department) ? ucwords($document->department->title) : '-' }}</td>
-                                        <td class="text-center">
-                                            {{ !empty($document->course) ? ucwords($document->course->title) : '-' }}</td>
-                                        <td class="text-center">{{ ucwords($document->access_type) }}</td>
-                                        <td class="text-center">{{  $document->document_files->count()  }}</td>
-                                        <td class="text-center">{!! getStatusLayout($document->is_active) !!}</td>
-                                        <td class="text-center">
-                                            <a href="" onclick="getItineraryForm({{ $document->id }})" data-toggle="modal" data-target="#uploadFile"><i
-                                                    class="fas fa-eye"></i></a>
-                                            <a href="{{ route('document.edit', $document->id) }}"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <a href="{{ route('document.destroy', $document->id) }}"><i
-                                                    class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="5">No Data Found</td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
-                    {{ $documents->links() }}
-                </div>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5">No Data Found</td>
+                        </tr>
+                    @endif
+                    </tbody>
+                </table>
+                {{ $documents->links() }}
             </div>
         </div>
+    </div>
     </div>
 
     <!-- end:: Content -->
@@ -131,21 +135,21 @@
 @section('page-script')
     <!--begin::Page Scripts(used by this page) -->
     <script src="{{ asset('resources/back/assets/plugins/custom/datatables/datatables.bundle.js') }}"
-        type="text/javascript"></script>
+            type="text/javascript"></script>
     <script src="{{ asset('resources/back/assets/js/pages/crud/datatables/advanced/column-rendering.js') }}"
-        type="text/javascript"></script>
-        <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
+            type="text/javascript"></script>
+    <script src="{{asset('resources/back/assets/js/ajax.js')}}"></script>
 
     <script>
-     function getItineraryForm(id) {
-        let url = '{{route("document-file-custom-form")}}'
-        ajaxCall('GET', url, 'HTML',{ id: id }, '#document-file-form-id', function (response, selector) {
-                $(selector).html("");
-                $(selector).append(response);
-            }, function (error) {
-            }
-        );
-    }
+        function getItineraryForm(id) {
+            let url = '{{route("document-file-custom-form")}}'
+            ajaxCall('GET', url, 'HTML', {id: id}, '#document-file-form-id', function (response, selector) {
+                    $(selector).html("");
+                    $(selector).append(response);
+                }, function (error) {
+                }
+            );
+        }
     </script>
     <!--end::Page Scripts -->
 @endsection

@@ -403,6 +403,10 @@
                                                                 </td>
                                                             </tr>
                                                         @endforeach
+                                                    @else
+                                                        <div class="col-12 text-center">
+                                                            <h6>No Document Request Found</h6>
+                                                        </div>
                                                     @endif
                                                 </tbody>
                                             </table>
@@ -446,6 +450,9 @@
                                                     @if ($latestAnnouncements->count() > 0)
                                                         @foreach ($latestAnnouncements as $announcement)
                                                             <tr>
+                                                                <td class="text-center">
+                                                                #
+                                                                </td>
                                                                 <td class="text-center">
                                                                     <span
                                                                         class="label label-lg label-light-primary label-inline">{{ $announcement->title }}
@@ -559,7 +566,7 @@
 
             // Set chart options
             var options = {
-                'title': 'Documents by Category',
+                'title': 'DOCUMENTS BY CATEGORY',
                 'width': 400,
                 'height': 400
             };

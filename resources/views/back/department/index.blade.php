@@ -76,10 +76,14 @@
                                         <td class="text-center">{{ $department->description }}</td>
                                         <td class="text-center">{!! getStatusLayout($department->is_active) !!}</td>
                                         <td class="text-center">
+                                            @if (auth()->user()->user_type == 'admin')
                                             <a href="{{ route('department.edit', $department->id) }}"><i
                                                     class="fas fa-edit"></i></a>
                                             <a href="{{ route('department.destroy', $department->id) }}"><i
                                                     class="fas fa-trash"></i></a>
+                                            @else
+                                                <span>-</span>
+                                                @endif
                                         </td>
                                     </tr>
                                 @endforeach

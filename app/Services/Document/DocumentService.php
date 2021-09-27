@@ -17,7 +17,15 @@ class DocumentService extends Service
 
     public function paginate($limit)
     {
-        $documents = $this->document->orderBy('id', 'DESC')->paginate($limit);
+        $documents = $this->document->orderBy('id', 'DESC')
+            ->where(function ($qry){
+                if (auth()->user()->user_type == "student"){
+                    $qry->whereIn('access_type', ['student', 'all']);
+                }
+                if (auth()->user()->user_type == "teacher"){
+                    $qry->whereIn('access_type', ['teacher', 'all']);
+                }
+            })->paginate($limit);
         return $documents;
     }
 

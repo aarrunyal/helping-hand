@@ -66,16 +66,17 @@
                             <span><i class="fas fa-user"></i></span>
                             <span class="ml-5 kt-menu__link-text">User</span></a></li>
                 @endif
-                    <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                            href="{{ route('media.index') }}" class="kt-menu__link ">
-                            <span><i class="fas fa-shapes"></i></span>
-                            <span class="ml-5 kt-menu__link-text">Media</span></a></li>
-                @if (auth()->user()->user_type != 'student')
+
+{{--                @if (auth()->user()->user_type != 'student')--}}
                     <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                             href="{{ route('document.index') }}" class="kt-menu__link ">
                             <span><i class="fas fa-file-invoice"></i></span>
                             <span class="ml-5 kt-menu__link-text">Document</span></a></li>
-                @endif
+{{--                @endif--}}
+                <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
+                        href="{{ route('media.index') }}" class="kt-menu__link ">
+                        <span><i class="fas fa-shapes"></i></span>
+                        <span class="ml-5 kt-menu__link-text">Media</span></a></li>
                 <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                         href="{{ route('announcement.index') }}" class="kt-menu__link ">
                         <span><i class="fas fa-bullhorn"></i></span>

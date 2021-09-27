@@ -74,9 +74,13 @@
 
                                 @endif
                             @endforeach
+                                {{ $documentFiles->links() }}
+                        @else
+                            <div class="col-12 text-center">
+                                <h4>No media found</h4>
+                            </div>
                         @endif
                     </div>
-                    {{ $documentFiles->links() }}
                 </div>
             </div>
         </div>
