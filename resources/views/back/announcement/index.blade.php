@@ -1,8 +1,8 @@
 @extends('layouts.back.layout')
 @section('content')
     <!-- begin:: Content Head -->
-    <div class="kt-subheader  kt-grid__item" id="kt_subheader">
-        <div class="kt-container  kt-container--fluid ">
+    <div class="kt-subheader kt-grid__item" id="kt_subheader">
+        <div class="kt-container kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">Announcement</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
@@ -24,7 +24,7 @@
 
 
     <!-- begin:: Content -->
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
 
         <!--begin::Portlet-->
         <div class="row">
@@ -77,7 +77,7 @@
                                     <tr>
                                         <td class="text-center">{{ $c + 1 }}</td>
                                         <td class="text-center">{{ ucwords($announcement->title) }}</td>
-                                        <td class="text-center">{{ $announcement->notice_for }}</td>
+                                        <td class="text-center">{{ ucwords($announcement->notice_for) }}</td>
                                         <td class="text-center">{{ $announcement->start_date }}</td>
                                         <td class="text-center">{{ $announcement->end_date }}</td>
                                         <td class="text-center">{{ $announcement->description }}</td>

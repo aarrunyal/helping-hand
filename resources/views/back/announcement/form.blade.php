@@ -18,15 +18,23 @@
                         </div>
                         <div class="col-lg-6" id="notice_for">
                             <label class="form-control-label">* Notice For</label>
-                            <input type="text" name="notice_for" class="form-control" placeholder="Notice For"
-                                value="{{ old('notice_for', isset($announcement->notice_for) ? $announcement->notice_for : null) }}">
-                            <span class="text-danger">{{ $errors->first('notice_for') }}</span>
+                            <select class="form-control" name="notice_for" id="notice_for">
+                                <option value="">Select Course</option>
+                                <option value="teacher"
+                                    {{ old('notice_for', isset($announcement->notice_for) ? $announcement->notice_for : '') == 'teacher' ? 'selected' : '' }}>
+                                    Teacher
+                                </option>
+                                <option value="student"
+                                    {{ old('notice_for', isset($announcement->notice_for) ? $announcement->notice_for : '') == 'student' ? 'selected' : '' }}>
+                                    Student</option>
+
+                            </select>
                         </div>
                         <div class="col-lg-6" id="start_date">
-                        <label class="form-control-label">* End Date</label>
-                    <input type="date" name="end_date" class="form-control" placeholder="End Date"
-                        value="{{ old('end_date', isset($announcement->end_date) ? $announcement->end_date : null) }}">
-                    <span class="text-danger">{{ $errors->first('end_date') }}</span>
+                            <label class="form-control-label">* End Date</label>
+                            <input type="date" name="end_date" class="form-control" placeholder="End Date"
+                                value="{{ old('end_date', isset($announcement->end_date) ? $announcement->end_date : null) }}">
+                            <span class="text-danger">{{ $errors->first('end_date') }}</span>
 
                         </div>
                         <div class="col-lg-6" id="description">
@@ -41,10 +49,10 @@
 
             <div class="col-lg-4 col-md-4">
                 <div class="form-group row">
-                     <label class="form-control-label">* Start Date</label>
-                            <input type="date" name="start_date" class="form-control" placeholder="Start Date"
-                                value="{{ old('start_date', isset($announcement->start_date) ? $announcement->start_date : null) }}">
-                            <span class="text-danger">{{ $errors->first('start_date') }}</span>
+                    <label class="form-control-label">* Start Date</label>
+                    <input type="date" name="start_date" class="form-control" placeholder="Start Date"
+                        value="{{ old('start_date', isset($announcement->start_date) ? $announcement->start_date : null) }}">
+                    <span class="text-danger">{{ $errors->first('start_date') }}</span>
                 </div>
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Status</label>
@@ -67,7 +75,7 @@
 <div class="kt-portlet__foot">
     <div class="kt-form__actions">
         <div class="row">
-            <div class="col-lg-12 text-center">
+            <div class="text-center col-lg-12">
                 <button type="submit" class="btn btn-brand">Save</button>
                 <a href="{{ route('announcement.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
