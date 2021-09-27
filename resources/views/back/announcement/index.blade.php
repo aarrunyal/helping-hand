@@ -84,10 +84,15 @@
                                         <td class="text-center">{!! getStatusLayout($announcement->is_active) !!}</td>
                                         @if (auth()->user()->user_type != 'student')
                                             <td class="text-center">
+                                                @if (auth()->user()->user_type == 'admin')
                                                 <a href="{{ route('announcement.edit', $announcement->slug) }}"><i
                                                         class="fas fa-edit"></i></a>
                                                 <a href="{{ route('announcement.destroy', $announcement->slug) }}"><i
                                                         class="fas fa-trash"></i></a>
+                                                @else
+                                                    <span>-</span>
+                                                    @endif
+
                                             </td>
                                         @endif
                                     </tr>

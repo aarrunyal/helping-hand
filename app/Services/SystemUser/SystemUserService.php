@@ -37,6 +37,7 @@ class SystemUserService
     {
        try {
             $data['is_active'] = (isset($data['is_active']) && $data['is_active'] == "on") ? 1 : 0;
+            $data['password'] = isset($data['password']) && !empty($data['password'])? bcrypt($data['password']):null;
             return $this->user->create($data);
        } catch (\Exception $ex) {
            return false;
