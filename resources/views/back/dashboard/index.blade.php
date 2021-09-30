@@ -404,7 +404,7 @@
                                                             </tr>
                                                         @endforeach
                                                     @else
-                                                        <div class="col-12 text-center">
+                                                        <div class="text-center col-12">
                                                             <h6>No Document Request Found</h6>
                                                         </div>
                                                     @endif
@@ -465,7 +465,7 @@
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <span
-                                                                        class="label label-lg label-light-primary label-inline">{{ $announcement->notice_for }}
+                                                                        class="label label-lg label-light-primary label-inline">{{ ucwords($announcement->notice_for) }}
                                                                     </span>
                                                                 </td>
                                                                 <td class="text-center">

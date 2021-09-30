@@ -1,5 +1,5 @@
 <!-- begin:: Content -->
-<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+<div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
 
     <!--begin::Portlet-->
     <div class="row">
@@ -39,25 +39,32 @@
                     </form>
                 @endif
 
-                <div class="row mt-5">
+                <div class="mt-5 row">
                     @if ($documentFiles->count())
                         @foreach ($documentFiles as $documentFile)
                             @if (!empty($documentFile->file_path))
-                                <div class="col-2 m-2">
+                                <div class="m-2 col-2">
                                     @if ($documentFile->type == 'xls' || $documentFile->type == 'xlsx' || $documentFile->type == 'csv')
                                         <img src="{{ asset('resources/back/assets/image/file/excel.png') }}"
-                                            alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
-                                    @elseif ($documentFile->type == 'doc' || $documentFile->type == 'docx')
-                                        <img src="{{ asset('resources/back/assets/image/file/word.png') }}"
-                                            alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
+                                            alt="{{ $documentFile->name }}"
+                                            style="height: 212px !important; width: 100%; !important"
+                                            class="m-3 img-fluid">
                                     @elseif ($documentFile->type == 'pdf')
                                         <img src="{{ asset('resources/back/assets/image/file/pdf.png') }}"
-                                            alt="{{ $documentFile->name }}" class="img-thumbnail mb-3">
+                                            alt="{{ $documentFile->name }}"
+                                            style="height: 212px !important; width: 100%; !important"
+                                            class="m-3 img-fluid">
+                                    @elseif ($documentFile->type == 'doc' || $documentFile->type == 'docx')
+                                        <img src="{{ asset('resources/back/assets/image/file/word.png') }}"
+                                            alt="{{ $documentFile->name }}"
+                                            style="height: 212px !important; width: 100%; !important"
+                                            class="m-3 img-fluid">
                                     @else
                                         <img src="{{ $documentFile->file }}" alt="{{ $documentFile->name }}"
                                             class="m-3 img-fluid"
                                             style="height: 212px !important; width: 100%; !important">
                                     @endif
+
                                     @if ($document->downloadable == '1')
                                         <span class="m-4">
                                             <a href="{{ $documentFile->file }}" target="_blank"><i
@@ -75,7 +82,6 @@
                                         </span>
                                     @endif
                                 </div>
-
                             @endif
                         @endforeach
                     @endif

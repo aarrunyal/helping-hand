@@ -1,8 +1,8 @@
 @extends('layouts.back.layout')
 @section('content')
     <!-- begin:: Content Head -->
-    <div class="kt-subheader  kt-grid__item" id="kt_subheader">
-        <div class="kt-container  kt-container--fluid ">
+    <div class="kt-subheader kt-grid__item" id="kt_subheader">
+        <div class="kt-container kt-container--fluid ">
             <div class="kt-subheader__main">
                 <h3 class="kt-subheader__title">Media</h3>
                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
@@ -24,7 +24,7 @@
 
 
     <!-- begin:: Content -->
-    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+    <div class="kt-container kt-container--fluid kt-grid__item kt-grid__item--fluid">
 
         <!--begin::Portlet-->
         <div class="row">
@@ -58,29 +58,39 @@
                                     <div class="col-2">
                                         @if ($documentFile->type == 'xls' || $documentFile->type == 'xlsx' || $documentFile->type == 'csv')
                                             <img src="{{ asset('resources/back/assets/image/file/excel.png') }}"
-                                                alt="{{ $documentFile->name }}" style="height: 212px !important; width: 100%; !important" class="m-3 img-fluid">
+                                                alt="{{ $documentFile->name }}"
+                                                style="height: 212px !important; width: 100%; !important"
+                                                class="m-3 img-fluid">
                                         @elseif ($documentFile->type == 'pdf')
                                             <img src="{{ asset('resources/back/assets/image/file/pdf.png') }}"
-                                                alt="{{ $documentFile->name }}" style="height: 212px !important; width: 100%; !important" class="m-3 img-fluid">
+                                                alt="{{ $documentFile->name }}"
+                                                style="height: 212px !important; width: 100%; !important"
+                                                class="m-3 img-fluid">
                                         @elseif ($documentFile->type == 'doc' || $documentFile->type == 'docx')
                                             <img src="{{ asset('resources/back/assets/image/file/word.png') }}"
-                                                alt="{{ $documentFile->name }}" style="height: 212px !important; width: 100%; !important" class="m-3 img-fluid">
+                                                alt="{{ $documentFile->name }}"
+                                                style="height: 212px !important; width: 100%; !important"
+                                                class="m-3 img-fluid">
                                         @else
                                             <img src="{{ $documentFile->file }}" alt="{{ $documentFile->name }}"
-                                                class="m-3 img-fluid" style="height: 212px !important; width: 100%; !important" >
+                                                class="m-3 img-fluid"
+                                                style="height: 212px !important; width: 100%; !important">
                                         @endif
-
+                                        <span class="m-4">
+                                            {{ $documentFile->name }}
+                                        </span>
                                     </div>
 
                                 @endif
                             @endforeach
-                                {{ $documentFiles->links() }}
+
                         @else
-                            <div class="col-12 text-center">
+                            <div class="text-center col-12">
                                 <h4>No media found</h4>
                             </div>
                         @endif
                     </div>
+                    {{ $documentFiles->links() }}
                 </div>
             </div>
         </div>
